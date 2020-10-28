@@ -3,6 +3,8 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 
 
@@ -11,7 +13,7 @@ namespace DataAccessLogic
     public class Database : IDatabase
     {
         private SqlConnection connection;
-
+        
 
         private SqlDataReader reader;
 
@@ -21,6 +23,7 @@ namespace DataAccessLogic
 
         public Database()
         {
+
             connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk; Initial Catalog=" + DBlogin + "; User ID= " + DBlogin + "; " +
                                            "Password=" + DBlogin + "; Connect Timeout=30; Encrypt=False; TrustServerCertificate=False; " +
                                            "ApplicationIntent=ReadWrite; MultiSubnetFailover=false");
@@ -35,10 +38,10 @@ namespace DataAccessLogic
             throw new System.NotImplementedException();
         }
 
-        public void Login()
+        public bool Login(String UserID, String UserPassword)
         {
             bool result = false;
-            command = new SqlCommand("select * from dbo.[User] where SocSecNB = '" + socSecNb + "'", connection);
+            command = new SqlCommand("select * from dbo.[User] where SocSecNB = '" + UserID+ "'", connection);
 
             connection.Open();
             try
@@ -49,7 +52,7 @@ namespace DataAccessLogic
 
                 {
 
-                    if (reader["SocSecNB"].ToString() == socSecNb && reader["SocSecPW"].ToString() == pw)
+                    if (reader["SocSecNB"].ToString() == UserID && reader["SocSecPW"].ToString() == UserPassword)
                     {
                         result = true;
 

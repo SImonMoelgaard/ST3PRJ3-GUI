@@ -7,10 +7,8 @@ namespace BuissnessLogic
 
 
 
-        public bool checkLogin()
-        {
-            return DTO.isUserRegistered(UserID, UserPassword);
-        }
+      
+        
     }
 
     
