@@ -23,6 +23,7 @@ namespace PresentationLogic
         public MainWindow()
         {
             InitializeComponent();
+            //Simon
         }
     }
 }
