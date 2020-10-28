@@ -28,5 +28,20 @@ namespace PresentationLogic
 
             
         }
+
+        private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PerfromCalibration_B_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_B_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

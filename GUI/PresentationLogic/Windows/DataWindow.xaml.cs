@@ -21,5 +21,15 @@ namespace PresentationLogic.Windows
         {
             InitializeComponent();
         }
+
+        private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Next_B_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLogic.Windows"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="ShowDataWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListBox Margin="10,40,572,153"/>
+        <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="98"/>
+        <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="108,14,0,0" Text="CPR" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <lvc:CartesianChart Margin="250,54,10,153"></lvc:CartesianChart>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="716,22,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Search_B" Content="Søg" HorizontalAlignment="Left" Margin="250,15,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ShowData_B" Content="Vis måling" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

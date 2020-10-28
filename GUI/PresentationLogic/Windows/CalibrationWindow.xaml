@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLogic.Windows"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="CalibrationWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="400,0,0,0">
+        <lvc:CartesianChart Margin="0,61,0,13"></lvc:CartesianChart>
+        <ListBox x:Name="CalibrationValues_LB" Margin="-380,136,571,13"/>
+        <Label Content="Kalibreringsværdier:" HorizontalAlignment="Left" Margin="-380,105,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="Value_TB" HorizontalAlignment="Left" Margin="-276,38,0,0" Text="Reference" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Button x:Name="InsertValue_B" Content="Næste værdi" HorizontalAlignment="Left" Margin="-133,40,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="Referenceværdi:" HorizontalAlignment="Left" Margin="-380,37,0,0" VerticalAlignment="Top" Width="99"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="318,10,0,0" VerticalAlignment="Top" Width="58"/>
     </Grid>
 </Window>
