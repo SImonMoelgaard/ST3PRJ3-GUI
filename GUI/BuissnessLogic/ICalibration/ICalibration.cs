@@ -1,4 +1,12 @@
-﻿namespace BuissnessLogic
+﻿using System.Collections.Generic;
+
+namespace BuissnessLogic
 {
-    public interface ICalibration{}
+    public interface ICalibration
+    {
+        public List<DTO_CalVal> GetCalVal(){}
+        public void calculateR2Val(){}
+
+
+    }
 }
