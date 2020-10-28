@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLogic", "PresentationLogic\PresentationLogic.csproj", "{1BBD2A7D-C3B0-42B5-83B5-4D4DC4486619}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1050031C-3E75-4FF4-A619-839EE8251BB9} = {1050031C-3E75-4FF4-A619-839EE8251BB9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuissnessLogic", "BuissnessLogic\BuissnessLogic.csproj", "{1050031C-3E75-4FF4-A619-839EE8251BB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C9CF7494-FE79-417E-8C15-95D0E3918DBA} = {C9CF7494-FE79-417E-8C15-95D0E3918DBA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLogic", "DataAccessLogic\DataAccessLogic.csproj", "{C9CF7494-FE79-417E-8C15-95D0E3918DBA}"
 EndProject
