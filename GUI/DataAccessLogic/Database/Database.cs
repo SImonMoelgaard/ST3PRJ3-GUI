@@ -1,6 +1,7 @@
 ﻿namespace DataAccessLogic
 {
-    class Database : IDatabase
+    public class Database : IDatabase
     {
+        
     }
 }
