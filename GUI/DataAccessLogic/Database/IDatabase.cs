@@ -1,4 +1,8 @@
 ﻿namespace DataAccessLogic
 {
-    public interface IDatabase{}
+    public interface IDatabase
+    {
+        private void GetMeasurement(){}
+        private void SaveMeasurement(){}
+    }
 }
