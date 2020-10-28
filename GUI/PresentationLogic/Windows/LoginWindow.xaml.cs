@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BuissnessLogic;
 
 namespace PresentationLogic.Windows
 {
@@ -17,9 +18,28 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+        private MainWindow main;
+        private Controller buissnessref;
+        public LoginWindow(MainWindow Mw, Controller br)
         {
             InitializeComponent();
+            br = buissnessref;
+            Mw = main;
+        }
+
+        private void Exit_B_Click(object sender, RoutedEventArgs e)
+        {
+            main.Close();
+            this.Close();
+            
+        }
+
+        private void Login_B_Click(object sender, RoutedEventArgs e)
+        {
+            string userID_ = User_TB.Text;
+            string userPassword_ = Password_PWB.Password;
+
+
         }
     }
 }
