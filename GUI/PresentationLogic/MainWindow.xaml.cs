@@ -24,6 +24,7 @@ namespace PresentationLogic
         {
             InitializeComponent();
             //Simon
+            //AK
         }
     }
 }
