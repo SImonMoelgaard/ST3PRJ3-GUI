@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PresentationLogic.Windows;
+using BuissnessLogic;
 
 namespace PresentationLogic
 {
@@ -20,6 +22,9 @@ namespace PresentationLogic
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DataWindow dataWindow;
+        private CalibrationWindow calibrationWindow;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,17 +36,22 @@ namespace PresentationLogic
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
+            dataWindow.ShowDialog();
+            this.ShowDialog();
 
         }
 
-        private void PerfromCalibration_B_Click(object sender, RoutedEventArgs e)
+        private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            calibrationWindow.ShowDialog();
+            this.ShowDialog();
         }
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace PresentationLogic.Windows
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
