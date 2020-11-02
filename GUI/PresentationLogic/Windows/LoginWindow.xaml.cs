@@ -36,22 +36,8 @@ namespace PresentationLogic.Windows
 
         private void Login_B_Click(object sender, RoutedEventArgs e)
         {
-            string userID_ = User_TB.Text;
-            string userPassword_ = Password_PWB.Password;
-
-            if (br.checkLogin(userID_, userPassword_))
-            {
-                userID_ = userID;
-                this.Close();
-                main.Show();
-            }
-            else
-            {
-                Forkert_L.Foreground = ColorContext.re
-                MessageBox.Show("CPR eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                User_TB.Clear();
-                Password_PWB.Clear();
-            }
+            
+            
         }
     }
 }
