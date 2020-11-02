@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_CalVal
+    public class DTO_CalVal
     {
         public List<int> CalReference { get; set; }
         public List<double> CalMeasured { get; set; }

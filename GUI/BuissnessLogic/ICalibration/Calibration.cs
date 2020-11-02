@@ -8,7 +8,6 @@ namespace BuissnessLogic
     {
         private double r2Val;
         
-
         public List<DTO_CalVal> GetCalVal()
         {
             throw new System.NotImplementedException();
