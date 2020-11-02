@@ -24,6 +24,9 @@ namespace PresentationLogic
     {
         private DataWindow dataWindow;
         private CalibrationWindow calibrationWindow;
+        private MeasurementWindow measurementWindow;
+
+        
 
         public MainWindow()
         {
@@ -36,22 +39,32 @@ namespace PresentationLogic
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
+            dataWindow = new DataWindow();
             this.Hide();
-            dataWindow.ShowDialog();
+            dataWindow.Show();
             this.ShowDialog();
 
         }
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
+            calibrationWindow = new CalibrationWindow();
             this.Hide();
-            calibrationWindow.ShowDialog();
+            calibrationWindow.Show();
             this.ShowDialog();
         }
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            measurementWindow = new MeasurementWindow();
+            this.Close();
+            measurementWindow.Show();
+
         }
     }
 }
