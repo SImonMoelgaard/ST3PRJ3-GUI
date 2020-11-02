@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using DTO;
+using DataAccessLogic;
 
 namespace BuissnessLogic
 {
