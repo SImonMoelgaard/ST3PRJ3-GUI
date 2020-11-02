@@ -1,13 +1,19 @@
 ﻿using System.Collections.Generic;
+using DTO;
 
 namespace BuissnessLogic
 {
     class Alarm : IAlarm
     {
-        public List<DTO_Alarm> getAlarm()
+
+        public List<DTO_Measurement> AlarmData()
         {
             throw new System.NotImplementedException();
+            
         }
+
+
+      
 
         public void StartAlarm()
         {
