@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuissnessLogic", "Buissness
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLogic", "DataAccessLogic\DataAccessLogic.csproj", "{C9CF7494-FE79-417E-8C15-95D0E3918DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
