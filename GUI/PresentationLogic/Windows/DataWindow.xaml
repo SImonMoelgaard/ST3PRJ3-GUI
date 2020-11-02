@@ -21,6 +21,7 @@
         <Label Content="Patient" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="98"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="251,13,0,0" VerticalAlignment="Top" Width="57" Click="ExitToMainWindow_B_Click"/>
         <Button x:Name="Next_B" Content="Næste" HorizontalAlignment="Left" Margin="251,281,0,0" VerticalAlignment="Top" Width="57" Click="Next_B_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="82,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
 
     </Grid>
 </Window>
