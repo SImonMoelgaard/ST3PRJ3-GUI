@@ -23,10 +23,11 @@ namespace PresentationLogic.Windows
         //Attributes
         //private LineSeries measurement;
 
-
+        private MainWindow mainWindow;
         public MeasurementWindow()
         {
             InitializeComponent();
+            mainWindow = new MainWindow();
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
@@ -46,7 +47,8 @@ namespace PresentationLogic.Windows
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            mainWindow.Show();
         }
 
         public void ShowGraph()

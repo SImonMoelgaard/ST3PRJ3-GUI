@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BuissnessLogic;
 
 namespace PresentationLogic.Windows
 {
@@ -17,14 +18,21 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class CalibrationWindow : Window
     {
+        private MainWindow mainWindow;
+        private Controller controller;
         public CalibrationWindow()
         {
+            mainWindow = new MainWindow();
+            controller = new Controller();
+            
             InitializeComponent();
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            mainWindow.Show();
+            
         }
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)

@@ -25,6 +25,9 @@ namespace PresentationLogic
         private DataWindow dataWindow;
         private CalibrationWindow calibrationWindow;
         private MeasurementWindow measurementWindow;
+        private LoginWindow loginWindow;
+        private Controller controller;
+
 
         
 
@@ -39,19 +42,21 @@ namespace PresentationLogic
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             dataWindow = new DataWindow();
-            this.Hide();
+          
             dataWindow.Show();
-            this.ShowDialog();
+            
 
         }
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             calibrationWindow = new CalibrationWindow();
-            this.Hide();
+            
             calibrationWindow.Show();
-            this.ShowDialog();
+            
         }
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
@@ -61,9 +66,21 @@ namespace PresentationLogic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            measurementWindow = new MeasurementWindow();
             this.Close();
+            measurementWindow = new MeasurementWindow();
             measurementWindow.Show();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            controller = new Controller();
+            loginWindow = new LoginWindow(this, controller);
+            
+
+            //this.Hide();
+            //loginWindow.ShowDialog(); Denne er udkommenteret så der kan testes på MW
+
 
         }
     }

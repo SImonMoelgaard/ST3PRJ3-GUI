@@ -17,14 +17,18 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class DataWindow : Window
     {
+        private MainWindow mainWindow;
+
         public DataWindow()
         {
             InitializeComponent();
+            mainWindow = new MainWindow();
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            mainWindow.Show();
         }
 
         private void Next_B_Click(object sender, RoutedEventArgs e)

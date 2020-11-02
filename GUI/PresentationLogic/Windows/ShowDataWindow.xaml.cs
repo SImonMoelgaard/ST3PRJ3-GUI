@@ -17,14 +17,17 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class ShowDataWindow : Window
     {
+        private MainWindow mainWindow;
         public ShowDataWindow()
         {
             InitializeComponent();
+            mainWindow= new MainWindow();
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            mainWindow.Show();
         }
     }
 }
