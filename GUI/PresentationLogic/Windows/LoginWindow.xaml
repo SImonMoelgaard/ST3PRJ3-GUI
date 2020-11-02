@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
-        
+        <PasswordBox x:Name="Password_PWB" HorizontalAlignment="Left" Margin="120,173,0,0" VerticalAlignment="Top" Width="150" Height="33"/>
+        <TextBox x:Name="User_TB" HorizontalAlignment="Left" Margin="120,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="33"/>
+        <Button x:Name="Login_B" Content="Login" HorizontalAlignment="Left" Margin="120,226,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="Login_B_Click"/>
+        <Button x:Name="Exit_B" Content="Afslut program" HorizontalAlignment="Left" Margin="124,299,0,0" VerticalAlignment="Top" Height="43" Width="146" Click="Exit_B_Click"/>
+        <Label Content="Brugernavn" HorizontalAlignment="Left" Margin="120,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kode" HorizontalAlignment="Left" Margin="120,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Forkert_L" Content="Kode eller brugernavn forkert" HorizontalAlignment="Center" Margin="0,145,0,0" VerticalAlignment="Top" Width="244" Background="White"/>
+
     </Grid>
 </Window>
