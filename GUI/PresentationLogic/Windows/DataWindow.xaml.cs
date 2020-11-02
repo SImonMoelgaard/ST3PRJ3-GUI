@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BuissnessLogic;
 
 namespace PresentationLogic.Windows
 {
@@ -18,11 +19,14 @@ namespace PresentationLogic.Windows
     public partial class DataWindow : Window
     {
         private MainWindow mainWindow;
+        private Controller controller;
 
         public DataWindow()
         {
             InitializeComponent();
             mainWindow = new MainWindow();
+            controller = new Controller();
+            
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
