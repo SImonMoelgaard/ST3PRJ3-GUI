@@ -1,5 +1,6 @@
 ﻿using System;
 using DataAccessLogic;
+using DTO;
 
 namespace BuissnessLogic
 {
@@ -10,7 +11,7 @@ namespace BuissnessLogic
         private Database database;
         private LocalDatabase localDatabase;
 
-        public DBcontrol(Database _database, LocalDatabase _localDatabase)
+        public void DBcontrol(Database _database, LocalDatabase _localDatabase)
         {
             _localDatabase = localDatabase;
             _database = database;
@@ -18,7 +19,7 @@ namespace BuissnessLogic
             localDatabase = new LocalDatabase();
 
             _database.GetMeasurement();
-            return;
+            
 
         }
 
@@ -27,6 +28,10 @@ namespace BuissnessLogic
         private Calibration calibration;
         private Mean mean;
 
+        public void mean(DTO_Measurement)
+        {
+            
+        }
         
 
         public void getPowerValue(int power){}
