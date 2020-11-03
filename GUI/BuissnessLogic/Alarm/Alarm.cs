@@ -3,7 +3,7 @@ using DTO;
 
 namespace BuissnessLogic
 {
-    class Alarm : IAlarm
+    public class Alarm : IAlarm
     {
 
         public List<DTO_Measurement> AlarmData()

@@ -4,7 +4,7 @@ using DataAccessLogic;
 
 namespace BuissnessLogic
 {
-    class Calibration : ICalibration
+    public class Calibration : ICalibration
     {
         private double r2Val;
         

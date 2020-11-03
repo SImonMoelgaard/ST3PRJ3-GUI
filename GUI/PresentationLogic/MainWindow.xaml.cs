@@ -28,6 +28,7 @@ namespace PresentationLogic
         private MeasurementWindow measurementWindow;
         private LoginWindow loginWindow;
         private Controller controller;
+        private ShowDataWindow showDataWindow;
         
 
 
@@ -84,6 +85,13 @@ namespace PresentationLogic
             //loginWindow.ShowDialog(); Denne er udkommenteret så der kan testes på MW
 
 
+        }
+
+        private void Showmeassurement_B_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            showDataWindow= new ShowDataWindow(controller, this);
+            showDataWindow.Show();
         }
     }
 }
