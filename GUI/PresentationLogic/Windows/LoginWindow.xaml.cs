@@ -23,8 +23,8 @@ namespace PresentationLogic.Windows
         public LoginWindow(MainWindow Mw, Controller br)
         {
             InitializeComponent();
-            br = buissnessref;
-            Mw = main;
+            buissnessref = br;
+            main = Mw;
         }
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)

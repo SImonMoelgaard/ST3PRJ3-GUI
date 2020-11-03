@@ -21,11 +21,11 @@ namespace PresentationLogic.Windows
         private MainWindow mainWindow;
         private Controller controller;
 
-        public DataWindow()
+        public DataWindow(MainWindow main, Controller cr)
         {
             InitializeComponent();
-            mainWindow = new MainWindow();
-            controller = new Controller();
+            mainWindow = main;
+            controller = cr;
             
         }
 

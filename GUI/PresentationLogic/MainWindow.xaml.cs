@@ -42,10 +42,11 @@ namespace PresentationLogic
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            dataWindow = new DataWindow();
+            this.Hide();
+            
+            dataWindow = new DataWindow(this, controller);
           
-            dataWindow.Show();
+            dataWindow.ShowDialog();
             
 
         }
