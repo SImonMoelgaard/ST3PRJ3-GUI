@@ -27,12 +27,13 @@ namespace PresentationLogic
         private MeasurementWindow measurementWindow;
         private LoginWindow loginWindow;
         private Controller controller;
-
-
         
+
+
 
         public MainWindow()
         {
+            controller = new Controller();
             InitializeComponent();
             //Simon
             //AK
@@ -75,7 +76,7 @@ namespace PresentationLogic
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            controller = new Controller();
+            
             loginWindow = new LoginWindow(this, controller);
             
 
