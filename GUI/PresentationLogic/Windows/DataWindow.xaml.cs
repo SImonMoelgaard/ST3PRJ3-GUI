@@ -43,7 +43,7 @@ namespace PresentationLogic.Windows
         {
             this.Hide();
 
-            measurementWindow = new MeasurementWindow(controller, mainWindow, this);
+            
             measurementWindow.Show();
 
 
