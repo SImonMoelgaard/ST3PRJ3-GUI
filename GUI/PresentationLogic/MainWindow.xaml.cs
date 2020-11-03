@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,11 +47,10 @@ namespace PresentationLogic
         {
             this.Hide();
             
-            dataWindow = new DataWindow(this, controller, measurementWindow);
+           dataWindow = new DataWindow(this, controller, measurementWindow);
             
             dataWindow.ShowDialog();
-            
-
+           
         }
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)

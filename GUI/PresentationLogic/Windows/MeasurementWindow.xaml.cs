@@ -29,6 +29,7 @@ namespace PresentationLogic.Windows
         private DataWindow dataWindow;
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
+            InitializeComponent();
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
