@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BuissnessLogic;
 using LiveCharts;
 using LiveCharts.Wpf;
 
@@ -24,10 +25,14 @@ namespace PresentationLogic.Windows
         //private LineSeries measurement;
 
         private MainWindow mainWindow;
-        public MeasurementWindow()
+        private Controller controller;
+        private DataWindow dataWindow;
+        public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
-            InitializeComponent();
-            mainWindow = new MainWindow();
+            controller = cr;
+            mainWindow = mw;
+            dataWindow = dw;
+
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)

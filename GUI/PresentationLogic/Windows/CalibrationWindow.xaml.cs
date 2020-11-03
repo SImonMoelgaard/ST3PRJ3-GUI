@@ -20,10 +20,10 @@ namespace PresentationLogic.Windows
     {
         private MainWindow mainWindow;
         private Controller controller;
-        public CalibrationWindow()
+        public CalibrationWindow(MainWindow mw, Controller cr)
         {
-            mainWindow = new MainWindow();
-            controller = new Controller();
+            mainWindow = mw;
+            controller = cr;
             
             InitializeComponent();
         }

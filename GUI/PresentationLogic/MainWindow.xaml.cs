@@ -34,6 +34,7 @@ namespace PresentationLogic
         public MainWindow()
         {
             controller = new Controller();
+            measurementWindow = new MeasurementWindow(controller, this, dataWindow);
             InitializeComponent();
             //Simon
             //AK
@@ -45,8 +46,8 @@ namespace PresentationLogic
         {
             this.Hide();
             
-            dataWindow = new DataWindow(this, controller);
-          
+            dataWindow = new DataWindow(this, controller, measurementWindow);
+            
             dataWindow.ShowDialog();
             
 
@@ -54,8 +55,8 @@ namespace PresentationLogic
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            calibrationWindow = new CalibrationWindow();
+            this.Hide();
+            calibrationWindow = new CalibrationWindow(this, controller);
             
             calibrationWindow.Show();
             
@@ -68,8 +69,7 @@ namespace PresentationLogic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            measurementWindow = new MeasurementWindow();
+            this.Hide();
             measurementWindow.Show();
 
         }

@@ -20,13 +20,17 @@ namespace PresentationLogic.Windows
     {
         private MainWindow mainWindow;
         private Controller controller;
+        private MeasurementWindow measurementWindow;
+      private DataWindow datawindow;
 
-        public DataWindow(MainWindow main, Controller cr)
+        public DataWindow(MainWindow main, Controller cr, MeasurementWindow ms)
         {
             InitializeComponent();
             mainWindow = main;
             controller = cr;
             
+            
+            measurementWindow = ms;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -37,6 +41,13 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
+
+            measurementWindow = new MeasurementWindow(controller, mainWindow, this);
+            measurementWindow.Show();
+
+
+
 
         }
     }
