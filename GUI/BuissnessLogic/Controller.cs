@@ -53,6 +53,7 @@ namespace BuissnessLogic
         public bool getSocSecNB(string SocSecNB)
         {
             return database.getSocSecNB(SocSecNB);
+            
         }
     }
 

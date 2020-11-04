@@ -30,7 +30,7 @@ namespace DataAccessLogic
         public bool getSocSecNB(string SocSecNB)
         {
             bool result = false;
-            command=new SqlCommand("select*from dbo.[ST3PRJ3M] where SocSecNB='"+SocSecNB+"'",connection);
+            command=new SqlCommand("select * from dbo.[ST3PRJ3M] where SocSecNB= '" + SocSecNB+"'", connection);
             connection.Open();
             try
             {
