@@ -44,6 +44,14 @@ namespace PresentationLogic
             
         }
 
+
+        private void Window_Loaded_(object sender, RoutedEventArgs e) //Window Loaded
+        {
+            
+        }
+
+
+
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -81,8 +89,8 @@ namespace PresentationLogic
             loginWindow = new LoginWindow(this, controller);
             
 
-            //this.Hide();
-            //loginWindow.ShowDialog(); Denne er udkommenteret så der kan testes på MW
+            this.Hide();
+            loginWindow.ShowDialog();// Denne er udkommenteret så der kan testes på MW
 
 
         }

@@ -20,6 +20,7 @@ namespace PresentationLogic.Windows
     {
         private MainWindow main;
         private Controller buissnessref;
+        private string userName_ = "";
         public LoginWindow(MainWindow Mw, Controller br)
         {
             InitializeComponent();
@@ -36,21 +37,21 @@ namespace PresentationLogic.Windows
 
         private void Login_B_Click(object sender, RoutedEventArgs e)
         {
-            string brugernavn = ___Login_TB_.Text;
-            string kode = ___Kode_TB_.Password;
+            string userName = User_TB.Text;
+            string kode = Password_PWB.Password;
 
 
-            if (logicref.checkLogin(brugernavn, kode))
+            if (buissnessref.checkLogin(userName, kode))
             {
-                brugernavn_ = brugernavn;
+                userName_ = userName;
                 this.Close();
                 main.Show();
             }
             else
             {
                 MessageBox.Show("CPR eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                ___Login_TB_.Clear();
-                ___Kode_TB_.Clear();
+                User_TB.Clear();
+                Password_PWB.Clear();
             }
 
         }
