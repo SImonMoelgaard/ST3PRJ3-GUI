@@ -12,6 +12,22 @@ namespace DataAccessLogic
 {
     public class Database : IDatabase
     {
+        private SqlConnection connection;
+
+        private SqlDataReader reader;
+
+        private SqlCommand command;
+
+        private const String DBlogin = "F20ST2ITS2201810696";
+        public void DBConnection()
+        {
+            connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk; Initial Catalog=" + DBlogin + "; User ID= " + DBlogin + "; " +
+                                           "Password=" + DBlogin + "; Connect Timeout=30; Encrypt=False; TrustServerCertificate=False; " +
+                                           "ApplicationIntent=ReadWrite; MultiSubnetFailover=false");
+        }
+
+
+
         public void GetMeasurement()
         {
             throw new System.NotImplementedException();

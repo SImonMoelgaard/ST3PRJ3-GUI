@@ -1,6 +1,6 @@
 ﻿namespace BuissnessLogic
 {
-    class Filter : IFilter
+    public class Filter : IFilter
     {
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +28,7 @@ namespace PresentationLogic
         private MeasurementWindow measurementWindow;
         private LoginWindow loginWindow;
         private Controller controller;
+        private ShowDataWindow showDataWindow;
         
 
 
@@ -45,12 +47,11 @@ namespace PresentationLogic
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-
+            
             dataWindow = new DataWindow(this, controller, measurementWindow);
             
             dataWindow.ShowDialog();
-            
-
+           
         }
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
@@ -84,6 +85,13 @@ namespace PresentationLogic
             //loginWindow.ShowDialog(); Denne er udkommenteret så der kan testes på MW
 
 
+        }
+
+        private void Showmeassurement_B_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            showDataWindow= new ShowDataWindow(controller, this);
+            showDataWindow.Show();
         }
     }
 }
