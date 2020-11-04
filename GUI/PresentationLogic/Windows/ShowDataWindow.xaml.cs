@@ -38,28 +38,7 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             controller = cw;
 
-            bPressure=new LineSeries();
-
-            YFormatter = value => value + "mmHg";
-
-            bPressure=new LineSeries();
-            chartBPressure = new ChartValues<double>();
-
-            
-
-            dataBPressure = controller.GetMeasurement(SocSecNB);
-
-            foreach (DTO_Measurement item in dataBPressure)
-            {
-                chartBPressure.Add(item.RawData);
-                xAkse.Add(item.Date.ToString("dd-MM-yy"));
-            }
-
-            bPressure.Values = chartBPressure;
-
-            BloodPressureChart.Series = new SeriesCollection() { bPressure };
-
-            DataContext = this;
+           
         }
 
    
@@ -79,7 +58,32 @@ namespace PresentationLogic.Windows
             {
                 cpr = socSecNB_;
                 measurementData_LB.Items.Add(cpr);
+
+
             }
+
+            bPressure = new LineSeries();
+
+            YFormatter = value => value + "mmHg";
+
+            bPressure = new LineSeries();
+            chartBPressure = new ChartValues<double>();
+
+
+
+            dataBPressure = controller.GetMeasurement(cpr);
+
+            foreach (DTO_Measurement item in dataBPressure)
+            {
+                chartBPressure.Add(item.RawData);
+                xAkse.Add(item.Date.ToString("dd-MM-yy"));
+            }
+
+            bPressure.Values = chartBPressure;
+
+            BloodPressureChart.Series = new SeriesCollection() { bPressure };
+
+            DataContext = this;
         }
     }
 }
