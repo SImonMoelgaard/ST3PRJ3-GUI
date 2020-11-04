@@ -70,15 +70,19 @@ namespace PresentationLogic.Windows
             chartBPressure = new ChartValues<double>();
 
 
+            //List to values on xAxis
+            xAkse = new List<string>();
 
             dataBPressure = controller.GetMeasurement(cpr);
 
             foreach (DTO_Measurement item in dataBPressure)
             {
                 chartBPressure.Add(item.RawData);
-                xAkse.Add(item.Date.ToString("dd-MM-yy"));
+                xAkse.Add(item.Date.ToString("MM/dd/yy"));
             }
 
+            
+            //xAkseLabel = xAkse.ToArray();
             bPressure.Values = chartBPressure;
 
             BloodPressureChart.Series = new SeriesCollection() { bPressure };
