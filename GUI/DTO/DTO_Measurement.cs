@@ -5,17 +5,28 @@ namespace DTO
 {
     public class DTO_Measurement
     {
-       public List<double> RawData { get; set; }
-       public DateTime Date { get; set; }
-       public List<int> SysData { get; set; }
-       public List<int> DiaData { get; set; }
-       public List<int> AlarmData { get; set; }
-       public List<int> Pulse { get; set; }
-       public List<int> PowerData { get; set; }
+        //FRA TIDLIGERE
+        //public List<double> RawData { get; set; }
+        //public DateTime Date { get; set; }
+        //public List<int> SysData { get; set; }
+        //public List<int> DiaData { get; set; }
+        //public List<int> AlarmData { get; set; }
+        //public List<int> Pulse { get; set; }
+        //public List<int> PowerData { get; set; }
 
-       public DTO_Measurement(List<double> rawData, DateTime date, List<int> sysData, List<int> diaData,
-           List<int> alarmData, List<int> pulse, List<int> powerData)
-       {
+        public double RawData { get; set; }
+        public DateTime Date { get; set; }
+        public int SysData { get; set; }
+        public int DiaData { get; set; }
+        public int AlarmData { get; set; }
+        public int Pulse { get; set; }
+        public int PowerData { get; set; }
+        public string SocSecNB { get; set; }
+
+        public DTO_Measurement(string socSecNb,double rawData, DateTime date, int sysData, int diaData,
+           int alarmData, int pulse, int powerData)
+        {
+            SocSecNB = socSecNb;
            RawData = rawData;
            Date = date;
            SysData = sysData;

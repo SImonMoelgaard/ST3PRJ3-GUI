@@ -90,7 +90,7 @@ namespace PresentationLogic
         private void Showmeassurement_B_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            showDataWindow= new ShowDataWindow(controller, this);
+            showDataWindow= new ShowDataWindow(controller, this,"");
             showDataWindow.Show();
         }
     }

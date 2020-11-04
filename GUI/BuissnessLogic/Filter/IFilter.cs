@@ -1,6 +1,9 @@
 ﻿namespace BuissnessLogic
 {
-    public  interface  IFilter{}
+    public interface IFilter
+    {
+
+    }
 
     
 }

@@ -1,8 +1,11 @@
-﻿namespace DataAccessLogic
+﻿using System.Collections.Generic;
+using DTO;
+
+namespace DataAccessLogic
 {
     public class LocalDatabase : IDatabase
     {
-        public void GetMeasurement()
+        public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
             throw new System.NotImplementedException();
         }

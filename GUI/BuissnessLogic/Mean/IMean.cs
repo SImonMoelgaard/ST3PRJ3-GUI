@@ -2,9 +2,9 @@
 {
     public interface IMean
     {
-        public void CalculateMean(){}
+        public void CalculateMean();
 
-        public void getMeasurement(){}
+        public void getMeasurement();
 
     }
 }

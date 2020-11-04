@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataAccessLogic;
 using DTO;
 
@@ -8,6 +9,8 @@ namespace BuissnessLogic
     
     public class Controller
     {
+        private List<DTO_Measurement> measurementList;
+
         private Database database;
         private LocalDatabase localDatabase;
 
@@ -18,8 +21,10 @@ namespace BuissnessLogic
             database=new Database();
             localDatabase = new LocalDatabase();
 
-            _database.GetMeasurement();
-            
+            measurementList = new List<DTO_Measurement>();
+
+            //_database.GetMeasurement();
+
 
         }
 
@@ -28,15 +33,22 @@ namespace BuissnessLogic
         private Calibration calibration;
         private Mean mean;
 
-        public void mean(DTO_Measurement)
+        public void Mean()
         {
             
         }
-        
-
-        public void getPowerValue(int power){}
 
 
+        public void getPowerValue(int power)
+        {
+
+        }
+
+        public List<DTO_Measurement> GetMeasurement(string id)
+        {
+            measurementList = database.GetMeasurement(id);
+            return measurementList;
+        }
     }
 
 
