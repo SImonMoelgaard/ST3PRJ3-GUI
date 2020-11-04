@@ -55,6 +55,12 @@ namespace BuissnessLogic
             return database.getSocSecNB(SocSecNB);
             
         }
+
+        public bool checkLogin(String socSecNb, String pw)
+        {
+
+            return database.isUserRegistered(socSecNb, pw);
+        }
     }
 
 

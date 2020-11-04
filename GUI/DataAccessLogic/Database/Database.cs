@@ -51,6 +51,43 @@ namespace DataAccessLogic
 
             return result;
         }
+        public bool isUserRegistered(String socSecNb, String pw)
+        {
+
+            bool result = false;
+            command = new SqlCommand("select * from dbo.[User] where SocSecNB = '" + socSecNb + "'", connection);
+
+            connection.Open();
+            try
+            {
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+
+                {
+
+                    if (reader["SocSecNB"].ToString() == socSecNb && reader["SocSecPW"].ToString() == pw)
+                    {
+                        result = true;
+
+                    }
+                    else
+                    {
+                        result = false;
+
+                    }
+                }
+
+
+            }
+            catch
+            {
+
+            }
+            connection.Close();
+
+            return result;
+        }
 
         public List<DTO_Measurement> GetMeasurement(string socSecNb)
         {

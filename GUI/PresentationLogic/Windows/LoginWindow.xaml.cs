@@ -36,8 +36,23 @@ namespace PresentationLogic.Windows
 
         private void Login_B_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            string brugernavn = ___Login_TB_.Text;
+            string kode = ___Kode_TB_.Password;
+
+
+            if (logicref.checkLogin(brugernavn, kode))
+            {
+                brugernavn_ = brugernavn;
+                this.Close();
+                main.Show();
+            }
+            else
+            {
+                MessageBox.Show("CPR eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ___Login_TB_.Clear();
+                ___Kode_TB_.Clear();
+            }
+
         }
     }
 }
