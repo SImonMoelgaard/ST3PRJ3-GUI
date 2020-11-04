@@ -2,10 +2,7 @@
 {
     public interface IDatabase
     {
-        public void GetMeasurement(){}
-        public void SaveMeasurement(){}
-
-        
-        
+        public void GetMeasurement();
+        public void SaveMeasurement();
     }
 }

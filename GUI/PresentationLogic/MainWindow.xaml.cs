@@ -45,7 +45,7 @@ namespace PresentationLogic
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            
+
             dataWindow = new DataWindow(this, controller, measurementWindow);
             
             dataWindow.ShowDialog();
