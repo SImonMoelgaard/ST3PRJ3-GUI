@@ -27,7 +27,30 @@ namespace DataAccessLogic
                                            "ApplicationIntent=ReadWrite; MultiSubnetFailover=false");
         }
 
+        public bool getSocSecNB(string SocSecNB)
+        {
+            bool result = false;
+            command=new SqlCommand("select*from dbo.[ST3PRJ3M] where SocSecNB='"+SocSecNB+"'",connection);
+            connection.Open();
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader["SocSecNB"].ToString()==SocSecNB)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+            }catch{}
+            connection.Close();
 
+            return result;
+        }
 
         public List<DTO_Measurement> GetMeasurement(string socSecNb)
         {

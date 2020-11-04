@@ -52,7 +52,7 @@ namespace BuissnessLogic
 
         public bool getSocSecNB(string SocSecNB)
         {
-            return Convert.ToBoolean(database.GetMeasurement(SocSecNB));
+            return database.getSocSecNB(SocSecNB);
         }
     }
 
