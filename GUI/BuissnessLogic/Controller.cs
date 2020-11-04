@@ -44,10 +44,15 @@ namespace BuissnessLogic
 
         }
 
-        public List<DTO_Measurement> GetMeasurement(string id)
+        public List<DTO_Measurement> GetMeasurement(string SocSecNB)
         {
-            measurementList = database.GetMeasurement(id);
+            measurementList = database.GetMeasurement(SocSecNB);
             return measurementList;
+        }
+
+        public bool getSocSecNB(string SocSecNB)
+        {
+            return Convert.ToBoolean(database.GetMeasurement(SocSecNB));
         }
     }
 

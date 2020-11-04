@@ -27,6 +27,7 @@ namespace PresentationLogic.Windows
         private ChartValues<double> chartBPressure;
         private List<DTO_Measurement> dataBPressure;
         private List<string> xAkse;
+        private string socSecNB_ = "";
 
 
         public Func<double,string> YFormatter { get; set; }
@@ -73,6 +74,12 @@ namespace PresentationLogic.Windows
         private void Search_B_Click(object sender, RoutedEventArgs e)
         {
             string cpr = socSecNb_TB.Text;
+
+            if (controller.getSocSecNB(cpr))
+            {
+                cpr = socSecNB_;
+                measurementData_LB.Items.Add(cpr);
+            }
         }
     }
 }
