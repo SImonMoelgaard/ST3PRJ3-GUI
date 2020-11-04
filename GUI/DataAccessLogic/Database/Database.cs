@@ -20,7 +20,8 @@ namespace DataAccessLogic
 
         private const String DBlogin = "F20ST2ITS2201810696";
 
-        public void DBConnection()
+
+        public Database()
         {
             connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk; Initial Catalog=" + DBlogin + "; User ID= " + DBlogin + "; " +
                                            "Password=" + DBlogin + "; Connect Timeout=30; Encrypt=False; TrustServerCertificate=False; " +
@@ -92,8 +93,8 @@ namespace DataAccessLogic
         public List<DTO_Measurement> GetMeasurement(string socSecNb)
         {
             List<DTO_Measurement> measurementList =new List<DTO_Measurement>();
-            connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk;Initial Catalog=" + DBlogin + ";User ID=" + DBlogin + ";Password=" + DBlogin + ";Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            command = new SqlCommand("select * from db_owner.RegisteredUsers where socSecNb='" + socSecNb + "'", connection);
+            //connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk;Initial Catalog=" + DBlogin + ";User ID=" + DBlogin + ";Password=" + DBlogin + ";Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            command = new SqlCommand("select * from dbo.[ST3PRJ3M] where socSecNb='" + socSecNb + "'", connection);
             connection.Open();
 
             reader = command.ExecuteReader();

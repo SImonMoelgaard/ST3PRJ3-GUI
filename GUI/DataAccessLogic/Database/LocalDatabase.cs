@@ -14,5 +14,15 @@ namespace DataAccessLogic
         {
             throw new System.NotImplementedException();
         }
+
+        public bool isUserRegistered(string socSecNb, string pw)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool getSocSecNB(string SocSecNB)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

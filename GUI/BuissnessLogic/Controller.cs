@@ -11,16 +11,16 @@ namespace BuissnessLogic
     {
         private List<DTO_Measurement> measurementList;
 
-        private Database database;
+        
         private LocalDatabase localDatabase;
+        IDatabase database = new Database();
 
-        public void DBcontrol(Database _database, LocalDatabase _localDatabase)
+        public void DBcontrol()
         {
-            _localDatabase = localDatabase;
-            _database = database;
-            database=new Database();
+            
+            
             localDatabase = new LocalDatabase();
-
+            
             measurementList = new List<DTO_Measurement>();
 
             //_database.GetMeasurement();

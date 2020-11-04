@@ -89,8 +89,8 @@ namespace PresentationLogic
             loginWindow = new LoginWindow(this, controller);
             
 
-            this.Hide();
-            loginWindow.ShowDialog();// Denne er udkommenteret så der kan testes på MW
+            //this.Hide();
+            //loginWindow.ShowDialog();// Denne er udkommenteret så der kan testes på MW
 
 
         }
