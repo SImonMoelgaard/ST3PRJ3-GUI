@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,6 +28,8 @@ namespace PresentationLogic.Windows
         private MainWindow mainWindow;
         private Controller controller;
         private DataWindow dataWindow;
+        private Thread measurementThread;
+
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
             InitializeComponent();
@@ -38,7 +41,12 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            measurementThread=new Thread(UpdateGraph);
+        }
 
+        public void UpdateGraph()
+        {
+            //Thread.Sleep(TimeSpan.);
         }
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)

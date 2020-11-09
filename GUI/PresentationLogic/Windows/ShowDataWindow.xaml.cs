@@ -74,7 +74,7 @@ namespace PresentationLogic.Windows
             bPressure.Values = chartBPressure;
 
             BloodPressureChart.Series = new SeriesCollection() { bPressure };
-
+            
             DataContext = this;
         }
     }
