@@ -25,8 +25,8 @@ namespace DTO
 
         public DTO_Measurement(string socSecNb,double rawData, DateTime date, int sysData, int diaData,
            int alarmData, int pulse, int powerData)
-        {
-            SocSecNB = socSecNb;
+        { 
+           SocSecNB = socSecNb;
            RawData = rawData;
            Date = date;
            SysData = sysData;

@@ -26,9 +26,8 @@ namespace PresentationLogic.Windows
         private LineSeries bPressure;
         private ChartValues<double> chartBPressure;
         private List<DTO_Measurement> dataBPressure;
-        private List<string> xAkse;
+        public string[] xAxis { get; set; }
         private string socSecNB_ = "";
-
 
         public Func<double,string> YFormatter { get; set; }
 
@@ -37,29 +36,22 @@ namespace PresentationLogic.Windows
             InitializeComponent();
             mainWindow = mw;
             controller = cw;
-
-           
+            socSecNB_ = SocSecNB;
         }
-
-   
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             mainWindow.Show();
-
         }
 
         private void Search_B_Click(object sender, RoutedEventArgs e)
         {
-            string cpr = socSecNb_TB.Text;
-
+            string cpr = Convert.ToString(socSecNb_TB.Text);
+            
             if (controller.getSocSecNB(cpr))
             {
-                cpr = socSecNB_;
                 measurementData_LB.Items.Add(cpr);
-
-
             }
 
             bPressure = new LineSeries();
@@ -69,20 +61,16 @@ namespace PresentationLogic.Windows
             bPressure = new LineSeries();
             chartBPressure = new ChartValues<double>();
 
-
-            //List to values on xAxis
-            xAkse = new List<string>();
-
             dataBPressure = controller.GetMeasurement(cpr);
 
-            foreach (DTO_Measurement item in dataBPressure)
+            xAxis = new string[dataBPressure.Count];
+
+            for (int i = 0; i < dataBPressure.Count; i++)
             {
-                chartBPressure.Add(item.RawData);
-                xAkse.Add(item.Date.ToString("MM/dd/yy"));
+                chartBPressure.Add(dataBPressure[i].RawData);
+                xAxis[i] = dataBPressure[i].Date.ToString("HH:mm:ss");
             }
 
-            
-            //xAkseLabel = xAkse.ToArray();
             bPressure.Values = chartBPressure;
 
             BloodPressureChart.Series = new SeriesCollection() { bPressure };
