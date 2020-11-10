@@ -43,6 +43,7 @@ namespace PresentationLogic.Windows
         {
             int syshigh, syslow, diahigh, dialow;
             string cpr;
+
             syshigh = Convert.ToInt32(sysULimit_TB.Text);
             syslow = Convert.ToInt32(sysULimit_TB.Text);
             diahigh = Convert.ToInt32(diaULimit_TB.Text);

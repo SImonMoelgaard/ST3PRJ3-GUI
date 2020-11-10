@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BuissnessLogic;
+using DTO;
 using LiveCharts;
 using LiveCharts.Wpf;
 
@@ -29,6 +30,8 @@ namespace PresentationLogic.Windows
         private Controller controller;
         private DataWindow dataWindow;
         private Thread measurementThread;
+        private List<DTO_Measurement> measurementData;
+        public SeriesCollection Measurement { get; set; }
 
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
@@ -46,7 +49,26 @@ namespace PresentationLogic.Windows
 
         public void UpdateGraph()
         {
-            //Thread.Sleep(TimeSpan.);
+            measurementData=new List<DTO_Measurement>();
+
+            Measurement = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "BloodPressure",
+                    Values = new ChartValues<double> { },
+
+                }
+            };
+
+
+            
+            //Receive value
+
+            //Plot in graph
+
+
+
         }
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
