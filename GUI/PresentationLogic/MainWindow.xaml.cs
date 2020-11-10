@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PresentationLogic.Windows;
 using BuissnessLogic;
+using DTO;
 
 namespace PresentationLogic
 {
@@ -41,7 +43,11 @@ namespace PresentationLogic
             //Simon
             //AK
 
-            
+         
+           
+
+
+
         }
 
 
@@ -101,5 +107,6 @@ namespace PresentationLogic
             showDataWindow= new ShowDataWindow(controller, this,"");
             showDataWindow.Show();
         }
+
     }
 }

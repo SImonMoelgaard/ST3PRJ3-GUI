@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Test_gem_fil</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuissnessLogic\BuissnessLogic.csproj" />
+    <ProjectReference Include="..\DataAccessLogic\DataAccessLogic.csproj" />
+    <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\PresentationLogic\PresentationLogic.csproj" />
+  </ItemGroup>
+
+</Project>
