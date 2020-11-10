@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -74,7 +75,7 @@ namespace PresentationLogic.Windows
             bPressure.Values = chartBPressure;
 
             BloodPressureChart.Series = new SeriesCollection() { bPressure };
-            
+
             DataContext = this;
         }
     }
