@@ -11,9 +11,10 @@ namespace DTO
         public double R2 { get; set; }
         public double A { get; set; } //slope
         public int B { get; set; } //y-intercept
-        public double Zv { get; set; }
+        public int Zv { get; set; }
+        public string SocSecNB { get; set; }
 
-        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, double zv)
+        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, int zv,string socSecNB)
         {
             CalReference = calReference;
             CalMeasured = calMeasured;
@@ -21,6 +22,7 @@ namespace DTO
             A = a;
             B = b;
             Zv = zv;
+            SocSecNB = socSecNB;
         }
     }
 }

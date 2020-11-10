@@ -41,14 +41,17 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
+            int syshigh, syslow, diahigh, dialow;
+            string cpr;
+
+            syshigh = Convert.ToInt32(sysULimit_TB.Text);
+            syslow = Convert.ToInt32(sysULimit_TB.Text);
+            diahigh = Convert.ToInt32(diaULimit_TB.Text);
+            dialow = Convert.ToInt32(diaLLimit_TB.Text);
+
             this.Hide();
 
-            
             measurementWindow.Show();
-
-
-
-
         }
     }
 }
