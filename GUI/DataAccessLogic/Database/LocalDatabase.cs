@@ -11,8 +11,9 @@ namespace DataAccessLogic
         private List<DTO_Measurement> dataBPressure;
         private List<DTO_CalVal> dataCalVal;
         private List<DTO_PatientData> dataPatientData;
-        
-        
+        private LocalDatabase localDatabase;
+
+
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
@@ -23,17 +24,21 @@ namespace DataAccessLogic
         {
             dataBPressure = new List<DTO_Measurement>();
             dataCalVal = new List<DTO_CalVal>();
-            dataPatientData=new List<DTO_PatientData>();
+            localDatabase = new LocalDatabase();
 
-            
+
             string path = @"C:\ST3PRJ3FIL\ " + DateTime.Now.ToString("dd-MM-yyyy");
 
-            for (int i = 0; i < dataPatientData.Count; i++)
+            using (StreamWriter sw = File.AppendText(path))
             {
-                //sw.Writeline((dataPatientData[i].SocSecNB));
-            }
 
-            using (FileStream fs = File.Create(path));
+                sw.WriteLine(("CPR", "RAW", "DIA", "SYS"));
+               // for (int i = 0; i < DTO_Pat; i++)
+                {
+                   // sw.WriteLine((dataPatientData.));
+
+                }
+            }
 
         }
 
@@ -47,9 +52,10 @@ namespace DataAccessLogic
         }
         public DTO_PatientData SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
+            DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
+
             
             return patientData;
-
         }
 
         public void SaveCalVal()
