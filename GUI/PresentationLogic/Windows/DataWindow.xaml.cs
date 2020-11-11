@@ -43,15 +43,16 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
-            patientdata = new List<DTO_PatientData>();
-            int syshigh, syslow, diahigh, dialow;
-            string cprpatient;
+            controller.saveData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
+                Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToString(socSecNb_TB
+                    .Text));
 
-            syshigh = Convert.ToInt32(sysULimit_TB.Text);
-            syslow = Convert.ToInt32(sysULimit_TB.Text);
-            diahigh = Convert.ToInt32(diaULimit_TB.Text);
-            dialow = Convert.ToInt32(diaLLimit_TB.Text);
-            cprpatient = Convert.ToString(socSecNb_TB.Text);
+            
+        
+
+            
+
+            
 
             this.Hide();
             
