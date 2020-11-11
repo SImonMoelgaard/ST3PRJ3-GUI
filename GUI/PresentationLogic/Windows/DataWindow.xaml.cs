@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BuissnessLogic;
+using DTO;
 
 namespace PresentationLogic.Windows
 {
@@ -22,6 +23,7 @@ namespace PresentationLogic.Windows
         private Controller controller;
         private MeasurementWindow measurementWindow;
       private DataWindow datawindow;
+      private List<DTO_PatientData> patientdata;
 
         public DataWindow(MainWindow main, Controller cr, MeasurementWindow ms)
         {
@@ -41,15 +43,18 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
+            patientdata = new List<DTO_PatientData>();
             int syshigh, syslow, diahigh, dialow;
-            string cpr;
+            string cprpatient;
 
             syshigh = Convert.ToInt32(sysULimit_TB.Text);
             syslow = Convert.ToInt32(sysULimit_TB.Text);
             diahigh = Convert.ToInt32(diaULimit_TB.Text);
             dialow = Convert.ToInt32(diaLLimit_TB.Text);
+            cprpatient = Convert.ToString(socSecNb_TB.Text);
 
             this.Hide();
+            
 
             measurementWindow.Show();
         }
