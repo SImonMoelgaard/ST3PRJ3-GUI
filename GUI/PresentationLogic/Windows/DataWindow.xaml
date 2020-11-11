@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="DataWindow" Height="450" Width="800">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="sysULimit_TB" HorizontalAlignment="Left" Margin="82,78,0,0" Text="Øvre" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <TextBox x:Name="sysULimit_TB" HorizontalAlignment="Left" Margin="82,78,0,0" Text="180" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="Systolisk:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="67"/>
-        <TextBox x:Name="diaULimit_TB" HorizontalAlignment="Left" Margin="82,112,0,0" Text="Øvre" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <TextBox x:Name="diaULimit_TB" HorizontalAlignment="Left" Margin="82,112,0,0" Text="140" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="Diastolisk:" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="67"/>
-        <TextBox x:Name="sysLLimit_TB" HorizontalAlignment="Left" Margin="173,78,0,0" Text="Nedre" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
-        <TextBox x:Name="diaLLimit_TB" HorizontalAlignment="Left" Margin="173,112,0,0" Text="Nedre" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <TextBox x:Name="sysLLimit_TB" HorizontalAlignment="Left" Margin="173,78,0,0" Text="120" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <TextBox x:Name="diaLLimit_TB" HorizontalAlignment="Left" Margin="173,112,0,0" Text="100" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="Grænseværdier" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Øvre" HorizontalAlignment="Left" Margin="82,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
         <Label Content="Nedre" HorizontalAlignment="Left" Margin="173,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
