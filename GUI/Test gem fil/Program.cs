@@ -17,7 +17,7 @@ namespace Test_gem_fil
         static void Main(string[] args)
         {
             
-            string path = @"C:\Users\simon\source\repos\ST3PRJ3SimonOgAK\GUI\Test gem fil\bin\Mokai2";
+            string path = @"C:\ST3PRJ3FIL\Navnpåfil";
             using (FileStream fs = File.Create(path));
 
             
