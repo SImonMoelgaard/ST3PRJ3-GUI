@@ -62,9 +62,10 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public bool saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, string cprPatient)
+        public DTO_PatientData saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
         {
-            return localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+            DTO_PatientData patientData = new DTO_PatientData(sysLow, sysHigh, diaHigh, diaLow, cprPatient);
+            return patientData;
         }
     }
 
