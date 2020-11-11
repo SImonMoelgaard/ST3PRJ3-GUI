@@ -13,7 +13,7 @@ namespace Test_gem_fil
 
         private Controller controller;
 
-        string path = @"C:\Users\simon\source\repos\ST3PRJ3SimonOgAK\GUI\Test gem fil\bin\Mokai4";
+        string path = @"C:\ST3PRJ3FIL\Navnpåfil";
 
         public void testfil()
         {
