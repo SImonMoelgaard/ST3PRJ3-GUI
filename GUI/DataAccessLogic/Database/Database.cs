@@ -52,6 +52,12 @@ namespace DataAccessLogic
 
             return result;
         }
+
+        public void SavePatientData(int sysHigh, int sysLow, int diaHigh, int diaLow, string cprPatient)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool isUserRegistered(String socSecNb, String pw)
         {
 

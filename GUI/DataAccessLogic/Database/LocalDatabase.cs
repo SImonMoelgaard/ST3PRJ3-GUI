@@ -50,12 +50,12 @@ namespace DataAccessLogic
 
 
         }
-        public DTO_PatientData SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
+        public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
             DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
 
             
-            return patientData;
+            
         }
 
         public void SaveCalVal()

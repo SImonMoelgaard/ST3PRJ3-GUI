@@ -65,7 +65,7 @@ namespace BuissnessLogic
         public void saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
         {
             
-            localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+           localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
         }
     }
 
