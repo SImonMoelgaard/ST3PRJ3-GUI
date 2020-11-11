@@ -1,38 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using DTO;
 
 namespace DataAccessLogic
 {
     public class LocalDatabase : IDatabase
     {
-        private string[] patientMeasurement = {"rawData", "date", "sysData", "diaData", "alarmData", "pulse", "socSecNB"};
-        private string[] calVal = {"calReference", "calMeasured", "r2","a", "b", "zv","socSecNB"};
-        private string[] patientData = {"syslow", "syshigh", "dialow", "diahigh", "socSecNB"};
+        private List<DTO_Measurement> dataBPressure;
+        private List<DTO_CalVal> dataCalVal;
+        private List<DTO_PatientData> dataPatientData;
+        
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
-            throw new System.NotImplementedException();
+            return dataBPressure;
+        }
+
+        public void CreateFile()
+        {
+            dataBPressure = new List<DTO_Measurement>();
+            dataCalVal = new List<DTO_CalVal>();
+            dataPatientData=new List<DTO_PatientData>();
+
+
+            string path = @"C:\ST3PRJ3FIL\"+dataPatientData.SocSecNB+" " + DateTime.Now.ToString("dd-MM-yyyy");
+
+            for (int i = 0; i < dataPatientData.Count; i++)
+            {
+                sw.Writeline((dataPatientData[i].SocSecNB));
+            }
+
+            using (FileStream fs = File.Create(path));
+
         }
 
         public void SaveMeasurement()
         {
-            System.IO.File.WriteAllLines(@"C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\DataAccessLogic\bin\Measurement.txt", patientMeasurement);
+
+
+            
 
 
         }
-        public void SavePatientData()
+        public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
-            throw new System.NotImplementedException();
-            System.IO.File.WriteAllLines(@"C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\DataAccessLogic\bin\Patientdata.txt", patientData);
+            
+            
 
         }
 
         public void SaveCalVal()
         {
             throw new System.NotImplementedException();
-            System.IO.File.WriteAllLines(@"C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\DataAccessLogic\bin\Calval.txt", calVal);
+            
 
         }
 

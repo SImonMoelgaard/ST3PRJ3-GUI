@@ -5,15 +5,6 @@ namespace DTO
 {
     public class DTO_Measurement
     {
-        //FRA TIDLIGERE
-        //public List<double> RawData { get; set; }
-        //public DateTime Date { get; set; }
-        //public List<int> SysData { get; set; }
-        //public List<int> DiaData { get; set; }
-        //public List<int> AlarmData { get; set; }
-        //public List<int> Pulse { get; set; }
-        //public List<int> PowerData { get; set; }
-
         public double RawData { get; set; }
         public DateTime Date { get; set; }
         public int SysData { get; set; }
