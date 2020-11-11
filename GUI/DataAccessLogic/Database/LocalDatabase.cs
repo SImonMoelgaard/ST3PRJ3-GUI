@@ -46,7 +46,7 @@ namespace DataAccessLogic
         }
         public bool SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
-            throw new System.NotImplementedException();
+            return true;
 
 
         }
