@@ -13,9 +13,9 @@ namespace Test_gem_fil
 
         private Controller controller;
 
-        string path = @"C:\ST3PRJ3FIL\Navnpåfil";
+        
 
-        public void testfil()
+        public void testfil(string path)
         {
             dataBPressure = new List<DTO_Measurement>();
             controller = new Controller();

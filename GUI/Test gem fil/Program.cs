@@ -11,19 +11,21 @@ namespace Test_gem_fil
 {
     class Program
     {
-        
-        
+
+        private Controller controller;
 
         static void Main(string[] args)
         {
             
-            string path = @"C:\ST3PRJ3FIL\Navnpåfil";
+            controller = new Controller();
+            string path = @"C:\ST3PRJ3FIL\123456 "+DateTime.Now.ToString("dd-MM-yyyy");
+
             using (FileStream fs = File.Create(path));
 
             
-
+            
                 TEST1 test1=new TEST1();
-                test1.testfil();
+                test1.testfil(path);
                 
             
 
