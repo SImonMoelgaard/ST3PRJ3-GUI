@@ -17,7 +17,7 @@ namespace Test_gem_fil
         static void Main(string[] args)
         {
             
-            controller = new Controller();
+           
             string path = @"C:\ST3PRJ3FIL\123456 "+DateTime.Now.ToString("dd-MM-yyyy");
 
             using (FileStream fs = File.Create(path));

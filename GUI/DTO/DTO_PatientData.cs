@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_PatientData
+    public class DTO_PatientData
     {
         public int Syslow { get; set; }
         public int Syshigh { get; set; }

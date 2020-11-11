@@ -23,7 +23,7 @@ namespace Test_gem_fil
             dataBPressure = controller.GetMeasurement(cpr);
 
 
-
+            
 
 
            
@@ -31,9 +31,11 @@ namespace Test_gem_fil
             using (StreamWriter sw = File.AppendText(path))
             {
 
+                sw.WriteLine(("CPR", "RAW", "DIA", "SYS"));
                 for (int i = 0; i < dataBPressure.Count; i++)
                 {
-                    sw.WriteLine((dataBPressure[i].RawData,dataBPressure[i].RawData));
+                    sw.WriteLine((cpr,dataBPressure[i].RawData,dataBPressure[i].SysData,dataBPressure[i].DiaData));
+                    
                 }
             }
 
