@@ -12,6 +12,8 @@ namespace DataAccessLogic
         public bool isUserRegistered(String socSecNb, String pw);
         public bool getSocSecNB(string SocSecNB);
 
+        public DTO_PatientData SavePatientData(int sysHigh, int sysLow, int diaHigh, int diaLow, string cprPatient);
+
 
     }
 }
