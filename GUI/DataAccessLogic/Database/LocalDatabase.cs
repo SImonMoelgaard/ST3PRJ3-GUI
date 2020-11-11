@@ -12,6 +12,7 @@ namespace DataAccessLogic
         private List<DTO_CalVal> dataCalVal;
         private List<DTO_PatientData> dataPatientData;
         
+        
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
@@ -24,12 +25,12 @@ namespace DataAccessLogic
             dataCalVal = new List<DTO_CalVal>();
             dataPatientData=new List<DTO_PatientData>();
 
-
-            string path = @"C:\ST3PRJ3FIL\"+dataPatientData.SocSecNB+" " + DateTime.Now.ToString("dd-MM-yyyy");
+            
+            string path = @"C:\ST3PRJ3FIL\ " + DateTime.Now.ToString("dd-MM-yyyy");
 
             for (int i = 0; i < dataPatientData.Count; i++)
             {
-                sw.Writeline((dataPatientData[i].SocSecNB));
+                //sw.Writeline((dataPatientData[i].SocSecNB));
             }
 
             using (FileStream fs = File.Create(path));
@@ -44,10 +45,10 @@ namespace DataAccessLogic
 
 
         }
-        public bool SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
+        public DTO_PatientData SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
-            return true;
-
+            
+            return patientData;
 
         }
 
