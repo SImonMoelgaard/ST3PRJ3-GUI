@@ -23,7 +23,7 @@ namespace PresentationLogic.Windows
     public partial class MeasurementWindow : Window
     {
 
-        //Attributes
+        //Attributess
         //private LineSeries measurement;
 
         private MainWindow mainWindow;
