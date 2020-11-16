@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:PresentationLogic.Windows"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="CalibrationWindow" Height="450" Width="800">
+        Title="CalibrationWindow" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
     <Grid Margin="400,0,0,0">
         <lvc:CartesianChart Margin="0,61,0,13"></lvc:CartesianChart>
         <ListBox x:Name="CalibrationValues_LB" Margin="-380,136,571,13"/>

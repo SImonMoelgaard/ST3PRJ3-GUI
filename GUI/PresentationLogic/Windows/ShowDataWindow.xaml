@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:PresentationLogic.Windows"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="ShowDataWindow" Height="450" Width="800">
+        Title="ShowDataWindow" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
         <ListBox x:Name="measurementData_LB" Margin="10,40,572,153"/>
         <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="98"/>
@@ -20,7 +22,7 @@
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="716,22,0,0" VerticalAlignment="Top" Click="ExitToMainWindow_B_Click"/>
-        <Button x:Name="Search_B" Content="Søg" HorizontalAlignment="Left" Margin="250,15,0,0" VerticalAlignment="Top" Click="Search_B_Click"/>
+        <Button x:Name="Search_B" Content="Søg" HorizontalAlignment="Left" Margin="250,15,0,0" VerticalAlignment="Top" Click="Search_B_Click" Style="{StaticResource AccentButtonStyle}"/>
         <Button x:Name="ShowData_B" Content="Vis måling" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

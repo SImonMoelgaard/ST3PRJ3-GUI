@@ -19,7 +19,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="Stop_B" Content="Stop Måling" HorizontalAlignment="Left" Margin="116,364,0,0" VerticalAlignment="Top" Height="43" Width="91" Click="Stop_B_Click"/>
-        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click"/>
+        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" Style="{StaticResource AccentButtonStyle}"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="669,10,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click"/>
         <lvc:CartesianChart Name="Measurment" Margin="0,61,0,80">
             <lvc:CartesianChart.AxisX>
