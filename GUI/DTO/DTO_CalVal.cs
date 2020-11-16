@@ -16,12 +16,12 @@ namespace DTO
 
         public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, int zv,string socSecNB)
         {
-            CalReference = calReference;
-            CalMeasured = calMeasured;
-            R2 = r2;
-            A = a;
-            B = b;
-            Zv = zv;
+            CalReference = calReference;//Værdi valgt på udstyr
+            CalMeasured = calMeasured;//Værdi vi får tilbage i Volt
+            R2 = r2;//Linearteten
+            A = a;//Dette er gangefaktoren fra kalibreringen
+            B = b;//Dette er starten på y aksen.
+            Zv = zv;//Nulpunktsjusteringen
             SocSecNB = socSecNB;
         }
     }

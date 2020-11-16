@@ -21,7 +21,43 @@ namespace DataAccessLogic
         private const int listenPortCommand = 12000;
 
 
-        public void RecieveMeasurment()
+        public void ReceiveCalibration()
+        {
+            UdpClient listener = new UdpClient(listenPortCommand);
+            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
+            DTO_CalVal rxCommand;
+            string jsonString;
+            byte[] bytes;
+
+            try
+            {
+                while (true)
+                {
+                    //Console.WriteLine("Waiting for broadcast of a Command");
+                    bytes = listener.Receive(ref groupEP);
+                    jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                    rxCommand = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+
+                    //  Console.WriteLine($"Received broadcast command from {groupEP} :");
+                    Console.WriteLine(rxCommand);
+                }
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                listener.Close();
+            }
+
+        }
+
+        
+
+
+
+        public void ReceiveMeasurment()
         {
             UdpClient listener = new UdpClient(listenPortCommand);
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);

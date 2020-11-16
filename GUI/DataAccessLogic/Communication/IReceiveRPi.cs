@@ -2,7 +2,10 @@
 {
     public interface IReceiveRPi
     {
-        public void RecieveMeasurment();
-        
+        public void ReceiveMeasurment();
+
+        public void ReceiveCalibration();
+
+
     }
 }
