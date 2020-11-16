@@ -14,6 +14,7 @@ using BuissnessLogic;
 using DTO;
 using LiveCharts;
 using LiveCharts.Wpf;
+using ModernWpf;
 
 namespace PresentationLogic.Windows
 {
