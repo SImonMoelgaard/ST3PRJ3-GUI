@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +15,7 @@ using System.Windows.Shapes;
 using BuissnessLogic;
 using DTO;
 using LiveCharts;
+using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 
 namespace PresentationLogic.Windows
@@ -33,6 +36,7 @@ namespace PresentationLogic.Windows
         private List<DTO_Measurement> measurementData;
         public SeriesCollection Measurement { get; set; }
 
+
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
             InitializeComponent();
@@ -40,36 +44,95 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             dataWindow = dw;
 
+            var mapper = Mappers.Xy<DTO_Measurement>()
+                .X(measurement => measurement.Date.Ticks)
+                .Y(measurement => measurement.RawData);
+
+            Charting.For<DTO_Measurement>(mapper);
+
+            ChartValues = new ChartValues<DTO_Measurement>();
+
+            DateTimeFormatter = value => new DateTime((long)value).ToString("mm:ss");
+
+            AxisStep = TimeSpan.FromSeconds(1).Ticks;
+
+            AxisUnit = TimeSpan.TicksPerSecond;
+
+            IsReading = false;
+            DataContext = this;
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            measurementThread=new Thread(UpdateGraph);
+            //measurementThread=new Thread(UpdateGraph);
+            IsReading = !IsReading;
+            if (IsReading) Task.Factory.StartNew(Read);
         }
+
+        private void Read()
+        {
+            var r=new Random();
+            while (IsReading)
+            {
+                Thread.Sleep(150);
+                var now = DateTime.Now;
+                _trend += r.Next(60, 150);
+                ChartValues.Add(new DTO_Measurement
+                {
+                    RawData = _trend,
+                    Date=now
+                });
+            }
+        }
+        public ChartValues<DTO_Measurement> ChartValues { get; set; }
+        public Func<double, string> DateTimeFormatter { get; set; }
+        public double AxisStep { get; set; }
+        public double AxisUnit { get; set; }
+        public bool IsReading { get; set; }
+        private double _trend;
 
         public void UpdateGraph()
         {
-            measurementData=new List<DTO_Measurement>();
+            //measurementData=new List<DTO_Measurement>();
 
-            Measurement = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = "BloodPressure",
-                    Values = new ChartValues<double> { },
+            //Measurement = new SeriesCollection
+            //{
+            //    new LineSeries
+            //    {
+            //        Title = "BloodPressure",
+            //        Values = new ChartValues<double> { },
 
-                }
-            };
+            //    }
+            //};
 
+            //var mapper = Mappers.Xy<DTO_Measurement>()
+            //    .X(measurement => measurement.Date.Ticks)
+            //    .Y(measurement => measurement.RawData);
 
-            
-            //Receive value
+            //Charting.For<DTO_Measurement>(mapper);
 
-            //Plot in graph
+            //ChartValues=new ChartValues<DTO_Measurement>();
 
+            //DateTimeFormatter=value=>new DateTime((long)value).ToString("mm:ss");
 
+            //AxisStep = TimeSpan.FromSeconds(1).Ticks;
+
+            //AxisUnit = TimeSpan.TicksPerSecond;
+
+            //IsReading = false;
+            //DataContext = this;
 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {

@@ -107,6 +107,5 @@ namespace PresentationLogic
             showDataWindow= new ShowDataWindow(controller, this,"");
             showDataWindow.Show();
         }
-
     }
 }
