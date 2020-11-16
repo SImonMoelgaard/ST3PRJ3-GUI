@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using Microsoft.VisualBasic.CompilerServices;
 using DTO;
-
+using ST3Prj3DomaineCore.Models.DTO;
 
 
 namespace DataAccessLogic
@@ -28,21 +28,23 @@ namespace DataAccessLogic
 
         public void Start()
         {
+            
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
             IPAddress broadcast = IPAddress.Parse("192.168.1.255");
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPortCommand);
+            DTO_Send sendCommand = new DTO_Send() { sendID = "Laptop", ComNo = 1 };
+            byte[] jsonUtf8Bytes;
+            JsonSerializerOptions sendopt = new JsonSerializerOptions() { WriteIndented = true };
+            
 
             while (true)
             {
+                
+               // sendCommand.ComNo = IntegerType.FromObject(com);
+                jsonUtf8Bytes = JsonSerializer.SerializeToUtf8Bytes(sendCommand, sendopt);
+                s.SendTo(jsonUtf8Bytes, ep);
 
-                message = stop;
-                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
-
-
-                s.SendTo(sendbuf, ep);
-
+                
             }
         }
 
