@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Text;
 using System.IO;
 using BuissnessLogic;
@@ -20,14 +21,22 @@ namespace Test_gem_fil
            
             string path = @"C:\ST3PRJ3FIL\123456 "+DateTime.Now.ToString("dd-MM-yyyy");
 
-            using (FileStream fs = File.Create(path));
+            //using (FileStream fs = File.Create(path));
 
             
             
                 TEST1 test1=new TEST1();
-                test1.testfil(path);
+              //  test1.testfil(path);
+
+                //test1.CreateFile();
+                test1.SaveMeasurement(145, 5, 125, 135, "222222-2222");
                 
-            
+
+                test1.SaveMeasurement(140, 0, 120, 130, "222222-2222");
+                
+
+                
+
 
 
 

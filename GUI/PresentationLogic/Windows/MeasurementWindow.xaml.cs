@@ -77,11 +77,11 @@ namespace PresentationLogic.Windows
                 Thread.Sleep(150);
                 var now = DateTime.Now;
                 _trend += r.Next(60, 150);
-                ChartValues.Add(new DTO_Measurement
-                {
-                    RawData = _trend,
-                    Date=now
-                });
+                //ChartValues.Add(new DTO_Measurement
+               // {
+                 //   RawData = _trend,
+                   // Date=now
+                //});
             }
         }
         public ChartValues<DTO_Measurement> ChartValues { get; set; }
