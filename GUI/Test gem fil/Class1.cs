@@ -72,15 +72,26 @@ namespace Test_gem_fil
 
             public void SaveMeasurement(int syslow, int syshigh, int dialow, int diahigh, string socSecNb)
             {
-            string path = @"C:\ST3PRJ3FIL\ost" + DateTime.Now.ToString("dd-MM-yyyy");
+                string path = @"C:\ST3PRJ3FIL\haj" + DateTime.Now.ToString("dd-MM-yyyy");
+            
+
+
+                
+            
             //DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
             DTO_PatientData data = new DTO_PatientData(syslow, syshigh, dialow, diahigh, socSecNb);
             //File.WriteAllText(@"c:\movie.json", JsonConvert.SerializeObject(data));
+
+
             
-
-           
-
-            File.WriteAllText(path, JsonConvert.SerializeObject(data)+ "\r\n");
+            using (StreamWriter file = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer() ;
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, data);
+                
+            }
+            //File.WriteAllText(path, JsonConvert.SerializeObject(data)+ Environment.NewLine);
             
         }
         
