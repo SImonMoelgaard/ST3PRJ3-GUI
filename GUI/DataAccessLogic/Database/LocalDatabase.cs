@@ -42,11 +42,13 @@ namespace DataAccessLogic
 
         }
 
-        public void SaveMeasurement()
+        public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
+            int alarmData, int pulse, int powerData)
         {
+            DTO_Measurement measurement=new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
 
+            File.WriteAllText();
 
-            
 
 
         }
