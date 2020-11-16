@@ -1,8 +1,10 @@
-﻿namespace DataAccessLogic
+﻿using DTO;
+
+namespace DataAccessLogic
 {
     public interface IReceiveRPi
     {
-        public void ReceiveMeasurment();
+        public DTO_Measurement ReceiveMeasurment();
 
         public void ReceiveCalibration();
 

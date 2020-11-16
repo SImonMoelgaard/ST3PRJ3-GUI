@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -57,14 +58,15 @@ namespace DataAccessLogic
 
 
 
-        public void ReceiveMeasurment()
+        public DTO_Measurement ReceiveMeasurment()
         {
             UdpClient listener = new UdpClient(listenPortCommand);
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
             DTO_Measurement rxCommand;
             string jsonString;
             byte[] bytes;
-
+            
+          
             try
             {
                 while (true)
@@ -74,18 +76,24 @@ namespace DataAccessLogic
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
                     rxCommand = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
 
-                  //  Console.WriteLine($"Received broadcast command from {groupEP} :");
-                    Console.WriteLine(rxCommand);
+                    //  Console.WriteLine($"Received broadcast command from {groupEP} :");
+
+                    return rxCommand;
                 }
+                
             }
             catch (SocketException e)
             {
+                return null;
                 Console.WriteLine(e);
             }
             finally
             {
+                
                 listener.Close();
             }
+
+            
         }
     }
         

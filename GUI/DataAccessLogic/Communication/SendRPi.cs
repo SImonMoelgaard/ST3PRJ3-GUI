@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -23,26 +24,86 @@ namespace DataAccessLogic
         private string startCal = "Startcalibration";
         private string MuteAlarm = "Mutealarm";
         private string stop = "Stop";
-
+        public DTO_CalVal dtocalval;
 
         public void Start()
         {
-            
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            string message;
+
+            while (true)
+            {
+
+                message = stop;
+                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+
+
+                s.SendTo(sendbuf, ep);
+
+            }
         }
 
         public void Stop()
         {
-            throw new System.NotImplementedException();
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            string message;
+
+            while (true)
+            {
+
+                message = startmeasurment;
+                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+
+
+                s.SendTo(sendbuf, ep);
+
+            }
         }
 
         public void StartCalibration()
         {
-            throw new System.NotImplementedException();
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            string message;
+
+            while (true)
+            {
+
+                message = startCal;
+                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+
+
+                s.SendTo(sendbuf, ep);
+
+            }
         }
 
         public void StartZeroing()
         {
-            throw new System.NotImplementedException();
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            string message;
+
+            while (true)
+            {
+
+                message = startzero;
+                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+
+
+                s.SendTo(sendbuf, ep);
+
+            }
         }
 
         public void MuteRPi()
@@ -62,7 +123,30 @@ namespace DataAccessLogic
 
                 s.SendTo(sendbuf, ep);
 
-                
+            }
+
+
+
+        }
+
+        public void sendA()
+        {
+            
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            string message;
+
+            while (true)
+            {
+
+                message = dtocalval.A.ToString();
+                byte[] sendbuf = Encoding.ASCII.GetBytes("zero " + message);
+
+
+                s.SendTo(sendbuf, ep);
+
             }
         }
     }
