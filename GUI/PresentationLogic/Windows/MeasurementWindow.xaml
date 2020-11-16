@@ -24,5 +24,6 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
+        <TextBlock HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="52" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM"/></TextBlock>
     </Grid>
 </Window>
