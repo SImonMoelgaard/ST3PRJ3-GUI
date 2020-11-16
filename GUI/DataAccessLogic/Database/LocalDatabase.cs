@@ -14,7 +14,7 @@ namespace DataAccessLogic
         private List<DTO_PatientData> dataPatientData;
         private LocalDatabase localDatabase;
 
-
+        
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
@@ -51,25 +51,30 @@ namespace DataAccessLogic
         public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
             int alarmData, int pulse, int powerData)
         {
+            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_Measurement measurement=new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
 
-            File.WriteAllText(@"c:\movie.json", JsonConvert.SerializeObject(measurement));
 
-            File.WriteAllText("path", JsonConvert.SerializeObject(measurement));
+            File.WriteAllText(path, JsonConvert.SerializeObject(measurement));
 
         }
         public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
         {
             DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
+            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
 
-            
-            
+            File.WriteAllText(path, JsonConvert.SerializeObject(patientData));
+
         }
 
-        public void SaveCalVal()
+        public void SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
-            throw new System.NotImplementedException();
-            
+            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv,socSecNB);
+
+            File.WriteAllText(path, JsonConvert.SerializeObject(calval));
+
+
 
         }
 

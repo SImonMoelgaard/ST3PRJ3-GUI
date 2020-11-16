@@ -29,6 +29,7 @@ namespace Test_gem_fil
             dataBPressure = new List<DTO_Measurement>();
             dataCalVal = new List<DTO_CalVal>();
             localDatabase = new LocalDatabase();
+            dataPatientData = new List<DTO_PatientData>();
 
 
 
@@ -54,7 +55,7 @@ namespace Test_gem_fil
                 localDatabase = new LocalDatabase();
 
 
-                string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+                string path = @"C:\ST3PRJ3FIL\ "  + DateTime.Now.ToString("dd-MM-yyyy");
 
                 using (StreamWriter sw = File.AppendText(path))
                 {
@@ -69,16 +70,19 @@ namespace Test_gem_fil
 
             }
 
-            public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
-                int alarmData, int pulse, int powerData)
+            public void SaveMeasurement(int syslow, int syshigh, int dialow, int diahigh, string socSecNb)
             {
-                DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            string path = @"C:\ST3PRJ3FIL\ost" + DateTime.Now.ToString("dd-MM-yyyy");
+            //DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            DTO_PatientData data = new DTO_PatientData(syslow, syshigh, dialow, diahigh, socSecNb);
+            //File.WriteAllText(@"c:\movie.json", JsonConvert.SerializeObject(data));
+            
 
-                File.WriteAllText(@"c:\movie.json", JsonConvert.SerializeObject(measurement));
+           
 
-                File.WriteAllText("path", JsonConvert.SerializeObject(measurement));
-
-            }
+            File.WriteAllText(path, JsonConvert.SerializeObject(data)+ "\r\n");
+            
+        }
         
 
 
