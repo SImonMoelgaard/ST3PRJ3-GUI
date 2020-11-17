@@ -13,7 +13,7 @@ namespace DataAccessLogic
         private List<DTO_CalVal> dataCalVal;
         private List<DTO_PatientData> dataPatientData;
         private LocalDatabase localDatabase;
-
+        
         
         
 
@@ -24,7 +24,7 @@ namespace DataAccessLogic
             localDatabase = new LocalDatabase();
 
 
-            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
             using (StreamWriter sw = File.AppendText(path))
             {
@@ -43,10 +43,16 @@ namespace DataAccessLogic
             int alarmData, int pulse, int powerData)
         {
             string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
-            DTO_Measurement measurement=new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
 
 
-            File.WriteAllText(path, JsonConvert.SerializeObject(measurement));
+            using (StreamWriter file = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, measurement);
+
+            }
 
         }
         public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
@@ -54,7 +60,13 @@ namespace DataAccessLogic
             DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
             string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
 
-            File.WriteAllText(path, JsonConvert.SerializeObject(patientData));
+            using (StreamWriter file = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, patientData);
+
+            }
 
         }
 
@@ -63,7 +75,13 @@ namespace DataAccessLogic
             string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv,socSecNB);
 
-            File.WriteAllText(path, JsonConvert.SerializeObject(calval));
+            using (StreamWriter file = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, calval);
+
+            }
 
 
 
