@@ -17,7 +17,7 @@ namespace DataAccessLogic
 {
     
 
-    class SendRPi : ISendRPi
+    public class SendRPi : ISendRPi
     {
         private const int listenPort = 11000;
         private const int listenPortCommand = 12000;
@@ -57,13 +57,12 @@ namespace DataAccessLogic
 
             IPAddress broadcast = IPAddress.Parse("192.168.1.255");
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
+            
 
             while (true)
             {
 
-                message = startmeasurment;
-                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+                byte[] sendbuf = Encoding.ASCII.GetBytes(stop);
 
 
                 s.SendTo(sendbuf, ep);
