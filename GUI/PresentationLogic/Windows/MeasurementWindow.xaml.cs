@@ -17,6 +17,7 @@ using DTO;
 using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
+using Colors = Windows.UI.Colors;
 
 namespace PresentationLogic.Windows
 {
@@ -43,6 +44,8 @@ namespace PresentationLogic.Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+
+            
 
             var mapper = Mappers.Xy<DTO_Measurement>()
                 .X(measurement => measurement.Date.Ticks)
@@ -158,6 +161,19 @@ namespace PresentationLogic.Windows
         public void ShowData()
         {
 
+        }
+
+        public void Alarm(string cpr)
+        {
+            int alarm = 1;
+            if (alarm==1)
+            {
+                while (true)
+                {
+                    alarm_L.Text = "Alarm!";
+                    Thread.Sleep(2000);
+                }
+            }
         }
     }
 }
