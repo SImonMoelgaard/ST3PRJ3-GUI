@@ -10,7 +10,7 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
-        <Button x:Name="Start_B" Content="Start Måling" HorizontalAlignment="Left" Margin="22,364,0,0" VerticalAlignment="Top" Height="43" Width="69" Click="Start_B_Click">
+        <Button x:Name="Start_B" Content="Start" Margin="22,364,0,0" VerticalAlignment="Top" Height="43" Width="89" Click="Start_B_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFB0A6A6" Offset="0.122"/>
@@ -18,9 +18,10 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="Stop_B" Content="Stop Måling" HorizontalAlignment="Left" Margin="116,364,0,0" VerticalAlignment="Top" Height="43" Width="91" Click="Stop_B_Click"/>
-        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" Style="{StaticResource AccentButtonStyle}"/>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="669,10,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click"/>
+        <Button x:Name="Stop_B" Content="Stop" HorizontalAlignment="Left" Margin="116,364,0,0" VerticalAlignment="Top" Height="43" Width="91" Click="Stop_B_Click"/>
+        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="690,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" Style="{StaticResource AccentButtonStyle}"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="10,6,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click"/>
+        
         <lvc:CartesianChart Name="Measurment" Margin="0,61,0,80">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Tid[s]">
@@ -33,6 +34,6 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <TextBlock HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM"/></TextBlock>
+        <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM"/></TextBlock>
     </Grid>
 </Window>

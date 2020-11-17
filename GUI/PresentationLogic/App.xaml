@@ -9,7 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
-                <ui:ThemeResources RequestedTheme="Light" AccentColor="DarkSlateBlue" />
+                <ui:ThemeResources RequestedTheme="Light" AccentColor="Plum" />
                 
                     <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
