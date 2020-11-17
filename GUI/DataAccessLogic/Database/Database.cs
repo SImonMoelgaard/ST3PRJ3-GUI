@@ -58,6 +58,12 @@ namespace DataAccessLogic
             throw new NotImplementedException();
         }
 
+        public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse,
+            int powerData)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool isUserRegistered(String socSecNb, String pw)
         {
 

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace DataAccessLogic
 {
-    public class LocalDatabase : IDatabase
+    public class LocalDatabase : ILocalDatabase
     {
         private List<DTO_Measurement> dataBPressure;
         private List<DTO_CalVal> dataCalVal;
@@ -15,16 +15,7 @@ namespace DataAccessLogic
         private LocalDatabase localDatabase;
 
         
-
-        public List<DTO_Measurement> GetMeasurement(string socSecNB)
-        {
-            return dataBPressure;
-        }
-
-        public void SaveMeasurement()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void CreateFile()
         {

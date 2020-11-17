@@ -27,6 +27,7 @@ namespace DataAccessLogic
         private string MuteAlarm = "Mutealarm";
         private string stop = "Stop";
         public DTO_CalVal dtocalval;
+        public DTO_PatientData patientdata;
 
         public void Start()
         {
@@ -41,8 +42,8 @@ namespace DataAccessLogic
 
             while (true)
             {
-                
-               // sendCommand.ComNo = IntegerType.FromObject(com);
+                JsonConvert.SerializeObject(patientdata);   
+                // sendCommand.ComNo = IntegerType.FromObject(com);
                 jsonUtf8Bytes = JsonSerializer.SerializeToUtf8Bytes(sendCommand, sendopt);
                 s.SendTo(jsonUtf8Bytes, ep);
 
