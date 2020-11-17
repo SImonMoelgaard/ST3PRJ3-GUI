@@ -8,7 +8,9 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using Microsoft.VisualBasic.CompilerServices;
 using DTO;
+using Newtonsoft.Json;
 using ST3Prj3DomaineCore.Models.DTO;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace DataAccessLogic
@@ -74,13 +76,13 @@ namespace DataAccessLogic
 
             IPAddress broadcast = IPAddress.Parse("192.168.1.255");
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
+          
 
             while (true)
             {
 
-                message = startCal;
-                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+                
+                byte[] sendbuf = Encoding.ASCII.GetBytes(startCal);
 
 
                 s.SendTo(sendbuf, ep);
@@ -114,13 +116,13 @@ namespace DataAccessLogic
 
             IPAddress broadcast = IPAddress.Parse("192.168.1.255");
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
+            
 
             while (true)
             {
 
-                message = MuteAlarm;
-                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+                
+                byte[] sendbuf = Encoding.ASCII.GetBytes(MuteAlarm);
 
 
                 s.SendTo(sendbuf, ep);
@@ -142,9 +144,9 @@ namespace DataAccessLogic
 
             while (true)
             {
-
+                
                 message = dtocalval.A.ToString();
-                byte[] sendbuf = Encoding.ASCII.GetBytes("zero " + message);
+                byte[] sendbuf = Encoding.ASCII.GetBytes("zero" + message);
 
 
                 s.SendTo(sendbuf, ep);
