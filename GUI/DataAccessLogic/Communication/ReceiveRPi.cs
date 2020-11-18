@@ -22,7 +22,7 @@ namespace DataAccessLogic
         private const int listenPortCommand = 12000;
 
 
-        public void ReceiveCalibration()
+        public DTO_CalVal ReceiveCalibration()
         {
             UdpClient listener = new UdpClient(listenPortCommand);
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
@@ -52,6 +52,7 @@ namespace DataAccessLogic
                 listener.Close();
             }
 
+            return null;
         }
 
         

@@ -14,7 +14,7 @@ namespace DataAccessLogic
 
         public bool SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
 
-        public void SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv,
+        public void SaveCalVal(int calReference, double calMeasured, double r2, double a, int b, int zv,
             string socSecNB);
 
         

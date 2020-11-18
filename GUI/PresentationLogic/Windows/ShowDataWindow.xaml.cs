@@ -56,8 +56,6 @@ namespace PresentationLogic.Windows
                 measurementData_LB.Items.Add(cpr);
             }
 
-            bPressure = new LineSeries();
-
             YFormatter = value => value + "mmHg";
 
             bPressure = new LineSeries();
