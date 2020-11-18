@@ -12,6 +12,8 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementList;
 
         
+        ISendRPi sendrpi = new SendRPi();
+
         private LocalDatabase localDatabase;
         IDatabase database = new Database();
 
@@ -62,10 +64,11 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public void saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
+        public bool saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
         {
             
-           localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+            //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+            return sendrpi.sendpatientdata(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
         }
     }
 

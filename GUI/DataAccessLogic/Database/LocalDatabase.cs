@@ -55,9 +55,10 @@ namespace DataAccessLogic
             }
 
         }
-        public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
+        public void SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
         {
-            DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
+            
+            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, CprPatient);
             string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
 
             using (StreamWriter file = File.AppendText(path))

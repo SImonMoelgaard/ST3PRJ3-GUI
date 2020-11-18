@@ -1,4 +1,6 @@
-﻿namespace DataAccessLogic
+﻿using DTO;
+
+namespace DataAccessLogic
 {
     public interface ISendRPi
     {
@@ -9,5 +11,7 @@
         public void MuteRPi();
 
         public void sendA();
+
+        public bool sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
     }
 }

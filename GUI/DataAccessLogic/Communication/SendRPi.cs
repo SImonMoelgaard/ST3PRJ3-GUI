@@ -19,6 +19,9 @@ namespace DataAccessLogic
 
     public class SendRPi : ISendRPi
     {
+        
+
+
         private const int listenPort = 11000;
         private const int listenPortCommand = 12000;
         private string startmeasurment = "Startmeasurment";
@@ -28,26 +31,30 @@ namespace DataAccessLogic
         private string stop = "Stop";
         public DTO_CalVal dtocalval;
         public DTO_PatientData patientdata;
+        IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
+
+        private static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
 
         public void Start()
         {
-            
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPortCommand);
-            DTO_Send sendCommand = new DTO_Send() { sendID = "Laptop", ComNo = 1 };
-            byte[] jsonUtf8Bytes;
-            JsonSerializerOptions sendopt = new JsonSerializerOptions() { WriteIndented = true };
-            
 
-            while (true)
             {
-                JsonConvert.SerializeObject(patientdata);   
-                // sendCommand.ComNo = IntegerType.FromObject(com);
-                jsonUtf8Bytes = JsonSerializer.SerializeToUtf8Bytes(sendCommand, sendopt);
-                s.SendTo(jsonUtf8Bytes, ep);
+                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-                
+
+                IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+
+
+                while (true)
+                {
+
+                    byte[] sendbuf = Encoding.ASCII.GetBytes(startmeasurment);
+
+
+                    s.SendTo(sendbuf, ep);
+
+                }
             }
         }
 
@@ -55,7 +62,7 @@ namespace DataAccessLogic
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
             
 
@@ -74,7 +81,7 @@ namespace DataAccessLogic
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
           
 
@@ -94,15 +101,15 @@ namespace DataAccessLogic
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+           
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
+            
 
             while (true)
             {
 
-                message = startzero;
-                byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+                
+                byte[] sendbuf = Encoding.ASCII.GetBytes(startzero);
 
 
                 s.SendTo(sendbuf, ep);
@@ -114,7 +121,7 @@ namespace DataAccessLogic
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+           
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
             
 
@@ -135,23 +142,54 @@ namespace DataAccessLogic
 
         public void sendA()
         {
-            
+           
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("192.168.1.255");
+            
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
             string message;
+            
 
             while (true)
             {
                 
                 message = dtocalval.A.ToString();
-                byte[] sendbuf = Encoding.ASCII.GetBytes("zero" + message);
+                
+                byte[] data = Encoding.ASCII.GetBytes(message);
+
+                
+
+                //s.SendTo(message, ep);
+
+            }
+
+
+        }
+
+        public bool sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
+        {
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+
+            DTO_PatientData data = new DTO_PatientData(SysHigh, SysLow, DiaHigh, DiaLow, CprPatient);
+           
+
+            var json = JsonConvert.SerializeObject(data);
+
+            
+            
+
+
+                byte[] sendbuf = Encoding.ASCII.GetBytes(json);
 
 
                 s.SendTo(sendbuf, ep);
 
-            }
-        }
+            
+
+
+            return true;
+        } 
+        
     }
 }
