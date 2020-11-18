@@ -11,6 +11,7 @@ using DTO;
 using Newtonsoft.Json;
 using ST3Prj3DomaineCore.Models.DTO;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using DataAccessLogic;
 
 
 namespace DataAccessLogic
@@ -32,6 +33,7 @@ namespace DataAccessLogic
         public DTO_CalVal dtocalval;
         public DTO_PatientData patientdata;
         IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
+        LocalDatabase local = new LocalDatabase();
 
         private static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
@@ -183,12 +185,12 @@ namespace DataAccessLogic
                 byte[] sendbuf = Encoding.ASCII.GetBytes(json);
 
 
-                s.SendTo(sendbuf, ep);
-
-            
+                s.SendTo(sendbuf,ep);
 
 
-            return true;
+
+
+            return local.SavePatientData(SysHigh, SysLow, DiaHigh, DiaLow, CprPatient); 
         } 
         
     }
