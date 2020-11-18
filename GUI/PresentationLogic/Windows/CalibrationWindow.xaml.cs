@@ -59,6 +59,11 @@ namespace PresentationLogic.Windows
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            //-------------------------------------------------------------
+            //This should work
+            int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+
+            //-------------------------------------------------------------
             //int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             //her skal reference sendes
 
