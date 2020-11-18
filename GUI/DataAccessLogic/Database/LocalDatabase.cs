@@ -24,9 +24,9 @@ namespace DataAccessLogic
             localDatabase = new LocalDatabase();
 
 
-            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) +" "+ DateTime.Now.ToString("dd-MM-yyyy");
+           // string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
-            using (StreamWriter sw = File.AppendText(path))
+            //using (StreamWriter sw = File.AppendText(path))
             {
 
                 //sw.WriteLine(("CPR", "RAW", "DIA", "SYS"));
@@ -42,7 +42,7 @@ namespace DataAccessLogic
         public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
             int alarmData, int pulse, int powerData)
         {
-            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+            string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
 
 
@@ -55,10 +55,11 @@ namespace DataAccessLogic
             }
 
         }
-        public void SavePatientData(int sysHigh,int sysLow,int diaHigh, int diaLow, string cprPatient)
+        public bool SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
         {
-            DTO_PatientData patientData = new DTO_PatientData(sysHigh, sysLow, diaLow, diaHigh, cprPatient);
-            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+            
+            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, CprPatient);
+            string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
             using (StreamWriter file = File.AppendText(path))
             {
@@ -68,11 +69,12 @@ namespace DataAccessLogic
 
             }
 
+            return true;
         }
 
         public void SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
-            string path = @"C:\ST3PRJ3FIL\ " + getSocSecNB(ToString()) + DateTime.Now.ToString("dd-MM-yyyy");
+            string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv,socSecNB);
 
             using (StreamWriter file = File.AppendText(path))
@@ -87,14 +89,6 @@ namespace DataAccessLogic
 
         }
 
-        public bool isUserRegistered(string socSecNb, string pw)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool getSocSecNB(string SocSecNB)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }
