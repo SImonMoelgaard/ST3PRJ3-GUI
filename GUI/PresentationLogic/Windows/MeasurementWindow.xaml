@@ -34,6 +34,6 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM"/></TextBlock>
+        <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM" /></TextBlock>
     </Grid>
 </Window>

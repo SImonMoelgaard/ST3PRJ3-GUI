@@ -144,7 +144,8 @@ namespace PresentationLogic.Windows
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
         {
-
+            alarm_L.Visibility = Visibility.Hidden;
+        
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
