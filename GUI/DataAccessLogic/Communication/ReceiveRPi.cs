@@ -63,6 +63,7 @@ namespace DataAccessLogic
                 listener.Close();
             }
 
+            return null;
         }
 
         
