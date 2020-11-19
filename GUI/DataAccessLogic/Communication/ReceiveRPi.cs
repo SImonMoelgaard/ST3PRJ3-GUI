@@ -34,7 +34,7 @@ namespace DataAccessLogic
 
         ILocalDatabase local = new LocalDatabase();
 
-        public object ReceiveCalibration(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public object ReceiveCalibration(int calReference, double  calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
             
             DTO_CalVal caldata;
@@ -106,6 +106,9 @@ namespace DataAccessLogic
 
             
         }
+
+        
+        
     }
         
     

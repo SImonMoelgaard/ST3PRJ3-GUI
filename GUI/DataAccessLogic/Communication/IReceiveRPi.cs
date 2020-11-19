@@ -7,7 +7,8 @@ namespace DataAccessLogic
     {
         public DTO_Measurement ReceiveMeasurment();
 
-        public void ReceiveCalibration();
+        public object ReceiveCalibration(int calReference, double calMeasured, double r2, double a, int b,
+            int zv, string socSecNB);
 
 
     }
