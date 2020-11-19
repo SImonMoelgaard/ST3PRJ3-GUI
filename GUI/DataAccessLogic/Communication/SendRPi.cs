@@ -41,7 +41,7 @@ namespace DataAccessLogic
         public void Start()
         {
 
-            {
+            
                 Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
 
@@ -57,7 +57,7 @@ namespace DataAccessLogic
                     s.SendTo(sendbuf, ep);
 
                 }
-            }
+            
         }
 
         public void Stop()
@@ -168,7 +168,7 @@ namespace DataAccessLogic
 
         }
 
-        public bool sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);

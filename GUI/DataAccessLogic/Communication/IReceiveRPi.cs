@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using System.Collections.Generic;
+using DTO;
 
 namespace DataAccessLogic
 {
@@ -6,7 +7,7 @@ namespace DataAccessLogic
     {
         public DTO_Measurement ReceiveMeasurment();
 
-        public void ReceiveCalibration();
+        public object ReceiveCalibration(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB);
 
 
     }

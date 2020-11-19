@@ -51,11 +51,11 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, measurement);
-
+                
             }
 
         }
-        public bool SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
+        public object SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
         {
             
             DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, CprPatient);
@@ -72,7 +72,7 @@ namespace DataAccessLogic
             return true;
         }
 
-        public void SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public object SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
             string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv,socSecNB);
@@ -86,7 +86,7 @@ namespace DataAccessLogic
             }
 
 
-
+            return calval;
         }
 
         
