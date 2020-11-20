@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BuissnessLogic;
+using DataAccessLogic;
 using DTO;
 using LiveCharts;
 using LiveCharts.Wpf;
@@ -35,7 +36,7 @@ namespace PresentationLogic.Windows
         {
             mainWindow = mw;
             controller = cr;
-            
+
             InitializeComponent();
 
             //MyCollection = new SeriesCollection()
@@ -47,22 +48,23 @@ namespace PresentationLogic.Windows
             //    }
             //};
             //DataContext = this;
-
+            
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             mainWindow.Show();
-            
         }
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
             //-------------------------------------------------------------
-            //This should work
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
-
+            foreach (var calval in MyCollection)
+            {
+                if(calval.Title=="")
+            }
             //-------------------------------------------------------------
             //int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             //her skal reference sendes

@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
+using DataAccessLogic;
 using DTO;
 
 namespace BuissnessLogic
 {
     public class Alarm : IAlarm
     {
-
+        IReceiveRPi receiveRPi=new ReceiveRPi();
         public List<DTO_Measurement> AlarmData()
         {
-            throw new System.NotImplementedException();
-            
+            List<DTO_Measurement> alarmList =new List<DTO_Measurement>();
+
+            alarmList.Add(receiveRPi.ReceiveMeasurment());
+            return alarmList;
         }
 
 
