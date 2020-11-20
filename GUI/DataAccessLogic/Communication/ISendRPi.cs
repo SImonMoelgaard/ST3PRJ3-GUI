@@ -12,6 +12,6 @@ namespace DataAccessLogic
 
         public void sendA();
 
-        public bool sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
     }
 }

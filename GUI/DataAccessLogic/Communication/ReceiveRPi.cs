@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -6,6 +7,10 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DTO;
+using DataAccessLogic;
+
+
+using System.Threading.Tasks;
 
 namespace DataAccessLogic
 {
@@ -18,15 +23,21 @@ namespace DataAccessLogic
 
         //https://docs.microsoft.com/en-us/dotnet/framework/network-programming/using-udp-services
 
+        private static Socket socket;
         private const int listenPort = 11000;
         private const int listenPortCommand = 12000;
+        public DTO_Measurement mdata;
 
 
-        public DTO_CalVal ReceiveCalibration()
+        UdpClient listener = new UdpClient(listenPort);
+        IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
+
+        ILocalDatabase local = new LocalDatabase();
+
+        public object ReceiveCalibration(int calReference, double  calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
-            UdpClient listener = new UdpClient(listenPortCommand);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
-            DTO_CalVal rxCommand;
+            
+            DTO_CalVal caldata;
             string jsonString;
             byte[] bytes;
 
@@ -34,18 +45,18 @@ namespace DataAccessLogic
             {
                 while (true)
                 {
-                    //Console.WriteLine("Waiting for broadcast of a Command");
+                    
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                    rxCommand = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+                    caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
-                    //  Console.WriteLine($"Received broadcast command from {groupEP} :");
-                    Console.WriteLine(rxCommand);
+
+                    return local.SaveCalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine(e);
+                return null;
             }
             finally
             {
@@ -61,9 +72,8 @@ namespace DataAccessLogic
 
         public DTO_Measurement ReceiveMeasurment()
         {
-            UdpClient listener = new UdpClient(listenPortCommand);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
-            DTO_Measurement rxCommand;
+            
+            DTO_Measurement mdata;
             string jsonString;
             byte[] bytes;
             
@@ -72,21 +82,21 @@ namespace DataAccessLogic
             {
                 while (true)
                 {
-                    //Console.WriteLine("Waiting for broadcast of a Command");
+                    
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                    rxCommand = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
+                    mdata = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
 
-                    //  Console.WriteLine($"Received broadcast command from {groupEP} :");
 
-                    return rxCommand;
+
+                    return mdata;
                 }
                 
             }
             catch (SocketException e)
             {
                 return null;
-                Console.WriteLine(e);
+                
             }
             finally
             {
@@ -96,6 +106,9 @@ namespace DataAccessLogic
 
             
         }
+
+        
+        
     }
         
     

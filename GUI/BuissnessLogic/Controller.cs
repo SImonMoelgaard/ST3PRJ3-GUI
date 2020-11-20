@@ -64,7 +64,7 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public bool saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
+        public object saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
         {
             
             //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
