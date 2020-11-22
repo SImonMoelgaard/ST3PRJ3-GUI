@@ -15,15 +15,15 @@ namespace BuissnessLogic
 
         ISendRPi sendrpi = new SendRPi();
         IReceiveRPi recieveRPi = new ReceiveRPi();
+        ILocalDatabase localDatabase = new LocalDatabase();
 
-        private LocalDatabase localDatabase;
         IDatabase database = new Database();
 
         public void DBcontrol()
         {
             
             
-            localDatabase = new LocalDatabase();
+           
             
             measurementList = new List<DTO_Measurement>();
 
@@ -67,7 +67,7 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public object saveData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
+        public object sendRPiData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
         {
             
             //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
