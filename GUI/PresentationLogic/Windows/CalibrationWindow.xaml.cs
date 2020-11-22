@@ -61,18 +61,18 @@ namespace PresentationLogic.Windows
             dataReference.Add(referenceVal);
 
             ////Start calibration message to RPi
-            cali.StartCalibration();
+            //cali.StartCalibration();
 
-            double calibrationval;
-            calibrationval = 0;
+            //double calibrationval;
+            //calibrationval = 0;
 
 
-            cali.getCalibration(calibrationval);
+
             //Add received calibration value to calibration list
-          
-           
-            //double calibrationVal = 12;
-            dataCalVal.Add(calibrationval);
+            //cali.getCalibration(calibrationval);
+
+            double calibrationVal = 12;
+            dataCalVal.Add(calibrationVal);
 
             MakeGraph();
         }
@@ -103,7 +103,7 @@ namespace PresentationLogic.Windows
         {
             cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
             cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
-
+            cali.CalculateR2Val(dataReference, dataCalVal);
         }
     }
 }

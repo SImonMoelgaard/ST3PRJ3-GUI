@@ -77,9 +77,36 @@ namespace BuissnessLogic
             return linearRegression;
         }
 
-        public void calculateR2Val()
+        public double CalculateR2Val(List<int> calReference, List<double> calMeasured)
         {
-            throw new System.NotImplementedException();
+            double zX = 0;
+            double zY = 0;
+            double zXY = 0;
+            double zX2 = 0;
+            double zY2 = 0;
+
+            for (int i = 0; i < calReference.Count; i++)
+            {
+                zX += calReference[i];
+                zY += calMeasured[i];
+            }
+
+            for (int i = 0; i < calReference.Count; i++)
+            {
+                zXY += calReference[i] * calMeasured[i];
+            }
+
+            for (int i = 0; i < calReference.Count; i++)
+            {
+                zX2 += Math.Pow(calReference[i], 2);
+                zY2 += Math.Pow(calMeasured[i], 2);
+            }
+
+            r2Val = ((calReference.Count * zXY) - (zX * zY)) / Math.Sqrt((calReference.Count * zX2) -
+                                                                         (Math.Pow(zX, 2)) * calReference.Count * zY2 -
+                                                                         (Math.Pow(zY, 2)));
+
+            return r2Val;
         }
 
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
