@@ -10,9 +10,11 @@ namespace BuissnessLogic
     public class Controller
     {
         private List<DTO_Measurement> measurementList;
+        private DTO_Measurement measurementdata;
 
-        
+
         ISendRPi sendrpi = new SendRPi();
+        IReceiveRPi recieveRPi = new ReceiveRPi();
 
         private LocalDatabase localDatabase;
         IDatabase database = new Database();
@@ -41,9 +43,10 @@ namespace BuissnessLogic
         }
 
 
-        public void getPowerValue(int power)
+        public DTO_Measurement getmdata(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse, int powerData)
         {
-
+            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            return measurementdata;
         }
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
