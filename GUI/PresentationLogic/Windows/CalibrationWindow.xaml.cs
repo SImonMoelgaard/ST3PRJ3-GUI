@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,13 +26,14 @@ namespace PresentationLogic.Windows
     {
         private MainWindow mainWindow;
         private Controller controller;
-        private Calibration calibration;
+        
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
         private List<DTO_CalVal> calibrationList;
 
         private List<double> dataCalVal;
         private List<int> dataReference;
+        ICalibration cali = new Calibration();
 
         public string[] xAxis { get; set; }
 
@@ -39,7 +41,7 @@ namespace PresentationLogic.Windows
         {
             mainWindow = mw;
             controller = cr;
-            calibration=new Calibration();
+            
             dataReference=new List<int>();
             dataCalVal=new List<double>();
 
@@ -59,12 +61,18 @@ namespace PresentationLogic.Windows
             dataReference.Add(referenceVal);
 
             ////Start calibration message to RPi
-            //calibration.StartCalibration();
+            cali.StartCalibration();
 
+            double calibrationval;
+            calibrationval = 0;
+
+
+            cali.getCalibration(calibrationval);
             //Add received calibration value to calibration list
-            //double calibrationVal=calibration.GetCalibration();
-            double calibrationVal = 12;
-            dataCalVal.Add(calibrationVal);
+          
+           
+            //double calibrationVal = 12;
+            dataCalVal.Add(calibrationval);
 
             MakeGraph();
         }
@@ -89,11 +97,13 @@ namespace PresentationLogic.Windows
 
 
 
+        
+
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
-            calibration.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-            calibration.CalculateAAndB(dataReference, dataCalVal, 0, 0, 0, 0);
-            
+            cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+            calibrationList = cali.CalculateAAndB();
+
         }
     }
 }

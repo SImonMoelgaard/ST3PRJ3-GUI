@@ -6,7 +6,7 @@ namespace DataAccessLogic
     {
         public void Start();
         public void Stop();
-        public void StartCalibration();
+        public string StartCalibration();
         public void StartZeroing();
         public void MuteRPi();
 

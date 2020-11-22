@@ -34,9 +34,8 @@ namespace DataAccessLogic
         public DTO_PatientData patientdata;
         IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
-
-        private static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
+        IReceiveRPi recieve = new ReceiveRPi();
+       
 
         public void Start()
         {
@@ -79,7 +78,7 @@ namespace DataAccessLogic
             }
         }
 
-        public void StartCalibration()
+        public string StartCalibration()
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
@@ -96,6 +95,7 @@ namespace DataAccessLogic
 
                 s.SendTo(sendbuf, ep);
 
+                
             }
         }
 
@@ -109,7 +109,7 @@ namespace DataAccessLogic
 
             while (true)
             {
-
+                
                 
                 byte[] sendbuf = Encoding.ASCII.GetBytes(startzero);
 
