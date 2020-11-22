@@ -63,19 +63,26 @@ namespace PresentationLogic.Windows
             ////Start calibration message to RPi
             //cali.StartCalibration();
 
-            //double calibrationval;
-            //calibrationval = 0;
+            double calibrationval = 0;
+            
 
 
 
             //Add received calibration value to calibration list
-            //cali.getCalibration(calibrationval);
+            cali.getCalibration(calibrationval);
 
-            double calibrationVal = 12;
-            dataCalVal.Add(calibrationVal);
+            //double calibrationVal = 12;
+            getcalval(calibrationval);
 
             MakeGraph();
         }
+
+        public double getcalval(double calval)
+        {
+           return cali.getCalibration(calval);
+            
+        }
+
 
         public void MakeGraph()
         {

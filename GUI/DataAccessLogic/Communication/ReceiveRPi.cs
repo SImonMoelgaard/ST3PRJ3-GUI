@@ -21,7 +21,7 @@ namespace DataAccessLogic
 
         }
 
-        
+        public DTO_CalVal dtocal;
         
         public DTO_Measurement measurementdata;
 
@@ -40,36 +40,37 @@ namespace DataAccessLogic
 
         public double ReceiveCalibration(double calval)
         {
-            
-            
-            
-            byte[] bytes;
 
-            try
-            {
-                while (true)
-                {
-                    
-                    bytes = listener.Receive(ref groupEP);
-                    calval= Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
-                    //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+            
+            calval = 15;
+            return calval;
+            //byte[] bytes;
 
-                    
-                        
-                    
-                    return calval;
-                }
-            }
-            catch (SocketException e)
-            {
-                return calval;
-            }
-            finally
-            {
-                
-                listener.Close();
-                
-            }
+            //try
+            //{
+            //    while (true)
+            //    {
+
+            //        bytes = listener.Receive(ref groupEP);
+            //        calval= Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+            //        //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+
+
+
+
+            //        return calval;
+            //    }
+            //}
+            //catch (SocketException e)
+            //{
+            //    return calval;
+            //}
+            //finally
+            //{
+
+            //    listener.Close();
+
+        //}
 
             
         }
