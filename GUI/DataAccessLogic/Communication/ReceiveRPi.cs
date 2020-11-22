@@ -23,22 +23,29 @@ namespace DataAccessLogic
 
         //https://docs.microsoft.com/en-us/dotnet/framework/network-programming/using-udp-services
 
-        private static Socket socket;
+        
         private const int listenPort = 11000;
         private const int listenPort2 = 11001;
         private const int listenPortCommand = 12000;
         public DTO_Measurement measurementdata;
 
         
-        UdpClient listener = new UdpClient(0);
-        IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
+        private static UdpClient listener = new UdpClient(11000);
+        private static IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
         
+
         ILocalDatabase local = new LocalDatabase();
+
+        //private static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        //private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 11000);
+
+        
+
 
         public double ReceiveCalibration()
         {
             
-            DTO_CalVal caldata;
+            
             double calval;
             byte[] bytes;
 
