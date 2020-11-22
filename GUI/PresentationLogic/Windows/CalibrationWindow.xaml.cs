@@ -38,6 +38,7 @@ namespace PresentationLogic.Windows
         {
             mainWindow = mw;
             controller = cr;
+            calibration=new Calibration();
             dataReference=new List<int>();
             dataCalVal=new List<double>();
             calVal = new LineSeries();
@@ -70,11 +71,12 @@ namespace PresentationLogic.Windows
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             dataReference.Add(referenceVal);
 
-            //Start calibration message to RPi
-            calibration.StartCalibration();
+            ////Start calibration message to RPi
+            //calibration.StartCalibration();
 
             //Add received calibration value to calibration list
-            double calibrationVal=calibration.GetCalibration();
+            //double calibrationVal=calibration.GetCalibration();
+            double calibrationVal = 9;
             dataCalVal.Add(calibrationVal);
 
             MakeGraph();
