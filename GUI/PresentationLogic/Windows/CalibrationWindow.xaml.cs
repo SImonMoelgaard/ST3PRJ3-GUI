@@ -27,7 +27,7 @@ namespace PresentationLogic.Windows
         private Calibration calibration;
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
-        public SeriesCollection Calibration { get; set; }
+        private List<DTO_CalVal> calibrationList;
 
         private List<double> dataCalVal;
         private List<int> dataReference;
@@ -41,12 +41,8 @@ namespace PresentationLogic.Windows
             calibration=new Calibration();
             dataReference=new List<int>();
             dataCalVal=new List<double>();
-            calVal = new LineSeries();
-            chartCalVal = new ChartValues<double>();
-            calibration = new Calibration();
 
             InitializeComponent();
-
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -66,7 +62,7 @@ namespace PresentationLogic.Windows
 
             //Add received calibration value to calibration list
             //double calibrationVal=calibration.GetCalibration();
-            double calibrationVal = 9;
+            double calibrationVal = 12;
             dataCalVal.Add(calibrationVal);
 
             MakeGraph();
@@ -74,7 +70,9 @@ namespace PresentationLogic.Windows
 
         public void MakeGraph()
         {
-            xAxis=new string[dataCalVal.Count];
+            calVal = new LineSeries();
+            chartCalVal = new ChartValues<double>();
+            xAxis =new string[dataCalVal.Count];
 
             for (int i = 0; i < dataCalVal.Count; i++)
             {
@@ -88,9 +86,13 @@ namespace PresentationLogic.Windows
             DataContext = this;
         }
 
-        private void Done_B_Click(object sender, RoutedEventArgs e)
+
+
+        private List<DTO_CalVal> Done_B_Click(object sender, RoutedEventArgs e)
         {
             calibration.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+            calibrationList = calibration.CalculateAAndB();
+            return calibrationList;
         }
     }
 }

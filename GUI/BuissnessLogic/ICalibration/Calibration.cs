@@ -14,6 +14,7 @@ namespace BuissnessLogic
         private double r2Val;
         private List<DTO_CalVal> calValList;
         private double calval;
+        private double a;
         
         public List<DTO_CalVal> GetCalVal()
         {
@@ -36,11 +37,14 @@ namespace BuissnessLogic
 
         public double GetCalibration()
         {
-            //Test
-            double calibration = 9;
-
-            //double calibration = receive.ReceiveCalibration();
+            double calibration = receive.ReceiveCalibration();
             return calibration;
+        }
+
+        public List<DTO_CalVal> CalculateAAndB()
+        {
+
+            
         }
 
         public void calculateR2Val()
