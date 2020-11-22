@@ -17,5 +17,6 @@
         <Button x:Name="InsertValue_B" Content="Næste værdi" Margin="-133,40,0,0" VerticalAlignment="Top" Width="113" Click="InsertValue_B_Click"/>
         <Label Content="Referenceværdi:" HorizontalAlignment="Left" Margin="-380,37,0,0" VerticalAlignment="Top" Width="99"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="318,0,0,404" VerticalAlignment="Bottom" Width="58" Click="ExitToMainWindow_B_Click"/>
+        <Button x:Name="Done_B" Content="Færdig" Margin="-157,389,0,0" VerticalAlignment="Top" Click="Done_B_Click"/>
     </Grid>
 </Window>

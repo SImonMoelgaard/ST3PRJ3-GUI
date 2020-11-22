@@ -27,7 +27,7 @@ namespace PresentationLogic.Windows
         private Calibration calibration;
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
-        public SeriesCollection MyCollection { get; set; }
+        public SeriesCollection Calibration { get; set; }
 
         private List<double> dataCalVal;
         private List<int> dataReference;
@@ -42,6 +42,7 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
+            Calibration=new SeriesCollection();
 
             InitializeComponent();
 
@@ -65,71 +66,88 @@ namespace PresentationLogic.Windows
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            //Add reference to reference list
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             dataReference.Add(referenceVal);
 
+            //Start calibration message to RPi
             calibration.StartCalibration();
 
+            //Add received calibration value to calibration list
             double calibrationVal=calibration.GetCalibration();
             dataCalVal.Add(calibrationVal);
 
+            MakeGraph();
 
 
-            foreach (var calval in MyCollection)
-            {
-                if (calval.Title == "") ;
-            }
-          
+            //foreach (var calval in MyCollection)
+            //{
+            //    if (calval.Title == "") ;
+            //}
+            
 
+            ////dataCalVal = calibration.GetCalVal();
+            ////xAxis = new string[dataCalVal.Count];
 
-            calVal = new LineSeries();
-            chartCalVal = new ChartValues<double>();
+            //xAxis = new string[1];
 
-            //dataCalVal = calibration.GetCalVal();
-            //xAxis = new string[dataCalVal.Count];
-
-            xAxis = new string[1];
-
-            //TEST WITHOUT BUISNESS LAYER
-            dataCalVal = new List<double>();
-            dataCalVal.Add(5);
-            dataCalVal.Add(8);
-
-            foreach (var calValue in dataCalVal)
-            {
-                chartCalVal.Add(calValue);
-
-                //for (int i = 0; i < dataCalVal.Count; i++)
-                //{
-                //    xAxis[i] = referenceVal.ToString();
-                //}
-            }
-
-            //dataCalVal.Add(new DTO_CalVal(7,7,7,7,7,7,"hej"));
 
             //foreach (var calValue in dataCalVal)
             //{
-            //    chartCalVal.Add(calValue.CalMeasured);
-            //    for (int i = 0; i < dataCalVal.Count; i++)
-            //    {
-            //        xAxis[i] = dataCalVal[i].CalReference.ToString();
-            //    }
+            //    chartCalVal.Add(calValue);
+
+            //    //for (int i = 0; i < dataCalVal.Count; i++)
+            //    //{
+            //    //    xAxis[i] = referenceVal.ToString();
+            //    //}
             //}
 
+            ////dataCalVal.Add(new DTO_CalVal(7,7,7,7,7,7,"hej"));
 
-            //for (int i = 0; i < dataCalVal.Count; i++)
-            //{
-            //    chartCalVal.Add(dataCalVal[i].CalMeasured);
-            //    xAxis[i] = Convert.ToString(referenceVal);
-            //}
+            ////foreach (var calValue in dataCalVal)
+            ////{
+            ////    chartCalVal.Add(calValue.CalMeasured);
+            ////    for (int i = 0; i < dataCalVal.Count; i++)
+            ////    {
+            ////        xAxis[i] = dataCalVal[i].CalReference.ToString();
+            ////    }
+            ////}
+
+
+            ////for (int i = 0; i < dataCalVal.Count; i++)
+            ////{
+            ////    chartCalVal.Add(dataCalVal[i].CalMeasured);
+            ////    xAxis[i] = Convert.ToString(referenceVal);
+            ////}
+
+            //calVal.Values = chartCalVal;
+
+            //CalibrationChart.Series = new SeriesCollection() { calVal };
+
+            //DataContext = this;
+
+
+        }
+
+        public void MakeGraph()
+        {
+            xAxis=new string[dataCalVal.Count];
+
+            for (int i = 0; i < dataCalVal.Count; i++)
+            {
+                chartCalVal.Add(dataCalVal[i]);
+                xAxis[i] = dataReference[i].ToString();
+            }
 
             calVal.Values = chartCalVal;
-
-            CalibrationChart.Series = new SeriesCollection() { calVal };
+            CalibrationChart.Series = Calibration;
 
             DataContext = this;
+        }
 
-
+        private void Done_B_Click(object sender, RoutedEventArgs e)
+        {
+            calibration
         }
     }
 }

@@ -7,6 +7,7 @@ namespace BuissnessLogic
     public class Alarm : IAlarm
     {
         IReceiveRPi receiveRPi=new ReceiveRPi();
+        ISendRPi sendRPi=new SendRPi();
         public List<DTO_Measurement> AlarmData()
         {
             List<DTO_Measurement> alarmList =new List<DTO_Measurement>();
@@ -25,7 +26,7 @@ namespace BuissnessLogic
 
         public void MuteAlarm()
         {
-            throw new System.NotImplementedException();
+            sendRPi.MuteRPi();
         }
     }
 
