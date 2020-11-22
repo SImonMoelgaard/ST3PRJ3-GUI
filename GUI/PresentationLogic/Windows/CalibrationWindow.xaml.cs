@@ -14,6 +14,7 @@ using DataAccessLogic;
 using DTO;
 using LiveCharts;
 using LiveCharts.Wpf;
+using ModernWpf.Controls.Primitives;
 
 namespace PresentationLogic.Windows
 {
@@ -58,11 +59,11 @@ namespace PresentationLogic.Windows
             dataReference.Add(referenceVal);
 
             ////Start calibration message to RPi
-            calibration.StartCalibration();
+            //calibration.StartCalibration();
 
             //Add received calibration value to calibration list
-            double calibrationVal=calibration.GetCalibration();
-            //double calibrationVal = 12;
+            //double calibrationVal=calibration.GetCalibration();
+            double calibrationVal = 12;
             dataCalVal.Add(calibrationVal);
 
             MakeGraph();
@@ -88,11 +89,11 @@ namespace PresentationLogic.Windows
 
 
 
-        private List<DTO_CalVal> Done_B_Click(object sender, RoutedEventArgs e)
+        private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             calibration.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-            calibrationList = calibration.CalculateAAndB();
-            return calibrationList;
+            calibration.CalculateAAndB(dataReference, dataCalVal, 0, 0, 0, 0);
+            
         }
     }
 }

@@ -14,8 +14,8 @@ namespace BuissnessLogic
         private double r2Val;
         private List<DTO_CalVal> calValList;
         private double calval;
-        private double a;
-        
+        private List<DTO_CalVal> linearRegression;
+
         public List<DTO_CalVal> GetCalVal()
         {
             
@@ -41,10 +41,36 @@ namespace BuissnessLogic
             return calibration;
         }
 
-        public List<DTO_CalVal> CalculateAAndB()
+        public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv)
         {
+            double xAvg = 0;
+            double yAvg = 0;
 
-            throw new System.NotImplementedException();
+            for (int i = 0; i < calReference.Count; i++)
+            {
+                xAvg += calReference[i];
+                yAvg += calMeasured[i];
+            }
+
+            xAvg = xAvg / calReference.Count;
+            yAvg = yAvg / calMeasured.Count;
+
+            double v1 = 0;
+            double v2 = 0;
+
+            for (int i = 0; i < calReference.Count; i++)
+            {
+                v1 += (calReference[i] - xAvg) * (calMeasured[i] - yAvg);
+                v2 += Math.Pow(calReference[i] - xAvg, 2);
+            }
+
+            a = v1 / v2;
+            b = Convert.ToInt32(yAvg - a * xAvg);
+
+            List<DTO_CalVal> linearRegression=new List<DTO_CalVal>();
+            linearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
+
+            return linearRegression;
         }
 
         public void calculateR2Val()
