@@ -17,5 +17,7 @@ namespace BuissnessLogic
 
         public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a,
             int b, int zv);
+
+        
     }
 }

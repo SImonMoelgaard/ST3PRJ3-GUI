@@ -48,16 +48,7 @@ namespace DataAccessLogic
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
             
-            calReference.Add(1);
-            calReference.Add(2);
-
-            calMeasured.Add(2);
-            calMeasured.Add(1);
-            r2 = 2;
-            a = 1;
-            b = 2;
-            zv = 22;
-            socSecNB = "HAJ";
+           
 
 
             string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");

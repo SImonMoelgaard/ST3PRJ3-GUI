@@ -121,7 +121,8 @@ namespace DataAccessLogic
 
         public void SaveMeasurement()
         {
-            throw new System.NotImplementedException();
+            
+            
         }
 
        

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using DTO;
 using DataAccessLogic;
+
 
 
 namespace BuissnessLogic
@@ -40,8 +43,9 @@ namespace BuissnessLogic
 
         public double getCalibration(double CalVal)
         {
-           
-            return receive.ReceiveCalibration(CalVal);
+            double value = receive.ReceiveCalibration(calval);
+            value = calval;
+            return value;
         }
 
         
