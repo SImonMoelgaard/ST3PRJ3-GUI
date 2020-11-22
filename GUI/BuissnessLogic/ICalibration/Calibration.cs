@@ -43,6 +43,8 @@ namespace BuissnessLogic
             return receive.ReceiveCalibration(CalVal);
         }
 
+        
+
         public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv)
         {
             double xAvg = 0;

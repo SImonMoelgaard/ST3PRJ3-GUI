@@ -102,7 +102,7 @@ namespace PresentationLogic.Windows
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-            calibrationList = cali.CalculateAAndB();
+            cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
 
         }
     }
