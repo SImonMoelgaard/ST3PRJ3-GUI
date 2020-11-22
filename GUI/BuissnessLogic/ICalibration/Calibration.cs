@@ -29,9 +29,12 @@ namespace BuissnessLogic
             send.StartCalibration();
         }
 
-        public string GetCalibration()
+        public double GetCalibration()
         {
-            string calibration = receive.ReceiveCalibration();
+            //Test
+            double calibration = 9;
+
+            //double calibration = receive.ReceiveCalibration();
             return calibration;
         }
 

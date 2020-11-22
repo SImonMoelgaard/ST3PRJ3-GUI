@@ -28,8 +28,7 @@ namespace PresentationLogic.Windows
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
         public SeriesCollection MyCollection { get; set; }
-        //private List<DTO_CalVal> dataCalVal;
-        
+
         private List<double> dataCalVal;
         private List<int> dataReference;
 
@@ -39,6 +38,10 @@ namespace PresentationLogic.Windows
         {
             mainWindow = mw;
             controller = cr;
+            dataReference=new List<int>();
+            dataCalVal=new List<double>();
+            calVal = new LineSeries();
+            chartCalVal = new ChartValues<double>();
 
             InitializeComponent();
 
@@ -62,17 +65,21 @@ namespace PresentationLogic.Windows
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
-            //-------------------------------------------------------------
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+            dataReference.Add(referenceVal);
+
             calibration.StartCalibration();
+
+            double calibrationVal=calibration.GetCalibration();
+            dataCalVal.Add(calibrationVal);
+
+
 
             foreach (var calval in MyCollection)
             {
                 if (calval.Title == "") ;
             }
-            //-------------------------------------------------------------
-            //int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
-            //her skal reference sendes
+          
 
 
             calVal = new LineSeries();
