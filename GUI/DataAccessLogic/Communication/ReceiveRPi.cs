@@ -25,11 +25,12 @@ namespace DataAccessLogic
 
         private static Socket socket;
         private const int listenPort = 11000;
+        private const int listenPort2 = 11001;
         private const int listenPortCommand = 12000;
         public DTO_Measurement measurementdata;
 
-
-        UdpClient listener = new UdpClient(listenPort);
+        
+        UdpClient listener = new UdpClient(0);
         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
         
         ILocalDatabase local = new LocalDatabase();

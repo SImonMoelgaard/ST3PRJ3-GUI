@@ -43,6 +43,7 @@ namespace PresentationLogic.Windows
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
             Calibration=new SeriesCollection();
+            calibration = new Calibration();
 
             InitializeComponent();
 
@@ -147,7 +148,7 @@ namespace PresentationLogic.Windows
 
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
-            calibration.SaveCalval(dataReference, dataCalVal, 0, 0, 0, 0, "f");
+            calibration.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
         }
     }
 }
