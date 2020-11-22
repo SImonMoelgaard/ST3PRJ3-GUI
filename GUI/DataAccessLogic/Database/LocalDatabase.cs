@@ -67,7 +67,7 @@ namespace DataAccessLogic
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, patientData);
 
-            }
+            }   
 
             return true;
         }

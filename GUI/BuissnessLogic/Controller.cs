@@ -41,9 +41,11 @@ namespace BuissnessLogic
         }
 
 
-        public void getPowerValue(int power)
+        public List<DTO_Measurement> GetMeasurmentdata(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
+            int alarmData, int pulse, int powerData)
         {
-
+            List<DTO_Measurement> measurmentdata = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            return measurmentdata;
         }
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)

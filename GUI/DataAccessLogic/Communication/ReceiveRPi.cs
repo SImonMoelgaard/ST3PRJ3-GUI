@@ -26,12 +26,12 @@ namespace DataAccessLogic
         private static Socket socket;
         private const int listenPort = 11000;
         private const int listenPortCommand = 12000;
-        public DTO_Measurement mdata;
+        public DTO_Measurement measurementdata;
 
 
         UdpClient listener = new UdpClient(listenPort);
         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
-
+        
         ILocalDatabase local = new LocalDatabase();
 
         public object ReceiveCalibration(int calReference, double  calMeasured, double r2, double a, int b, int zv, string socSecNB)
@@ -51,7 +51,7 @@ namespace DataAccessLogic
                     caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
 
-                    return local.SaveCalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+                    return caldata;
                 }
             }
             catch (SocketException e)
@@ -60,20 +60,22 @@ namespace DataAccessLogic
             }
             finally
             {
+               
                 listener.Close();
             }
 
-            return null;
+            
         }
 
         
 
 
 
-        public DTO_Measurement ReceiveMeasurment()
+        public DTO_Measurement ReceiveMeasurment(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
+            int alarmData, int pulse, int powerData)
         {
             
-            DTO_Measurement mdata;
+            measurementdata = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
             string jsonString;
             byte[] bytes;
             
@@ -85,11 +87,11 @@ namespace DataAccessLogic
                     
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                    mdata = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
+                    measurementdata = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
 
 
 
-                    return mdata;
+                    return measurementdata;
                 }
                 
             }
