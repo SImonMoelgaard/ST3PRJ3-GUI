@@ -24,6 +24,7 @@ namespace PresentationLogic.Windows
         private MeasurementWindow measurementWindow;
       private DataWindow datawindow;
       private List<DTO_PatientData> patientdata;
+      
 
         public DataWindow(MainWindow main, Controller cr, MeasurementWindow ms)
         {
@@ -43,16 +44,15 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
-            controller.saveData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
+            controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
                 Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToString(socSecNb_TB
                     .Text));
 
-            
-        
 
-            
 
-            
+
+
+
 
             this.Hide();
             

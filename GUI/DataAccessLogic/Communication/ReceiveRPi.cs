@@ -34,11 +34,11 @@ namespace DataAccessLogic
         
         ILocalDatabase local = new LocalDatabase();
 
-        public object ReceiveCalibration(int calReference, double  calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public double ReceiveCalibration()
         {
             
             DTO_CalVal caldata;
-            string jsonString;
+            double calval;
             byte[] bytes;
 
             try
@@ -47,16 +47,16 @@ namespace DataAccessLogic
                 {
                     
                     bytes = listener.Receive(ref groupEP);
-                    jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                    calval= Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
                     //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
 
-                    return jsonString;
+                    return calval;
                 }
             }
             catch (SocketException e)
             {
-                return null;
+                return 0;
             }
             finally
             {
