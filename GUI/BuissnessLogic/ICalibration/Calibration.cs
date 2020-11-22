@@ -7,6 +7,7 @@ namespace BuissnessLogic
     public class Calibration : ICalibration
     {
         IReceiveRPi receive=new ReceiveRPi();
+        ISendRPi send=new SendRPi();
         private double r2Val;
         private List<DTO_CalVal> calValList;
         
@@ -21,6 +22,17 @@ namespace BuissnessLogic
             //calVal.Add(receive.ReceiveCalibration());
 
             return calValList;
+        }
+
+        public void StartCalibration()
+        {
+            send.StartCalibration();
+        }
+
+        public string GetCalibration()
+        {
+            string calibration = receive.ReceiveCalibration();
+            return calibration;
         }
 
         public void calculateR2Val()

@@ -29,7 +29,10 @@ namespace PresentationLogic.Windows
         private ChartValues<double> chartCalVal;
         public SeriesCollection MyCollection { get; set; }
         //private List<DTO_CalVal> dataCalVal;
+        
         private List<double> dataCalVal;
+        private List<int> dataReference;
+
         public string[] xAxis { get; set; }
 
         public CalibrationWindow(MainWindow mw, Controller cr)
@@ -61,61 +64,63 @@ namespace PresentationLogic.Windows
         {
             //-------------------------------------------------------------
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+            calibration.StartCalibration();
+
             foreach (var calval in MyCollection)
             {
-                if(calval.Title=="")
+                if (calval.Title == "") ;
             }
             //-------------------------------------------------------------
             //int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             //her skal reference sendes
 
 
-            //calVal=new LineSeries();
-            //chartCalVal=new ChartValues<double>();
+            calVal = new LineSeries();
+            chartCalVal = new ChartValues<double>();
 
-            ////dataCalVal = calibration.GetCalVal();
-            ////xAxis = new string[dataCalVal.Count];
+            //dataCalVal = calibration.GetCalVal();
+            //xAxis = new string[dataCalVal.Count];
 
-            //xAxis =new string[1];
+            xAxis = new string[1];
 
-            ////TEST WITHOUT BUISNESS LAYER
-            //dataCalVal = new List<double>();
-            //dataCalVal.Add(5);
-            //dataCalVal.Add(8);
+            //TEST WITHOUT BUISNESS LAYER
+            dataCalVal = new List<double>();
+            dataCalVal.Add(5);
+            dataCalVal.Add(8);
+
+            foreach (var calValue in dataCalVal)
+            {
+                chartCalVal.Add(calValue);
+
+                //for (int i = 0; i < dataCalVal.Count; i++)
+                //{
+                //    xAxis[i] = referenceVal.ToString();
+                //}
+            }
+
+            //dataCalVal.Add(new DTO_CalVal(7,7,7,7,7,7,"hej"));
 
             //foreach (var calValue in dataCalVal)
             //{
-            //    chartCalVal.Add(calValue);
-
-            //    //for (int i = 0; i < dataCalVal.Count; i++)
-            //    //{
-            //    //    xAxis[i] = referenceVal.ToString();
-            //    //}
+            //    chartCalVal.Add(calValue.CalMeasured);
+            //    for (int i = 0; i < dataCalVal.Count; i++)
+            //    {
+            //        xAxis[i] = dataCalVal[i].CalReference.ToString();
+            //    }
             //}
 
-            ////dataCalVal.Add(new DTO_CalVal(7,7,7,7,7,7,"hej"));
 
-            ////foreach (var calValue in dataCalVal)
-            ////{
-            ////    chartCalVal.Add(calValue.CalMeasured);
-            ////    for (int i = 0; i < dataCalVal.Count; i++)
-            ////    {
-            ////        xAxis[i] = dataCalVal[i].CalReference.ToString();
-            ////    }
-            ////}
+            //for (int i = 0; i < dataCalVal.Count; i++)
+            //{
+            //    chartCalVal.Add(dataCalVal[i].CalMeasured);
+            //    xAxis[i] = Convert.ToString(referenceVal);
+            //}
 
+            calVal.Values = chartCalVal;
 
-            ////for (int i = 0; i < dataCalVal.Count; i++)
-            ////{
-            ////    chartCalVal.Add(dataCalVal[i].CalMeasured);
-            ////    xAxis[i] = Convert.ToString(referenceVal);
-            ////}
+            CalibrationChart.Series = new SeriesCollection() { calVal };
 
-            //calVal.Values = chartCalVal;
-
-            //CalibrationChart.Series = new SeriesCollection() {calVal};
-
-            //DataContext = this;
+            DataContext = this;
 
 
         }
