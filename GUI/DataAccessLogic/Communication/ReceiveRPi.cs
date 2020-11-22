@@ -48,10 +48,10 @@ namespace DataAccessLogic
                     
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                    caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+                    //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
 
-                    return caldata;
+                    return jsonString;
                 }
             }
             catch (SocketException e)
