@@ -91,7 +91,8 @@ namespace DataAccessLogic
 
 
 
-                    return measurementdata;
+                    return (DTO_Measurement) local.SaveMeasurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse,
+                        powerData);
                 }
                 
             }

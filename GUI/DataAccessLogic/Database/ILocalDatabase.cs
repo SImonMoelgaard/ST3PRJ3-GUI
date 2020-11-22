@@ -7,9 +7,9 @@ namespace DataAccessLogic
     public interface ILocalDatabase
     {
 
-        public void CreateFile();
+        
 
-        public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
+        public object SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
             int alarmData, int pulse, int powerData);
 
         public object SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
