@@ -58,11 +58,11 @@ namespace PresentationLogic.Windows
             dataReference.Add(referenceVal);
 
             ////Start calibration message to RPi
-            //calibration.StartCalibration();
+            calibration.StartCalibration();
 
             //Add received calibration value to calibration list
-            //double calibrationVal=calibration.GetCalibration();
-            double calibrationVal = 12;
+            double calibrationVal=calibration.GetCalibration();
+            //double calibrationVal = 12;
             dataCalVal.Add(calibrationVal);
 
             MakeGraph();

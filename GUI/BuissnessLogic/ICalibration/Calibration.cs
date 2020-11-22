@@ -44,7 +44,7 @@ namespace BuissnessLogic
         public List<DTO_CalVal> CalculateAAndB()
         {
 
-            
+            throw new System.NotImplementedException();
         }
 
         public void calculateR2Val()
