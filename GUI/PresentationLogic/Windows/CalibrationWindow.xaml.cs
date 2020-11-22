@@ -147,7 +147,7 @@ namespace PresentationLogic.Windows
 
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
-            calibration
+            calibration.SaveCalval(dataReference, dataCalVal, 0, 0, 0, 0, "f");
         }
     }
 }
