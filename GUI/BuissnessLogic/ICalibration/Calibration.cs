@@ -30,15 +30,17 @@ namespace BuissnessLogic
             return calValList;
         }
 
-        public void StartCalibration()
+        public string StartCalibration()
         {
-            send.StartCalibration();
+            return send.StartCalibration();
         }
 
-        public double GetCalibration()
+        
+
+        public double getCalibration(double CalVal)
         {
-            double calibration = receive.ReceiveCalibration();
-            return calibration;
+           
+            return receive.ReceiveCalibration(CalVal);
         }
 
         public List<DTO_CalVal> CalculateAAndB()

@@ -21,12 +21,8 @@ namespace DataAccessLogic
 
         }
 
-        //https://docs.microsoft.com/en-us/dotnet/framework/network-programming/using-udp-services
-
         
-        private const int listenPort = 11000;
-        private const int listenPort2 = 11001;
-        private const int listenPortCommand = 12000;
+        
         public DTO_Measurement measurementdata;
 
         
@@ -42,11 +38,11 @@ namespace DataAccessLogic
         
 
 
-        public double ReceiveCalibration()
+        public double ReceiveCalibration(double calval)
         {
             
             
-            double calval;
+            
             byte[] bytes;
 
             try
@@ -58,18 +54,21 @@ namespace DataAccessLogic
                     calval= Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
                     //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
-
+                    
+                        
+                    
                     return calval;
                 }
             }
             catch (SocketException e)
             {
-                return 0;
+                return calval;
             }
             finally
             {
-               
+                
                 listener.Close();
+                
             }
 
             
