@@ -10,6 +10,7 @@ namespace BuissnessLogic
 
         public void calculateR2Val();
 
+        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB);
 
     }
 }

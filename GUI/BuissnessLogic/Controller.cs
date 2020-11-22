@@ -73,6 +73,10 @@ namespace BuissnessLogic
             //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
             return sendrpi.sendpatientdata(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
         }
+
+        
+
+
     }
 
 

@@ -45,10 +45,23 @@ namespace DataAccessLogic
             return null;
         }
 
-        public object SaveCalVal(int calReference, double calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
+            
+            calReference.Add(1);
+            calReference.Add(2);
+
+            calMeasured.Add(2);
+            calMeasured.Add(1);
+            r2 = 2;
+            a = 1;
+            b = 2;
+            zv = 22;
+            socSecNB = "HAJ";
+
+
             string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");
-            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv,socSecNB);
+            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
 
             using (StreamWriter file = File.AppendText(path))
             {
@@ -59,7 +72,7 @@ namespace DataAccessLogic
             }
 
 
-            return calval;
+            return new List<DTO_CalVal>();
         }
 
         

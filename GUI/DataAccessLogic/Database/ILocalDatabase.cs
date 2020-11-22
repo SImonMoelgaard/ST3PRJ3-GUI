@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DTO;
 
 namespace DataAccessLogic
 {
@@ -14,7 +15,7 @@ namespace DataAccessLogic
 
         public object SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
 
-        public object SaveCalVal(int calReference, double calMeasured, double r2, double a, int b, int zv,
+        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv,
             string socSecNB);
 
         

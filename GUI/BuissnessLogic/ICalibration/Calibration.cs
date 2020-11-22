@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DTO;
 using DataAccessLogic;
+
 
 namespace BuissnessLogic
 {
@@ -8,15 +10,18 @@ namespace BuissnessLogic
     {
         IReceiveRPi receive=new ReceiveRPi();
         ISendRPi send=new SendRPi();
+        ILocalDatabase localDatabase = new LocalDatabase();
         private double r2Val;
         private List<DTO_CalVal> calValList;
+        private double calval;
         
         public List<DTO_CalVal> GetCalVal()
         {
+            
             calValList=new List<DTO_CalVal>();
 
             //this is a test
-            calValList.Add(new DTO_CalVal(7,7.8,7.7,7.7,8,7,"bøf"));
+            //calValList.Add(new DTO_CalVal(7,7.8,7.7,7.7,8,7,"bøf"));
             
             //This is the right one
             //calVal.Add(receive.ReceiveCalibration());
@@ -42,5 +47,17 @@ namespace BuissnessLogic
         {
             throw new System.NotImplementedException();
         }
+
+        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        {
+
+           DTO_CalVal caldata =new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+
+
+            return localDatabase.SaveCalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+        }
+
+        
+
     }
 }
