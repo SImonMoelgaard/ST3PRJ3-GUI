@@ -36,6 +36,7 @@ namespace PresentationLogic.Windows
         ICalibration cali = new Calibration();
 
         public string[] xAxis { get; set; }
+        private double r2;
 
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
@@ -110,7 +111,7 @@ namespace PresentationLogic.Windows
         {
             cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
             cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
-            cali.CalculateR2Val(dataReference, dataCalVal);
+            cali.CalculateR2Val(dataReference, dataCalVal,r2);
         }
     }
 }

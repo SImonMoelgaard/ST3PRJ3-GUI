@@ -14,7 +14,8 @@ namespace BuissnessLogic
         IReceiveRPi receive=new ReceiveRPi();
         ISendRPi send=new SendRPi();
         ILocalDatabase localDatabase = new LocalDatabase();
-        private double r2Val;
+        private double rVal;
+        private double r2;
         private List<DTO_CalVal> calValList;
         private double calval;
         private List<DTO_CalVal> linearRegression;
@@ -81,15 +82,15 @@ namespace BuissnessLogic
             return linearRegression;
         }
 
-        
-
-        public double CalculateR2Val(List<int> calReference, List<double> calMeasured)
+        public double CalculateR2Val(List<int> calReference, List<double> calMeasured,double r2)
         {
             double zX = 0;
             double zY = 0;
             double zXY = 0;
             double zX2 = 0;
             double zY2 = 0;
+
+            calMeasured[0] = 10;
 
             for (int i = 0; i < calReference.Count; i++)
             {
@@ -108,11 +109,13 @@ namespace BuissnessLogic
                 zY2 += Math.Pow(calMeasured[i], 2);
             }
 
-            r2Val = ((calReference.Count * zXY) - (zX * zY)) / Math.Sqrt((calReference.Count * zX2) -
-                                                                         (Math.Pow(zX, 2)) * calReference.Count * zY2 -
-                                                                         (Math.Pow(zY, 2)));
+            rVal = ((calReference.Count * zXY) - (zX * zY)) / Math.Sqrt(((calReference.Count * zX2 -
+                                                                          (Math.Pow(zX, 2))) * (calReference.Count * zY2 -
+                                                                         (Math.Pow(zY, 2)))));
 
-            return r2Val;
+            r2 = Math.Pow(rVal, 2);
+
+            return r2;
         }
 
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
