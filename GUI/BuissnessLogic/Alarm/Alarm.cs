@@ -11,7 +11,7 @@ namespace BuissnessLogic
         public List<DTO_Measurement> AlarmData()
         {
             List<DTO_Measurement> alarmList =new List<DTO_Measurement>();
-
+            
             //alarmList.Add(receiveRPi.ReceiveMeasurment());
             return alarmList;
         }
