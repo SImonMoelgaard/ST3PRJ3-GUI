@@ -48,8 +48,8 @@ namespace PresentationLogic.Windows
             
 
             var mapper = Mappers.Xy<DTO_Measurement>()
-                .X(measurement => measurement.Date.Ticks)
-                .Y(measurement => measurement.RawData);
+                .X(measurement => measurement.Tid.Ticks)
+                .Y(measurement => measurement.mmHg);
 
             Charting.For<DTO_Measurement>(mapper);
 
