@@ -9,7 +9,7 @@ using System.Threading;
 using Microsoft.VisualBasic.CompilerServices;
 using DTO;
 using Newtonsoft.Json;
-using ST3Prj3DomaineCore.Models.DTO;
+
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using DataAccessLogic;
 
@@ -24,7 +24,7 @@ namespace DataAccessLogic
 
 
         private const int listenPort = 11000;
-        private const int listenPortCommand = 12000;
+       
         private string startmeasurment = "Startmeasurment";
         private string startzero = "Startzeroing";
         private string startCal = "Startcalibration";
@@ -142,38 +142,16 @@ namespace DataAccessLogic
 
         }
 
-        public void sendA()
-        {
-           
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-            
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            string message;
-            
-
-            while (true)
-            {
-                
-                message = dtocalval.A.ToString();
-                
-                byte[] data = Encoding.ASCII.GetBytes(message);
-
-                
-
-                //s.SendTo(message, ep);
-
-            }
+        
 
 
-        }
-
-        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient)
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
+            double Calval, double Zeroval)
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
 
-            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient);
+            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
            
 
             var json = JsonConvert.SerializeObject(data);
@@ -188,7 +166,7 @@ namespace DataAccessLogic
 
 
 
-            return local.SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient); 
+            return local.SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient, Calval, Zeroval); 
         } 
         
     }

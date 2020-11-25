@@ -13,8 +13,10 @@ namespace DTO
         public int Lowmean { get; set; }
         public int Highmean { get; set; }
         public string SocSecNB { get; set; }
+        public double Calval { get; set; }
+        public double Zeroval { get; set; }
 
-        public DTO_PatientData(int syslow, int syshigh, int dialow, int diahigh, int lowmean, int highmean, string socSecNB)
+        public DTO_PatientData(int syslow, int syshigh, int dialow, int diahigh, int lowmean, int highmean, string socSecNB, double calval, double zeroval)
         {
             Syslow = syslow;
             Syshigh = syshigh;
@@ -23,6 +25,9 @@ namespace DTO
             Lowmean = lowmean;
             Highmean = highmean;
             SocSecNB = socSecNB;
+            Calval = calval;
+            Zeroval = zeroval;
+            
         }
     }
 }
