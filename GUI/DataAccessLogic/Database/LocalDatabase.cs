@@ -10,7 +10,7 @@ namespace DataAccessLogic
     public class LocalDatabase : ILocalDatabase
     {
         
-
+        ISendRPi sendrpi = new SendRPi();
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
@@ -60,16 +60,17 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
 
                 DTO_PatientData emergencydata = (DTO_PatientData)serializer.Deserialize(file, typeof(DTO_PatientData));
-                return emergencydata;
+                
             }
 
-            
-                
-                
+            return sendrpi.sendemergencydata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval,
+                Zeroval);
 
-            
 
-            return null;
+
+
+
+
         }
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
