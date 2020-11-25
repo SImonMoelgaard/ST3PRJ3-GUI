@@ -83,6 +83,14 @@ namespace BuissnessLogic
             return readFromFile.Read();
         }
 
+        public object sendEemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh,
+            string CprPatient,
+            double Calval, double Zeroval)
+        {
+            return sendrpi.sendemergencydata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+        }
+
+
 
     }
 
