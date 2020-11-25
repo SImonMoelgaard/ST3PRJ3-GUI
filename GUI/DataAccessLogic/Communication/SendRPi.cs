@@ -40,11 +40,11 @@ namespace DataAccessLogic
         public void Start()
         {
 
-            
-                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
 
-                IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
 
 
                 while (true)
@@ -173,14 +173,12 @@ namespace DataAccessLogic
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
 
-            DTO_PatientData data = new DTO_PatientData(SysHigh, SysLow, DiaHigh, DiaLow, CprPatient);
+            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, CprPatient);
            
 
             var json = JsonConvert.SerializeObject(data);
 
             
-            
-
 
                 byte[] sendbuf = Encoding.ASCII.GetBytes(json);
 
@@ -190,7 +188,7 @@ namespace DataAccessLogic
 
 
 
-            return local.SavePatientData(SysHigh, SysLow, DiaHigh, DiaLow, CprPatient); 
+            return local.SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, CprPatient); 
         } 
         
     }

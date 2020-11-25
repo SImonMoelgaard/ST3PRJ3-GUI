@@ -41,41 +41,40 @@ namespace DataAccessLogic
         public double ReceiveCalibration(double calval)
         {
 
-            
-            calval = 15;
-            return calval;
-            //byte[] bytes;
 
-            //try
-            //{
-            //    while (true)
-            //    {
 
-            //        bytes = listener.Receive(ref groupEP);
-            //        calval= Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
-            //        //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
+            byte[] bytes;
 
+            try
+            {
+                while (true)
+                {
+
+                    bytes = listener.Receive(ref groupEP);
+                    calval = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+                    //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
 
 
 
-            //        return calval;
-            //    }
-            //}
-            //catch (SocketException e)
-            //{
-            //    return calval;
-            //}
-            //finally
-            //{
 
-            //    listener.Close();
+                    return calval;
+                }
+            }
+            catch (SocketException e)
+            {
+                return calval;
+            }
+            finally
+            {
 
-        //}
+                listener.Close();
 
-            
+            }
+
+
         }
 
-        
+
 
 
 
