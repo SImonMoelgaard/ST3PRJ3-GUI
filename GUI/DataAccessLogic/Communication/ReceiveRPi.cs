@@ -26,8 +26,7 @@ namespace DataAccessLogic
         public DTO_Measurement measurementdata;
 
         
-        private static UdpClient listener = new UdpClient(11000);
-        private static IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
+        
         
 
         ILocalDatabase local = new LocalDatabase();
@@ -40,10 +39,11 @@ namespace DataAccessLogic
 
         public double ReceiveCalibration(double calval)
         {
+         UdpClient listener = new UdpClient(11004);
+         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
 
 
-
-            byte[] bytes;
+        byte[] bytes;
 
             try
             {
@@ -80,7 +80,9 @@ namespace DataAccessLogic
 
         public DTO_Measurement ReceiveMeasurment(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
-            
+            UdpClient listener = new UdpClient(11001);
+            IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
+
             measurementdata = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
             string jsonString;
             byte[] bytes;
