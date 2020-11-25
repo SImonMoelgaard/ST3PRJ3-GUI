@@ -50,21 +50,22 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
 
-            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+            DTO_PatientData emergencyData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
 
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
             FileInfo MyFile = new FileInfo(path);
 
-            using (StreamReader file = new StreamReader(path))
+            using (StreamReader file = File.OpenText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
 
+                DTO_PatientData emergencydata = (DTO_PatientData)serializer.Deserialize(file, typeof(DTO_PatientData));
+                return emergencydata;
             }
-                
+
             
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Formatting = Formatting.Indented;
-                serializer.Serialize(file, patientData);
+                
+                
 
             
 
