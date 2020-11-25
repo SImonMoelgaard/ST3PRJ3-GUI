@@ -79,7 +79,7 @@ namespace Test_gem_fil
                 
             
             //DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
-            DTO_PatientData data = new DTO_PatientData(syslow, syshigh, dialow, diahigh, socSecNb);
+            //DTO_PatientData data = new DTO_PatientData(syslow, syshigh, dialow, diahigh, socSecNb);
             //File.WriteAllText(@"c:\movie.json", JsonConvert.SerializeObject(data));
 
 
@@ -88,7 +88,7 @@ namespace Test_gem_fil
             {
                 JsonSerializer serializer = new JsonSerializer() ;
                 serializer.Formatting = Formatting.Indented;
-                serializer.Serialize(file, data);
+                //serializer.Serialize(file, data);
                 
             }
             //File.WriteAllText(path, JsonConvert.SerializeObject(data)+ Environment.NewLine);
