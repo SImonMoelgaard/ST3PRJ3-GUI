@@ -20,11 +20,11 @@ namespace DataAccessLogic
 
     public class SendRPi : ISendRPi
     {
-        
+
+
 
 
         private const int listenPort = 11000;
-       
         private string startmeasurment = "Startmeasurment";
         private string startzero = "Startzeroing";
         private string startCal = "Startcalibration";
@@ -148,8 +148,9 @@ namespace DataAccessLogic
         public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
+         int PatiendataPort = 11003;
+        Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);
 
             DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
            
