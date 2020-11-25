@@ -1,4 +1,6 @@
-﻿using DTO;
+﻿using System.ComponentModel;
+using System.Reflection;
+using DTO;
 
 namespace DataAccessLogic
 {
@@ -12,6 +14,6 @@ namespace DataAccessLogic
 
         public void sendA();
 
-        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient);
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient);
     }
 }

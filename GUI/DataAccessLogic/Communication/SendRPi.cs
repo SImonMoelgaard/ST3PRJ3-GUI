@@ -168,12 +168,12 @@ namespace DataAccessLogic
 
         }
 
-        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, string CprPatient)
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient)
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
 
-            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, CprPatient);
+            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient);
            
 
             var json = JsonConvert.SerializeObject(data);
@@ -188,7 +188,7 @@ namespace DataAccessLogic
 
 
 
-            return local.SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, CprPatient); 
+            return local.SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient); 
         } 
         
     }

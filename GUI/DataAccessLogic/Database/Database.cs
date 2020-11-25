@@ -53,10 +53,11 @@ namespace DataAccessLogic
             return result;
         }
 
-        public void SavePatientData(int sysHigh, int sysLow, int diaHigh, int diaLow, string cprPatient)
+        public void SavePatientData(int syslow, int syshigh, int dialow, int diahigh, int lowmean, int highmean, string socSecNB)
         {
             throw new NotImplementedException();
         }
+
 
         public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse,
             int powerData)
@@ -113,7 +114,7 @@ namespace DataAccessLogic
 
             while (reader.Read())
             {
-                measurementList.Add(new DTO_Measurement(Convert.ToString(reader["SocSecNB"]),Convert.ToDouble(reader["RawData"]),Convert.ToDateTime(reader["Date"]),Convert.ToInt32(reader["SysData"]),Convert.ToInt32(reader["DiaData"]),Convert.ToInt32(reader["Alarm"]),Convert.ToInt32(reader["Pulse"]),Convert.ToInt32(reader["PowerData"])));
+                measurementList.Add(new DTO_Measurement(Convert.ToString(reader["SocSecNB"]),Convert.ToDouble(reader["RawData"]),Convert.ToDateTime(reader["Date"]), Convert.ToBoolean(reader["Highsys"]), Convert.ToBoolean(reader["Lowsys"]), Convert.ToBoolean(reader["Highdia"]), Convert.ToBoolean(reader["Lowdia"]), Convert.ToBoolean(reader["Highmean"]), Convert.ToBoolean(reader["Lowmean"]), Convert.ToInt32(reader["Sys"]), Convert.ToInt32(reader["Dia"]), Convert.ToInt32(reader["Mean"]), Convert.ToInt32(reader["Pulse"]), Convert.ToInt32(reader["Batterystatus"])));
             }
             connection.Close();
             return measurementList;

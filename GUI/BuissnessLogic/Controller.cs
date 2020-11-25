@@ -43,9 +43,9 @@ namespace BuissnessLogic
         }
 
 
-        public DTO_Measurement getmdata(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse, int powerData)
+        public DTO_Measurement getmdata(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
-            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
             return measurementdata;
         }
 
@@ -67,11 +67,11 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public object sendRPiData(int sysHigh, int sysLow, int diaHigh, int diaLow, String cprPatient)
+        public object sendRPiData(int sysHigh, int sysLow, int diaHigh, int diaLow, int meanLow, int meanHigh, String cprPatient)
         {
             
             //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
-            return sendrpi.sendpatientdata(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+            return sendrpi.sendpatientdata(sysHigh, sysLow, diaHigh, diaLow, meanLow, meanHigh, cprPatient);
         }
 
         
