@@ -13,7 +13,7 @@ namespace DataAccessLogic
         public bool isUserRegistered(String socSecNb, String pw);
         public bool getSocSecNB(string SocSecNB);
 
-        public void SavePatientData(int sysHigh, int sysLow, int diaHigh, int diaLow, string cprPatient);
+        public void SavePatientData(SysLow, SysHigh, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient);
 
 
     }
