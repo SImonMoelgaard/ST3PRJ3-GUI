@@ -145,11 +145,12 @@ namespace DataAccessLogic
         public object sendemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
+            
             int PatiendataPort = 11002;
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);
 
-
+            return null;
 
 
 

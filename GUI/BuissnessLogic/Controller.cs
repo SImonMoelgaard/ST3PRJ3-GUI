@@ -87,7 +87,7 @@ namespace BuissnessLogic
             string CprPatient,
             double Calval, double Zeroval)
         {
-            return sendrpi.sendemergencydata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+            return localDatabase.ReadPatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 
 
