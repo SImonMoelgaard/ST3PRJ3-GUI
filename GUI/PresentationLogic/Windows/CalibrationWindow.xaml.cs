@@ -81,6 +81,7 @@ namespace PresentationLogic.Windows
             //Add data to list box
             CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
 
+            //Calling make graph method
             MakeGraph();
         }
 

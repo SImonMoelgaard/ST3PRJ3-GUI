@@ -20,10 +20,10 @@
         </lvc:CartesianChart>
         <ListBox x:Name="CalibrationValues_LB" Margin="-380,136,571,13"/>
         <Label Content="Kalibreringsværdier:" HorizontalAlignment="Left" Margin="-380,105,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="referenceValue_TB" HorizontalAlignment="Left" Margin="-276,38,0,0" Text="Reference" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-        <Button x:Name="InsertValue_B" Content="Næste værdi" Margin="-133,40,0,0" VerticalAlignment="Top" Width="113" Click="InsertValue_B_Click"/>
+        <TextBox x:Name="referenceValue_TB" HorizontalAlignment="Left" Margin="-276,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Button x:Name="InsertValue_B" Content="Næste værdi" Margin="-142,30,0,0" VerticalAlignment="Top" Width="101" Click="InsertValue_B_Click"/>
         <Label Content="Referenceværdi:" HorizontalAlignment="Left" Margin="-380,37,0,0" VerticalAlignment="Top" Width="99"/>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="318,0,0,404" VerticalAlignment="Bottom" Width="58" Click="ExitToMainWindow_B_Click"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="315,0,0,394" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_Click"/>
         <Button x:Name="Done_B" Content="Færdig" Margin="-157,389,0,0" VerticalAlignment="Top" Click="Done_B_Click"/>
         <Label x:Name="AAndB_L" Content="" HorizontalAlignment="Left" Margin="19,54,0,0" VerticalAlignment="Top"/>
     </Grid>
