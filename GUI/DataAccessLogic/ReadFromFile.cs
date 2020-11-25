@@ -19,8 +19,8 @@ namespace DataAccessLogic
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    samples[i].mmHg = Convert.ToDouble(splitline[0]);
-                    samples[i].Tid = Convert.ToDateTime(splitline[1]);
+                    samples[i].Tid = Convert.ToDateTime(splitline[0]);
+                    samples[i].mmHg = Convert.ToDouble(splitline[1]);
                 }
             }
 

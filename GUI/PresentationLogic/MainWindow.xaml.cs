@@ -54,22 +54,22 @@ namespace PresentationLogic
 
         private void Window_Loaded_(object sender, RoutedEventArgs e) //Window Loaded
         {
-            
+          
         }
 
 
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
-         //Testing button
-            this.Hide();
-            
-            dataWindow = new DataWindow(this, controller, measurementWindow);
-            
-            dataWindow.ShowDialog();
+            ////Testing button
+            //   this.Hide();
 
-            ////TEST
-           // measurementWindow.ShowDialog();
+            //   dataWindow = new DataWindow(this, controller, measurementWindow);
+
+            //   dataWindow.ShowDialog();
+
+            //TEST
+            measurementWindow.ShowDialog();
 
         }
 

@@ -72,10 +72,23 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            bPressure = new LineSeries();
+            chartBPressure = new ChartValues<double>();
+
             //Read from file
             measurementData = controller.ReadFromFile();
 
-            bPressure=new Lin
+            xAxis = new string[measurementData.Count];
+
+            for (int i = 0; i < measurementData.Count; i++)
+            {
+                chartBPressure.Add(measurementData[i].mmHg);
+                xAxis[i] = measurementData[i].Tid.ToString("s:f");
+            }
+
+            bPressure.Values = chartBPressure;
+
+            MeasurementChart.Series = new SeriesCollection() {bPressure};
 
 
             ////measurementThread=new Thread(UpdateGraph);
