@@ -83,14 +83,14 @@ namespace PresentationLogic.Windows
             for (int i = 0; i < measurementData.Count; i++)
             {
                 chartBPressure.Add(measurementData[i].mmHg);
-                xAxis[i] = measurementData[i].Tid.ToString("s:f");
+                xAxis[i] = measurementData[i].Tid.ToString("s.fff");
             }
 
             bPressure.Values = chartBPressure;
 
             MeasurementChart.Series = new SeriesCollection() {bPressure};
 
-
+            DataContext = this;
             ////measurementThread=new Thread(UpdateGraph);
             //IsReading = !IsReading;
             //if (IsReading) Task.Factory.StartNew(Read);

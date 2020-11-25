@@ -27,7 +27,7 @@
                 <lvc:Axis Title="Dato" Labels="{Binding xAxis}" LabelsRotation="20"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Tryk [mmHg]" MinValue="70" MaxValue="160">
+                <lvc:Axis Title="Tryk [mmHg]" MinValue="50" MaxValue="160">
 
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>

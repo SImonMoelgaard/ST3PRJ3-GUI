@@ -11,17 +11,20 @@ namespace DataAccessLogic
         {
             samples = new List<DTO_Measurement>();
 
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\Sample.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\..\DataAccessLogic\Samples.txt");
 
             foreach (string line in lines)
             {
                 string[] splitline = line.Split(',');
 
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    samples[i].Tid = Convert.ToDateTime(splitline[0]);
-                    samples[i].mmHg = Convert.ToDouble(splitline[1]);
-                }
+                    string tid = splitline[0];
+                    DateTime dateTime =
+                        DateTime.ParseExact(tid, "s.fff", System.Globalization.CultureInfo.InvariantCulture);
+
+                    DTO_Measurement measurement = new DTO_Measurement("", Convert.ToDouble(splitline[1])/1000, dateTime,
+                        false, false, false, false, false, false, 0, 0, 0, 0, 0);
+
+                    samples.Add(measurement);
             }
 
             return samples;
