@@ -163,7 +163,7 @@ namespace DataAccessLogic
 
             s.SendTo(sendbuf, ep);
 
-            return null;
+            return true;
 
 
         }

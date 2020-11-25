@@ -17,7 +17,9 @@ using System.Windows.Shapes;
 using PresentationLogic.Windows;
 using BuissnessLogic;
 using DTO;
+using Microsoft.VisualBasic;
 using ModernWpf;
+
 
 namespace PresentationLogic
 {
@@ -89,10 +91,24 @@ namespace PresentationLogic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            controller.sendEemergencydata(0, 0, 0, 0, 0, 0, "", 0, 0);
-            this.Hide();
+            
 
-            measurementWindow.Show();
+
+            MessageBoxResult message = MessageBox.Show("Er du sikker?", "Advarsel", MessageBoxButton.YesNo);
+            if (message == MessageBoxResult.Yes)
+            {
+                controller.sendEemergencydata(0, 0, 0, 0, 0, 0, "", 0, 0);
+                this.Hide();
+
+                measurementWindow.Show();
+            }
+            else
+            {
+                
+            }
+           
+
+           
 
         }
 
