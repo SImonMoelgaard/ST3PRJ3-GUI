@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLogic.Windows"
         mc:Ignorable="d"
-        Title="DataWindow" Height="346" Width="328"
+        Title="DataWindow" Height="398" Width="328"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid Margin="0,0,0,-6">
@@ -18,12 +18,15 @@
         <Label Content="Grænseværdier" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Øvre" HorizontalAlignment="Left" Margin="82,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
         <Label Content="Nedre" HorizontalAlignment="Left" Margin="173,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
-        <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="102,236,0,0" Text="CPR" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
-        <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="85"/>
-        <Label Content="Patient" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="102,282,0,0" Text="CPR" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Patient" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="98"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="251,13,0,0" VerticalAlignment="Top" Width="57" Click="ExitToMainWindow_B_Click"/>
-        <Button x:Name="Next_B" Content="Næste" HorizontalAlignment="Left" Margin="251,281,0,0" VerticalAlignment="Top" Width="57" Click="Next_B_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="82,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
+        <Button x:Name="Next_B" Content="Næste" Margin="251,327,0,0" VerticalAlignment="Top" Width="57" Click="Next_B_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="82,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
+        <TextBox x:Name="meanULimit_TB" HorizontalAlignment="Left" Margin="82,149,0,0" Text="140" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
+        <Label Content="Middel" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="67"/>
+        <TextBox x:Name="meanLLimit_TB" HorizontalAlignment="Left" Margin="173,149,0,0" Text="100" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
 
     </Grid>
 </Window>
