@@ -37,6 +37,8 @@ namespace PresentationLogic.Windows
 
         public string[] xAxis { get; set; }
         private double r2;
+        private double a;
+        private int b;
 
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
@@ -64,16 +66,18 @@ namespace PresentationLogic.Windows
             ////Start calibration message to RPi
             //cali.StartCalibration();
 
-            double calibrationval = 0;
+            //double calibrationval = 0;
             
 
 
 
-            //Add received calibration value to calibration list
-            cali.getCalibration(calibrationval);
+            ////Add received calibration value to calibration list
+            //cali.getCalibration(calibrationval);
 
-            //double calibrationVal = 12;
-            getcalval(calibrationval);
+            double calibrationVal = 12;
+            dataCalVal.Add(calibrationVal);
+
+            //getcalval(calibrationval);
 
             MakeGraph();
         }
@@ -83,7 +87,6 @@ namespace PresentationLogic.Windows
            return cali.getCalibration(calval);
             
         }
-
 
         public void MakeGraph()
         {
@@ -103,15 +106,25 @@ namespace PresentationLogic.Windows
             DataContext = this;
         }
 
-
-
-        
-
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-            cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
-            cali.CalculateR2Val(dataReference, dataCalVal,r2);
+            List<DTO_CalVal> linearRegression=cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
+            double _r2= cali.CalculateR2Val(dataReference, dataCalVal,r2);
+
+            foreach (var linear in linearRegression)
+            {
+                a = linear.A;
+                b = linear.B;
+            }
+            AAndB_L.Content = "y="+a+"x*"+b+" \n" + "R^2-værdi: "+ _r2;
+
+            r2 = 0.5;
+            if (r2<0.95)
+            {
+                MessageBox.Show("Kalibrering ikke godkendt!");
+            }
+
         }
     }
 }

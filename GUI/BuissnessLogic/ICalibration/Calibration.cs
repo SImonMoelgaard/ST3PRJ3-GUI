@@ -15,7 +15,7 @@ namespace BuissnessLogic
         ISendRPi send=new SendRPi();
         ILocalDatabase localDatabase = new LocalDatabase();
         private double rVal;
-        private double r2;
+        private double _r2;
         private List<DTO_CalVal> calValList;
         private double calval;
         private List<DTO_CalVal> linearRegression;
@@ -90,7 +90,9 @@ namespace BuissnessLogic
             double zX2 = 0;
             double zY2 = 0;
 
+            //test***************
             calMeasured[0] = 10;
+            //*******************
 
             for (int i = 0; i < calReference.Count; i++)
             {
@@ -113,7 +115,8 @@ namespace BuissnessLogic
                                                                           (Math.Pow(zX, 2))) * (calReference.Count * zY2 -
                                                                          (Math.Pow(zY, 2)))));
 
-            r2 = Math.Pow(rVal, 2);
+            _r2 = Math.Pow(rVal, 2);
+            r2 = _r2;
 
             return r2;
         }
