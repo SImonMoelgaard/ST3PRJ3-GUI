@@ -32,7 +32,7 @@ namespace DataAccessLogic
         private string stop = "Stop";
         public DTO_CalVal dtocalval;
         public DTO_PatientData patientdata;
-        IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
+        private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
         IReceiveRPi recieve = new ReceiveRPi();
        
@@ -150,9 +150,20 @@ namespace DataAccessLogic
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);
 
+
+            DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+
+
+            var json = JsonConvert.SerializeObject(data);
+
+
+
+            byte[] sendbuf = Encoding.ASCII.GetBytes(json);
+
+
+            s.SendTo(sendbuf, ep);
+
             return null;
-
-
 
 
         }

@@ -10,7 +10,7 @@ namespace DataAccessLogic
     public class LocalDatabase : ILocalDatabase
     {
         
-        ISendRPi sendrpi = new SendRPi();
+        
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
@@ -49,6 +49,7 @@ namespace DataAccessLogic
         public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
+            ISendRPi sendrpi = new SendRPi();
 
             DTO_PatientData emergencyData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
 
