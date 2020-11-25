@@ -47,8 +47,10 @@ namespace DataAccessLogic
 
             try
             {
+                //datetime med sidste opdatering
                 while (true)
                 {
+                    
 
                     bytes = listener.Receive(ref groupEP);
                     calval = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));

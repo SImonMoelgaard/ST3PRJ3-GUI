@@ -75,6 +75,7 @@ namespace PresentationLogic.Windows
             
             
             DataContext = this;
+
         }
 
         private void Read()
