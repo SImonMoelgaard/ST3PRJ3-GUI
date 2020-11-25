@@ -19,6 +19,9 @@ namespace BuissnessLogic
 
         IDatabase database = new Database();
 
+        //Read from file
+        private ReadFromFile readFromFile = new ReadFromFile();
+
         public void DBcontrol()
         {
             
@@ -75,7 +78,10 @@ namespace BuissnessLogic
             return sendrpi.sendpatientdata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 
-        
+        public List<DTO_Measurement> ReadFromFile()
+        {
+            return readFromFile.Read();
+        }
 
 
     }

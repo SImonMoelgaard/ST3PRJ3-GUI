@@ -35,6 +35,11 @@ namespace PresentationLogic.Windows
         private DataWindow dataWindow;
         private Thread measurementThread;
         private List<DTO_Measurement> measurementData;
+        private LineSeries bPressure;
+        private ChartValues<double> chartBPressure;
+        public string[] xAxis { get; set; }
+
+
         public SeriesCollection Measurement { get; set; }
 
 
@@ -47,29 +52,35 @@ namespace PresentationLogic.Windows
 
             
 
-            var mapper = Mappers.Xy<DTO_Measurement>()
-                .X(measurement => measurement.Tid.Ticks)
-                .Y(measurement => measurement.mmHg);
+            //var mapper = Mappers.Xy<DTO_Measurement>()
+            //    .X(measurement => measurement.Tid.Ticks)
+            //    .Y(measurement => measurement.mmHg);
 
-            Charting.For<DTO_Measurement>(mapper);
+            //Charting.For<DTO_Measurement>(mapper);
 
-            ChartValues = new ChartValues<DTO_Measurement>();
+            //ChartValues = new ChartValues<DTO_Measurement>();
 
-            DateTimeFormatter = value => new DateTime((long)value).ToString("mm:ss");
+            //DateTimeFormatter = value => new DateTime((long)value).ToString("mm:ss");
 
-            AxisStep = TimeSpan.FromSeconds(1).Ticks;
+            //AxisStep = TimeSpan.FromSeconds(1).Ticks;
 
-            AxisUnit = TimeSpan.TicksPerSecond;
+            //AxisUnit = TimeSpan.TicksPerSecond;
 
-            IsReading = false;
-            DataContext = this;
+            //IsReading = false;
+            //DataContext = this;
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            //measurementThread=new Thread(UpdateGraph);
-            IsReading = !IsReading;
-            if (IsReading) Task.Factory.StartNew(Read);
+            //Read from file
+            measurementData = controller.ReadFromFile();
+
+            bPressure=new Lin
+
+
+            ////measurementThread=new Thread(UpdateGraph);
+            //IsReading = !IsReading;
+            //if (IsReading) Task.Factory.StartNew(Read);
         }
 
         private void Read()

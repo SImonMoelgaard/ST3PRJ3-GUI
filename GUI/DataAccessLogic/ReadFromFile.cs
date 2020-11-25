@@ -7,7 +7,7 @@ namespace DataAccessLogic
     public class ReadFromFile
     {
         private List<DTO_Measurement> samples;
-        public List<DTO_Measurement> Measurrement()
+        public List<DTO_Measurement> Read()
         {
             samples = new List<DTO_Measurement>();
 
