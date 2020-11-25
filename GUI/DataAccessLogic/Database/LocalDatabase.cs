@@ -46,7 +46,30 @@ namespace DataAccessLogic
         }
 
 
-        
+        public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
+            double Calval, double Zeroval)
+        {
+
+            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+
+            string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
+            FileInfo MyFile = new FileInfo(path);
+
+            using (StreamReader file = new StreamReader(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+
+            }
+                
+            
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, patientData);
+
+            
+
+            return null;
+        }
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {

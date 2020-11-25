@@ -89,7 +89,9 @@ namespace PresentationLogic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            controller.sendEemergencydata(0, 0, 0, 0, 0, 0, "", 0, 0);
             this.Hide();
+
             measurementWindow.Show();
 
         }
