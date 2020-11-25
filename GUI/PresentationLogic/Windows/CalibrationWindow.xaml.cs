@@ -62,7 +62,6 @@ namespace PresentationLogic.Windows
             //Add reference to reference list
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             dataReference.Add(referenceVal);
-
             ////Start calibration message to RPi
             //cali.StartCalibration();
 
@@ -79,6 +78,9 @@ namespace PresentationLogic.Windows
 
             //getcalval(calibrationval);
 
+            //Add data to list box
+            CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
+
             MakeGraph();
         }
 
@@ -92,8 +94,11 @@ namespace PresentationLogic.Windows
         {
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
+
+            //Array to x-axis
             xAxis =new string[dataCalVal.Count];
 
+            //Add data to y- and x-axis
             for (int i = 0; i < dataCalVal.Count; i++)
             {
                 chartCalVal.Add(dataCalVal[i]);
@@ -108,23 +113,36 @@ namespace PresentationLogic.Windows
 
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
+            //Save reference calibration value
             cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+
+            //Get A and B
             List<DTO_CalVal> linearRegression=cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
+
+            //Get R2
             double _r2= cali.CalculateR2Val(dataReference, dataCalVal,r2);
 
+            //Save a and b
             foreach (var linear in linearRegression)
             {
                 a = linear.A;
                 b = linear.B;
             }
+
+            //Display linear regression and R2
             AAndB_L.Content = "y="+a+"x*"+b+" \n" + "R^2-værdi: "+ _r2;
 
-            r2 = 0.5;
-            if (r2<0.95)
+            //Show message box if R2<0.95
+            if (_r2<0.95)
             {
-                MessageBox.Show("Kalibrering ikke godkendt!");
+                MessageBox.Show("Kalibrering ikke godkendt! \n Foretag ny kalibrering.");
+
+                //Close window
+                this.Close();
+                mainWindow.Show();
             }
 
+            
         }
     }
 }
