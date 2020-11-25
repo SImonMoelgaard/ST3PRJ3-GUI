@@ -67,11 +67,12 @@ namespace BuissnessLogic
             return database.isUserRegistered(socSecNb, pw);
         }
 
-        public object sendRPiData(int sysHigh, int sysLow, int diaHigh, int diaLow, int meanLow, int meanHigh, String cprPatient)
+        public object sendRPiData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
+            double Calval, double Zeroval)
         {
             
             //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
-            return sendrpi.sendpatientdata(sysHigh, sysLow, diaHigh, diaLow, meanLow, meanHigh, cprPatient);
+            return sendrpi.sendpatientdata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 
         

@@ -53,7 +53,8 @@ namespace DataAccessLogic
             return result;
         }
 
-        public void SavePatientData(int syslow, int syshigh, int dialow, int diahigh, int lowmean, int highmean, string socSecNB)
+        public void SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
+            double Calval, double Zeroval)
         {
             throw new NotImplementedException();
         }

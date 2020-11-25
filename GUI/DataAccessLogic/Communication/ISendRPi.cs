@@ -12,8 +12,8 @@ namespace DataAccessLogic
         public void StartZeroing();
         public void MuteRPi();
 
-        public void sendA();
+        
 
-        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient);
+        public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient, double Calval, double Zeroval);
     }
 }

@@ -19,7 +19,7 @@ namespace DTO
             CalReference = calReference;//Værdi valgt på udstyr
             CalMeasured = calMeasured;//Værdi vi får tilbage i Volt
             R2 = r2;//Linearteten
-            A = a;//Dette er gangefaktoren fra kalibreringen
+           A = a;//Dette er gangefaktoren fra kalibreringen
             B = b;//Dette er starten på y aksen.
             Zv = zv;//Nulpunktsjusteringen
             SocSecNB = socSecNB;
