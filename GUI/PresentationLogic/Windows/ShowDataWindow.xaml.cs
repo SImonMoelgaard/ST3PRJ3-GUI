@@ -67,8 +67,8 @@ namespace PresentationLogic.Windows
 
             for (int i = 0; i < dataBPressure.Count; i++)
             {
-                chartBPressure.Add(dataBPressure[i].RawData);
-                xAxis[i] = dataBPressure[i].Date.ToString("HH:mm:ss");
+                chartBPressure.Add(dataBPressure[i].mmHg);
+                xAxis[i] = dataBPressure[i].Tid.ToString("HH:mm:ss");
             }
 
             bPressure.Values = chartBPressure;
