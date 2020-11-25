@@ -41,7 +41,7 @@ namespace Test_gem_fil
                 sw.WriteLine(("CPR", "RAW", "DIA", "SYS"));
                 for (int i = 0; i < dataBPressure.Count; i++)
                 {
-                    sw.WriteLine((cpr, dataBPressure[i].RawData, dataBPressure[i].SysData, dataBPressure[i].DiaData));
+                  //  sw.WriteLine((cpr, dataBPressure[i].RawData, dataBPressure[i].SysData, dataBPressure[i].DiaData));
 
                 }
             }

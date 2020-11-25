@@ -11,11 +11,10 @@ namespace DataAccessLogic
     {
         
 
-        public object SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
-            int alarmData, int pulse, int powerData)
+        public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
-            DTO_Measurement measurement = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            DTO_Measurement measurement = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
 
 
             using (StreamWriter file = File.AppendText(path))
@@ -44,6 +43,9 @@ namespace DataAccessLogic
 
             return null;
         }
+
+
+        
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {

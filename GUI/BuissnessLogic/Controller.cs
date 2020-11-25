@@ -43,9 +43,9 @@ namespace BuissnessLogic
         }
 
 
-        public DTO_Measurement getmdata(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse, int powerData)
+        public DTO_Measurement getmdata(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
-            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
             return measurementdata;
         }
 

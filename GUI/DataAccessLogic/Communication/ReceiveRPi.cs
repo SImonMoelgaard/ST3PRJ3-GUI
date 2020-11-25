@@ -78,11 +78,10 @@ namespace DataAccessLogic
 
 
 
-        public DTO_Measurement ReceiveMeasurment(string socSecNb, double rawData, DateTime date, int sysData, int diaData,
-            int alarmData, int pulse, int powerData)
+        public DTO_Measurement ReceiveMeasurment(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             
-            measurementdata = new DTO_Measurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse, powerData);
+            measurementdata = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
             string jsonString;
             byte[] bytes;
             
@@ -98,8 +97,7 @@ namespace DataAccessLogic
 
 
 
-                    return (DTO_Measurement) local.SaveMeasurement(socSecNb, rawData, date, sysData, diaData, alarmData, pulse,
-                        powerData);
+                    return (DTO_Measurement) local.SaveMeasurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
                 }
                 
             }
