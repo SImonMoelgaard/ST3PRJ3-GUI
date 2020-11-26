@@ -49,11 +49,15 @@ namespace PresentationLogic.Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+            MuteAlarm_B.Visibility = Visibility.Hidden;
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
             Start_B.IsEnabled = true;
+            Stop_B.IsEnabled = false;
+            MuteAlarm_B.Visibility = Visibility.Visible;
+            MuteAlarm_B.IsEnabled = true;
 
             bPressure = new LineSeries();
             chartBPressure = new ChartValues<double>();
@@ -117,7 +121,7 @@ namespace PresentationLogic.Windows
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
-
+            Start_B.IsEnabled = false;
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
