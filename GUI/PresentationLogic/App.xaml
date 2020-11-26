@@ -9,9 +9,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
-                <ui:ThemeResources RequestedTheme="Light" AccentColor="Plum" />
-                
-                    <!-- Other merged dictionaries here -->
+                <ui:ThemeResources RequestedTheme="Dark" AccentColor="Plum" />
+                <ui:ColorPaletteResources ErrorText="Coral"/>
+                <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
         </ResourceDictionary>

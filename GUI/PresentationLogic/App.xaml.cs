@@ -13,5 +13,6 @@ namespace PresentationLogic
     /// </summary>
     public partial class App : Application
     {
+    
     }
 }

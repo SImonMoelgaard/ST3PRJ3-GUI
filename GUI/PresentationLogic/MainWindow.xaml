@@ -9,12 +9,12 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid Margin="0,0,0,7">
-        <Button x:Name="PerformMeasurement_B" Content="Foretag Måling" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top" Height="44" Width="90" Click="PerformMeasurement_B_Click"/>
-        <Button x:Name="PerformCalibration_B" Content="Foretag Kalibrering" HorizontalAlignment="Left" Margin="158,93,0,0" VerticalAlignment="Top" Height="43" Width="122" Click="PerformCalibration_B_Click"/>
+        <Button x:Name="PerformMeasurement_B" Content="Foretag Måling" Margin="30,114,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="PerformMeasurement_B_Click"/>
+        <Button x:Name="PerformCalibration_B" Content="Foretag Kalibrering" Margin="30,0,0,0" Height="43" Width="145" Click="PerformCalibration_B_Click"/>
         <Button x:Name="Exit_B" Content="Luk Program" HorizontalAlignment="Left" Margin="192,14,0,0" VerticalAlignment="Top" Height="36" Width="88" Click="Exit_B_Click"/>
         <RadioButton x:Name="English_RB" Content="English" HorizontalAlignment="Left" Margin="30,25,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Now_B" Content="Oh shit" HorizontalAlignment="Left" Margin="323,93,0,0" VerticalAlignment="Top" Height="41" Width="77" Click="Button_Click"/>
-        <Button x:Name="Showmeassurement_B" Content="Vis måling" HorizontalAlignment="Left" Margin="488,112,0,0" VerticalAlignment="Top" Click="Showmeassurement_B_Click"/>
+        <Button x:Name="Now_B" Content="Oh shit" Margin="192,116,0,0" VerticalAlignment="Top" Height="40" Width="77" Click="Button_Click"/>
+        <Button x:Name="Showmeassurement_B" Content="Vis måling" Margin="30,259,0,0" Click="Showmeassurement_B_Click" Width="145" Height="43" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

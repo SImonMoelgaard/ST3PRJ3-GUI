@@ -21,7 +21,7 @@
         <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="102,282,0,0" Text="CPR" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="85"/>
         <Label Content="Patient" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="98"/>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="232,13,0,0" VerticalAlignment="Top" Width="76" Click="ExitToMainWindow_B_Click"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="232,13,0,0" VerticalAlignment="Top" Width="76" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
         <Button x:Name="Next_B" Content="Næste" Margin="243,327,0,0" VerticalAlignment="Top" Width="65" Click="Next_B_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="82,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
         <TextBox x:Name="meanULimit_TB" HorizontalAlignment="Left" Margin="82,149,0,0" Text="140" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>

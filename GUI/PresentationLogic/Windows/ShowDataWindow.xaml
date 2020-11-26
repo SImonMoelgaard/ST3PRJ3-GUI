@@ -12,7 +12,7 @@
     <Grid>
         <ListBox x:Name="measurementData_LB" Margin="10,40,572,153"/>
         <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="98"/>
-        <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="108,14,0,0" Text="123456-7890" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="108,3,0,0" Text="123456-7890" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <lvc:CartesianChart Name="BloodPressureChart" Margin="250,54,10,153">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Dato" Labels="{Binding xAxis}" LabelsRotation="20"></lvc:Axis>
@@ -21,8 +21,8 @@
                 <lvc:Axis Title="Blodtryk" LabelFormatter="{Binding YFormatter}" MinValue="70" MaxValue="160"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="716,22,0,0" VerticalAlignment="Top" Click="ExitToMainWindow_B_Click"/>
-        <Button x:Name="Search_B" Content="Søg" HorizontalAlignment="Left" Margin="250,15,0,0" VerticalAlignment="Top" Click="Search_B_Click" Style="{StaticResource AccentButtonStyle}"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" HorizontalAlignment="Left" Margin="716,22,0,0" VerticalAlignment="Top" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
+        <Button x:Name="Search_B" Content="Søg" Margin="233,4,0,0" VerticalAlignment="Top" Click="Search_B_Click" Style="{StaticResource AccentButtonStyle}"/>
         <Button x:Name="ShowData_B" Content="Vis måling" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
