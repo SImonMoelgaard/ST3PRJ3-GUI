@@ -50,6 +50,7 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             dataWindow = dw;
             MuteAlarm_B.Visibility = Visibility.Hidden;
+            //measurementThread = new Thread(controller.GetMeasurement());
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
