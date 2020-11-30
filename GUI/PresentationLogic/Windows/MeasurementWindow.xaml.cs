@@ -49,21 +49,31 @@ namespace PresentationLogic.Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
-            MuteAlarm_B.Visibility = Visibility.Hidden;
-            //measurementThread = new Thread(controller.GetMeasurement());
+
+            
+
+            //var mapper = Mappers.Xy<DTO_Measurement>()
+            //    .X(measurement => measurement.Tid.Ticks)
+            //    .Y(measurement => measurement.mmHg);
+
+            //Charting.For<DTO_Measurement>(mapper);
+
+            //ChartValues = new ChartValues<DTO_Measurement>();
+
+            //DateTimeFormatter = value => new DateTime((long)value).ToString("mm:ss");
+
+            //AxisStep = TimeSpan.FromSeconds(1).Ticks;
+
+            //AxisUnit = TimeSpan.TicksPerSecond;
+
+            //IsReading = false;
+            //DataContext = this;
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            Start_B.IsEnabled = true;
-            Stop_B.IsEnabled = false;
-            MuteAlarm_B.Visibility = Visibility.Visible;
-            MuteAlarm_B.IsEnabled = true;
-
-            bPressure = new LineSeries() {PointGeometry = null};
+            bPressure = new LineSeries();
             chartBPressure = new ChartValues<double>();
-            //PointGeometry = null;
-            
 
             //Read from file
             measurementData = controller.ReadFromFile();
@@ -79,10 +89,11 @@ namespace PresentationLogic.Windows
             bPressure.Values = chartBPressure;
 
             MeasurementChart.Series = new SeriesCollection() {bPressure};
-            
-            
-            DataContext = this;
 
+            DataContext = this;
+            ////measurementThread=new Thread(UpdateGraph);
+            //IsReading = !IsReading;
+            //if (IsReading) Task.Factory.StartNew(Read);
         }
 
         private void Read()
@@ -109,6 +120,34 @@ namespace PresentationLogic.Windows
 
         public void UpdateGraph()
         {
+            //measurementData=new List<DTO_Measurement>();
+
+            //Measurement = new SeriesCollection
+            //{
+            //    new LineSeries
+            //    {
+            //        Title = "BloodPressure",
+            //        Values = new ChartValues<double> { },
+
+            //    }
+            //};
+
+            //var mapper = Mappers.Xy<DTO_Measurement>()
+            //    .X(measurement => measurement.Date.Ticks)
+            //    .Y(measurement => measurement.RawData);
+
+            //Charting.For<DTO_Measurement>(mapper);
+
+            //ChartValues=new ChartValues<DTO_Measurement>();
+
+            //DateTimeFormatter=value=>new DateTime((long)value).ToString("mm:ss");
+
+            //AxisStep = TimeSpan.FromSeconds(1).Ticks;
+
+            //AxisUnit = TimeSpan.TicksPerSecond;
+
+            //IsReading = false;
+            //DataContext = this;
 
         }
 
@@ -124,7 +163,7 @@ namespace PresentationLogic.Windows
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
-            Start_B.IsEnabled = false;
+
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
