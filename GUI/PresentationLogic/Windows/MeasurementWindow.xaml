@@ -32,7 +32,7 @@
         </lvc:CartesianChart>
         <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM" /></TextBlock>
         <Label Content="Puls" HorizontalAlignment="Left" Height="70" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36"/>
-        <Label Content="Sys/Dia" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36"/>
+        <Label Content="Sys/Dia" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" BorderBrush="#FFF60909"/>
         <Label Content="Mean" HorizontalAlignment="Left" Height="70" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36"/>
     </Grid>
 </Window>

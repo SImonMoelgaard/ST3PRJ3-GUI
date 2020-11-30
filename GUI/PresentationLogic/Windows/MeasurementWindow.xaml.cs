@@ -60,8 +60,10 @@ namespace PresentationLogic.Windows
             MuteAlarm_B.Visibility = Visibility.Visible;
             MuteAlarm_B.IsEnabled = true;
 
-            bPressure = new LineSeries();
+            bPressure = new LineSeries() {PointGeometry = null};
             chartBPressure = new ChartValues<double>();
+            //PointGeometry = null;
+            
 
             //Read from file
             measurementData = controller.ReadFromFile();
