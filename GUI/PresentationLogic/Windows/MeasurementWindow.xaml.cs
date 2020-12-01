@@ -188,7 +188,7 @@ namespace PresentationLogic.Windows
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
-            Start_B.IsEnabled = false;
+
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
