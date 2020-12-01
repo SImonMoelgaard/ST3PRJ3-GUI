@@ -24,8 +24,17 @@ namespace PresentationLogic.Windows
     /// <summary>
     /// Interaction logic for MeasurementWindow.xaml
     /// </summary>
-    public partial class MeasurementWindow : Window
+    public partial class MeasurementWindow : Window, INotifyPropertyChanged
     {
+        #region Constant Changes Graph
+        private double _axisMax;
+        private double _axisMin;
+        public ChartValues<MeasurementModel> ChartValues { get; set; }
+        public Func<double, string> DateTimeFormatter { get; set; }
+        public double AxisStep { get; set; }
+        public double AxisUnit { get; set; }
+        public bool IsReading { get; set; }
+        #endregion
 
         //Attributess
         //private LineSeries measurement;
@@ -33,10 +42,9 @@ namespace PresentationLogic.Windows
         private MainWindow mainWindow;
         private Controller controller;
         private DataWindow dataWindow;
-        private Thread measurementThread;
         private List<DTO_Measurement> measurementData;
-        private LineSeries bPressure;
-        private ChartValues<double> chartBPressure;
+        //private LineSeries bPressure;
+        //private ChartValues<double> chartBPressure;
         public string[] xAxis { get; set; }
 
 
@@ -50,67 +58,122 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             dataWindow = dw;
             MuteAlarm_B.Visibility = Visibility.Hidden;
-            //measurementThread = new Thread(controller.GetMeasurement());
+
+            #region Constant Changes Graph
+            var mapper = Mappers.Xy<MeasurementModel>()
+                .X(model => model.Time.Ticks)
+                .Y(model => model.RawData);
+
+            Charting.For<MeasurementModel>(mapper);
+
+            ChartValues = new ChartValues<MeasurementModel>();
+
+            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss");
+
+            AxisStep = TimeSpan.FromSeconds(1).Ticks;
+
+            AxisUnit = TimeSpan.TicksPerSecond;
+
+            SetAxisLimits(DateTime.Now);
+
+            IsReading = false;
+
+            DataContext = this;
+            #endregion
+        }
+
+        public double AxisMax
+        {
+            get { return _axisMax; }
+            set
+            {
+                _axisMax = value;
+                OnPropertyChanged("AxisMax");
+            }
+        }
+        public double AxisMin
+        {
+            get { return _axisMin; }
+            set
+            {
+                _axisMin = value;
+                OnPropertyChanged("AxisMin");
+            }
         }
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            Start_B.IsEnabled = true;
             Stop_B.IsEnabled = false;
-            MuteAlarm_B.Visibility = Visibility.Visible;
-            MuteAlarm_B.IsEnabled = true;
+            IsReading = !IsReading;
+            if (IsReading) Task.Factory.StartNew(Read);
 
-            bPressure = new LineSeries() {PointGeometry = null};
-            chartBPressure = new ChartValues<double>();
-            //PointGeometry = null;
+            //Start_B.IsEnabled = true;
             
+            //MuteAlarm_B.Visibility = Visibility.Visible;
+            //MuteAlarm_B.IsEnabled = true;
 
-            //Read from file
-            measurementData = controller.ReadFromFile();
+            #region This works and cannot be removed
+            //bPressure = new LineSeries() {PointGeometry = null};
+            //chartBPressure = new ChartValues<double>();
 
-            xAxis = new string[measurementData.Count];
+            ////Read from file
+            //measurementData = controller.ReadFromFile();
 
-            for (int i = 0; i < measurementData.Count; i++)
-            {
-                chartBPressure.Add(measurementData[i].mmHg);
-                xAxis[i] = measurementData[i].Tid.ToString("s.fff");
-            }
+            //xAxis = new string[measurementData.Count];
 
-            bPressure.Values = chartBPressure;
+            //for (int i = 0; i < measurementData.Count; i++)
+            //{
+            //    chartBPressure.Add(measurementData[i].mmHg);
+            //    xAxis[i] = measurementData[i].Tid.ToString("s.fff");
+            //}
 
-            MeasurementChart.Series = new SeriesCollection() {bPressure};
-            
-            
-            DataContext = this;
+            //bPressure.Values = chartBPressure;
 
+            //MeasurementChart.Series = new SeriesCollection() {bPressure};
+
+
+            //DataContext = this;
+            #endregion
         }
+
 
         private void Read()
         {
-            var r=new Random();
+
+            #region Constant Changes Graph
+
+            var measurement = controller.ReadFromFile();
+
             while (IsReading)
             {
-                Thread.Sleep(150);
-                var now = DateTime.Now;
-                _trend += r.Next(60, 150);
-                //ChartValues.Add(new DTO_Measurement
-               // {
-                 //   RawData = _trend,
-                   // Date=now
-                //});
+                foreach (var data in measurement)
+                {
+                    Thread.Sleep(20);
+                    ChartValues.Add(new MeasurementModel
+                    {
+                        Time = data.Tid,
+                        RawData = data.mmHg
+                    });
+
+                    SetAxisLimits(data.Tid);
+
+                    if (ChartValues.Count>400)
+                    {
+                        ChartValues.RemoveAt(0);
+                    }
+
+                }
             }
+            #endregion
         }
-        public ChartValues<DTO_Measurement> ChartValues { get; set; }
-        public Func<double, string> DateTimeFormatter { get; set; }
-        public double AxisStep { get; set; }
-        public double AxisUnit { get; set; }
-        public bool IsReading { get; set; }
-        private double _trend;
 
-        public void UpdateGraph()
+        private void SetAxisLimits(DateTime now)
         {
-
+            AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
         }
+
+        #region INotifyPropertyChanged implementation
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -120,6 +183,7 @@ namespace PresentationLogic.Windows
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        #endregion
 
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
