@@ -13,7 +13,9 @@ using DataAccessLogic;
 using System.Threading.Tasks;
 
 namespace DataAccessLogic
-{
+{/// <summary>
+/// /
+/// </summary>
     public class ReceiveRPi : IReceiveRPi
     {
         public static void Main()
