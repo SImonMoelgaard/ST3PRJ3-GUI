@@ -226,7 +226,7 @@ namespace PresentationLogic.Windows
 
         }
 
-        public void Alarm(string cpr)
+        public void Alarm()
         {
             
         }
