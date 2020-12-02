@@ -37,7 +37,7 @@ namespace BuissnessLogic
 
         public void MuteAlarm()
         {
-            sendRPi.MuteRPi();
+            sendRPi.Command("Mutealarm");
         }
     }
 

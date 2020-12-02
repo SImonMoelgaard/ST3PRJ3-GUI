@@ -22,24 +22,15 @@ namespace DataAccessLogic
     {
 
 
-
-
-        private const int listenPort = 11000;
-        private string startmeasurment = "Startmeasurment";
-        private string startzero = "Startzeroing";
-        private string startCal = "Startcalibration";
-        private string MuteAlarm = "Mutealarm";
-        private string stop = "Stop";
-        public DTO_CalVal dtocalval;
-        public DTO_PatientData patientdata;
+        
         private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
-        IReceiveRPi recieve = new ReceiveRPi();
+        
 
 
         public string Command(string command)
         {
-
+            int listenPort = 11001;
 
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
@@ -59,88 +50,7 @@ namespace DataAccessLogic
             
         }
 
-        public void Stop()
-        {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-            
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            
-
-            while (true)
-            {
-
-                byte[] sendbuf = Encoding.ASCII.GetBytes(stop);
-
-
-                s.SendTo(sendbuf, ep);
-
-            }
-        }
-
-        public string StartCalibration()
-        {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-            
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-          
-
-            while (true)
-            {
-
-                
-                byte[] sendbuf = Encoding.ASCII.GetBytes(startCal);
-
-
-                s.SendTo(sendbuf, ep);
-
-                
-            }
-        }
-
-        public void StartZeroing()
-        {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-           
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            
-
-            while (true)
-            {
-                
-                
-                byte[] sendbuf = Encoding.ASCII.GetBytes(startzero);
-
-
-                s.SendTo(sendbuf, ep);
-
-            }
-        }
-
-        public void MuteRPi()
-        {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-           
-            IPEndPoint ep = new IPEndPoint(broadcast, listenPort);
-            
-
-            while (true)
-            {
-
-                
-                byte[] sendbuf = Encoding.ASCII.GetBytes(MuteAlarm);
-
-
-                s.SendTo(sendbuf, ep);
-
-            }
-
-
-
-        }
+       
 
         public object sendemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)

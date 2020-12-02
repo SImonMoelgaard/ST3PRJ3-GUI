@@ -36,7 +36,7 @@ namespace BuissnessLogic
 
         public string StartCalibration()
         {
-            return send.StartCalibration();
+            return send.Command("Startcalibration");
         }
 
         

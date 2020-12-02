@@ -55,8 +55,7 @@ namespace DataAccessLogic
 
                     bytes = listener.Receive(ref groupEP);
                     calval = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
-                    //caldata = JsonSerializer.Deserialize<DTO_CalVal>(jsonString);
-
+                    
 
 
 
@@ -80,7 +79,7 @@ namespace DataAccessLogic
 
 
 
-        //string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus
+       
         public List<DTO_Measurement> ReceiveMeasurment()
         {
             UdpClient listener = new UdpClient(11001);
