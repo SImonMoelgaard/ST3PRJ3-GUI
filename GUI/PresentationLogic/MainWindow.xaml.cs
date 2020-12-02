@@ -34,6 +34,7 @@ namespace PresentationLogic
         private LoginWindow loginWindow;
         private Controller controller;
         private ShowDataWindow showDataWindow;
+        private EmergencyPopUp emergency;
         
 
 
@@ -42,6 +43,7 @@ namespace PresentationLogic
         {
             controller = new Controller();
             measurementWindow = new MeasurementWindow(controller, this, dataWindow);
+            emergency = new EmergencyPopUp(this, controller);
             InitializeComponent();
             //Simon
             //AK
@@ -92,20 +94,9 @@ namespace PresentationLogic
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
+            emergency.Show();
 
-
-            MessageBoxResult message = MessageBox.Show("Er du sikker?", "Advarsel", MessageBoxButton.YesNo);
-            if (message == MessageBoxResult.Yes)
-            {
-                controller.sendEemergencydata(0, 0, 0, 0, 0, 0, "", 0, 0);
-                this.Hide();
-
-                measurementWindow.Show();
-            }
-            else
-            {
-                
-            }
+            
            
 
            

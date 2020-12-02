@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Windows.ApplicationModel.Email.DataProvider;
 using BuissnessLogic;
 using DTO;
 using LiveCharts;
@@ -61,6 +62,7 @@ namespace PresentationLogic.Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+            
             MuteAlarm_B.Visibility = Visibility.Hidden;
             
 
