@@ -107,16 +107,10 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            Stop_B.IsEnabled = true;
+            Start_B.IsEnabled = false;
             IsReading = !IsReading;
             if (IsReading) Task.Factory.StartNew(Read);
-
-            //Thread threadGetMeasurement = new Thread(controller.getmdata());
-            //threadGetMeasurement.Start();
-
-            //Start_B.IsEnabled = true;
-            //Stop_B.IsEnabled = false;
-            //MuteAlarm_B.Visibility = Visibility.Visible;
-            //MuteAlarm_B.IsEnabled = true;
 
             #region This works and cannot be removed - AK
 
@@ -151,10 +145,11 @@ namespace PresentationLogic.Windows
 
             //var measurement = controller.ReadFromFile();
             //var measurement = controller.getmdata();
-
-            while (true)
+        
+            while (IsReading)
             {
                 var measurement = controller.getmdata();
+
                 foreach (var data in measurement)
                 {
                     Thread.Sleep(20);
@@ -171,9 +166,13 @@ namespace PresentationLogic.Windows
                         ChartValues.RemoveAt(0);
                     }
 
-                    Puls_L.Content = data.CalculatedPulse;
-                    SysDia_L.Content = data.CalculatedSys + "/" + data.CalculatedDia;
-                    Mean_L.Content = data.CalculatedMean;
+                    //Update pulse, systolic, diastolic and mean
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        Puls_L.Content = Convert.ToString(data.CalculatedPulse);
+                        SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
+                        Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                    });
                 }
             }
             #endregion
@@ -201,6 +200,8 @@ namespace PresentationLogic.Windows
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
             IsReading = false;
+            Stop_B.IsEnabled = false;
+            Start_B.IsEnabled = true;
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
@@ -227,15 +228,7 @@ namespace PresentationLogic.Windows
 
         public void Alarm(string cpr)
         {
-            int alarm = 1;
-            if (alarm==1)
-            {
-                while (true)
-                {
-                    alarm_L.Text = "Alarm!";
-                    Thread.Sleep(2000);
-                }
-            }
+            
         }
     }
 }

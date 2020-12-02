@@ -10,7 +10,18 @@ namespace BuissnessLogic
         ISendRPi sendRPi=new SendRPi();
         public List<DTO_Measurement> AlarmData()
         {
-            List<DTO_Measurement> alarmList =new List<DTO_Measurement>();
+            List<DTO_Measurement> alarmList = new List<DTO_Measurement>();
+            List<bool> alarms = new List<bool>();
+
+            while (true)
+            {
+                alarmList = receiveRPi.ReceiveMeasurment();
+                foreach (var alarm in alarmList)
+                {
+                    alarms.Add(alarm.HighDia);
+                }
+            }
+            
             
             //alarmList.Add(receiveRPi.ReceiveMeasurment());
             return alarmList;
