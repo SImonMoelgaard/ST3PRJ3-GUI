@@ -34,6 +34,10 @@ namespace PresentationLogic.Windows
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
         public bool IsReading { get; set; }
+
+        //Threads
+        private Thread threadGetMeasurement;
+
         #endregion
 
         //Attributess
@@ -103,16 +107,19 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            Stop_B.IsEnabled = false;
             IsReading = !IsReading;
             if (IsReading) Task.Factory.StartNew(Read);
 
+            //Thread threadGetMeasurement = new Thread(controller.getmdata());
+            //threadGetMeasurement.Start();
+
             //Start_B.IsEnabled = true;
-            
+            //Stop_B.IsEnabled = false;
             //MuteAlarm_B.Visibility = Visibility.Visible;
             //MuteAlarm_B.IsEnabled = true;
 
-            #region This works and cannot be removed
+            #region This works and cannot be removed - AK
+
             //bPressure = new LineSeries() {PointGeometry = null};
             //chartBPressure = new ChartValues<double>();
 
@@ -133,16 +140,17 @@ namespace PresentationLogic.Windows
 
 
             //DataContext = this;
+
             #endregion
         }
 
 
         private void Read()
         {
-
             #region Constant Changes Graph
 
-            var measurement = controller.ReadFromFile();
+            //var measurement = controller.ReadFromFile();
+            var measurement = controller.getmdata();
 
             while (IsReading)
             {
@@ -188,7 +196,7 @@ namespace PresentationLogic.Windows
 
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
-
+            IsReading = false;
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)

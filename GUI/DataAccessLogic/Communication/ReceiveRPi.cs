@@ -77,13 +77,13 @@ namespace DataAccessLogic
 
 
 
-
-        public DTO_Measurement ReceiveMeasurment(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
+        //string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus
+        public List<DTO_Measurement> ReceiveMeasurment()
         {
             UdpClient listener = new UdpClient(11001);
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
-
-            measurementdata = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
+            List<DTO_Measurement> measurements = new List<DTO_Measurement>();
+            
             string jsonString;
             byte[] bytes;
             
@@ -96,10 +96,14 @@ namespace DataAccessLogic
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
                     measurementdata = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
+                    measurements.Add(measurementdata);
 
-
-
-                    return (DTO_Measurement) local.SaveMeasurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
+                    local.SaveMeasurement(measurementdata.SocSecNB, measurementdata.mmHg, measurementdata.Tid,
+                        measurementdata.HighSys, measurementdata.LowSys, measurementdata.HighDia,
+                        measurementdata.LowDia, measurementdata.HighMean, measurementdata.LowMean,
+                        measurementdata.CalculatedSys, measurementdata.CalculatedDia, measurementdata.CalculatedMean,
+                        measurementdata.CalculatedPulse, measurementdata.Batterystatus);
+                    return measurements;
                 }
                 
             }

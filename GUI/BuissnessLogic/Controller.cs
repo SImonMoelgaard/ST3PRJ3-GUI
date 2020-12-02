@@ -10,7 +10,7 @@ namespace BuissnessLogic
     public class Controller
     {
         private List<DTO_Measurement> measurementList;
-        private DTO_Measurement measurementdata;
+        private List<DTO_Measurement> measurementdata;
 
 
         ISendRPi sendrpi = new SendRPi();
@@ -46,9 +46,9 @@ namespace BuissnessLogic
         }
 
 
-        public DTO_Measurement getmdata(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
+        public List<DTO_Measurement> getmdata()
         {
-            measurementdata = recieveRPi.ReceiveMeasurment(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
+            measurementdata = recieveRPi.ReceiveMeasurment();
             return measurementdata;
         }
 
