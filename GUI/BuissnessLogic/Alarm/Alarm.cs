@@ -8,6 +8,7 @@ namespace BuissnessLogic
     {
         IReceiveRPi receiveRPi=new ReceiveRPi();
         ISendRPi sendRPi=new SendRPi();
+
         public List<DTO_Measurement> AlarmData()
         {
             List<DTO_Measurement> alarmList = new List<DTO_Measurement>();
@@ -16,9 +17,11 @@ namespace BuissnessLogic
             while (true)
             {
                 alarmList = receiveRPi.ReceiveMeasurment();
+
                 foreach (var alarm in alarmList)
                 {
                     alarms.Add(alarm.HighDia);
+                    
                 }
             }
             
