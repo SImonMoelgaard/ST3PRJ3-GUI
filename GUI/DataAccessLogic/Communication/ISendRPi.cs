@@ -6,7 +6,7 @@ namespace DataAccessLogic
 {
     public interface ISendRPi
     {
-        public void Start();
+        public string Command(string command);
         public void Stop();
         public string StartCalibration();
         public void StartZeroing();
