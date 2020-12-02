@@ -170,6 +170,9 @@ namespace PresentationLogic.Windows
                         ChartValues.RemoveAt(0);
                     }
 
+                    Puls_L.Content = data.CalculatedPulse;
+                    SysDia_L.Content = data.CalculatedSys + "/" + data.CalculatedDia;
+                    Mean_L.Content = data.CalculatedMean;
                 }
             }
             #endregion
