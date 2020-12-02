@@ -62,6 +62,7 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             dataWindow = dw;
             MuteAlarm_B.Visibility = Visibility.Hidden;
+            
 
             #region Constant Changes Graph
             var mapper = Mappers.Xy<MeasurementModel>()
@@ -107,10 +108,16 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
+            
             IsReading = !IsReading;
-            if (IsReading) Task.Factory.StartNew(Read);
+            
+
+                if (IsReading) Task.Factory.StartNew(Read);
+              
+           
 
             #region This works and cannot be removed - AK
 
@@ -148,6 +155,7 @@ namespace PresentationLogic.Windows
         
             while (IsReading)
             {
+                //controller.command("Startmeasurment");
                 var measurement = controller.getmdata();
 
                 foreach (var data in measurement)
@@ -182,6 +190,7 @@ namespace PresentationLogic.Windows
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
             AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
+            
         }
 
         #region INotifyPropertyChanged implementation

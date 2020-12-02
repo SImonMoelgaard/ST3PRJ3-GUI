@@ -35,9 +35,9 @@ namespace DataAccessLogic
         private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
         IReceiveRPi recieve = new ReceiveRPi();
-       
 
-        public void Start()
+
+        public string Command(string command)
         {
 
 
@@ -50,7 +50,7 @@ namespace DataAccessLogic
                 while (true)
                 {
 
-                    byte[] sendbuf = Encoding.ASCII.GetBytes(startmeasurment);
+                    byte[] sendbuf = Encoding.ASCII.GetBytes(command);
 
 
                     s.SendTo(sendbuf, ep);
