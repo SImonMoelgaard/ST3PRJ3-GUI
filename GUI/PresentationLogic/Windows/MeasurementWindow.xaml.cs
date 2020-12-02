@@ -150,10 +150,11 @@ namespace PresentationLogic.Windows
             #region Constant Changes Graph
 
             //var measurement = controller.ReadFromFile();
-            var measurement = controller.getmdata();
+            //var measurement = controller.getmdata();
 
-            while (IsReading)
+            while (true)
             {
+                var measurement = controller.getmdata();
                 foreach (var data in measurement)
                 {
                     Thread.Sleep(20);
