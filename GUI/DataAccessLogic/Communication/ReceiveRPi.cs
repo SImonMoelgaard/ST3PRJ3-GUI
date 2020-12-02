@@ -4,13 +4,14 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using DTO;
 using DataAccessLogic;
 
 
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace DataAccessLogic
 {/// <summary>
@@ -25,7 +26,7 @@ namespace DataAccessLogic
 
         public DTO_CalVal dtocal;
         
-        public DTO_Measurement measurementdata;
+        
 
         
         
@@ -84,21 +85,25 @@ namespace DataAccessLogic
         {
             UdpClient listener = new UdpClient(11001);
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
-            List<DTO_Measurement> measurements = new List<DTO_Measurement>();
+            
             
             string jsonString;
             byte[] bytes;
             
-          
+
             try
             {
                 while (true)
                 {
-                    
+                    List<DTO_Measurement> measurements = new List<DTO_Measurement>();
+                    var measurementdata = new DTO_Measurement("", 0, DateTime.Now, false, false, false, false, false, false, 0 , 0 ,0 ,0 ,0);
                     bytes = listener.Receive(ref groupEP);
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
-                    measurementdata = JsonSerializer.Deserialize<DTO_Measurement>(jsonString);
+                    measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(jsonString);
                     measurements.Add(measurementdata);
+
+
+                
 
                     local.SaveMeasurement(measurementdata.SocSecNB, measurementdata.mmHg, measurementdata.Tid,
                         measurementdata.HighSys, measurementdata.LowSys, measurementdata.HighDia,
