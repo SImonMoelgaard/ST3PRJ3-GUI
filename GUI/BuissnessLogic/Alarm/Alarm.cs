@@ -24,7 +24,7 @@ namespace BuissnessLogic
                     
                 }
             }
-            
+            //
             
             //alarmList.Add(receiveRPi.ReceiveMeasurment());
             return alarmList;
