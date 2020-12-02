@@ -235,6 +235,9 @@ namespace PresentationLogic.Windows
 
         }
 
+        //private readonly BlockCollection<DataContainer> _dataQueue;
+
+
         public void Alarm()
         {
             
