@@ -5,6 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLogic.Windows"
         mc:Ignorable="d"
-        Title="EmergencyPopUp" Height="450" Width="800">
-    <Grid/>
+
+        Title="EmergencyPopUp" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
+
+    <Grid>
+        <Button x:Name="Start_B" Content="Start" Margin="125,114,0,0" VerticalAlignment="Top" Height="43" Width="77" Click="Start_B_Click" Background="#FF70AD47"/>
+        <Button x:Name="Exit_B" Content="Afbryd" Margin="34,111,0,0" VerticalAlignment="Top" Height="46" Width="64" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
+        <Label Content="Indtast CPR for at fortsætte" HorizontalAlignment="Left" Height="21" Margin="34,38,0,0" VerticalAlignment="Top" Width="182"/>
+        <TextBox x:Name="CPR_tb" HorizontalAlignment="Left" Margin="34,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="29"/>
+    </Grid>
 </Window>

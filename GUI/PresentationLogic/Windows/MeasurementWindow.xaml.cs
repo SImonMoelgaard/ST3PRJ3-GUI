@@ -58,12 +58,14 @@ namespace PresentationLogic.Windows
 
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
+            
             InitializeComponent();
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+
             
-            MuteAlarm_B.Visibility = Visibility.Hidden;
+
             
 
             #region Constant Changes Graph
@@ -111,15 +113,15 @@ namespace PresentationLogic.Windows
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
             
+            MuteAlarm_B.Visibility = Visibility.Hidden;
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
-            
             IsReading = !IsReading;
+
+
+            if (IsReading) Task.Factory.StartNew(Read);
             
 
-                if (IsReading) Task.Factory.StartNew(Read);
-              
-           
 
             #region This works and cannot be removed - AK
 
@@ -154,10 +156,10 @@ namespace PresentationLogic.Windows
 
             //var measurement = controller.ReadFromFile();
             //var measurement = controller.getmdata();
-        
+            
             while (IsReading)
             {
-                //controller.command("Startmeasurment");
+                
                 var measurement = controller.getmdata();
 
                 foreach (var data in measurement)
@@ -192,7 +194,7 @@ namespace PresentationLogic.Windows
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
             AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
-            
+            controller.command("Startmeasurement");//Måske et let ghetto sted. men det gør sådan det virker xD
         }
 
         #region INotifyPropertyChanged implementation
@@ -213,6 +215,7 @@ namespace PresentationLogic.Windows
             IsReading = false;
             Stop_B.IsEnabled = false;
             Start_B.IsEnabled = true;
+            controller.command("Stop");
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
@@ -243,6 +246,11 @@ namespace PresentationLogic.Windows
         public void Alarm()
         {
             
+        }
+
+        private void Rpistart_b_Click(object sender, RoutedEventArgs e)
+        {
+            controller.command("Startmeasurement");
         }
     }
 }

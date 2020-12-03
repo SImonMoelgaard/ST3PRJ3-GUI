@@ -34,7 +34,7 @@ namespace PresentationLogic
         private LoginWindow loginWindow;
         private Controller controller;
         private ShowDataWindow showDataWindow;
-        private EmergencyPopUp emergency;
+        private EmergencyPopUp emergencywindow;
         
 
 
@@ -42,15 +42,15 @@ namespace PresentationLogic
         public MainWindow()
         {
             controller = new Controller();
-            measurementWindow = new MeasurementWindow(controller, this, dataWindow);
-            emergency = new EmergencyPopUp(this, controller);
+
+            
             InitializeComponent();
             //Simon
             //AK
 
-         
-           
+            
 
+           
 
 
         }
@@ -66,14 +66,12 @@ namespace PresentationLogic
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
             ////Testing button
-            //   this.Hide();
+            this.Hide();
 
-            //   dataWindow = new DataWindow(this, controller, measurementWindow);
+             dataWindow = new DataWindow(this, controller, measurementWindow);
 
-            //   dataWindow.ShowDialog();
+            dataWindow.ShowDialog();
 
-            //TEST
-            measurementWindow.ShowDialog();
 
         }
 
@@ -93,8 +91,9 @@ namespace PresentationLogic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            emergencywindow = new EmergencyPopUp(this,controller, measurementWindow);
+            emergencywindow.ShowDialog();
             
-            emergency.Show();
 
             
            

@@ -45,11 +45,11 @@ namespace PresentationLogic.Windows
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
             controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
-                Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB), Convert.ToInt32(meanULimit_TB), Convert.ToString(socSecNb_TB
-                    .Text), 0 ,0); 
+                Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text
+                    ), 0 ,0);
 
 
-
+            measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
 
 
 

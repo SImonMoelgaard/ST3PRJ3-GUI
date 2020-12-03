@@ -90,6 +90,7 @@ namespace BuissnessLogic
             return localDatabase.ReadPatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 
+        
         public string command(string command)
         {
             return sendrpi.Command(command);

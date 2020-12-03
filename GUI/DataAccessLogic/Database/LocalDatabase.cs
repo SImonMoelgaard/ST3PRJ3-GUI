@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
+using System.Reflection.Metadata;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Channels;
 using DTO;
 using Newtonsoft.Json;
 
@@ -9,7 +13,7 @@ namespace DataAccessLogic
 {
     public class LocalDatabase : ILocalDatabase
     {
-        
+        private SendRPi send;
         
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
@@ -39,38 +43,48 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, patientData);
-
-            }   
+                
+            }
 
             return null;
+            
+
         }
 
-
+        
         public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
             ISendRPi sendrpi = new SendRPi();
 
-            DTO_PatientData emergencyData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
-
+            
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
-            FileInfo MyFile = new FileInfo(path);
+            
+            List<DTO_PatientData> data= new List<DTO_PatientData>();
+            var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
 
-            using (StreamReader file = File.OpenText(path))
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
+                using (StreamReader r = new StreamReader(path))
+                {
+                    string json = r.ReadToEnd();
 
-                DTO_PatientData emergencydata = (DTO_PatientData)serializer.Deserialize(file, typeof(DTO_PatientData));
-                
+
+                    emergencydata = JsonConvert.DeserializeObject<DTO_PatientData>(json);
+
+                }
             }
+            catch (Exception e)
+            {
+                return true;
+            }
+           
 
-            return sendrpi.sendemergencydata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval,
-                Zeroval);
 
 
+            
 
-
-
+            return sendrpi.sendemergencydata(emergencydata.Syshigh, emergencydata.Syslow, emergencydata.Diahigh, emergencydata.Dialow, emergencydata.Lowmean, emergencydata.Highmean, emergencydata.SocSecNB, emergencydata.Calval, emergencydata.Zeroval);
 
         }
 
