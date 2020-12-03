@@ -86,7 +86,7 @@ namespace PresentationLogic
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
-            controller.command("systemOFF");
+            controller.command("systemOff");
             this.Close();
 
         }
