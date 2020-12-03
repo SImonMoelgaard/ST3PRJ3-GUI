@@ -44,11 +44,11 @@
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
         <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM" /></TextBlock>
-        <Label x:Name="Puls_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36"/>
-        <Label x:Name="SysDia_L" Content="0/0" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" BorderBrush="#FFF60909"/>
-        <Label x:Name="Mean_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36"/>
-        <Label Content="Pulse:" HorizontalAlignment="Left" Height="21" Margin="10,96,0,0" VerticalAlignment="Top" Width="34"/>
-        <Label Content="Systolisk/Diastolisk:" HorizontalAlignment="Left" Height="21" Margin="10,166,0,0" VerticalAlignment="Top" Width="129"/>
-        <Label Content="Middel:" HorizontalAlignment="Left" Height="21" Margin="10,236,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label x:Name="Puls_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FF8EEF6D"/>
+        <Label x:Name="SysDia_L" Content="0/0" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" BorderBrush="#FFF60909" Foreground="#FFF70707"/>
+        <Label x:Name="Mean_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FFFC9F0A"/>
+        <Label Content="Pulse:" HorizontalAlignment="Left" Height="21" Margin="10,96,0,0" VerticalAlignment="Top" Width="34" Foreground="#FF8EEF6D"/>
+        <Label Content="Systolisk/Diastolisk:" HorizontalAlignment="Left" Height="21" Margin="10,166,0,0" VerticalAlignment="Top" Width="129" Foreground="#FFF70707"/>
+        <Label Content="Middel:" HorizontalAlignment="Left" Height="21" Margin="10,236,0,0" VerticalAlignment="Top" Width="64" Foreground="#FFFC9F0A"/>
     </Grid>
 </Window>
