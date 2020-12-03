@@ -157,6 +157,7 @@ namespace PresentationLogic.Windows
             //var measurement = controller.ReadFromFile();
             //var measurement = controller.getmdata();
             
+            
             while (IsReading)
             {
                 
@@ -184,6 +185,7 @@ namespace PresentationLogic.Windows
                         Puls_L.Content = Convert.ToString(data.CalculatedPulse);
                         SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
                         Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                        
                     });
                 }
             }
@@ -221,6 +223,7 @@ namespace PresentationLogic.Windows
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
         {
             alarm_L.Visibility = Visibility.Hidden;
+            _muteAlarm = false;
         
         }
 
@@ -242,10 +245,32 @@ namespace PresentationLogic.Windows
 
         //private readonly BlockCollection<DataContainer> _dataQueue;
 
+        private List<DTO_Measurement> alarms;
+        private bool _muteAlarm = true;
+        private Thread alarmThread;
 
         public void Alarm()
         {
-            
+            alarms = new List<DTO_Measurement>();
+            alarms = controller.getmdata();
+
+            foreach (var alarm in alarms)
+            {
+                if (alarm.HighDia || alarm.LowDia || alarm.HighSys || alarm.LowSys)
+                {
+                    while (_muteAlarm)
+                    {
+                        while (true)
+                        {
+                            SysDia_L.BorderBrush = Brushes.Red;
+                            SysDia_L.BorderBrush = Brushes.Transparent;
+                        }
+                    }
+                }
+                
+            }
+
+
         }
 
         private void Rpistart_b_Click(object sender, RoutedEventArgs e)
