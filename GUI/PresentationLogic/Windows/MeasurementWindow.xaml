@@ -12,8 +12,8 @@
     <Grid>
         <Button x:Name="Start_B" Content="Start" Margin="22,364,0,0" VerticalAlignment="Top" Height="43" Width="89" Click="Start_B_Click" Background="#FF70AD47"/>
         <Button x:Name="Stop_B" Content="Stop" HorizontalAlignment="Left" Margin="116,364,0,0" VerticalAlignment="Top" Height="43" Width="91" Click="Stop_B_Click" Background="Red" IsEnabled="False"/>
-        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" Style="{StaticResource AccentButtonStyle}"/>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="685,8,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
+        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" />
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="695,8,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
 
         <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="False" DataTooltip="{x:Null}" Name="MeasurementChart" Margin="162,61,0,80">
             <lvc:CartesianChart.Series>
@@ -43,7 +43,6 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <TextBlock x:Name="alarm_L" HorizontalAlignment="Left" Margin="225,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="555" Background="#FFF70707"><Run Language="da-dk" Text="ALARM" /></TextBlock>
         <Label x:Name="Puls_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FF8EEF6D"/>
         <Label x:Name="SysDia_L" Content="0/0" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" BorderBrush="#FFF60909" Foreground="#FFF70707"/>
         <Label x:Name="Mean_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FFFC9F0A"/>

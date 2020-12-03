@@ -45,12 +45,18 @@ namespace PresentationLogic
 
             
             InitializeComponent();
-            //Simon
-            //AK
-
             
+            //English_RB.Content = new Image()
+            //{
+            //    Source=(new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
+            //};
+            English_RB.Tag = new Image()
+            {
+                Source = (new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
+            };
 
-           
+
+
 
 
         }
