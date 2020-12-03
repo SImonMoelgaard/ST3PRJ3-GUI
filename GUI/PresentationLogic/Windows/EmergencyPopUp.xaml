@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PresentationLogic.Windows"
         mc:Ignorable="d"
 
-        Title="EmergencyPopUp" Height="450" Width="800"
+        Title="EmergencyPopUp" Height="207" Width="239"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
 

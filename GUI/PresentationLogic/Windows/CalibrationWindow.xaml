@@ -21,7 +21,7 @@
         <ListBox x:Name="CalibrationValues_LB" Margin="-380,136,571,13"/>
         <Label Content="Kalibreringsværdier:" HorizontalAlignment="Left" Margin="-380,105,0,0" VerticalAlignment="Top" Width="142"/>
         <TextBox x:Name="referenceValue_TB" HorizontalAlignment="Left" Margin="-276,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-        <Button x:Name="InsertValue_B" Content="Næste værdi" Margin="-142,30,0,0" VerticalAlignment="Top" Width="101" Click="InsertValue_B_Click"/>
+        <Button x:Name="InsertValue_B" Content="Næste værdi" Margin="-142,30,0,0" VerticalAlignment="Top" Width="101" Click="InsertValue_B_Click" Background="#FFB2833F"/>
         <Label Content="Referenceværdi:" HorizontalAlignment="Left" Margin="-380,37,0,0" VerticalAlignment="Top" Width="99" FontStyle="Normal"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="315,0,0,394" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
         <Button x:Name="Done_B" Content="Færdig" Margin="-157,389,0,0" VerticalAlignment="Top" Click="Done_B_Click"/>
