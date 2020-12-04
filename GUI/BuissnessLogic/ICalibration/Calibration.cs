@@ -43,7 +43,7 @@ namespace BuissnessLogic
 
         public double getCalibration(double CalVal)
         {
-            double value = receive.ReceiveCalibration(calval);
+            double value = receive.Recievedouble(calval);
             value = calval;
             return value;
         }
