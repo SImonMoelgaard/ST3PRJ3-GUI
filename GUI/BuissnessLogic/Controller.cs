@@ -11,7 +11,8 @@ namespace BuissnessLogic
     {
         private List<DTO_Measurement> measurementList;
         private List<DTO_Measurement> measurementdata;
-
+        private double data;
+        private double caldata;
 
         ISendRPi sendrpi = new SendRPi();
         IReceiveRPi recieveRPi = new ReceiveRPi();
@@ -52,6 +53,24 @@ namespace BuissnessLogic
             return measurementdata;
         }
 
+        public double Recievedouble()
+        {
+            data = recieveRPi.Recievedouble();
+            return data;
+        }
+
+        public void requestcalval()
+        {
+            localDatabase.GetCalVal();
+            
+        }
+        public double getcalval()
+        {
+
+            caldata = localDatabase.GetCalVal();
+            return caldata;
+        }
+
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
             measurementList = database.GetMeasurement(socSecNB);
@@ -74,7 +93,7 @@ namespace BuissnessLogic
             double Calval, double Zeroval)
         {
             
-            //localDatabase.SavePatientData(sysHigh, sysLow, diaHigh, diaLow, cprPatient);
+            
             return sendrpi.sendpatientdata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 

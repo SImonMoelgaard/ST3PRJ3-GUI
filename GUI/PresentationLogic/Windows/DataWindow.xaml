@@ -26,7 +26,7 @@
         <Label Content="Patient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" FontSize="20" FontWeight="Bold"/>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="244,10,0,0" VerticalAlignment="Top" Width="76" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
         <Button x:Name="Next_B" Content="Næste" Margin="242,310,0,0" VerticalAlignment="Top" Width="76" Click="Next_B_Click" Background="#FF5B9BD5"/>
-        <TextBlock HorizontalAlignment="Left" Margin="84,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153" FontStyle="Italic"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
+        <TextBlock x:Name="Nulpunkt_l" HorizontalAlignment="Left" Margin="84,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="153" FontStyle="Italic"><Run Language="da-dk" Text="Nulpunktsjustering i gang"/></TextBlock>
         <TextBox x:Name="meanULimit_TB" HorizontalAlignment="Left" Margin="84,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="Middel:" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="67"/>
         <TextBox x:Name="meanLLimit_TB" HorizontalAlignment="Left" Margin="175,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>

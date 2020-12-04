@@ -18,7 +18,10 @@ namespace BuissnessLogic
         private double _r2;
         private List<DTO_CalVal> calValList;
         private double calval;
-        private List<DTO_CalVal> linearRegression;
+
+        private double caldata;
+        //private List<DTO_CalVal> LinearRegression;
+        private List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
 
         public List<DTO_CalVal> GetCalVal()
         {
@@ -34,18 +37,15 @@ namespace BuissnessLogic
             return calValList;
         }
 
-        public string StartCalibration()
-        {
-            return send.Command("Startcalibration");
-        }
-
+        
         
 
-        public double getCalibration(double CalVal)
+        public double getCalibration()
         {
-            double value = receive.ReceiveCalibration(calval);
-            value = calval;
+            send.Command("Startcalibration");
+            double value = receive.Recievedouble();
             return value;
+
         }
 
         
@@ -76,10 +76,10 @@ namespace BuissnessLogic
             a = v1 / v2;
             b = Convert.ToInt32(yAvg - a * xAvg);
 
-            List<DTO_CalVal> linearRegression=new List<DTO_CalVal>();
-            linearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
+           // List<DTO_CalVal> LinearRegression=new List<DTO_CalVal>();
+            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
 
-            return linearRegression;
+            return LinearRegression;
         }
 
         public double CalculateR2Val(List<int> calReference, List<double> calMeasured,double r2)
@@ -91,7 +91,7 @@ namespace BuissnessLogic
             double zY2 = 0;
 
             //test***************
-            calMeasured[0] = 10;
+            //calMeasured[0] = 10;
             //*******************
 
             for (int i = 0; i < calReference.Count; i++)
@@ -123,11 +123,29 @@ namespace BuissnessLogic
 
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
+            
 
-           DTO_CalVal caldata =new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+            foreach (var VARIABLE in LinearRegression)
+            {
+                calReference = VARIABLE.CalReference;
+                calMeasured = VARIABLE.CalMeasured;
+                r2 = VARIABLE.R2;
+                a = VARIABLE.A;
+                b = VARIABLE.B;
+                zv = VARIABLE.Zv;
+            }
+
+           
 
 
-            return localDatabase.SaveCalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+            return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,"" );
+        }
+
+        public double getcalval()
+        {
+            
+            caldata = localDatabase.GetCalVal();
+            return caldata;
         }
 
         

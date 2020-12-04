@@ -50,10 +50,10 @@ namespace PresentationLogic
             //{
             //    Source=(new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
             //};
-            English_RB.Tag = new Image()
-            {
-                Source = (new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
-            };
+           // English_RB.Tag = new Image()
+            //{
+            //    Source = (new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
+            //};
 
 
 
@@ -92,7 +92,7 @@ namespace PresentationLogic
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
-            controller.command("systemOFF");
+            controller.command("systemOff");
             this.Close();
 
         }

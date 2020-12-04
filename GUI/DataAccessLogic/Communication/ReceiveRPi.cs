@@ -40,8 +40,12 @@ namespace DataAccessLogic
         
 
 
-        public double ReceiveCalibration(double calval)
+        
+
+
+        public double Recievedouble()
         {
+            double data;
          UdpClient listener = new UdpClient(11004);
          IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
 
@@ -54,17 +58,17 @@ namespace DataAccessLogic
                 {
 
                     bytes = listener.Receive(ref groupEP);
-                    calval = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+                    data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
                     
 
 
 
-                    return calval;
+                    return data;
                 }
             }
             catch (SocketException e)
             {
-                return calval;
+                return 0;
             }
             finally
             {

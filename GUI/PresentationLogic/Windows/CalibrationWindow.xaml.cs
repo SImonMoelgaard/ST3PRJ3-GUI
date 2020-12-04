@@ -49,6 +49,7 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
 
             InitializeComponent();
+            //controller.command("Startzeroing");
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,7 @@ namespace PresentationLogic.Windows
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            double calibrationVal = cali.getCalibration();
             //Add reference to reference list
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             dataReference.Add(referenceVal);
@@ -73,7 +75,7 @@ namespace PresentationLogic.Windows
             ////Add received calibration value to calibration list
             //cali.getCalibration(calibrationval);
 
-            double calibrationVal = 12;
+            
             dataCalVal.Add(calibrationVal);
 
             //getcalval(calibrationval);
@@ -85,11 +87,7 @@ namespace PresentationLogic.Windows
             MakeGraph();
         }
 
-        public double getcalval(double calval)
-        {
-           return cali.getCalibration(calval);
-            
-        }
+       
 
         public void MakeGraph()
         {
@@ -115,8 +113,7 @@ namespace PresentationLogic.Windows
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             //Save reference calibration value
-            cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-
+            
             //Get A and B
             List<DTO_CalVal> linearRegression=cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
 
@@ -142,8 +139,18 @@ namespace PresentationLogic.Windows
                 this.Close();
                 mainWindow.Show();
             }
+            else
+            {
 
-            
+                MessageBox.Show("Kalibrering godkendt.");
+                this.Close();
+                mainWindow.Show();
+                cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+
+            }
+
+
+
         }
     }
 }

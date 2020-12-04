@@ -7,12 +7,14 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Channels;
 using DTO;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace DataAccessLogic
 {
     public class LocalDatabase : ILocalDatabase
     {
+        private double A;
         private SendRPi send;
         
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
@@ -59,8 +61,8 @@ namespace DataAccessLogic
 
             
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
-            
-            List<DTO_PatientData> data= new List<DTO_PatientData>();
+
+            List<DTO_PatientData> data = new List<DTO_PatientData>();
             var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
 
             try
@@ -90,12 +92,12 @@ namespace DataAccessLogic
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
-            
-           
 
 
-            string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");
-            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+
+
+            string path = @"C:\ST3PRJ3FIL\Calibration";
+            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, ""+ DateAndTime.Now);
 
             using (StreamWriter file = File.AppendText(path))
             {
@@ -109,6 +111,40 @@ namespace DataAccessLogic
             return new List<DTO_CalVal>();
         }
 
-        
+        public double GetCalVal()
+        {
+            string path = @"C:\ST3PRJ3FIL\Calibration";
+            int  zv=0, b = 0; 
+            
+            double r2=0;
+            double a = 0;
+            List<int> calReference = null;
+            List<double> calMeasured = null;
+
+            List<DTO_CalVal> Caldata = new List<DTO_CalVal>();
+            var caldata = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, "" + DateAndTime.Now);
+
+            try
+            {
+                using (StreamReader r = new StreamReader(path))
+                {
+                    string json = r.ReadToEnd();
+
+
+                    caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
+                    a = caldata.A;
+                }
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+            return a;
+
+            
+        }
+
+
     }
 }
