@@ -34,17 +34,13 @@ namespace BuissnessLogic
             return calValList;
         }
 
-        public string StartCalibration()
-        {
-            return send.Command("Startcalibration");
-        }
-
+        
         
 
-        public double getCalibration(double CalVal)
+        public double getCalibration()
         {
-            double value = receive.Recievedouble(calval);
-            value = calval;
+            send.Command("Startcalibration");
+            double value = receive.Recievedouble();
             return value;
         }
 
@@ -91,7 +87,7 @@ namespace BuissnessLogic
             double zY2 = 0;
 
             //test***************
-            calMeasured[0] = 10;
+            //calMeasured[0] = 10;
             //*******************
 
             for (int i = 0; i < calReference.Count; i++)

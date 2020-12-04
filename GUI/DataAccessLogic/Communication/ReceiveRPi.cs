@@ -43,8 +43,9 @@ namespace DataAccessLogic
         
 
 
-        public double Recievedouble(double data)
+        public double Recievedouble()
         {
+            double data;
          UdpClient listener = new UdpClient(11004);
          IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
 
@@ -67,7 +68,7 @@ namespace DataAccessLogic
             }
             catch (SocketException e)
             {
-                return data;
+                return 0;
             }
             finally
             {

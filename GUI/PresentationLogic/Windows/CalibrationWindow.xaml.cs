@@ -49,6 +49,7 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
 
             InitializeComponent();
+            controller.command("Startzeroing");
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,7 @@ namespace PresentationLogic.Windows
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            double calibrationVal = cali.getCalibration();
             //Add reference to reference list
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
             dataReference.Add(referenceVal);
@@ -73,7 +75,7 @@ namespace PresentationLogic.Windows
             ////Add received calibration value to calibration list
             //cali.getCalibration(calibrationval);
 
-            double calibrationVal = 12;
+            
             dataCalVal.Add(calibrationVal);
 
             //getcalval(calibrationval);
@@ -85,11 +87,7 @@ namespace PresentationLogic.Windows
             MakeGraph();
         }
 
-        public double getcalval(double calval)
-        {
-           return cali.getCalibration(calval);
-            
-        }
+       
 
         public void MakeGraph()
         {

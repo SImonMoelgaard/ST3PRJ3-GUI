@@ -12,8 +12,8 @@ namespace BuissnessLogic
 
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB);
 
-        public string StartCalibration();
-        public double getCalibration(double Calval);
+        
+        public double getCalibration();
 
         public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a,
             int b, int zv);

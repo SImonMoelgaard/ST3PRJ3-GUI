@@ -224,7 +224,8 @@ namespace PresentationLogic.Windows
         {
             //alarm_L.Visibility = Visibility.Hidden;
             _muteAlarm = false;
-        
+            controller.command("Mutealarm");
+
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)

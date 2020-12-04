@@ -59,8 +59,8 @@ namespace DataAccessLogic
 
             
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
-            
-            List<DTO_PatientData> data= new List<DTO_PatientData>();
+
+            List<DTO_PatientData> data = new List<DTO_PatientData>();
             var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
 
             try
