@@ -90,11 +90,11 @@ namespace DataAccessLogic
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
-            
-           
 
 
-            string path = @"C:\ST3PRJ3FIL\ " + socSecNB.ToString()+ DateTime.Now.ToString("dd-MM-yyyy");
+
+
+            string path = @"C:\ST3PRJ3FIL\Calibration";
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
 
             using (StreamWriter file = File.AppendText(path))

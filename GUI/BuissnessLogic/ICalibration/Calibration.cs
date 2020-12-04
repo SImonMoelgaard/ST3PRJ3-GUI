@@ -119,11 +119,22 @@ namespace BuissnessLogic
 
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
         {
+            
 
-           DTO_CalVal caldata =new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+            foreach (var VARIABLE in linearRegression)
+            {
+                calReference = VARIABLE.CalReference;
+                calMeasured = VARIABLE.CalMeasured;
+                r2 = VARIABLE.R2;
+                a = VARIABLE.A;
+                b = VARIABLE.B;
+                zv = VARIABLE.Zv;
+            }
+
+           
 
 
-            return localDatabase.SaveCalVal(calReference, calMeasured, r2, a, b, zv, socSecNB);
+            return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,"" );
         }
 
         
