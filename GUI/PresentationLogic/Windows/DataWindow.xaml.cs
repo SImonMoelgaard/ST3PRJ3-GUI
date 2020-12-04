@@ -31,7 +31,7 @@ namespace PresentationLogic.Windows
             InitializeComponent();
             mainWindow = main;
             controller = cr;
-            controller.command("Startzeroing");
+            
             
             measurementWindow = ms;
         }
