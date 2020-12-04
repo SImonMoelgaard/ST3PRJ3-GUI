@@ -48,15 +48,10 @@ namespace PresentationLogic.Windows
                 Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text
                     ), 0 ,0);
 
-
             measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
-
-
-
 
             this.Hide();
             
-
             measurementWindow.Show();
         }
     }
