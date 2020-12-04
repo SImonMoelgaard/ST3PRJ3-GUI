@@ -49,7 +49,7 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
 
             InitializeComponent();
-            controller.command("Startzeroing");
+            //controller.command("Startzeroing");
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -113,8 +113,7 @@ namespace PresentationLogic.Windows
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             //Save reference calibration value
-            cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
-
+            
             //Get A and B
             List<DTO_CalVal> linearRegression=cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
 
@@ -140,8 +139,18 @@ namespace PresentationLogic.Windows
                 this.Close();
                 mainWindow.Show();
             }
+            else
+            {
 
-            
+                MessageBox.Show("Kalibrering godkendt.");
+                this.Close();
+                mainWindow.Show();
+                cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+
+            }
+
+
+
         }
     }
 }

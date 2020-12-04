@@ -26,8 +26,10 @@ namespace PresentationLogic.Windows
         private Controller controller;
         private MeasurementWindow measurementWindow;
       private DataWindow datawindow;
+      private Calibration cali;
       private List<DTO_PatientData> patientdata;
       private double data=0;
+      private double caldata;
       public bool IsReading { get; set; }
 
 
@@ -38,6 +40,9 @@ namespace PresentationLogic.Windows
             controller = cr;
 
             
+
+            
+            
             
             measurementWindow = ms;
 
@@ -46,7 +51,7 @@ namespace PresentationLogic.Windows
 
             if (IsReading) Task.Factory.StartNew(recievezerovalue);
 
-
+            
         }
 
         public double recievezerovalue()
@@ -54,8 +59,9 @@ namespace PresentationLogic.Windows
             controller.command("Startzeroing");
 
             data = controller.Recievedouble();
+
             
-            
+
             while (IsReading)
             {
 
@@ -89,9 +95,13 @@ namespace PresentationLogic.Windows
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
+            //controller.requestcalval();
+            caldata = controller.getcalval();
+
+
             controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
                 Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text
-                    ), 0 ,data);
+                    ), caldata ,data);
 
 
             measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);

@@ -92,6 +92,10 @@ namespace DataAccessLogic
         public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
+
+            
+
+
          int PatiendataPort = 11003;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);

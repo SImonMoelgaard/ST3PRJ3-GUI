@@ -18,7 +18,10 @@ namespace BuissnessLogic
         private double _r2;
         private List<DTO_CalVal> calValList;
         private double calval;
-        private List<DTO_CalVal> linearRegression;
+
+        private double caldata;
+        //private List<DTO_CalVal> LinearRegression;
+        private List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
 
         public List<DTO_CalVal> GetCalVal()
         {
@@ -42,6 +45,7 @@ namespace BuissnessLogic
             send.Command("Startcalibration");
             double value = receive.Recievedouble();
             return value;
+
         }
 
         
@@ -72,10 +76,10 @@ namespace BuissnessLogic
             a = v1 / v2;
             b = Convert.ToInt32(yAvg - a * xAvg);
 
-            List<DTO_CalVal> linearRegression=new List<DTO_CalVal>();
-            linearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
+           // List<DTO_CalVal> LinearRegression=new List<DTO_CalVal>();
+            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
 
-            return linearRegression;
+            return LinearRegression;
         }
 
         public double CalculateR2Val(List<int> calReference, List<double> calMeasured,double r2)
@@ -121,7 +125,7 @@ namespace BuissnessLogic
         {
             
 
-            foreach (var VARIABLE in linearRegression)
+            foreach (var VARIABLE in LinearRegression)
             {
                 calReference = VARIABLE.CalReference;
                 calMeasured = VARIABLE.CalMeasured;
@@ -135,6 +139,13 @@ namespace BuissnessLogic
 
 
             return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,"" );
+        }
+
+        public double getcalval()
+        {
+            
+            caldata = localDatabase.GetCalVal();
+            return caldata;
         }
 
         
