@@ -99,7 +99,7 @@ namespace DataAccessLogic
             string path = @"C:\ST3PRJ3FIL\Calibration";
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
-            using (StreamWriter file = File.AppendText(path))
+            using (StreamWriter file = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
@@ -118,6 +118,7 @@ namespace DataAccessLogic
             
             double r2=0;
             double a = 0;
+            DateTime date;
             List<int> calReference = null;
             List<double> calMeasured = null;
 
@@ -133,6 +134,7 @@ namespace DataAccessLogic
 
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
                     a = caldata.A;
+                    date = caldata.Datetime;
                 }
             }
             catch (Exception e)
