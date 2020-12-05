@@ -281,6 +281,7 @@ namespace PresentationLogic.Windows
 
         private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
         {
+            dataWindow = new DataWindow(mainWindow, controller, this);
             dataWindow.Show();
         }
     }

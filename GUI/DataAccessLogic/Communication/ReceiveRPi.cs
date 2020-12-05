@@ -59,11 +59,11 @@ namespace DataAccessLogic
 
                     bytes = listener.Receive(ref groupEP);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+
                     
-
-
-
                     return data;
+                    
+                    
                 }
             }
             catch (SocketException e)
