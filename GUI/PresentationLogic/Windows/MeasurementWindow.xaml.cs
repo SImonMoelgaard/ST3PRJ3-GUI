@@ -278,5 +278,10 @@ namespace PresentationLogic.Windows
         {
             controller.command("Startmeasurement");
         }
+
+        private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
+        {
+            dataWindow.Show();
+        }
     }
 }

@@ -20,7 +20,7 @@
         <TextBox x:Name="diaLLimit_TB" HorizontalAlignment="Left" Margin="175,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29"/>
         <Label Content="Grænseværdier" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="148" FontSize="20" BorderBrush="#FFFFF8DD" FontWeight="Bold"/>
         <Label Content="Øvre" HorizontalAlignment="Left" Margin="84,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
-        <Label Content="Nedre" HorizontalAlignment="Center" Margin="0,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
+        <Label Content="Nedre" HorizontalAlignment="Left" Margin="175,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253"/>
         <TextBox x:Name="socSecNb_TB" HorizontalAlignment="Left" Margin="102,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Height="29"/>
         <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="85" Padding="0,0,-4,0"/>
         <Label Content="Patient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" FontSize="20" FontWeight="Bold"/>
