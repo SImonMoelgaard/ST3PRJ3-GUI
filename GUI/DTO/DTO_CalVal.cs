@@ -10,12 +10,12 @@ namespace DTO
         public List<double> CalMeasured { get; set; }
         public double R2 { get; set; }
         public double A { get; set; } //slope
-        public int B { get; set; } //y-intercept
-        public int Zv { get; set; }
+        public double B { get; set; } //y-intercept
+        public double Zv { get; set; }
        
         public DateTime Datetime { get; set; }
 
-        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, int zv,DateTime datetime)
+        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, double b, double zv,DateTime datetime)
         {
             CalReference = calReference;//Værdi valgt på udstyr
             CalMeasured = calMeasured;//Værdi vi får tilbage i Volt

@@ -18,7 +18,7 @@ namespace BuissnessLogic
         private double _r2;
         private List<DTO_CalVal> calValList;
         private double calval;
-
+        private double zeroval;
         private double caldata;
         //private List<DTO_CalVal> LinearRegression;
         private List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
@@ -37,8 +37,14 @@ namespace BuissnessLogic
             return calValList;
         }
 
-        
-        
+        public double getZeroval()
+        {
+            send.Command("Startzeroing");
+            zeroval = receive.Recievedouble();
+
+            return zeroval;
+        }
+
 
         public double getCalibration()
         {
@@ -50,7 +56,7 @@ namespace BuissnessLogic
 
         
 
-        public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv)
+        public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv)
         {
             double xAvg = 0;
             double yAvg = 0;
@@ -77,7 +83,7 @@ namespace BuissnessLogic
             b = Convert.ToInt32(yAvg - a * xAvg);
 
            // List<DTO_CalVal> LinearRegression=new List<DTO_CalVal>();
-            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,DateTime.Now));
+            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,_r2,a,b,zv,DateTime.Now));
 
             return LinearRegression;
         }
@@ -117,11 +123,11 @@ namespace BuissnessLogic
 
             _r2 = Math.Pow(rVal, 2);
             r2 = _r2;
-
+            
             return r2;
         }
 
-        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, DateTime datetime)
+        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv, DateTime datetime)
         {
             
 
@@ -129,10 +135,10 @@ namespace BuissnessLogic
             {
                 calReference = VARIABLE.CalReference;
                 calMeasured = VARIABLE.CalMeasured;
-                r2 = VARIABLE.R2;
+                r2 = _r2;
                 a = VARIABLE.A;
                 b = VARIABLE.B;
-                zv = VARIABLE.Zv;
+                zv = zeroval;
                 datetime = VARIABLE.Datetime;
             }
 

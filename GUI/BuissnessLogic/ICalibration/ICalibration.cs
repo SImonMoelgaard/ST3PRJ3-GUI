@@ -11,15 +11,15 @@ namespace BuissnessLogic
 
         public double CalculateR2Val(List<int> calReference, List<double> calMeasured,double r2);
 
-        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b,
-            int zv, DateTime datetime);
+        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, double b,
+            double zv, DateTime datetime);
 
 
-
+        public double getZeroval();
         public double getCalibration();
 
         public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a,
-            int b, int zv);
+            double b, double zv);
 
         
     }

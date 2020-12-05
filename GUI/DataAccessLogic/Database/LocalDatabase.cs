@@ -37,7 +37,7 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
             
-            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+            DTO_PatientData patientData = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
             using (StreamWriter file = File.AppendText(path))
@@ -80,17 +80,16 @@ namespace DataAccessLogic
             {
                 return true;
             }
-           
 
 
 
             
-
             return sendrpi.sendemergencydata(emergencydata.Syshigh, emergencydata.Syslow, emergencydata.Diahigh, emergencydata.Dialow, emergencydata.Lowmean, emergencydata.Highmean, emergencydata.SocSecNB, emergencydata.Calval, emergencydata.Zeroval);
+           
 
         }
 
-        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv,
+        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv,
             DateTime datetime)
         {
 

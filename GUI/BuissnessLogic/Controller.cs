@@ -13,6 +13,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementdata;
         private double data;
         private double caldata;
+        
 
         ISendRPi sendrpi = new SendRPi();
         IReceiveRPi recieveRPi = new ReceiveRPi();
@@ -62,7 +63,6 @@ namespace BuissnessLogic
         
         public double getcalval()
         {
-
             caldata = localDatabase.GetCalVal();
             return caldata;
         }

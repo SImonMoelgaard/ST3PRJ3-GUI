@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -34,11 +35,13 @@ namespace PresentationLogic.Windows
         private List<double> dataCalVal;
         private List<int> dataReference;
         ICalibration cali = new Calibration();
+        
 
         public string[] xAxis { get; set; }
         private double r2;
         private double a;
-        private int b;
+        private double b;
+        private double zv;
 
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
@@ -49,7 +52,15 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
 
             InitializeComponent();
-            //controller.command("Startzeroing");
+
+            double zv = cali.getZeroval();
+
+        }
+
+        public void getzero()
+        {
+            controller.command("Startzeroing");
+            
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
