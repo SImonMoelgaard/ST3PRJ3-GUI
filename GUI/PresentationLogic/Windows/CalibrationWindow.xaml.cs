@@ -145,7 +145,7 @@ namespace PresentationLogic.Windows
                 MessageBox.Show("Kalibrering godkendt.");
                 this.Close();
                 mainWindow.Show();
-                cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, "f");
+                cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, DateTime.Now);
 
             }
 

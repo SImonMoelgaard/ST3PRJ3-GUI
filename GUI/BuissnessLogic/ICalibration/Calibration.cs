@@ -77,7 +77,7 @@ namespace BuissnessLogic
             b = Convert.ToInt32(yAvg - a * xAvg);
 
            // List<DTO_CalVal> LinearRegression=new List<DTO_CalVal>();
-            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,""));
+            LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,r2,a,b,zv,DateTime.Now));
 
             return LinearRegression;
         }
@@ -121,7 +121,7 @@ namespace BuissnessLogic
             return r2;
         }
 
-        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, DateTime datetime)
         {
             
 
@@ -133,20 +133,16 @@ namespace BuissnessLogic
                 a = VARIABLE.A;
                 b = VARIABLE.B;
                 zv = VARIABLE.Zv;
+                datetime = VARIABLE.Datetime;
             }
 
            
 
 
-            return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,"" );
+            return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,datetime);
         }
 
-        public double getcalval()
-        {
-            
-            caldata = localDatabase.GetCalVal();
-            return caldata;
-        }
+        
 
         
 

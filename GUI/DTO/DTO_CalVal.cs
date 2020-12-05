@@ -12,9 +12,10 @@ namespace DTO
         public double A { get; set; } //slope
         public int B { get; set; } //y-intercept
         public int Zv { get; set; }
-        public string SocSecNB { get; set; }
+       
+        public DateTime Datetime { get; set; }
 
-        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, int zv,string socSecNB)
+        public DTO_CalVal(List<int> calReference, List<double> calMeasured, double r2,double a, int b, int zv,DateTime datetime)
         {
             CalReference = calReference;//Værdi valgt på udstyr
             CalMeasured = calMeasured;//Værdi vi får tilbage i Volt
@@ -22,7 +23,7 @@ namespace DTO
            A = a;//Dette er gangefaktoren fra kalibreringen
             B = b;//Dette er starten på y aksen.
             Zv = zv;//Nulpunktsjusteringen
-            SocSecNB = socSecNB;
+            Datetime = datetime;
         }
     }
 }

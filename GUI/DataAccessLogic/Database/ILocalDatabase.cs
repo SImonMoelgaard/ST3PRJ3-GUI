@@ -16,7 +16,7 @@ namespace DataAccessLogic
             double Calval, double Zeroval);
 
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv,
-            string socSecNB);
+            DateTime datetime);
 
         public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh,
             string CprPatient,

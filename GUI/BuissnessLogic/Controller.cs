@@ -59,11 +59,7 @@ namespace BuissnessLogic
             return data;
         }
 
-        public void requestcalval()
-        {
-            localDatabase.GetCalVal();
-            
-        }
+        
         public double getcalval()
         {
 

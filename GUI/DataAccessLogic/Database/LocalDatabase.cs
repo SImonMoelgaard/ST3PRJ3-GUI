@@ -90,14 +90,15 @@ namespace DataAccessLogic
 
         }
 
-        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv,
+            DateTime datetime)
         {
 
 
 
 
             string path = @"C:\ST3PRJ3FIL\Calibration";
-            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, ""+ DateAndTime.Now);
+            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
             using (StreamWriter file = File.AppendText(path))
             {
@@ -122,7 +123,7 @@ namespace DataAccessLogic
             List<double> calMeasured = null;
 
             List<DTO_CalVal> Caldata = new List<DTO_CalVal>();
-            var caldata = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, "" + DateAndTime.Now);
+            var caldata = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
             try
             {
