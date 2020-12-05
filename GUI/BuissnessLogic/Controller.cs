@@ -42,10 +42,7 @@ namespace BuissnessLogic
         private Calibration calibration;
         private Mean mean;
 
-        public void Mean()
-        {
-            
-        }
+        
 
 
         public List<DTO_Measurement> getmdata()
