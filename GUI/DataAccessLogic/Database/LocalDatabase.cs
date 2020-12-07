@@ -37,7 +37,7 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
             
-            DTO_PatientData patientData = new DTO_PatientData(SysHigh, SysLow, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+            DTO_PatientData patientData = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
             using (StreamWriter file = File.AppendText(path))
@@ -80,26 +80,26 @@ namespace DataAccessLogic
             {
                 return true;
             }
-           
 
 
 
             
-
             return sendrpi.sendemergencydata(emergencydata.Syshigh, emergencydata.Syslow, emergencydata.Diahigh, emergencydata.Dialow, emergencydata.Lowmean, emergencydata.Highmean, emergencydata.SocSecNB, emergencydata.Calval, emergencydata.Zeroval);
+           
 
         }
 
-        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, int b, int zv, string socSecNB)
+        public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv,
+            DateTime datetime)
         {
 
 
 
 
             string path = @"C:\ST3PRJ3FIL\Calibration";
-            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, ""+ DateAndTime.Now);
+            DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
-            using (StreamWriter file = File.AppendText(path))
+            using (StreamWriter file = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
@@ -118,11 +118,12 @@ namespace DataAccessLogic
             
             double r2=0;
             double a = 0;
+            DateTime date;
             List<int> calReference = null;
             List<double> calMeasured = null;
 
             List<DTO_CalVal> Caldata = new List<DTO_CalVal>();
-            var caldata = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, "" + DateAndTime.Now);
+            var caldata = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
             try
             {
@@ -133,6 +134,7 @@ namespace DataAccessLogic
 
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
                     a = caldata.A;
+                    date = caldata.Datetime;
                 }
             }
             catch (Exception e)

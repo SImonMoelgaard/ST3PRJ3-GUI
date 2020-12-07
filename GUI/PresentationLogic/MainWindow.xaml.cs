@@ -47,11 +47,11 @@ namespace PresentationLogic
             InitializeComponent();
             
             //English_RB.Content = new Image()
-            //{
+           //{
             //    Source=(new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
             //};
-           // English_RB.Tag = new Image()
-            //{
+          // English_RB.Tag = new Image()
+           // {
             //    Source = (new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
             //};
 
@@ -93,8 +93,8 @@ namespace PresentationLogic
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
             controller.command("systemOff");
-            this.Close();
-
+            
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

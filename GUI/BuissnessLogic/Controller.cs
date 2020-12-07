@@ -13,6 +13,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementdata;
         private double data;
         private double caldata;
+        
 
         ISendRPi sendrpi = new SendRPi();
         IReceiveRPi recieveRPi = new ReceiveRPi();
@@ -41,10 +42,7 @@ namespace BuissnessLogic
         private Calibration calibration;
         private Mean mean;
 
-        public void Mean()
-        {
-            
-        }
+        
 
 
         public List<DTO_Measurement> getmdata()
@@ -59,14 +57,9 @@ namespace BuissnessLogic
             return data;
         }
 
-        public void requestcalval()
-        {
-            localDatabase.GetCalVal();
-            
-        }
+        
         public double getcalval()
         {
-
             caldata = localDatabase.GetCalVal();
             return caldata;
         }

@@ -59,11 +59,11 @@ namespace DataAccessLogic
 
                     bytes = listener.Receive(ref groupEP);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+
                     
-
-
-
                     return data;
+                    
+                    
                 }
             }
             catch (SocketException e)
@@ -101,8 +101,11 @@ namespace DataAccessLogic
                     List<DTO_Measurement> measurements = new List<DTO_Measurement>();
                     var measurementdata = new DTO_Measurement("", 0, DateTime.Now, false, false, false, false, false, false, 0 , 0 ,0 ,0 ,0);
                     bytes = listener.Receive(ref groupEP);
+
                     jsonString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+
                     measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(jsonString);
+
                     measurements.Add(measurementdata);
 
 
