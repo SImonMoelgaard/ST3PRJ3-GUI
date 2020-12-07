@@ -83,8 +83,9 @@ namespace PresentationLogic
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             calibrationWindow = new CalibrationWindow(this, controller);
+            this.Hide();
+            
             
             calibrationWindow.Show();
             
@@ -94,7 +95,7 @@ namespace PresentationLogic
         {
             controller.command("systemOff");
             
-            System.Windows.Application.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

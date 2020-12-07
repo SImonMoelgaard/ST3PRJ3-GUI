@@ -43,6 +43,8 @@ namespace PresentationLogic.Windows
         private double b;
         private double zv;
 
+        
+        public bool IsReadingZero { get; set; }
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
             mainWindow = mw;
@@ -53,14 +55,16 @@ namespace PresentationLogic.Windows
 
             InitializeComponent();
 
-            double zv = cali.getZeroval();
+            IsReadingZero = !IsReadingZero;
 
+
+            if (IsReadingZero) Task.Factory.StartNew(getzero);
         }
 
         public void getzero()
         {
-            controller.command("Startzeroing");
-            
+            double zv = cali.getZeroval(); 
+
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
