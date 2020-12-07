@@ -93,8 +93,8 @@ namespace PresentationLogic
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
             controller.command("systemOff");
-            this.Close();
-
+            
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
