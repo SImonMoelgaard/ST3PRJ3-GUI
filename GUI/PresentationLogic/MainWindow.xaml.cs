@@ -87,7 +87,7 @@ namespace PresentationLogic
             this.Hide();
             
             
-            calibrationWindow.Show();
+            calibrationWindow.ShowDialog();
             
         }
 
