@@ -12,7 +12,7 @@
     <Grid>
         <Button x:Name="Start_B" Content="Start" Margin="22,364,0,0" VerticalAlignment="Top" Height="43" Width="89" Click="Start_B_Click" Background="#FF70AD47"/>
         <Button x:Name="Stop_B" Content="Stop" HorizontalAlignment="Left" Margin="116,364,0,0" VerticalAlignment="Top" Height="43" Width="91" Click="Stop_B_Click" Background="Red" IsEnabled="False"/>
-        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="22,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="43" Width="100" Click="MuteAlarm_B_Click" />
+        <Button x:Name="MuteAlarm_B" Content="Mute Alarm" Margin="400,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.403" Height="45" Width="100" Click="MuteAlarm_B_Click" Background="#FFF60909" />
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="695,8,0,0" VerticalAlignment="Top" Height="46" Width="95" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
 
         <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="False" DataTooltip="{x:Null}" Name="MeasurementChart" Margin="162,61,0,80">
@@ -25,8 +25,7 @@
                 <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}" 
                           MaxValue="{Binding AxisMax}" 
                           MinValue="{Binding AxisMin}"
-                          Unit="{Binding AxisUnit}"
-                          Title="Tid">
+                          Unit="{Binding AxisUnit}">
                     <lvc:Axis.Separator>
                         <lvc:Separator Step="{Binding AxisStep}" />
                     </lvc:Axis.Separator>
@@ -36,16 +35,18 @@
                 <lvc:Axis Title="Dato" Labels="{Binding xAxis}" LabelsRotation="20"></lvc:Axis>
             </lvc:CartesianChart.AxisX>-->
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Tryk [mmHg]" MinValue="50" MaxValue="160">
+                <lvc:Axis MinValue="50" MaxValue="160">
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <Label x:Name="Puls_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FF8EEF6D"/>
-        <Label x:Name="SysDia_L" Content="0/0" HorizontalAlignment="Left" Height="70" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" BorderBrush="#FFF60909" Foreground="#FFF70707"/>
-        <Label x:Name="Mean_L" Content="0" HorizontalAlignment="Left" Height="70" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FFFC9F0A"/>
-        <Label Content="Pulse:" HorizontalAlignment="Left" Height="21" Margin="10,96,0,0" VerticalAlignment="Top" Width="34" Foreground="#FF8EEF6D"/>
+        <Label x:Name="Puls_L" Content="0" HorizontalAlignment="Left" Height="50" Margin="22,111,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FF8EEF6D"/>
+        <Label x:Name="SysDia_L" Content="0/0" HorizontalAlignment="Left" Height="55" Margin="22,181,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FFF60909">
+        </Label>
+        <Label x:Name="Mean_L" Content="0" HorizontalAlignment="Left" Height="45" Margin="22,251,0,0" VerticalAlignment="Top" Width="135" FontSize="36" Foreground="#FFFC9F0A"/>
+        <Label Content="Puls:" HorizontalAlignment="Left" Height="21" Margin="10,96,0,0" VerticalAlignment="Top" Width="34" Foreground="#FF8EEF6D"/>
         <Label Content="Systolisk/Diastolisk:" HorizontalAlignment="Left" Height="21" Margin="10,166,0,0" VerticalAlignment="Top" Width="129" Foreground="#FFF70707"/>
         <Label Content="Middel:" HorizontalAlignment="Left" Height="21" Margin="10,236,0,0" VerticalAlignment="Top" Width="64" Foreground="#FFFC9F0A"/>
         <Button x:Name="ChangeLimitValues_B" Content="Ændr Grænseværdier" Margin="517,8,0,0" VerticalAlignment="Top" Height="45" Width="159" Background="#33FFFFFF" Click="ChangeLimitValues_B_Click"/>
+        <Label x:Name="BatteryStatus_L" Content="Battery" HorizontalAlignment="Left" Margin="11,15,0,0" VerticalAlignment="Top" Height="16" Width="62" BorderBrush="White"/>
     </Grid>
 </Window>

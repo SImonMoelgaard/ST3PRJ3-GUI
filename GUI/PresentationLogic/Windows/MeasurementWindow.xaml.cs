@@ -36,8 +36,11 @@ namespace PresentationLogic.Windows
         public double AxisUnit { get; set; }
         public bool IsReading { get; set; }
 
+
+        public bool MuteAlarm{ get; set; }
+
         //Threads
-        private Thread threadGetMeasurement;
+        private Thread alarmThread;
 
         #endregion
 
@@ -63,10 +66,10 @@ namespace PresentationLogic.Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+            MuteAlarm_B.Visibility = Visibility.Hidden;
 
-            
 
-            
+
 
             #region Constant Changes Graph
             var mapper = Mappers.Xy<MeasurementModel>()
@@ -86,6 +89,7 @@ namespace PresentationLogic.Windows
             SetAxisLimits(DateTime.Now);
 
             IsReading = false;
+            MuteAlarm = false;
 
             DataContext = this;
             #endregion
@@ -112,15 +116,12 @@ namespace PresentationLogic.Windows
 
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            
-            MuteAlarm_B.Visibility = Visibility.Hidden;
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
 
 
             if (IsReading) Task.Factory.StartNew(Read);
-            
 
 
             #region This works and cannot be removed - AK
@@ -185,7 +186,9 @@ namespace PresentationLogic.Windows
                         Puls_L.Content = Convert.ToString(data.CalculatedPulse);
                         SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
                         Mean_L.Content = Convert.ToString(data.CalculatedMean);
-                        
+                        BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+
+                        Alarm();
                     });
                 }
             }
@@ -222,10 +225,9 @@ namespace PresentationLogic.Windows
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
         {
-            //alarm_L.Visibility = Visibility.Hidden;
-            _muteAlarm = false;
+            MuteAlarm = true;
             controller.command("Mutealarm");
-
+            MuteAlarm_B.Visibility = Visibility.Hidden;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
@@ -234,49 +236,93 @@ namespace PresentationLogic.Windows
             mainWindow.Show();
         }
 
-        public void ShowGraph()
-        {
-
-        }
-
-        public void ShowData()
-        {
-
-        }
 
         //private readonly BlockCollection<DataContainer> _dataQueue;
 
         private List<DTO_Measurement> alarms;
-        private bool _muteAlarm = true;
-        private Thread alarmThread;
+        private bool _blinkOnSysDia = false;
+        private bool _blinkOnMean = false;
 
         public void Alarm()
         {
-            alarms = new List<DTO_Measurement>();
-            alarms = controller.getmdata();
+            var alarmList = controller.getmdata();
 
-            foreach (var alarm in alarms)
+            foreach (var alarms in alarmList)
             {
-                if (alarm.HighDia || alarm.LowDia || alarm.HighSys || alarm.LowSys)
+                this.Dispatcher.Invoke(() =>
                 {
-                    while (_muteAlarm)
+                    if (alarms.HighDia == true || alarms.LowDia == true||alarms.HighSys==true||alarms.LowSys==true)
                     {
-                        while (true)
+                        if (!MuteAlarm)
                         {
-                            SysDia_L.BorderBrush = Brushes.Red;
-                            SysDia_L.BorderBrush = Brushes.Transparent;
+                            MuteAlarm_B.Visibility = Visibility.Visible;
                         }
+
+                        if (_blinkOnSysDia)
+                        {
+                            SysDia_L.Foreground = Brushes.Black;
+                            MuteAlarm_B.Background = Brushes.Gray;
+                        }
+                        else
+                        {
+                            SysDia_L.Foreground = Brushes.Red;
+                            MuteAlarm_B.Background = Brushes.Red;
+                        }
+
+                        _blinkOnSysDia = !_blinkOnSysDia;
                     }
-                }
-                
+
+                    if (alarms.HighMean == true || alarms.LowMean == true)
+                    {
+                       
+                            if (_blinkOnMean)
+                            {
+                                Mean_L.Foreground = Brushes.Black;
+                                MuteAlarm_B.Background = Brushes.Gray;
+                            }
+                            else
+                            {
+                                var converter = new System.Windows.Media.BrushConverter();
+                                var brush = (Brush) converter.ConvertFromString("#FFFC9F0A");
+                                Mean_L.Foreground = brush;
+                                MuteAlarm_B.Background = Brushes.Red;
+                            }
+
+                            _blinkOnMean = !_blinkOnMean;
+                    }
+                });
             }
 
 
-        }
+            //this.Dispatcher.Invoke(() =>
+            //{
+            //    while (!MuteAlarm)
+            //    {
+            //        SysDia_L.Foreground = Brushes.Red;
+            //        SysDia_L.Foreground = Brushes.Blue;
+            //    }
+            //});
 
-        private void Rpistart_b_Click(object sender, RoutedEventArgs e)
-        {
-            controller.command("Startmeasurement");
+            //alarms = new List<DTO_Measurement>();
+            //alarms = controller.getmdata();
+
+            //foreach (var alarm in alarms)
+            //{
+            //    if (alarm.HighDia || alarm.LowDia || alarm.HighSys || alarm.LowSys)
+            //    {
+            //        while (_muteAlarm)
+            //        {
+            //            while (true)
+            //            {
+            //                SysDia_L.BorderBrush = Brushes.Red;
+            //                SysDia_L.BorderBrush = Brushes.Transparent;
+            //            }
+            //        }
+            //    }
+
+            //}
+
+
         }
 
         private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
