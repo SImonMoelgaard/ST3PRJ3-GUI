@@ -48,10 +48,11 @@ namespace DataAccessLogic
             double data;
             port = 11004;
          UdpClient listener = new UdpClient(port);
-         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
+         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.7"), 11004);
 
+         //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11004);
 
-        byte[] bytes;
+            byte[] bytes;
 
             try
             {
@@ -71,6 +72,7 @@ namespace DataAccessLogic
             catch (SocketException e)
             {
                 return 0;
+
             }
             finally
             {
@@ -89,9 +91,9 @@ namespace DataAccessLogic
         public List<DTO_Measurement> ReceiveMeasurment()
         {
             UdpClient listener = new UdpClient(11001);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
-            
-            
+            IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.7"), 11001);
+            //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11001);
+
             string jsonString;
             byte[] bytes;
             

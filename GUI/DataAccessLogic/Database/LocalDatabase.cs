@@ -16,9 +16,12 @@ namespace DataAccessLogic
     {
         private double A;
         private SendRPi send;
-        
+        private bool result;
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
+            socSecNb = "";
+            mmhg = 0;
+
             string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_Measurement measurement = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
 
@@ -148,6 +151,130 @@ namespace DataAccessLogic
 
         }
 
+        public bool isUserRegistered(String socSecNb, String pw)
+        {
+            string path = @"C:\ST3PRJ3FIL\Users";
+            DTO_UserData userdata = new DTO_UserData(socSecNb, pw);
+            List<DTO_UserData> pwlogin = new List<DTO_UserData>();
+
+            try
+            {
+                using (StreamReader r = new StreamReader(path))
+                {
+
+                    string test;
+                    string json = r.ReadToEnd();
+
+                    userdata = JsonConvert.DeserializeObject<DTO_UserData>(json);
+
+                   // foreach (var VARIABLE in userdata)
+                    {
+                        //pwlogin.Add(userdata.Username, userdata.Password);
+                        
+                    }
+
+                    pwlogin.Add(userdata);
+                   
+
+                    
+
+
+                }
+            }
+            catch
+            {
+                
+            }
+            foreach (var VARIABLE in pwlogin)
+            {
+                var username = Convert.ToString(userdata.Username);
+                var password = Convert.ToString(userdata.Password);
+
+                if (socSecNb.ToString() == username && pw.ToString() == password)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+
+            }
+
+
+            return result;
+
+        }
+
+        public bool getSocSecNB(string SocSecNB)
+        {
+            string path = @"C:\ST3PRJ3FIL\Users";
+           DTO_UserData userdata = new DTO_UserData("", "");
+            List<DTO_UserData> userData = new List<DTO_UserData>();
+            
+           try
+           {
+               using (StreamReader r = new StreamReader(path))
+               {
+                   
+                   string json = r.ReadToEnd();
+
+
+                   userdata = JsonConvert.DeserializeObject<DTO_UserData>(json);
+                    userData.Add(userdata);
+
+
+                   foreach (var VARIABLE in userData)
+                   {
+                       var username = userdata.Username;
+
+                       if (username.ToString() == SocSecNB)
+                       {
+                           result = true;
+                       }
+                       else
+                       {
+                           result = false;
+                       }
+
+                    }
+
+
+
+                   
+
+
+                }
+           }
+           catch
+           {
+               return false;
+           }
+
+           return result;
+
+
+           
+
+        }
+        public object Savelogin()
+        {
+
+            DTO_UserData user = new DTO_UserData("1", "2");
+            string path = @"C:\ST3PRJ3FIL\Users";
+
+            using (StreamWriter file = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(file, user);
+
+            }
+
+            return user;
+
+
+        }
 
     }
 }
