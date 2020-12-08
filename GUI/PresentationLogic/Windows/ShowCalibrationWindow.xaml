@@ -21,6 +21,7 @@
         </lvc:CartesianChart>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_OnClick" Background="#FF5B9BD5" Margin="323,0,0,392"/>
         <Button x:Name="ShowCalibration_B" Content="Vis Seneste kalibrering" Margin="-389,77,0,0" VerticalAlignment="Top" Width="167" Click="ShowCalibration_B_OnClick" Background="#FFB2833F"/>
+        <Label x:Name="Caldata_L" Content="" HorizontalAlignment="Left" Margin="-154,8,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
 

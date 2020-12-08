@@ -142,7 +142,7 @@ namespace PresentationLogic
         {
             this.Hide();
             ShowCalWindow = new ShowCalibrationWindow(controller, this);
-            dataWindow.Show();
+            ShowCalWindow.Show();
         }
     }
 }
