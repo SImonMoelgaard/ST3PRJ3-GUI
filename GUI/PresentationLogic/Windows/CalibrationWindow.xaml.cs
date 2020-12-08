@@ -139,7 +139,7 @@ namespace PresentationLogic.Windows
             }
 
             //Display linear regression and R2
-            AAndB_L.Content = "y="+a+"x*"+b+" \n" + "R^2-værdi: "+ _r2;
+            AAndB_L.Content = "y="+a+"x+"+b+" \n" + "R^2-værdi: "+ _r2;
 
             //Show message box if R2<0.95
             if (_r2<0.95)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DataAccessLogic;
 using DTO;
 
@@ -13,6 +14,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementdata;
         private double data;
         private List<DTO_CalVal> caldata;
+        public bool closeListener { get; set; }
         
 
         ISendRPi sendrpi = new SendRPi();
@@ -42,8 +44,8 @@ namespace BuissnessLogic
         private Calibration calibration;
         private Mean mean;
 
-        
 
+        
 
         public List<DTO_Measurement> getmdata()
         {
@@ -108,6 +110,9 @@ namespace BuissnessLogic
         {
             return sendrpi.Command(command);
         }
+
+      
+        
 
     }
 

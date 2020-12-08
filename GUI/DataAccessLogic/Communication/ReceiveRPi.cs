@@ -25,8 +25,8 @@ namespace DataAccessLogic
         }
 
         public DTO_CalVal dtocal;
-        
-        
+
+        private int port;
 
         
         
@@ -46,7 +46,8 @@ namespace DataAccessLogic
         public double Recievedouble()
         {
             double data;
-         UdpClient listener = new UdpClient(11004);
+            port = 11004;
+         UdpClient listener = new UdpClient(port);
          IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
 
 
@@ -60,8 +61,9 @@ namespace DataAccessLogic
                     bytes = listener.Receive(ref groupEP);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
 
+
+                    listener.Close();
                     
-                    return data;
                     
                     
                 }

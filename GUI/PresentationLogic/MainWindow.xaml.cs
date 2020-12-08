@@ -47,6 +47,7 @@ namespace PresentationLogic
             
             InitializeComponent();
             
+            
             //English_RB.Content = new Image()
            //{
             //    Source=(new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
@@ -142,7 +143,7 @@ namespace PresentationLogic
         {
             this.Hide();
             ShowCalWindow = new ShowCalibrationWindow(controller, this);
-            dataWindow.Show();
+            ShowCalWindow.Show();
         }
     }
 }
