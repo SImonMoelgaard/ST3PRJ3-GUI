@@ -12,7 +12,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementList;
         private List<DTO_Measurement> measurementdata;
         private double data;
-        private double caldata;
+        private List<DTO_CalVal> caldata;
         
 
         ISendRPi sendrpi = new SendRPi();
@@ -58,10 +58,11 @@ namespace BuissnessLogic
         }
 
         
-        public double getcalval()
+        public List<DTO_CalVal> getcalval()
         {
             caldata = localDatabase.GetCalVal();
             return caldata;
+
         }
 
         public List<DTO_Measurement> GetMeasurement(string socSecNB)

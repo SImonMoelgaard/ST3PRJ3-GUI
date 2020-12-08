@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -35,7 +36,7 @@ namespace PresentationLogic
         private Controller controller;
         private ShowDataWindow showDataWindow;
         private EmergencyPopUp emergencywindow;
-        
+        private List<DTO_CalVal> caldata;
 
 
 
@@ -56,12 +57,28 @@ namespace PresentationLogic
             //};
 
 
-
+            TimeSince();
 
 
         }
 
+        private List<DTO_CalVal> TimeSince()
+        {
+            caldata = controller.getcalval();
+            DateTime date = DateTime.Now;
+            
+            foreach (var VARIABLE in caldata)
+            {
+                date = VARIABLE.Datetime;
+                
+            }
 
+            var datewithouthour = date.Date;
+            
+ 
+             Timesince_L.Content =  datewithouthour.ToString("dd/MM/yyyy");
+            return null;
+        }
         private void Window_Loaded_(object sender, RoutedEventArgs e) //Window Loaded
         {
           
