@@ -37,7 +37,7 @@ namespace PresentationLogic
         private ShowDataWindow showDataWindow;
         private EmergencyPopUp emergencywindow;
         private List<DTO_CalVal> caldata;
-
+        private ShowCalibrationWindow ShowCalWindow;
 
 
         public MainWindow()
@@ -136,5 +136,13 @@ namespace PresentationLogic
             showDataWindow.Show();
         }
 
+       
+
+        private void ShowCalibration_B_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ShowCalWindow = new ShowCalibrationWindow(controller, this);
+            dataWindow.Show();
+        }
     }
 }
