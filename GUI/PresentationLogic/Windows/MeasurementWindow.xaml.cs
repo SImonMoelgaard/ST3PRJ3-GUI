@@ -123,10 +123,10 @@ namespace PresentationLogic.Windows
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
-            
+
+            controller.command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
 
 
-           
             if (IsReading) Task.Factory.StartNew(Read);
 
             
@@ -210,7 +210,7 @@ namespace PresentationLogic.Windows
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
             AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
-            controller.command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
+            
         }
 
         #region INotifyPropertyChanged implementation

@@ -75,14 +75,14 @@ namespace BuissnessLogic
 
         public bool getSocSecNB(string SocSecNB)
         {
-            return database.getSocSecNB(SocSecNB);
+            return localDatabase.getSocSecNB(SocSecNB);
             
         }
 
         public bool checkLogin(String socSecNb, String pw)
         {
-
-            return database.isUserRegistered(socSecNb, pw);
+            
+            return localDatabase.isUserRegistered(socSecNb, pw);
         }
 
         public object sendRPiData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,

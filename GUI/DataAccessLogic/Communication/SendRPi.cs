@@ -23,11 +23,11 @@ namespace DataAccessLogic
     {
 
 
-        
-        private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
+        private static IPAddress broadcast = IPAddress.Parse("172.20.10.11");//ÆNDRE IP HER
+        //private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
         
-        
+            
 
         public string Command(string command)
         {

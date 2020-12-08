@@ -30,7 +30,7 @@ namespace PresentationLogic.Windows
       private List<DTO_PatientData> patientdata;
       private double data=0;
       private List<DTO_CalVal> caldata;
-      public bool IsReading { get; set; }
+      public bool IsZeroActive { get; set; }
 
 
         public DataWindow(MainWindow main, Controller cr, MeasurementWindow ms)
@@ -46,10 +46,10 @@ namespace PresentationLogic.Windows
             
             measurementWindow = ms;
 
-            IsReading = !IsReading;
+            IsZeroActive = !IsZeroActive;
 
 
-            if (IsReading) Task.Factory.StartNew(recievezerovalue);
+            if (IsZeroActive) Task.Factory.StartNew(recievezerovalue);
 
             
         }
@@ -62,7 +62,7 @@ namespace PresentationLogic.Windows
 
             
 
-            while (IsReading)
+            while (IsZeroActive)
             {
 
 
@@ -75,6 +75,7 @@ namespace PresentationLogic.Windows
                     else
                     {
                         Nulpunkt_l.Text = "b " + data;
+                        IsZeroActive = false;
                     }
 
                 });
@@ -83,13 +84,13 @@ namespace PresentationLogic.Windows
             }
 
 
-            IsReading = false;
+            
             return data;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
-            IsReading = false;
+            IsZeroActive = false;
             this.Close();
             mainWindow.Show();
         }
@@ -113,7 +114,7 @@ namespace PresentationLogic.Windows
 
             measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
 
-            IsReading = false;
+            IsZeroActive = false;
 
 
             this.Hide();
