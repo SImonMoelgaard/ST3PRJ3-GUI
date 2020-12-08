@@ -70,6 +70,7 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             dataWindow = dw;
             MuteAlarm_B.Visibility = Visibility.Hidden;
+            //Battery100_I.Visibility = Visibility.Visible;
 
             #region Constant Changes Graph
 
@@ -195,6 +196,9 @@ namespace PresentationLogic.Windows
 
                         //Calling alarm method
                         Alarm();
+
+                        ////Calling battery method
+                        //Battery();
                     });
                 }
             }
@@ -304,48 +308,48 @@ namespace PresentationLogic.Windows
 
         List<DTO_Measurement> batteryList;
 
-        public void Battery()
-        {
-            var batteryList = controller.getmdata();
+        //public void Battery()
+        //{
+        //    var batteryList = controller.getmdata();
 
-            foreach (var battery in batteryList)
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (battery.Batterystatus >= 100)
-                    {
-                        Battery100_I.Visibility = Visibility.Visible;
-                        Battery75_I.Visibility = Visibility.Hidden;
-                        Battery50_I.Visibility = Visibility.Hidden;
-                        Battery25_I.Visibility = Visibility.Hidden;
-                    }
+        //    foreach (var battery in batteryList)
+        //    {
+        //        this.Dispatcher.Invoke(() =>
+        //        {
+        //            if (battery.Batterystatus >= 75)
+        //            {
+        //                Battery100_I.Visibility = Visibility.Visible;
+        //                Battery75_I.Visibility = Visibility.Hidden;
+        //                Battery50_I.Visibility = Visibility.Hidden;
+        //                Battery25_I.Visibility = Visibility.Hidden;
+        //            }
 
-                    if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
-                    {
-                        Battery75_I.Visibility = Visibility.Visible;
-                        Battery100_I.Visibility = Visibility.Hidden;
-                        Battery50_I.Visibility = Visibility.Hidden;
-                        Battery25_I.Visibility = Visibility.Hidden;
-                    }
+        //            if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
+        //            {
+        //                Battery75_I.Visibility = Visibility.Visible;
+        //                Battery100_I.Visibility = Visibility.Hidden;
+        //                Battery50_I.Visibility = Visibility.Hidden;
+        //                Battery25_I.Visibility = Visibility.Hidden;
+        //            }
 
-                    if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
-                    {
-                        Battery50_I.Visibility = Visibility.Visible;
-                        Battery100_I.Visibility = Visibility.Hidden;
-                        Battery75_I.Visibility = Visibility.Hidden;
-                        Battery25_I.Visibility = Visibility.Hidden;
+        //            if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
+        //            {
+        //                Battery50_I.Visibility = Visibility.Visible;
+        //                Battery100_I.Visibility = Visibility.Hidden;
+        //                Battery75_I.Visibility = Visibility.Hidden;
+        //                Battery25_I.Visibility = Visibility.Hidden;
 
-                    }
+        //            }
 
-                    if (battery.Batterystatus<=25)
-                    {
-                        Battery25_I.Visibility = Visibility.Visible;
-                        Battery100_I.Visibility = Visibility.Hidden;
-                        Battery75_I.Visibility = Visibility.Hidden;
-                        Battery50_I.Visibility = Visibility.Hidden;
-                    }
-                });
-            }
-        }
+        //            if (battery.Batterystatus<=25)
+        //            {
+        //                Battery25_I.Visibility = Visibility.Visible;
+        //                Battery100_I.Visibility = Visibility.Hidden;
+        //                Battery75_I.Visibility = Visibility.Hidden;
+        //                Battery50_I.Visibility = Visibility.Hidden;
+        //            }
+        //        });
+        //    }
+        //}
     }
 }
