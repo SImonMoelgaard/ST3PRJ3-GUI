@@ -20,7 +20,7 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class ShowCalibrationWindow : Window
     {
-        private List<DTO_CalVal> Caldata;
+        private List<DTO_CalVal> caldata;
         private MainWindow mainWindow;
         private Controller controller;
         public ShowCalibrationWindow(Controller cr, MainWindow mw)
@@ -32,8 +32,13 @@ namespace PresentationLogic.Windows
 
         public List<DTO_CalVal> ShowCalibration()
         {
-            Caldata = controller.getcalval();
+            caldata = controller.getcalval();
 
+            foreach (var VARIABLE in caldata)
+            {
+                
+
+            }
 
             return null;
         }
@@ -41,6 +46,11 @@ namespace PresentationLogic.Windows
         
 
         private void ExitToMainWindow_B_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ShowCalibration_B_OnClick(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
