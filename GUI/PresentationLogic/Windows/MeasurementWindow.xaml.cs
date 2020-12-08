@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Email.DataProvider;
 using BuissnessLogic;
 using DTO;
@@ -121,11 +122,13 @@ namespace PresentationLogic.Windows
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
+            
 
 
+           
             if (IsReading) Task.Factory.StartNew(Read);
 
-
+            
             #region This works and cannot be removed - AK
 
             //bPressure = new LineSeries() {PointGeometry = null};
@@ -157,8 +160,7 @@ namespace PresentationLogic.Windows
         {
             #region Constant Changes Graph
 
-            //var measurement = controller.ReadFromFile();
-            //var measurement = controller.getmdata();
+            
 
 
             while (IsReading)
@@ -238,6 +240,7 @@ namespace PresentationLogic.Windows
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            IsReading = false;
             mainWindow.Show();
         }
 

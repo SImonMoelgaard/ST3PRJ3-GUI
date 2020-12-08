@@ -81,14 +81,15 @@ namespace PresentationLogic.Windows
 
                 
             }
-            
 
 
+            IsReading = false;
             return data;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            IsReading = false;
             this.Close();
             mainWindow.Show();
         }
@@ -112,7 +113,7 @@ namespace PresentationLogic.Windows
 
             measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
 
-
+            IsReading = false;
 
 
             this.Hide();

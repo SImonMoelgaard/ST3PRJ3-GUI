@@ -47,6 +47,7 @@ namespace PresentationLogic
             
             InitializeComponent();
             
+            
             //English_RB.Content = new Image()
            //{
             //    Source=(new ImageSourceConverter()).ConvertFrom("britainFlag.jpg") as ImageSource
