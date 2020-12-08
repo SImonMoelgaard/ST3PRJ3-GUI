@@ -74,41 +74,31 @@ namespace PresentationLogic
             ////Testing button
             this.Hide();
 
-             dataWindow = new DataWindow(this, controller, measurementWindow);
+            dataWindow = new DataWindow(this, controller, measurementWindow);
 
             dataWindow.ShowDialog();
-
-
         }
 
         private void PerformCalibration_B_Click(object sender, RoutedEventArgs e)
         {
-            calibrationWindow = new CalibrationWindow(this, controller);
             this.Hide();
-            
+
+            calibrationWindow = new CalibrationWindow(this, controller);
             
             calibrationWindow.ShowDialog();
-            
         }
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
             controller.command("systemOff");
             
-           System.Windows.Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Emergency_Click(object sender, RoutedEventArgs e)
         {
             emergencywindow = new EmergencyPopUp(this,controller, measurementWindow);
             emergencywindow.ShowDialog();
-            
-
-            
-           
-
-           
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -120,7 +110,6 @@ namespace PresentationLogic
             //this.Hide();
             //loginWindow.ShowDialog();// Denne er udkommenteret så der kan testes på MW
 
-
         }
 
         private void Showmeassurement_B_Click(object sender, RoutedEventArgs e)
@@ -129,5 +118,6 @@ namespace PresentationLogic
             showDataWindow= new ShowDataWindow(controller, this,"");
             showDataWindow.Show();
         }
+
     }
 }

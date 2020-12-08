@@ -28,6 +28,7 @@ namespace PresentationLogic.Windows
     public partial class MeasurementWindow : Window, INotifyPropertyChanged
     {
         #region Constant Changes Graph
+
         private double _axisMax;
         private double _axisMin;
         public ChartValues<MeasurementModel> ChartValues { get; set; }
@@ -36,13 +37,12 @@ namespace PresentationLogic.Windows
         public double AxisUnit { get; set; }
         public bool IsReading { get; set; }
 
-
-        public bool MuteAlarm{ get; set; }
-
-        //Threads
-        private Thread alarmThread;
-
         #endregion
+
+        //Alarm
+        public bool MuteAlarm { get; set; }
+        private bool _blinkOnSysDia = false;
+        private bool _blinkOnMean = false;
 
         //Attributess
         //private LineSeries measurement;
@@ -50,7 +50,9 @@ namespace PresentationLogic.Windows
         private MainWindow mainWindow;
         private Controller controller;
         private DataWindow dataWindow;
+
         private List<DTO_Measurement> measurementData;
+
         //private LineSeries bPressure;
         //private ChartValues<double> chartBPressure;
         public string[] xAxis { get; set; }
@@ -61,17 +63,15 @@ namespace PresentationLogic.Windows
 
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
-            
+
             InitializeComponent();
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
             MuteAlarm_B.Visibility = Visibility.Hidden;
 
-
-
-
             #region Constant Changes Graph
+
             var mapper = Mappers.Xy<MeasurementModel>()
                 .X(model => model.Time.Ticks)
                 .Y(model => model.RawData);
@@ -92,6 +92,7 @@ namespace PresentationLogic.Windows
             MuteAlarm = false;
 
             DataContext = this;
+
             #endregion
         }
 
@@ -104,6 +105,7 @@ namespace PresentationLogic.Windows
                 OnPropertyChanged("AxisMax");
             }
         }
+
         public double AxisMin
         {
             get { return _axisMin; }
@@ -157,11 +159,11 @@ namespace PresentationLogic.Windows
 
             //var measurement = controller.ReadFromFile();
             //var measurement = controller.getmdata();
-            
-            
+
+
             while (IsReading)
             {
-                
+
                 var measurement = controller.getmdata();
 
                 foreach (var data in measurement)
@@ -175,7 +177,7 @@ namespace PresentationLogic.Windows
 
                     SetAxisLimits(data.Tid);
 
-                    if (ChartValues.Count>400)
+                    if (ChartValues.Count > 400)
                     {
                         ChartValues.RemoveAt(0);
                     }
@@ -184,14 +186,17 @@ namespace PresentationLogic.Windows
                     this.Dispatcher.Invoke(() =>
                     {
                         Puls_L.Content = Convert.ToString(data.CalculatedPulse);
-                        SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
+                        SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
+                                           Convert.ToString(data.CalculatedDia);
                         Mean_L.Content = Convert.ToString(data.CalculatedMean);
                         BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
 
+                        //Calling alarm method
                         Alarm();
                     });
                 }
             }
+
             #endregion
         }
 
@@ -199,7 +204,7 @@ namespace PresentationLogic.Windows
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
             AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
-            controller.command("Startmeasurement");//Måske et let ghetto sted. men det gør sådan det virker xD
+            controller.command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
         }
 
         #region INotifyPropertyChanged implementation
@@ -236,13 +241,6 @@ namespace PresentationLogic.Windows
             mainWindow.Show();
         }
 
-
-        //private readonly BlockCollection<DataContainer> _dataQueue;
-
-        private List<DTO_Measurement> alarms;
-        private bool _blinkOnSysDia = false;
-        private bool _blinkOnMean = false;
-
         public void Alarm()
         {
             var alarmList = controller.getmdata();
@@ -251,7 +249,8 @@ namespace PresentationLogic.Windows
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    if (alarms.HighDia == true || alarms.LowDia == true||alarms.HighSys==true||alarms.LowSys==true)
+                    if (alarms.HighDia == true || alarms.LowDia == true || alarms.HighSys == true ||
+                        alarms.LowSys == true)
                     {
                         if (!MuteAlarm)
                         {
@@ -274,61 +273,48 @@ namespace PresentationLogic.Windows
 
                     if (alarms.HighMean == true || alarms.LowMean == true)
                     {
-                       
-                            if (_blinkOnMean)
-                            {
-                                Mean_L.Foreground = Brushes.Black;
-                                MuteAlarm_B.Background = Brushes.Gray;
-                            }
-                            else
-                            {
-                                var converter = new System.Windows.Media.BrushConverter();
-                                var brush = (Brush) converter.ConvertFromString("#FFFC9F0A");
-                                Mean_L.Foreground = brush;
-                                MuteAlarm_B.Background = Brushes.Red;
-                            }
 
-                            _blinkOnMean = !_blinkOnMean;
+                        if (_blinkOnMean)
+                        {
+                            Mean_L.Foreground = Brushes.Black;
+                            MuteAlarm_B.Background = Brushes.Gray;
+                        }
+                        else
+                        {
+                            var converter = new System.Windows.Media.BrushConverter();
+                            var brush = (Brush) converter.ConvertFromString("#FFFC9F0A");
+                            Mean_L.Foreground = brush;
+                            MuteAlarm_B.Background = Brushes.Red;
+                        }
+
+                        _blinkOnMean = !_blinkOnMean;
                     }
                 });
             }
-
-
-            //this.Dispatcher.Invoke(() =>
-            //{
-            //    while (!MuteAlarm)
-            //    {
-            //        SysDia_L.Foreground = Brushes.Red;
-            //        SysDia_L.Foreground = Brushes.Blue;
-            //    }
-            //});
-
-            //alarms = new List<DTO_Measurement>();
-            //alarms = controller.getmdata();
-
-            //foreach (var alarm in alarms)
-            //{
-            //    if (alarm.HighDia || alarm.LowDia || alarm.HighSys || alarm.LowSys)
-            //    {
-            //        while (_muteAlarm)
-            //        {
-            //            while (true)
-            //            {
-            //                SysDia_L.BorderBrush = Brushes.Red;
-            //                SysDia_L.BorderBrush = Brushes.Transparent;
-            //            }
-            //        }
-            //    }
-
-            //}
-
-
         }
 
         private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
         {
             dataWindow = new DataWindow(mainWindow, controller, this);
             dataWindow.Show();
+        }
+
+        List<DTO_Measurement> batteryList;
+
+        public void Battery()
+        {
+            var batteryList = controller.getmdata();
+
+            foreach (var battery in batteryList)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (battery.Batterystatus >= 100)
+                    {
+                        Battery100_I
+                    }
+                });
+            }
         }
     }
 }

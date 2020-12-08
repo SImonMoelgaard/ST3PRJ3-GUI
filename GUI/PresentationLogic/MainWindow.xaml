@@ -16,7 +16,7 @@
         <Button x:Name="PerformCalibration_B" Content="Foretag Kalibrering" Margin="18,133,0,0" Height="43" Width="145" Click="PerformCalibration_B_Click" VerticalAlignment="Top" Background="#FFB2833F"/>
         <Button x:Name="Exit_B" Content="Luk Program" Margin="18,272,0,0" Height="43" Width="145" Click="Exit_B_Click" VerticalAlignment="Top"/>
         <RadioButton x:Name="English_RB" Content="English" Margin="199,17,0,0" VerticalAlignment="Top" Width="83"/>
-        <Button x:Name="Now_B" Content="Fortsæt Måling" Margin="182,68,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="Button_Click"/>
+        <Button x:Name="Now_B" Content="Fortsæt Måling" Margin="182,68,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="Emergency_Click"/>
         <Button x:Name="Showmeassurement_B" Content="Vis Tidligere Måling" Margin="18,198,0,0" Click="Showmeassurement_B_Click" Width="145" Height="43" VerticalAlignment="Top" Background="#FFB06DAA"/>
         <Label Content="Blodtryksmåler" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="26"/>
 
