@@ -28,18 +28,21 @@ namespace PresentationLogic.Windows
             mainWindow = mw;
             controller = cr;
             InitializeComponent();
-            Caldata = cr.getcalval();
         }
 
         public List<DTO_CalVal> ShowCalibration()
         {
+            Caldata = controller.getcalval();
+
 
             return null;
         }
 
-        private void InsertValue_B_Click(object sender, RoutedEventArgs e)
-        {
+        
 
+        private void ExitToMainWindow_B_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

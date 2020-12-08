@@ -19,7 +19,7 @@
                 <lvc:Axis Title="[mV]"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5" Margin="323,0,0,392"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Tilbage" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_OnClick" Background="#FF5B9BD5" Margin="323,0,0,392"/>
         <Button x:Name="ShowCalibration_B" Content="Vis Seneste kalibrering" Margin="-389,77,0,0" VerticalAlignment="Top" Width="167" Click="InsertValue_B_Click" Background="#FFB2833F"/>
     </Grid>
 </Window>
