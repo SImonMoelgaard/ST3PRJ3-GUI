@@ -15,7 +15,6 @@
         <Button x:Name="Exit_B" Content="Afslut program" Margin="76,253,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="Exit_B_Click"/>
         <Label Content="Brugernavn" HorizontalAlignment="Left" Margin="31,48,0,0" VerticalAlignment="Top"/>
         <Label Content="Adgangskode" HorizontalAlignment="Left" Margin="30,110,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Forkert_L" Content="Kode eller brugernavn forkert" HorizontalAlignment="Center" VerticalAlignment="Top" Width="244" Background="Black" FontStyle="Italic" Margin="0,157,0,0"/>
 
     </Grid>
 </Window>
