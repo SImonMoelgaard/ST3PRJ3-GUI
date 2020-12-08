@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Geared" Version="1.2.9" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="ModernUI.WPF" Version="1.0.9" />
     <PackageReference Include="ModernWpfUI" Version="0.9.3-preview.201004.0" />

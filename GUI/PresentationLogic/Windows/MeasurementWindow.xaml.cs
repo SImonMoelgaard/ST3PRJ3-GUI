@@ -20,6 +20,7 @@ using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 using Colors = Windows.UI.Colors;
+using LiveCharts.Geared;
 
 namespace PresentationLogic.Windows
 {
@@ -32,7 +33,8 @@ namespace PresentationLogic.Windows
 
         private double _axisMax;
         private double _axisMin;
-        public ChartValues<MeasurementModel> ChartValues { get; set; }
+       // public ChartValues<MeasurementModel> ChartValues { get; set; }
+        public GearedValues<MeasurementModel> ChartValues { get; set; }
         public Func<double, string> DateTimeFormatter { get; set; }
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
@@ -58,10 +60,10 @@ namespace PresentationLogic.Windows
         //private ChartValues<double> chartBPressure;
         public string[] xAxis { get; set; }
 
-
+        
         public SeriesCollection Measurement { get; set; }
 
-
+        
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
 
@@ -79,10 +81,12 @@ namespace PresentationLogic.Windows
                 .Y(model => model.RawData);
 
             Charting.For<MeasurementModel>(mapper);
-
-            ChartValues = new ChartValues<MeasurementModel>();
-
-            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss");
+            
+            //ChartValues = new ChartValues<MeasurementModel>();
+            ChartValues=new GearedValues<MeasurementModel>();
+            ChartValues.WithQuality(Quality.Highest);
+           
+            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss");//FJERN HH IGEN
 
             AxisStep = TimeSpan.FromSeconds(1).Ticks;
 
@@ -94,7 +98,6 @@ namespace PresentationLogic.Windows
             MuteAlarm = false;
 
             DataContext = this;
-
             #endregion
         }
 
@@ -118,8 +121,9 @@ namespace PresentationLogic.Windows
             }
         }
 
-        private void Start_B_Click(object sender, RoutedEventArgs e)
+        public void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            
             Stop_B.IsEnabled = true;
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
@@ -156,31 +160,41 @@ namespace PresentationLogic.Windows
             #endregion
         }
 
-
+        
+        
         private void Read()
         {
             #region Constant Changes Graph
 
             
+            
 
-
+            
             while (IsReading)
             {
 
-                var measurement = controller.getmdata();
+                var measurements =controller.getmdata();
+                Thread.Sleep(10);
 
-                foreach (var data in measurement)
+                foreach (var data in measurements)
                 {
-                    Thread.Sleep(20);
-                    ChartValues.Add(new MeasurementModel
-                    {
-                        Time = data.Tid,
-                        RawData = data.mmHg
-                    });
+                    //Thread.Sleep(20);
 
+                    if (data.mmHg>1)
+                    {
+                        ChartValues.Add(new MeasurementModel
+                        {
+                            Time = DateTime.Now,
+                            //Time = data.Tid,
+
+                            RawData = data.mmHg
+                        });
+                    }
+                    
+                    
                     SetAxisLimits(data.Tid);
 
-                    if (ChartValues.Count > 400)
+                    if (ChartValues.Count > 100)
                     {
                         ChartValues.RemoveAt(0);
                     }
@@ -188,11 +202,13 @@ namespace PresentationLogic.Windows
                     //Update pulse, systolic, diastolic and mean
                     this.Dispatcher.Invoke(() =>
                     {
-                        Puls_L.Content = Convert.ToString(data.CalculatedPulse);
-                        SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
-                                           Convert.ToString(data.CalculatedDia);
-                        Mean_L.Content = Convert.ToString(data.CalculatedMean);
-                        BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+                        if (data.CalculatedPulse > 1) { Puls_L.Content = Convert.ToString(data.CalculatedPulse); }
+                        
+                        if(data.CalculatedSys>1){ SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia); }
+
+                        if (data.CalculatedMean>1){ Mean_L.Content = Convert.ToString(data.CalculatedMean); }
+                        if(data.CalculatedMean>1){ BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%"; }
+                        
 
                         //Calling alarm method
                         Alarm();
