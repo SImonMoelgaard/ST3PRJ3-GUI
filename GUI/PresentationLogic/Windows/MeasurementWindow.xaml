@@ -63,5 +63,38 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+        <Image x:Name="Battery75_I" Source="75battery.png" HorizontalAlignment="Left" Height="44
+               " Margin="14,1,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="Battery50_I" Source="50battery.png" HorizontalAlignment="Left" Height="44
+               " Margin="14,1,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="Battery25_I" Source="25battery.png" HorizontalAlignment="Left" Height="44
+               " Margin="14,1,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
