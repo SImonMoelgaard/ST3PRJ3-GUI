@@ -111,7 +111,7 @@ namespace DataAccessLogic
             return new List<DTO_CalVal>();
         }
 
-        public double GetCalVal()
+        public List<DTO_CalVal> GetCalVal()
         {
             string path = @"C:\ST3PRJ3FIL\Calibration";
             int  zv=0, b = 0; 
@@ -133,18 +133,19 @@ namespace DataAccessLogic
 
 
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
-                    a = caldata.A;
-                    date = caldata.Datetime;
+
+                    Caldata.Add(caldata);
+
                 }
             }
             catch (Exception e)
             {
-                return 0;
+                return null;
             }
 
-            return a;
+            return Caldata;
 
-            
+
         }
 
 

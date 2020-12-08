@@ -19,6 +19,8 @@
         <Button x:Name="Now_B" Content="Fortsæt Måling" Margin="182,68,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="Button_Click"/>
         <Button x:Name="Showmeassurement_B" Content="Vis Tidligere Måling" Margin="18,198,0,0" Click="Showmeassurement_B_Click" Width="145" Height="43" VerticalAlignment="Top" Background="#FFB06DAA"/>
         <Label Content="Blodtryksmåler" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Button x:Name="ShowCalibration_B" Content="Vis Kalibrering" Margin="182,133,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="Button_Click"/>
+        <Label x:Name="Timesince_L" Content="Label" HorizontalAlignment="Left" Margin="218,233,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

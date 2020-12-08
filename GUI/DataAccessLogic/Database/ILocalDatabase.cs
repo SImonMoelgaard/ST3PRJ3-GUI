@@ -22,7 +22,7 @@ namespace DataAccessLogic
             string CprPatient,
             double Calval, double Zeroval);
 
-        public double GetCalVal();
+        public List<DTO_CalVal> GetCalVal();
 
 
 

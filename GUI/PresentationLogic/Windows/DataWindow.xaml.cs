@@ -29,7 +29,7 @@ namespace PresentationLogic.Windows
       private Calibration cali;
       private List<DTO_PatientData> patientdata;
       private double data=0;
-      private double caldata;
+      private List<DTO_CalVal> caldata;
       public bool IsReading { get; set; }
 
 
@@ -97,11 +97,17 @@ namespace PresentationLogic.Windows
         {
             //controller.requestcalval();
             caldata = controller.getcalval();
+            double a = 0;
+            //List<DTO_CalVal> caldata = controller.getcalval(dataReference, dataCalVal, 0, 0, 0, 0);
+            foreach (var VARIABLE in caldata)
+            {
+                a = VARIABLE.A;
 
+            }
 
             controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
                 Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text
-                    ), caldata ,data);
+                    ),a ,data);
 
 
             measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
