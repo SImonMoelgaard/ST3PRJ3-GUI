@@ -311,7 +311,35 @@ namespace PresentationLogic.Windows
                 {
                     if (battery.Batterystatus >= 100)
                     {
-                        Battery100_I
+                        Battery100_I.Visibility = Visibility.Visible;
+                        Battery75_I.Visibility = Visibility.Hidden;
+                        Battery50_I.Visibility = Visibility.Hidden;
+                        Battery25_I.Visibility = Visibility.Hidden;
+                    }
+
+                    if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
+                    {
+                        Battery75_I.Visibility = Visibility.Visible;
+                        Battery100_I.Visibility = Visibility.Hidden;
+                        Battery50_I.Visibility = Visibility.Hidden;
+                        Battery25_I.Visibility = Visibility.Hidden;
+                    }
+
+                    if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
+                    {
+                        Battery50_I.Visibility = Visibility.Visible;
+                        Battery100_I.Visibility = Visibility.Hidden;
+                        Battery75_I.Visibility = Visibility.Hidden;
+                        Battery25_I.Visibility = Visibility.Hidden;
+
+                    }
+
+                    if (battery.Batterystatus<=25)
+                    {
+                        Battery25_I.Visibility = Visibility.Visible;
+                        Battery100_I.Visibility = Visibility.Hidden;
+                        Battery75_I.Visibility = Visibility.Hidden;
+                        Battery50_I.Visibility = Visibility.Hidden;
                     }
                 });
             }
