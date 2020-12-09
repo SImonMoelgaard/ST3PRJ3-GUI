@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -99,6 +100,7 @@ namespace PresentationLogic.Windows
 
             DataContext = this;
             #endregion
+            
         }
 
         public double AxisMax
@@ -166,57 +168,85 @@ namespace PresentationLogic.Windows
         {
             #region Constant Changes Graph
 
-            
-            
+            controller.openrecieveports();
 
-            
+
+
             while (IsReading)
             {
 
-                var measurements =controller.getmdata();
-                Thread.Sleep(10);
-
-                foreach (var data in measurements)
+                try
                 {
-                    //Thread.Sleep(20);
+                    var measurements = controller.getmdata();
+                    //Thread.Sleep(10);
 
-                    if (data.mmHg>1)
+
+                    foreach (var data in measurements)
                     {
-                        ChartValues.Add(new MeasurementModel
-                        {
-                            Time = DateTime.Now,
-                            //Time = data.Tid,
+                        //Thread.Sleep(20);
 
-                            RawData = data.mmHg
+                        if (data.mmHg > 1)
+                        {
+                            ChartValues.Add(new MeasurementModel
+                            {
+                                //Time = DateTime.Now,
+                                Time = data.Tid,
+
+                                RawData = data.mmHg
+                            });
+                        }
+
+
+                        SetAxisLimits(data.Tid);
+
+                        if (ChartValues.Count > 400)
+                        {
+                            ChartValues.RemoveAt(0);
+                        }
+
+                        //Update pulse, systolic, diastolic and mean
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            if (data.CalculatedPulse > 1)
+                            {
+                                Puls_L.Content = Convert.ToString(data.CalculatedPulse);
+                            }
+
+                            if (data.CalculatedSys > 1)
+                            {
+                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
+                                                   Convert.ToString(data.CalculatedDia);
+                            }
+
+                            if (data.CalculatedMean > 1)
+                            {
+                                Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                            }
+
+                            if (data.CalculatedMean > 1)
+                            {
+                                BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+                            }
+
+
+                            //Calling alarm method
+                            //Alarm();
+
+                            ////Calling battery method
+                            //Battery();
                         });
                     }
-                    
-                    
-                    SetAxisLimits(data.Tid);
-
-                    if (ChartValues.Count > 100)
-                    {
-                        ChartValues.RemoveAt(0);
-                    }
-
-                    //Update pulse, systolic, diastolic and mean
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        if (data.CalculatedPulse > 1) { Puls_L.Content = Convert.ToString(data.CalculatedPulse); }
-                        
-                        if(data.CalculatedSys>1){ SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia); }
-
-                        if (data.CalculatedMean>1){ Mean_L.Content = Convert.ToString(data.CalculatedMean); }
-                        if(data.CalculatedMean>1){ BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%"; }
-                        
-
-                        //Calling alarm method
-                        Alarm();
-
-                        ////Calling battery method
-                        //Battery();
-                    });
                 }
+                catch (InvalidOperationException)
+                {
+                    
+                }
+
+
+
+
+
+
             }
 
             #endregion

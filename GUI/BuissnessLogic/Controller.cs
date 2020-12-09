@@ -45,12 +45,19 @@ namespace BuissnessLogic
         private Mean mean;
 
 
-        
+        public void openrecieveports()
+        {
+            recieveRPi.openrecieveports();
+
+        }
 
         public List<DTO_Measurement> getmdata()
         {
             measurementdata = recieveRPi.ReceiveMeasurment();
-            return measurementdata;
+            
+                return measurementdata;
+            
+           
         }
 
         public double Recievedouble()
