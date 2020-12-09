@@ -90,7 +90,7 @@ namespace DataAccessLogic
 
         private static State state = new State();
         private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
-        public const int bufSize = 8 * 1024;
+        private const int bufSize = 8*1024;
         static Socket socket;
         private static AsyncCallback recv = null;
         private List<DTO_Measurement> measurements = new List<DTO_Measurement>();
@@ -127,24 +127,33 @@ namespace DataAccessLogic
                 socket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv = (ar) =>
                 {
                     
-                    var measurementdata = new DTO_Measurement("", 0, new DateTime(2000,01,01), false, false, false, false, false, false, 0 , 0 ,0 ,0 ,0);
+                    measurements = new List<DTO_Measurement>();
+                    
+                    var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false, false, false, false, false, 0, 0, 0, 0, 0);
                     State so = (State)ar.AsyncState;
                     int bytes = socket.EndReceiveFrom(ar, ref epFrom);
                     jsonString = Encoding.ASCII.GetString(so.buffer, 0, bytes);
+                    //socket.SendBufferSize = 1000;
+                    //so.buffer.SetValue(512,0);
                     measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(jsonString);
+                    Thread.Sleep(4);
                     measurements.Add(measurementdata);
                     socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
 
-
                     
+
                 }, state);
+                
+                return measurements;
+            
+                
             
             
             
 
 
 
-            return measurements;
+
 
 
 
@@ -163,6 +172,8 @@ namespace DataAccessLogic
         public class State
         {
             public byte[] buffer = new byte[ReceiveRPi.bufSize];
+            
+           
         }
 
 

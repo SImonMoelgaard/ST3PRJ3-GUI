@@ -87,7 +87,7 @@ namespace PresentationLogic.Windows
             ChartValues=new GearedValues<MeasurementModel>();
             ChartValues.WithQuality(Quality.Highest);
            
-            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss");//FJERN HH IGEN
+            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");//FJERN HH IGEN
 
             AxisStep = TimeSpan.FromSeconds(1).Ticks;
 
@@ -175,13 +175,12 @@ namespace PresentationLogic.Windows
             while (IsReading)
             {
 
-                try
-                {
+                //Thread.Sleep(2);
                     var measurements = controller.getmdata();
-                    //Thread.Sleep(10);
+                    Thread.Sleep(7);
 
 
-                    foreach (var data in measurements)
+                    foreach (DTO_Measurement data in measurements)
                     {
                         //Thread.Sleep(20);
 
@@ -191,7 +190,7 @@ namespace PresentationLogic.Windows
                             {
                                 //Time = DateTime.Now,
                                 Time = data.Tid,
-
+                                
                                 RawData = data.mmHg
                             });
                         }
@@ -199,7 +198,7 @@ namespace PresentationLogic.Windows
 
                         SetAxisLimits(data.Tid);
 
-                        if (ChartValues.Count > 400)
+                        if (ChartValues.Count > 5000)
                         {
                             ChartValues.RemoveAt(0);
                         }
@@ -236,11 +235,9 @@ namespace PresentationLogic.Windows
                             //Battery();
                         });
                     }
-                }
-                catch (InvalidOperationException)
-                {
-                    
-                }
+                
+                
+                
 
 
 
