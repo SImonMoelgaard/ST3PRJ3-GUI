@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -168,73 +170,91 @@ namespace PresentationLogic.Windows
         {
             #region Constant Changes Graph
 
-            controller.openrecieveports();
+            //controller.openrecieveports();
 
 
 
             while (IsReading)
             {
 
-                //Thread.Sleep(2);
+                Thread.Sleep(2);
                     var measurements = controller.getmdata();
-                    Thread.Sleep(7);
-
-
-                    foreach (DTO_Measurement data in measurements)
+                    //Thread.Sleep(1);
+                    if (measurements.Contains(null))
                     {
-                        //Thread.Sleep(20);
+                   break;
+                     }
 
-                        if (data.mmHg > 1)
+                    else
+                    {
+                    try
+                    {
+                        foreach (DTO_Measurement data in measurements.ToList())
                         {
-                            ChartValues.Add(new MeasurementModel
+                            //Thread.Sleep(20);
+
+                            if (data.mmHg > 1)
                             {
-                                //Time = DateTime.Now,
-                                Time = data.Tid,
-                                
-                                RawData = data.mmHg
+                                ChartValues.Add(new MeasurementModel
+                                {
+                                    //Time = DateTime.Now,
+                                    Time = data.Tid,
+
+                                    RawData = data.mmHg
+
+                                });
+                                measurements.Clear();
+                            }
+                            else
+                            {
+                                measurements.Clear();
+                            }
+
+                            SetAxisLimits(data.Tid);
+
+                            if (ChartValues.Count > 1000)
+                            {
+                                ChartValues.RemoveAt(0);
+                            }
+
+                            //Update pulse, systolic, diastolic and mean
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                if (data.CalculatedPulse > 1)
+                                {
+                                    Puls_L.Content = Convert.ToString(data.CalculatedPulse);
+                                }
+
+                                if (data.CalculatedSys > 1)
+                                {
+                                    SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
+                                                       Convert.ToString(data.CalculatedDia);
+                                }
+
+                                if (data.CalculatedMean > 1)
+                                {
+                                    Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                                }
+
+                                if (data.CalculatedMean > 1)
+                                {
+                                    BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+                                }
+
+
+                                //Calling alarm method
+                                //Alarm();
+
+                                ////Calling battery method
+                                //Battery();
                             });
                         }
-
-
-                        SetAxisLimits(data.Tid);
-
-                        if (ChartValues.Count > 5000)
-                        {
-                            ChartValues.RemoveAt(0);
-                        }
-
-                        //Update pulse, systolic, diastolic and mean
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            if (data.CalculatedPulse > 1)
-                            {
-                                Puls_L.Content = Convert.ToString(data.CalculatedPulse);
-                            }
-
-                            if (data.CalculatedSys > 1)
-                            {
-                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
-                                                   Convert.ToString(data.CalculatedDia);
-                            }
-
-                            if (data.CalculatedMean > 1)
-                            {
-                                Mean_L.Content = Convert.ToString(data.CalculatedMean);
-                            }
-
-                            if (data.CalculatedMean > 1)
-                            {
-                                BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
-                            }
-
-
-                            //Calling alarm method
-                            //Alarm();
-
-                            ////Calling battery method
-                            //Battery();
-                        });
                     }
+                    catch (InvalidExpressionException)
+                    {
+
+                    }
+                }    
                 
                 
                 

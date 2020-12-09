@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using DataAccessLogic;
 using DTO;
@@ -47,14 +48,23 @@ namespace BuissnessLogic
 
         public void openrecieveports()
         {
-            recieveRPi.openrecieveports();
-
+            recieveRPi.OpenRecievePorts();
         }
 
+       
         public List<DTO_Measurement> getmdata()
         {
-            measurementdata = recieveRPi.ReceiveMeasurment();
             
+                measurementdata = recieveRPi.test();
+               
+                //measurementdata = recieveRPi.test2();
+            
+            
+            //measurementdata = recieveRPi.ReceiveMeasurment();
+            //measurementdata = recieveRPi.ReceiveMeasurment2()
+            
+           // measurementdata = recieveRPi.test();
+            //measurementdata = recieveRPi.test2();
                 return measurementdata;
             
            
@@ -77,6 +87,7 @@ namespace BuissnessLogic
         public List<DTO_Measurement> GetMeasurement(string socSecNB)
         {
             measurementList = database.GetMeasurement(socSecNB);
+            
             return measurementList;
         }
 
