@@ -22,25 +22,41 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class ShowCalibrationWindow : Window
     {
-        //Window
+        /// <summary>
+        /// Windows
+        /// </summary>
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
 
-        //Lists
+        /// <summary>
+        /// Lists
+        /// </summary>
         private List<DTO_CalVal> calData;
         private List<double> dataCalVal;
         private List<int> dataReference;
 
-        //Chart
+        /// <summary>
+        /// Chart
+        /// </summary>
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
 
-        //Values
+        /// <summary>
+        /// Values
+        /// </summary>
         private double a, b, r2, zv;
 
-        //X Axis
+        /// <summary>
+        /// X Axis
+        /// </summary>
         public string[] XAxis { get; set; }
 
+        /// <summary>
+        /// Show Calibration Window Constructor,
+        /// initiates lists
+        /// </summary>
+        /// <param name="cr"></param>
+        /// <param name="mw"></param>
         public ShowCalibrationWindow(Controller cr, MainWindow mw)
         {
             //Windows
@@ -54,6 +70,9 @@ namespace PresentationLogic.Windows
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Method that shows latest calibration
+        /// </summary>
         public void ShowCalibration()
         {
             //Receive calibration value
@@ -88,6 +107,9 @@ namespace PresentationLogic.Windows
             MakeGraph();
         }
 
+        /// <summary>
+        /// Method that makes latest calibration chart
+        /// </summary>
         public void MakeGraph()
         {
             //Chart
@@ -114,6 +136,11 @@ namespace PresentationLogic.Windows
             DataContext = this;
         }
 
+        /// <summary>
+        /// Exit To Main Window Button shows Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_OnClick(object sender, RoutedEventArgs e)
         {
             //Close window
@@ -123,6 +150,11 @@ namespace PresentationLogic.Windows
             mainWindow.Show();
         }
 
+        /// <summary>
+        /// Show Calibration Button shows latest calibration
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowCalibration_B_OnClick(object sender, RoutedEventArgs e)
         {
             //Show latest calibration
