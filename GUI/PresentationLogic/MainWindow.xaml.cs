@@ -86,7 +86,8 @@ namespace PresentationLogic
             date  = date.Date;
             
             //Displaying latest calibration
-            Timesince_L.Content =  "Seneste kalibrering: \n"+date.ToString("dd/MM/yyyy");
+            //Timesince_L.Content =  "Seneste kalibrering: \n"+date.ToString("dd/MM/yyyy");
+            Timesince_L.Content = "";
         }
 
         /// <summary>
@@ -195,8 +196,13 @@ namespace PresentationLogic
         /// <param name="e"></param>
         private void ShowCalibration_B_Click(object sender, RoutedEventArgs e)
         {
+            //Hide Main Window
             this.Hide();
+
+            //Show Calibration Window
             ShowCalWindow = new ShowCalibrationWindow(controller, this);
+            
+            //Show Show Calibration Window
             ShowCalWindow.Show();
         }
     }

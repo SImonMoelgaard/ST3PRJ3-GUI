@@ -25,29 +25,48 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class CalibrationWindow : Window
     {
-        //Windows
+
+        /// <summary>
+        /// Windows
+        /// </summary>
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
-        
-        //Chart
+
+        /// <summary>
+        /// Chart
+        /// </summary>
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
 
-        //Lists
+        /// <summary>
+        /// Lists
+        /// </summary>
         private readonly List<double> dataCalVal;
         private readonly List<int> dataReference;
 
-        //Calibration
+        /// <summary>
+        /// Calibration
+        /// </summary>
         private readonly ICalibration cali = new Calibration();
-        
-        //X Axis
+
+        /// <summary>
+        /// X Axis
+        /// </summary>
         public string[] XAxis { get; set; }
 
-        //Linear regression values
+        /// <summary>
+        /// Linear regression values
+        /// </summary>
         private double r2;
         private double a;
         private double b;
-
+        
+        /// <summary>
+        /// Constructor Calibration Window
+        /// Initiates calibration lists
+        /// </summary>
+        /// <param name="mw"></param>
+        /// <param name="cr"></param>
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
             //Windows
@@ -63,6 +82,11 @@ namespace PresentationLogic.Windows
             //double zv = cali.getZeroval();
         }
 
+        /// <summary>
+        /// Exit To Main Window Button shows the Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             //Close window
@@ -72,6 +96,14 @@ namespace PresentationLogic.Windows
             mainWindow.Show();
         }
 
+        /// <summary>
+        /// Insert Value Button
+        /// Sends command to RPi to start calibration,
+        /// receives calibration value and displays reference and calibration value in a list
+        /// and displays the calibration chart
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
             //Receive calibration value
@@ -93,6 +125,9 @@ namespace PresentationLogic.Windows
             MakeGraph();
         }
 
+        /// <summary>
+        /// Method that generates the calibration b
+        /// </summary>
         public void MakeGraph()
         {
             calVal = new LineSeries();
