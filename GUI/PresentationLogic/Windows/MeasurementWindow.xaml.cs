@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,8 +36,8 @@ namespace PresentationLogic.Windows
 
         private double _axisMax;
         private double _axisMin;
-       // public ChartValues<MeasurementModel> ChartValues { get; set; }
-        public GearedValues<MeasurementModel> ChartValues { get; set; }
+        public ChartValues<MeasurementModel> ChartValues { get; set; }
+        //public GearedValues<MeasurementModel> ChartValues { get; set; }
         public Func<double, string> DateTimeFormatter { get; set; }
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
@@ -83,11 +85,11 @@ namespace PresentationLogic.Windows
 
             Charting.For<MeasurementModel>(mapper);
             
-            //ChartValues = new ChartValues<MeasurementModel>();
-            ChartValues=new GearedValues<MeasurementModel>();
+            ChartValues = new ChartValues<MeasurementModel>();
+            //ChartValues=new GearedValues<MeasurementModel>();
             ChartValues.WithQuality(Quality.Highest);
            
-            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss");//FJERN HH IGEN
+            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");//FJERN HH IGEN
 
             AxisStep = TimeSpan.FromSeconds(1).Ticks;
 
@@ -162,7 +164,8 @@ namespace PresentationLogic.Windows
             #endregion
         }
 
-        
+        private List<DTO_Measurement> a;//HER LAVER SIMON SHIT
+
         
         private void Read()
         {
@@ -170,77 +173,93 @@ namespace PresentationLogic.Windows
 
             controller.openrecieveports();
 
-
+            
 
             while (IsReading)
             {
 
-                try
-                {
+                Thread.Sleep(1);
                     var measurements = controller.getmdata();
-                    //Thread.Sleep(10);
-
-
-                    foreach (var data in measurements)
-                    {
-                        //Thread.Sleep(20);
-
-                        if (data.mmHg > 1)
-                        {
-                            ChartValues.Add(new MeasurementModel
-                            {
-                                //Time = DateTime.Now,
-                                Time = data.Tid,
-
-                                RawData = data.mmHg
-                            });
-                        }
-
-
-                        SetAxisLimits(data.Tid);
-
-                        if (ChartValues.Count > 400)
-                        {
-                            ChartValues.RemoveAt(0);
-                        }
-
-                        //Update pulse, systolic, diastolic and mean
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            if (data.CalculatedPulse > 1)
-                            {
-                                Puls_L.Content = Convert.ToString(data.CalculatedPulse);
-                            }
-
-                            if (data.CalculatedSys > 1)
-                            {
-                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
-                                                   Convert.ToString(data.CalculatedDia);
-                            }
-
-                            if (data.CalculatedMean > 1)
-                            {
-                                Mean_L.Content = Convert.ToString(data.CalculatedMean);
-                            }
-
-                            if (data.CalculatedMean > 1)
-                            {
-                                BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
-                            }
-
-
-                            //Calling alarm method
-                            //Alarm();
-
-                            ////Calling battery method
-                            //Battery();
-                        });
-                    }
-                }
-                catch (InvalidOperationException)
-                {
+                    //Thread.Sleep(1);
+                   
+                a = new List<DTO_Measurement>();
+                a = controller.getmdata2();    
                     
-                }
+                    try
+                    {
+                        foreach (DTO_Measurement data2 in a)
+                        {
+                            
+                        }
+                        foreach (DTO_Measurement data in measurements.ToList())
+                        {
+                            //Thread.Sleep(20);
+                            
+                            if (data.mmHg > 1)
+                            {
+                                ChartValues.Add(new MeasurementModel
+                                {
+                                    //Time = DateTime.Now,
+                                    Time = data.Tid,
+
+                                    RawData = data.mmHg
+
+                                });
+                                measurements.Clear();
+                            }
+                            else
+                            {
+                                measurements.Clear();
+                            }
+                            
+                            SetAxisLimits(data.Tid);
+
+                            if (ChartValues.Count > 1000)
+                            {
+                                ChartValues.RemoveAt(0);
+                            }
+
+                            //Update pulse, systolic, diastolic and mean
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                if (data.CalculatedPulse > 1)
+                                {
+                                    Puls_L.Content = Convert.ToString(data.CalculatedPulse);
+                                }
+
+                                if (data.CalculatedSys > 1)
+                                {
+                                    SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
+                                                       Convert.ToString(data.CalculatedDia);
+                                }
+
+                                if (data.CalculatedMean > 1)
+                                {
+                                    Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                                }
+
+                                if (data.CalculatedMean > 1)
+                                {
+                                    BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+                                }
+
+
+                                //Calling alarm method
+                                //Alarm();
+
+                                ////Calling battery method
+                                //Battery();
+                            });
+                            
+                        }
+                    }
+                    catch (InvalidExpressionException)
+                    {
+
+                    }
+
+
+
 
 
 
