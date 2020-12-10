@@ -14,10 +14,16 @@ namespace DataAccessLogic
 {
     public class LocalDatabase : ILocalDatabase
     {
-        private double A;
-        private SendRPi send;
+        
         private bool result;
         
+
+        /// <summary>
+        /// Finder den seneste redigerede fil og retunerer denne i en string.
+        /// </summary>
+        /// <param name="latestfile"></param>
+        /// <returns></returns>
+
         public string latestfile(string latestfile)
         {
             string path = @"C:\ST3PRJ3FIL\ ";
@@ -44,7 +50,24 @@ namespace DataAccessLogic
 
         }
         
-        
+        /// <summary>
+        /// Gemmer målingen undervejs. Her gemmer den for hvert nye målepunkt.
+        /// </summary>
+        /// <param name="socSecNb"></param>
+        /// <param name="mmhg"></param>
+        /// <param name="tid"></param>
+        /// <param name="highSys"></param>
+        /// <param name="lowSys"></param>
+        /// <param name="highDia"></param>
+        /// <param name="lowDia"></param>
+        /// <param name="highMean"></param>
+        /// <param name="lowMean"></param>
+        /// <param name="sys"></param>
+        /// <param name="dia"></param>
+        /// <param name="mean"></param>
+        /// <param name="pulse"></param>
+        /// <param name="batterystatus"></param>
+        /// <returns></returns>
         
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
@@ -68,6 +91,19 @@ namespace DataAccessLogic
 
             return null;
         }
+        /// <summary>
+        /// Gemmer alle grænseværdier, den seneste kalibrering og Zeroval i databasen.
+        /// </summary>
+        /// <param name="SysHigh"></param>
+        /// <param name="SysLow"></param>
+        /// <param name="DiaHigh"></param>
+        /// <param name="DiaLow"></param>
+        /// <param name="Meanlow"></param>
+        /// <param name="Meanhigh"></param>
+        /// <param name="CprPatient"></param>
+        /// <param name="Calval"></param>
+        /// <param name="Zeroval"></param>
+        /// <returns></returns>
         public object SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
@@ -90,7 +126,19 @@ namespace DataAccessLogic
 
         }
 
-        
+        /// <summary>
+        /// Denne metode læser fra databasen og returnere disse data, så de kan sendes til Raspberry Pi'en.
+        /// </summary>
+        /// <param name="SysHigh"></param>
+        /// <param name="SysLow"></param>
+        /// <param name="DiaHigh"></param>
+        /// <param name="DiaLow"></param>
+        /// <param name="Meanlow"></param>
+        /// <param name="Meanhigh"></param>
+        /// <param name="CprPatient"></param>
+        /// <param name="Calval"></param>
+        /// <param name="Zeroval"></param>
+        /// <returns></returns>
         public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
@@ -124,6 +172,18 @@ namespace DataAccessLogic
 
         }
 
+
+        /// <summary>
+        /// Denne metode gemmer kalibrering. Her gemmer den 2 lister med målepunkter og udregnede data udfra disse målepunkter.
+        /// </summary>
+        /// <param name="calReference"></param>
+        /// <param name="calMeasured"></param>
+        /// <param name="r2"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="zv"></param>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv,
             DateTime datetime)
         {
@@ -146,6 +206,10 @@ namespace DataAccessLogic
             return new List<DTO_CalVal>();
         }
 
+        /// <summary>
+        /// Denne metode finder den seneste kalibrationsværdi og returnerer denne.
+        /// </summary>
+        /// <returns></returns>
         public List<DTO_CalVal> GetCalVal()
         {
             string path = @"C:\ST3PRJ3FIL\Calibration";
@@ -183,6 +247,12 @@ namespace DataAccessLogic
 
         }
 
+        /// <summary>
+        /// Denne metode tjekker om et givent brugernavn og password matcher med databasen.
+        /// </summary>
+        /// <param name="socSecNb"></param>
+        /// <param name="pw"></param>
+        /// <returns></returns>
         public bool isUserRegistered(String socSecNb, String pw)
         {
             string path = @"C:\ST3PRJ3FIL\Users";
@@ -238,6 +308,11 @@ namespace DataAccessLogic
 
         }
 
+        /// <summary>
+        /// Denne metode henter et personnummer fra databasen.
+        /// </summary>
+        /// <param name="SocSecNB"></param>
+        /// <returns></returns>
         public bool getSocSecNB(string SocSecNB)
         {
             string path = @"C:\ST3PRJ3FIL\Users";
@@ -289,6 +364,10 @@ namespace DataAccessLogic
            
 
         }
+        /// <summary>
+        /// Denne metode kan benyttes til at gemme nye profiler til login.
+        /// </summary>
+        /// <returns></returns>
         public object Savelogin()
         {
 

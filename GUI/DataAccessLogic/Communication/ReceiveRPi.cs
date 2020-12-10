@@ -35,8 +35,13 @@ namespace DataAccessLogic
         private UdpClient ListenerDouble;
         private IPEndPoint groupEP;
         private IPEndPoint groupEPDouble;
+
+        /// <summary>
+        /// Opretter UDPclient og destination for de to mest brugte modtager metoder.
+        /// </summary>
         public void OpenRecievePorts()
         {
+            
 
             listener =new UdpClient(11001);
             groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
@@ -45,7 +50,12 @@ namespace DataAccessLogic
             ListenerDouble = new UdpClient(11004);
         }
 
-       
+       /// <summary>
+       /// Lytter 1000 gange i sekundet om der kommer data ind. Kommer der data ind, returneres en liste til præstationslaget. Her modtages i bytes, det bliver decoded med ASCII og herefter deserialiseret.
+       /// </summary>
+       /// <returns>
+       /// Liste bliver retuneret.
+       /// </returns>
         public List<DTO_Measurement> test()
         {
             string data;
@@ -93,7 +103,12 @@ namespace DataAccessLogic
 
         
 
-
+        /// <summary>
+        /// Modtager data, decoder det med ASCII 
+        /// </summary>
+        /// <returns>
+        /// Returnerer en double tilbage. Denne metode kan bruges til at returnere alle doubles.
+        /// </returns>
         
         public double Recievedouble()
         {
@@ -106,6 +121,7 @@ namespace DataAccessLogic
                 {
                     bytes = ListenerDouble.Receive(ref groupEPDouble);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+                    return data;
                 }
             }
             catch (SocketException e)
