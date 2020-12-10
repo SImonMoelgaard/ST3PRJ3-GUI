@@ -46,7 +46,7 @@ namespace BuissnessLogic
         public List<DTO_Measurement> GetMeasurementData()
         {
             
-            measurementdata = recieveRPi.test();
+            measurementdata = recieveRPi.RecieveDataPoints();
                
                 
             //measurementdata = recieveRPi.ReceiveMeasurment();
@@ -60,7 +60,7 @@ namespace BuissnessLogic
 
         public double RecieveDouble()
         {
-            data = recieveRPi.Recievedouble();
+            data = recieveRPi.RecieveCalculatedValues();
             return data;
         }
 
@@ -72,26 +72,26 @@ namespace BuissnessLogic
 
         }
 
-        public List<DTO_Measurement> GetMeasurement(string socSecNB)
+        public List<DTO_Measurement> GetMeasurementLocal(string socSecNB)
         {
             measurementList = database.GetMeasurement(socSecNB);
             
             return measurementList;
         }
 
-        public bool getSocSecNB(string SocSecNB)
+        public bool GetSocSecNb(string SocSecNB)
         {
             return localDatabase.getSocSecNB(SocSecNB);
             
         }
 
-        public bool checkLogin(String socSecNb, String pw)
+        public bool CheckLogin(String socSecNb, String pw)
         {
             
             return localDatabase.isUserRegistered(socSecNb, pw);
         }
 
-        public object sendRPiData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
+        public object SendRPiData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
             
@@ -104,7 +104,7 @@ namespace BuissnessLogic
             return readFromFile.Read();
         }
 
-        public object sendEemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh,
+        public object SendEemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh,
             string CprPatient,
             double Calval, double Zeroval)
         {

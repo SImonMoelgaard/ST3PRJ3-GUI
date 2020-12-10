@@ -28,7 +28,7 @@ namespace BuissnessLogic
             
             calValList=new List<DTO_CalVal>();
 
-            //this is a test
+            //this is a RecieveDataPoints
             //calValList.Add(new DTO_CalVal(7,7.8,7.7,7.7,8,7,"bøf"));
             
             //This is the right one
@@ -40,7 +40,7 @@ namespace BuissnessLogic
         public double getZeroval()
         {
             send.Command("Startzeroing");
-            zeroval = receive.Recievedouble();
+            zeroval = receive.RecieveCalculatedValues();
 
             return zeroval;
         }
@@ -49,7 +49,7 @@ namespace BuissnessLogic
         public double getCalibration()
         {
             send.Command("Startcalibration");
-            double value = receive.Recievedouble();
+            double value = receive.RecieveCalculatedValues();
             return value;
 
         }
@@ -96,7 +96,7 @@ namespace BuissnessLogic
             double zX2 = 0;
             double zY2 = 0;
 
-            //test***************
+            //RecieveDataPoints***************
             //calMeasured[0] = 10;
             //*******************
 
