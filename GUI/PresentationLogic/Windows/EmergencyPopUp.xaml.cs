@@ -67,7 +67,7 @@ namespace PresentationLogic.Windows
             measurementWindow = new MeasurementWindow(controller, mw, dataWindow);
 
             //Send Emergency Data
-            controller.sendEemergencydata(0, 0, 0, 0, 0, 0, cpr, 0, 0);
+            controller.SendEemergencydata(0, 0, 0, 0, 0, 0, cpr, 0, 0);
             
             //Hide Emergency Pop Up
             this.Hide();

@@ -70,7 +70,7 @@ namespace PresentationLogic.Windows
             string cpr = socSecNb_TB.Text;
             
             //
-            if (controller.getSocSecNB(cpr))
+            if (controller.GetSocSecNb(cpr))
             {
                 measurementData_LB.Items.Add(cpr);
             }
@@ -80,7 +80,7 @@ namespace PresentationLogic.Windows
             bPressure = new LineSeries();
             chartBPressure = new ChartValues<double>();
 
-            dataBPressure = controller.GetMeasurement(cpr);
+            dataBPressure = controller.GetMeasurementLocal(cpr);
 
             xAxis = new string[dataBPressure.Count];
 

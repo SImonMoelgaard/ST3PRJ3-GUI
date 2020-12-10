@@ -41,7 +41,7 @@ namespace PresentationLogic.Windows
             string kode = Password_PWB.Password;
 
 
-            if (buissnessref.checkLogin(userName, kode))
+            if (buissnessref.CheckLogin(userName, kode))
             {
                 userName_ = userName;
                 this.Close();

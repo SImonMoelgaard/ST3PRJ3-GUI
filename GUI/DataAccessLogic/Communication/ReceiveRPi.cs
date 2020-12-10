@@ -56,7 +56,7 @@ namespace DataAccessLogic
        /// <returns>
        /// Liste bliver retuneret.
        /// </returns>
-        public List<DTO_Measurement> test()
+        public List<DTO_Measurement> RecieveDataPoints()
         {
             string data;
             byte[] bytes;
@@ -110,7 +110,7 @@ namespace DataAccessLogic
         /// Returnerer en double tilbage. Denne metode kan bruges til at returnere alle doubles.
         /// </returns>
         
-        public double Recievedouble()
+        public double RecieveCalculatedValues()
         {
             double data;
             byte[] bytes;
