@@ -132,7 +132,7 @@ namespace PresentationLogic.Windows
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
 
-            controller.command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
+            controller.Command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
 
 
             if (IsReading) Task.Factory.StartNew(Read);
@@ -146,12 +146,12 @@ namespace PresentationLogic.Windows
             ////Read from file
             //measurementData = controller.ReadFromFile();
 
-            //xAxis = new string[measurementData.Count];
+            //XAxis = new string[measurementData.Count];
 
             //for (int i = 0; i < measurementData.Count; i++)
             //{
             //    chartBPressure.Add(measurementData[i].mmHg);
-            //    xAxis[i] = measurementData[i].Tid.ToString("s.fff");
+            //    XAxis[i] = measurementData[i].Tid.ToString("s.fff");
             //}
 
             //bPressure.Values = chartBPressure;
@@ -296,13 +296,13 @@ namespace PresentationLogic.Windows
             IsReading = false;
             Stop_B.IsEnabled = false;
             Start_B.IsEnabled = true;
-            controller.command("Stop");
+            controller.Command("Stop");
         }
 
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
         {
             MuteAlarm = true;
-            controller.command("Mutealarm");
+            controller.Command("Mutealarm");
             MuteAlarm_B.Visibility = Visibility.Hidden;
         }
 

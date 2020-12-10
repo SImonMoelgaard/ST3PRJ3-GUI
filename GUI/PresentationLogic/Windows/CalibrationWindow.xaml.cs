@@ -25,71 +25,66 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class CalibrationWindow : Window
     {
-        private MainWindow mainWindow;
-        private Controller controller;
+        //Windows
+        private readonly MainWindow mainWindow;
+        private readonly Controller controller;
         
+        //Chart
         private LineSeries calVal;
         private ChartValues<double> chartCalVal;
-        private List<DTO_CalVal> calibrationList;
 
-        private List<double> dataCalVal;
-        private List<int> dataReference;
-        ICalibration cali = new Calibration();
+        //Lists
+        private readonly List<double> dataCalVal;
+        private readonly List<int> dataReference;
+
+        //Calibration
+        private readonly ICalibration cali = new Calibration();
         
+        //X Axis
+        public string[] XAxis { get; set; }
 
-        public string[] xAxis { get; set; }
+        //Linear regression values
         private double r2;
         private double a;
         private double b;
-        private double zv;
 
         public CalibrationWindow(MainWindow mw, Controller cr)
         {
+            //Windows
             mainWindow = mw;
             controller = cr;
             
+            //Lists
             dataReference=new List<int>();
             dataCalVal=new List<double>();
 
             InitializeComponent();
 
-            double zv = cali.getZeroval();
-
-        }
-
-        public void getzero()
-        {
-            controller.command("Startzeroing");
-            
+            //double zv = cali.getZeroval();
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            //Close window
             this.Close();
+
+            //Show main window
             mainWindow.Show();
         }
 
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            //Receive calibration value
             double calibrationVal = cali.getCalibration();
-            //Add reference to reference list
+
+            //Convert reference value to integer
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+
+            //Add reference to reference list
             dataReference.Add(referenceVal);
-            ////Start calibration message to RPi
-            //cali.StartCalibration();
 
-            //double calibrationval = 0;
-            
-
-
-
-            ////Add received calibration value to calibration list
-            //cali.getCalibration(calibrationval);
-
-            
+            //Add received calibration value to calibration list
             dataCalVal.Add(calibrationVal);
-
-            //getcalval(calibrationval);
 
             //Add data to list box
             CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
@@ -98,23 +93,22 @@ namespace PresentationLogic.Windows
             MakeGraph();
         }
 
-       
-
         public void MakeGraph()
         {
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
 
             //Array to x-axis
-            xAxis =new string[dataCalVal.Count];
+            XAxis =new string[dataCalVal.Count];
 
             //Add data to y- and x-axis
             for (int i = 0; i < dataCalVal.Count; i++)
             {
                 chartCalVal.Add(dataCalVal[i]);
-                xAxis[i] = dataReference[i].ToString();
+                XAxis[i] = dataReference[i].ToString();
             }
 
+            //Adding chart values
             calVal.Values = chartCalVal;
             CalibrationChart.Series = new SeriesCollection() {calVal};
 
@@ -123,8 +117,6 @@ namespace PresentationLogic.Windows
 
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
-            //Save reference calibration value
-            
             //Get A and B
             List<DTO_CalVal> linearRegression=cali.CalculateAAndB(dataReference, dataCalVal,0,0,0,0);
 
@@ -144,24 +136,29 @@ namespace PresentationLogic.Windows
             //Show message box if R2<0.95
             if (_r2<0.95)
             {
+                //Warning if calibration isn't approved
                 MessageBox.Show("Kalibrering ikke godkendt! \n Foretag ny kalibrering.");
 
                 //Close window
                 this.Close();
+
+                //Show main window
                 mainWindow.Show();
             }
             else
             {
-
+                //Calibration approved
                 MessageBox.Show("Kalibrering godkendt.");
+
+                //Close window
                 this.Close();
+
+                //Show main window
                 mainWindow.Show();
+
+                //Saving calibration
                 cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, DateTime.Now);
-
             }
-
-
-
         }
     }
 }

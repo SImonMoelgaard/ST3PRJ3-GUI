@@ -22,104 +22,113 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class DataWindow : Window
     {
-        private MainWindow mainWindow;
-        private Controller controller;
+        //Windows
+        private readonly MainWindow mwWindow;
+        private readonly Controller controller;
         private MeasurementWindow measurementWindow;
-      private DataWindow datawindow;
-      private Calibration cali;
-      private List<DTO_PatientData> patientdata;
-      private double data=0;
-      private List<DTO_CalVal> caldata;
-      public bool IsZeroActive { get; set; }
+        private DataWindow dataWindow;
+
+        //Lists
+        private List<DTO_CalVal> calData;
+
+        //Zero value
+        private double zeroVal;
+
+        //Boolean
+        public bool IsZeroActive { get; set; }
 
 
-        public DataWindow(MainWindow main, Controller cr, MeasurementWindow ms)
+        public DataWindow(MainWindow mw, Controller cr, MeasurementWindow ms)
         {
             InitializeComponent();
-            mainWindow = main;
+
+            //Windows
+            mwWindow = mw;
             controller = cr;
-
-            
-
-            
-            
-            
             measurementWindow = ms;
 
+            //True boolean
             IsZeroActive = !IsZeroActive;
 
-
-            if (IsZeroActive) Task.Factory.StartNew(recievezerovalue);
-
-            
+            //Running task
+            if (IsZeroActive) Task.Factory.StartNew(ReceiveZeroValue);
         }
 
-        public double recievezerovalue()
+        public double ReceiveZeroValue()
         {
-            controller.command("Startzeroing");
+            //Command to RPi - Start Zeroing
+            controller.Command("Startzeroing");
 
-            data = controller.Recievedouble();
+            //Receive Zero Value
+            zeroVal = controller.RecieveDouble();
 
-            
-
+            //While receiving zero value
             while (IsZeroActive)
             {
-
-
+                //Update elements in window
                 this.Dispatcher.Invoke(() =>
                 {
-                    if (data < 0)
+                    //If zero value is not received...
+                    if (zeroVal < 0)
                     {
+                        //...displaying zero point adjustment in progress
                         Nulpunkt_l.Text = "a Nulpunktsjustering igang";
-                    }
+
+                    }//else zero value is received...
                     else
                     {
-                        Nulpunkt_l.Text = "b " + data;
+                        //...displaying zero value
+                        Nulpunkt_l.Text = "b " + zeroVal;
+
+                        //Stop receiving zero value
                         IsZeroActive = false;
                     }
-
                 });
-
-                
             }
 
-
-            
-            return data;
+            //Returning zero value
+            return zeroVal;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            //Stop receive zero value
             IsZeroActive = false;
+
+            //Close window
             this.Close();
-            mainWindow.Show();
+
+            //Show Main Window
+            mwWindow.Show();
         }
 
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
-            //controller.requestcalval();
-            caldata = controller.getcalval();
-            double a = 0;
-            //List<DTO_CalVal> caldata = controller.getcalval(dataReference, dataCalVal, 0, 0, 0, 0);
-            foreach (var VARIABLE in caldata)
-            {
-                a = VARIABLE.A;
+            //Receive
+            calData = controller.GetCalVal();
 
+            //Calibration value
+            double a = 0;
+            
+            //Get calibration value
+            foreach (var data in calData)
+            {
+                a = data.A;
             }
 
-            controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text),
-                Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text
-                    ),a ,data);
+            //Send limit values, calibration value and zero
+            controller.sendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text), Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text),a ,zeroVal);
 
+            //Measurement Window
+            measurementWindow = new MeasurementWindow(controller, mwWindow, dataWindow);
 
-            measurementWindow = new MeasurementWindow(controller, mainWindow, datawindow);
-
+            //Stop receive zero value
             IsZeroActive = false;
 
-
-            this.Hide();
+            //Close Data Window
+            this.Close();
             
-
+            //Show Measurement Window
             measurementWindow.Show();
         }
     }

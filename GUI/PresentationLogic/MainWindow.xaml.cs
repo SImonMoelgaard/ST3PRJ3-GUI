@@ -65,7 +65,7 @@ namespace PresentationLogic
 
         private List<DTO_CalVal> TimeSince()
         {
-            caldata = controller.getcalval();
+            caldata = controller.GetCalVal();
             DateTime date = DateTime.Now;
             
             foreach (var VARIABLE in caldata)
@@ -80,12 +80,6 @@ namespace PresentationLogic
              Timesince_L.Content =  datewithouthour.ToString("dd/MM/yyyy");
             return null;
         }
-        private void Window_Loaded_(object sender, RoutedEventArgs e) //Window Loaded
-        {
-          
-        }
-
-
 
         private void PerformMeasurement_B_Click(object sender, RoutedEventArgs e)
         {
@@ -108,7 +102,7 @@ namespace PresentationLogic
 
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
-            controller.command("systemOff");
+            controller.Command("systemOff");
             
             System.Windows.Application.Current.Shutdown();
         }

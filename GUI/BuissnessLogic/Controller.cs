@@ -80,14 +80,14 @@ namespace BuissnessLogic
 
         }
 
-        public double Recievedouble()
+        public double RecieveDouble()
         {
             data = recieveRPi.Recievedouble();
             return data;
         }
 
         
-        public List<DTO_CalVal> getcalval()
+        public List<DTO_CalVal> GetCalVal()
         {
             caldata = localDatabase.GetCalVal();
             return caldata;
@@ -134,7 +134,7 @@ namespace BuissnessLogic
         }
 
         
-        public string command(string command)
+        public string Command(string command)
         {
             return sendrpi.Command(command);
         }

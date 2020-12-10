@@ -43,7 +43,7 @@ namespace PresentationLogic.Windows
 
         public List<DTO_CalVal> ShowCalibration()
         {
-            caldata = controller.getcalval();
+            caldata = controller.GetCalVal();
 
             foreach (var VARIABLE in caldata)
             {

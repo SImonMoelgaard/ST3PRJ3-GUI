@@ -23,34 +23,53 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class ShowDataWindow : Window
     {
-        private MainWindow mainWindow;
-        private Controller controller;
+        //Windows
+        private readonly MainWindow mainWindow;
+        private readonly Controller controller;
+
+        //Chart
         private LineSeries bPressure;
         private ChartValues<double> chartBPressure;
-        private List<DTO_Measurement> dataBPressure;
-        public string[] xAxis { get; set; }
-        private string socSecNB_ = "";
 
+        //List
+        private List<DTO_Measurement> dataBPressure;
+
+        //X Axis
+        public string[] xAxis { get; set; }
+
+        //Social Security Number
+        private string socSecNb;
+
+        //Y Axis
         public Func<double,string> YFormatter { get; set; }
 
-        public ShowDataWindow(Controller cw, MainWindow mw, string SocSecNB)
+        public ShowDataWindow(Controller cw, MainWindow mw, string SocSecNb)
         {
             InitializeComponent();
+
+            //Windows
             mainWindow = mw;
             controller = cw;
-            socSecNB_ = SocSecNB;
+
+            //Social Security Number
+            socSecNb = SocSecNb;
         }
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            //Close window
             this.Close();
+
+            //Show Main Window
             mainWindow.Show();
         }
 
         private void Search_B_Click(object sender, RoutedEventArgs e)
         {
-            string cpr = Convert.ToString(socSecNb_TB.Text);
+            //Convert cpr to string
+            string cpr = socSecNb_TB.Text;
             
+            //
             if (controller.getSocSecNB(cpr))
             {
                 measurementData_LB.Items.Add(cpr);
