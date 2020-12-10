@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MeasurementWindow" Height="450" Width="800"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        xmlns:geared="clr-namespace:LiveCharts.Geared;assembly=LiveCharts.Geared"
+        
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
         <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="False" DataTooltip="{x:Null}" Name="MeasurementChart" Margin="162,61,0,80">
            
             <lvc:CartesianChart.Series>
-                <geared:GLineSeries Values="{Binding ChartValues}" 
+                <lvc:LineSeries Values="{Binding ChartValues}" 
                                 PointGeometry="{x:Null}"
                                 Fill="Transparent"/>
             </lvc:CartesianChart.Series>
