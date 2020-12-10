@@ -87,7 +87,7 @@ namespace PresentationLogic.Windows
             
             ChartValues = new ChartValues<MeasurementModel>();
             //ChartValues=new GearedValues<MeasurementModel>();
-            ChartValues.WithQuality(Quality.Highest);
+           // ChartValues.WithQuality(Quality.Highest);
            
             DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");//FJERN HH IGEN
 
