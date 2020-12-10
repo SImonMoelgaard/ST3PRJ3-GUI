@@ -49,7 +49,9 @@ namespace BuissnessLogic
 
         public void openrecieveports()
         {
+            sendrpi.OpenSendPorts();
             recieveRPi.OpenRecievePorts();
+            
         }
 
        

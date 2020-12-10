@@ -110,6 +110,9 @@ namespace DataAccessLogic
 
 
                     emergencydata = JsonConvert.DeserializeObject<DTO_PatientData>(json);
+                   
+                   
+
 
                 }
             }
@@ -117,12 +120,7 @@ namespace DataAccessLogic
             {
                 return true;
             }
-
-
-
-            
             return sendrpi.sendemergencydata(emergencydata.Syshigh, emergencydata.Syslow, emergencydata.Diahigh, emergencydata.Dialow, emergencydata.Lowmean, emergencydata.Highmean, emergencydata.SocSecNB, emergencydata.Calval, emergencydata.Zeroval);
-           
 
         }
 
