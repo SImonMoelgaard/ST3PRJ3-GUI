@@ -176,7 +176,7 @@ namespace PresentationLogic.Windows
             {
 
                 //Thread.Sleep(1);
-                    var measurements = controller.getmdata();
+                    var measurements = controller.GetMeasurementData();
 
                     //Thread.Sleep(1);
                    
@@ -312,7 +312,7 @@ namespace PresentationLogic.Windows
 
         public void Alarm()
         {
-            var alarmList = controller.getmdata();
+            var alarmList = controller.GetMeasurementData();
 
             foreach (var alarms in alarmList)
             {

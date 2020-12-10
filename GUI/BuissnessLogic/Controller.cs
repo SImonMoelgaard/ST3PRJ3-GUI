@@ -11,40 +11,28 @@ namespace BuissnessLogic
     
     public class Controller
     {
-        private List<DTO_Measurement> measurementList;
-        private List<DTO_Measurement> fiveseconddata;
-        private List<DTO_Measurement> measurementdata;
-        private double data;
-        private List<DTO_CalVal> caldata;
-        public bool closeListener { get; set; }
-        
-
         ISendRPi sendrpi = new SendRPi();
         IReceiveRPi recieveRPi = new ReceiveRPi();
         ILocalDatabase localDatabase = new LocalDatabase();
-
         IDatabase database = new Database();
-
         //Read from file
         private ReadFromFile readFromFile = new ReadFromFile();
 
+        private List<DTO_Measurement> measurementList;
+        private List<DTO_Measurement> measurementdata;
+        private double data;
+        private List<DTO_CalVal> caldata;
+        
+        
+
+       
+        
+
         public void DBcontrol()
         {
-            
-            
-           
-            
             measurementList = new List<DTO_Measurement>();
-
-            //_database.GetMeasurement();
-
-
         }
 
-        private Alarm alarm;
-        private Filter filter;
-        private Calibration calibration;
-        private Mean mean;
 
 
         public void openrecieveports()
@@ -55,7 +43,7 @@ namespace BuissnessLogic
         }
 
        
-        public List<DTO_Measurement> getmdata()
+        public List<DTO_Measurement> GetMeasurementData()
         {
             
             measurementdata = recieveRPi.test();
