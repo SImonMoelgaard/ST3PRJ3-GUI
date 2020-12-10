@@ -29,13 +29,11 @@ namespace DataAccessLogic
 
 
         ILocalDatabase local = new LocalDatabase();
-        private static State state = new State();
+     
         private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
         private const int bufSize = 300 * 1024;
    
-        static Socket RevieveMeasurementsocket;
-        private static Socket RevieveDoublesocket;
-        private Socket s;
+        
         private static AsyncCallback recv = null;
         private List<DTO_Measurement> measurements = new List<DTO_Measurement>();
         private List<DTO_Measurement> Fivemeasurement=new List<DTO_Measurement>();
@@ -46,9 +44,6 @@ namespace DataAccessLogic
         public void OpenRecievePorts()
         {
 
-           RevieveMeasurementsocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            RevieveMeasurementsocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
-            RevieveMeasurementsocket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11002));
           //  RevieveMeasurementsocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.87.122"), 11002));
           //RevieveDoublesocket.Bind(new  IPEndPoint(IPAddress.Parse("127.0.0.1"),11002));
 
@@ -62,15 +57,13 @@ namespace DataAccessLogic
         public List<DTO_Measurement> test()
         {
             string data;
-            //UdpClient listener = new UdpClient(11001);
-           // IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
+           
             measurements = new List<DTO_Measurement>();
             
 
 
 
-           //var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false,
-                //false, false, false, false, 0, 0, 0, 0, 0);
+           
             byte[] bytes;
 
 
@@ -124,7 +117,7 @@ namespace DataAccessLogic
         {
             double data;
             UdpClient listener = new UdpClient(11004);
-         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.7"), 11004);
+         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
 
             //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11004);
             
@@ -166,75 +159,6 @@ namespace DataAccessLogic
         
        
         
-        public List<DTO_Measurement> ReceiveMeasurment()
-        {
-            //UdpClient listener = new UdpClient(11001);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
-            //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.7"), 11001);//AK
-            //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11001);//RPI
-            string jsonString;
-            byte[] bytes;
-
-         
-            //listener.Client.ReceiveBufferSize = 2*1024;
-            //bytes = listener.Receive(ref groupEP);
-            try
-            {
-
-
-                
-                
-                    RevieveMeasurementsocket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv =
-                        (ar) =>
-
-                        {
-
-                            measurements = new List<DTO_Measurement>();
-                            int bytes = new int();
-                            bytes.ToString("");
-
-                            var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false,
-                                false, false, false, false, 0, 0, 0, 0, 0);
-                            State so = (State)ar.AsyncState;
-
-                            bytes = RevieveMeasurementsocket.EndReceiveFrom(ar, ref epFrom);
-                            jsonString = Encoding.ASCII.GetString(so.buffer, 0, bytes);
-                            
-
-                                Thread.Sleep(1);
-                                //socket.SendBufferSize = 1000;
-                                //so.buffer.SetValue(512,0);
-
-                                measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(jsonString);
-                                Thread.Sleep(4);
-                                bytes.ToString("");
-                                measurements.Add(measurementdata);
-                               // Socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
-
-
-                               
-
-
-                        }, state);
-                    return measurements;
-
-
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine("");
-            }
-
-            return null;
-
-        }
-
-        public class State
-        {
-            public byte[] buffer = new byte[ReceiveRPi.bufSize];
-            
-           
-        }
         
 
         

@@ -55,19 +55,20 @@ namespace PresentationLogic
         /// </summary>
         public MainWindow()
         {
-            //Controller
-            controller = new Controller();
-
-            //Latest calibration
-            TimeSince();
 
             InitializeComponent();
+
+
+            //Controller
+            controller = new Controller();
+            //Latest calibration
+            TimeSince();
         }
 
         /// <summary>
         /// This method displays the date for the latest calibration
         /// </summary>
-        private void TimeSince()
+        public string TimeSince()
         {
             //Receive calibration
             caldata = controller.GetCalVal();
@@ -81,13 +82,16 @@ namespace PresentationLogic
                 //Date for latest calibration
                 date = data.Datetime;
             }
-
+           
             //Converting to date: day/month/year
-            date  = date.Date;
-            
+            var dateWithoutTime  = date.Date;
+
             //Displaying latest calibration
-            //Timesince_L.Content =  "Seneste kalibrering: \n"+date.ToString("dd/MM/yyyy");
-            Timesince_L.Content = "";
+            //abelTest.Content= dateWithoutTime.ToString("dd/MM/yyyy"); 
+           
+            TimeSince_L.Content= dateWithoutTime.ToString("dd/MM/yyyy");
+            return "";
+            //dateWithoutTime.ToString("dd/MM/yyyy");
         }
 
         /// <summary>
