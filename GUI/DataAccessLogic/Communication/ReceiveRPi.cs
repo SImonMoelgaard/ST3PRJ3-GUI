@@ -29,44 +29,30 @@ namespace DataAccessLogic
 
 
         ILocalDatabase local = new LocalDatabase();
-     
-        private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
-        private const int bufSize = 300 * 1024;
-   
-        
-        private static AsyncCallback recv = null;
         private List<DTO_Measurement> measurements = new List<DTO_Measurement>();
-        private List<DTO_Measurement> Fivemeasurement=new List<DTO_Measurement>();
-        //private static Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        //private static EndPoint epFrom = new IPEndPoint(IPAddress.Any, 11000);
+       
         private UdpClient listener;
+        private UdpClient ListenerDouble;
         private IPEndPoint groupEP;
+        private IPEndPoint groupEPDouble;
         public void OpenRecievePorts()
         {
 
-          //  RevieveMeasurementsocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.87.122"), 11002));
-          //RevieveDoublesocket.Bind(new  IPEndPoint(IPAddress.Parse("127.0.0.1"),11002));
-
             listener =new UdpClient(11001);
-            //groupEP=new IPEndPoint(IPAddress.Parse("127.0.0.1"),11001);
-
             groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
+
+            groupEPDouble = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
+            ListenerDouble = new UdpClient(11004);
         }
 
        
         public List<DTO_Measurement> test()
         {
             string data;
-           
+            byte[] bytes;
             measurements = new List<DTO_Measurement>();
             
-
-
-
-           
-            byte[] bytes;
-
-
+            
             while (true)
             {
                 Thread.Sleep(1);
@@ -101,41 +87,25 @@ namespace DataAccessLogic
                     return null;
                 }
 
-                
             }
-            
 
         }
 
         
 
 
-
-
         
         public double Recievedouble()
         {
             double data;
-            UdpClient listener = new UdpClient(11004);
-         IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
-
-            //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11004);
-            
             byte[] bytes;
 
             try
             {
                 while (true)
                 {
-
-                    bytes = listener.Receive(ref groupEP);
+                    bytes = ListenerDouble.Receive(ref groupEPDouble);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
-
-
-                    listener.Close();
-                    
-                    
-                    
                 }
             }
             catch (SocketException e)
@@ -143,14 +113,6 @@ namespace DataAccessLogic
                 return 0;
 
             }
-            finally
-            {
-
-                listener.Close();
-
-            }
-
-
         }
 
 

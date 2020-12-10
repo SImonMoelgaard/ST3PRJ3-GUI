@@ -131,7 +131,7 @@ namespace PresentationLogic.Windows
             Start_B.IsEnabled = false;
             IsReading = !IsReading;
 
-            controller.Command("Startmeasurement"); //Måske et let ghetto sted. men det gør sådan det virker xD
+            controller.Command("Startmeasurement"); 
 
 
             if (IsReading) Task.Factory.StartNew(Read);
@@ -168,7 +168,7 @@ namespace PresentationLogic.Windows
         {
             #region Constant Changes Graph
 
-            controller.openrecieveports();
+            
 
 
             

@@ -23,8 +23,8 @@ namespace DataAccessLogic
     {
 
 
-        private static IPAddress broadcast = IPAddress.Parse("172.20.10.11");//ÆNDRE IP HER
-        //private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
+       // private static IPAddress broadcast = IPAddress.Parse("172.20.10.11");//ÆNDRE IP HER
+        private static IPAddress broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
         LocalDatabase local = new LocalDatabase();
         
             
@@ -56,8 +56,8 @@ namespace DataAccessLogic
         {
 
 
-            
-            int PatiendataPort = 11003;
+            int PatiendataPort = 11000;
+            //int PatiendataPort = 11003;
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);
 
@@ -87,10 +87,10 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
 
-            
 
 
-         int PatiendataPort = 11003;
+            int PatiendataPort = 11000;
+         //int PatiendataPort = 11003;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint ep = new IPEndPoint(broadcast, PatiendataPort);
 

@@ -59,8 +59,13 @@ namespace PresentationLogic
             InitializeComponent();
 
 
+
             //Controller
             controller = new Controller();
+
+
+            controller.openrecieveports();
+
             //Latest calibration
             TimeSince();
         }
