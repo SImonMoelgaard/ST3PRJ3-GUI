@@ -49,16 +49,16 @@ namespace DataAccessLogic
            RevieveMeasurementsocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             RevieveMeasurementsocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
             RevieveMeasurementsocket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11002));
+          //  RevieveMeasurementsocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.87.122"), 11002));
+          //RevieveDoublesocket.Bind(new  IPEndPoint(IPAddress.Parse("127.0.0.1"),11002));
 
+            listener =new UdpClient(11001);
+            //groupEP=new IPEndPoint(IPAddress.Parse("127.0.0.1"),11001);
 
-
-            listener=new UdpClient(11001);
-            groupEP=new IPEndPoint(IPAddress.Parse("127.0.0.1"),11001);
-
-           
+            groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
         }
 
-
+       
         public List<DTO_Measurement> test()
         {
             string data;
@@ -69,31 +69,48 @@ namespace DataAccessLogic
 
 
 
-           var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false,
-                false, false, false, false, 0, 0, 0, 0, 0);
+           //var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false,
+                //false, false, false, false, 0, 0, 0, 0, 0);
             byte[] bytes;
 
 
-            try
+            while (true)
             {
-                bytes = listener.Receive(ref groupEP);
-                data = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+                Thread.Sleep(1);
+                try
+                {
+                    bytes = listener.Receive(ref groupEP);
+                    data = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
+
+                    var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false, false, false, false, false, 0, 0, 0, 0, 0);
+
+                    measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
+
+                    measurements.Add(measurementdata);
 
 
-                measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
+                    if (measurementdata.mmHg>0 || measurementdata.CalculatedDia>0)
+                    {
+                        local.SaveMeasurement(measurementdata.SocSecNB, measurementdata.mmHg, measurementdata.Tid, measurementdata.HighSys,
+                            measurementdata.LowSys, measurementdata.HighDia, measurementdata.LowDia,
+                            measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
+                            measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
+                            measurementdata.Batterystatus);
+                        return measurements;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
 
-                measurements.Add(measurementdata);
-
-           
-
-                return measurements;
+                
             }
-            catch (InvalidOperationException)
-            {
-                return null;
-            }
-
-            return null;
+            
 
         }
 
@@ -152,7 +169,7 @@ namespace DataAccessLogic
         public List<DTO_Measurement> ReceiveMeasurment()
         {
             //UdpClient listener = new UdpClient(11001);
-            //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
+            IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
             //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.7"), 11001);//AK
             //IPEndPoint groupEP = new IPEndPoint(IPAddress.Parse("172.20.10.5"), 11001);//RPI
             string jsonString;
@@ -172,7 +189,7 @@ namespace DataAccessLogic
 
                         {
 
-                            Fivemeasurement = new List<DTO_Measurement>();
+                            measurements = new List<DTO_Measurement>();
                             int bytes = new int();
                             bytes.ToString("");
 
@@ -191,7 +208,7 @@ namespace DataAccessLogic
                                 measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(jsonString);
                                 Thread.Sleep(4);
                                 bytes.ToString("");
-                                Fivemeasurement.Add(measurementdata);
+                                measurements.Add(measurementdata);
                                // Socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
 
 
@@ -199,7 +216,7 @@ namespace DataAccessLogic
 
 
                         }, state);
-                    return Fivemeasurement;
+                    return measurements;
 
 
             }
