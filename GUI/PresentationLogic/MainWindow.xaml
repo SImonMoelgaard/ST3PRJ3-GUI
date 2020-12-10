@@ -21,6 +21,5 @@
         <Label Content="Blodtryksmåler" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="26"/>
         <Button x:Name="ShowCalibration_B" Content="Vis Kalibrering" Margin="182,133,0,0" VerticalAlignment="Top" Height="44" Width="145" Click="ShowCalibration_B_Click"/>
         <Label x:Name="TimeSince_L" Content="test" HorizontalAlignment="Left" Margin="218,233,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelTest" Content="Label" HorizontalAlignment="Left" Margin="241,294,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

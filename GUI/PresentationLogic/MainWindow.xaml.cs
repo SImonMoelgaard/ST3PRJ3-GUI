@@ -68,7 +68,7 @@ namespace PresentationLogic
         /// <summary>
         /// This method displays the date for the latest calibration
         /// </summary>
-        public string TimeSince()
+        public void TimeSince()
         {
             //Receive calibration
             caldata = controller.GetCalVal();
@@ -87,11 +87,7 @@ namespace PresentationLogic
             var dateWithoutTime  = date.Date;
 
             //Displaying latest calibration
-            //abelTest.Content= dateWithoutTime.ToString("dd/MM/yyyy"); 
-           
             TimeSince_L.Content= dateWithoutTime.ToString("dd/MM/yyyy");
-            return "";
-            //dateWithoutTime.ToString("dd/MM/yyyy");
         }
 
         /// <summary>

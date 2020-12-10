@@ -126,10 +126,11 @@ namespace PresentationLogic.Windows
         }
 
         /// <summary>
-        /// Method that generates the calibration b
+        /// Method that generates the calibration chart
         /// </summary>
         public void MakeGraph()
         {
+            //Chart
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
 
@@ -150,6 +151,14 @@ namespace PresentationLogic.Windows
             DataContext = this;
         }
 
+        /// <summary>
+        /// Done Button saves the calibration values,
+        /// displays the linear equation and R2,
+        /// message box is shown to either accept or not accept the calibration
+        /// and shows Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Done_B_Click(object sender, RoutedEventArgs e)
         {
             //Get A and B
