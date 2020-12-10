@@ -23,7 +23,6 @@ using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 using Colors = Windows.UI.Colors;
-using LiveCharts.Geared;
 
 namespace PresentationLogic.Windows
 {
@@ -238,7 +237,7 @@ namespace PresentationLogic.Windows
 
                                 if (data.CalculatedMean > 1)
                                 {
-                                    BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
+                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.Batterystatus) + "%";
                                 }
                                 
 

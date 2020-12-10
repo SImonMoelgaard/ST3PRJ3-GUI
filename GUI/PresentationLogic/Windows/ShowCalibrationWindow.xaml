@@ -13,15 +13,15 @@
     <Grid Margin="400,0,0,0">
         <lvc:CartesianChart Name="CalibrationChart" Margin="-217,61,10,13">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="[mmHg]" Labels="{Binding xAxis}"></lvc:Axis>
+                <lvc:Axis Title="[mmHg]" Labels="{Binding XAxis}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="[mV]"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_OnClick" Background="#FF5B9BD5" Margin="323,0,0,392"/>
-        <Button x:Name="ShowCalibration_B" Content="Vis Seneste kalibrering" Margin="-389,77,0,0" VerticalAlignment="Top" Width="167" Click="ShowCalibration_B_OnClick" Background="#FFB2833F"/>
-        <Label x:Name="Caldata_L" Content="" HorizontalAlignment="Left" Margin="-154,8,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ShowCalibration_B" Content="Vis Seneste kalibrering" Margin="-389,010,0,0" VerticalAlignment="Top" Width="167" Click="ShowCalibration_B_OnClick" Background="#FFB2833F"/>
+        <Label x:Name="Caldata_L" Content="Seneste Kalibrering: " Margin="-389,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
 
