@@ -115,7 +115,7 @@ namespace DataAccessLogic
 
             while (reader.Read())
             {
-                measurementList.Add(new DTO_Measurement(Convert.ToString(reader["SocSecNB"]),Convert.ToDouble(reader["RawData"]),Convert.ToDateTime(reader["Date"]), Convert.ToBoolean(reader["Highsys"]), Convert.ToBoolean(reader["Lowsys"]), Convert.ToBoolean(reader["Highdia"]), Convert.ToBoolean(reader["Lowdia"]), Convert.ToBoolean(reader["Highmean"]), Convert.ToBoolean(reader["Lowmean"]), Convert.ToInt32(reader["Sys"]), Convert.ToInt32(reader["Dia"]), Convert.ToInt32(reader["Mean"]), Convert.ToInt32(reader["Pulse"]), Convert.ToInt32(reader["Batterystatus"])));
+                measurementList.Add(new DTO_Measurement(Convert.ToString(reader["SocSecNB"]),Convert.ToDouble(reader["RawData"]),Convert.ToDateTime(reader["Date"]), Convert.ToBoolean(reader["Highsys"]), Convert.ToBoolean(reader["Lowsys"]), Convert.ToBoolean(reader["Highdia"]), Convert.ToBoolean(reader["Lowdia"]), Convert.ToBoolean(reader["HighMean"]), Convert.ToBoolean(reader["LowMean"]), Convert.ToInt32(reader["Sys"]), Convert.ToInt32(reader["Dia"]), Convert.ToInt32(reader["Mean"]), Convert.ToInt32(reader["Pulse"]), Convert.ToInt32(reader["BatteryStatus"])));
             }
             connection.Close();
             return measurementList;

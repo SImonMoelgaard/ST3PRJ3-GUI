@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="340" Width="307"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        ui:WindowHelper.UseModernWindowStyle="True">
+        ui:WindowHelper.UseModernWindowStyle="True"
+        PreviewKeyDown="Login_KeyDown">
     <Grid>
         <PasswordBox x:Name="Password_PWB" HorizontalAlignment="Left" Margin="124,107,0,0" VerticalAlignment="Top" Width="150" Height="33"/>
         <TextBox x:Name="User_TB" HorizontalAlignment="Left" Margin="124,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="33"/>

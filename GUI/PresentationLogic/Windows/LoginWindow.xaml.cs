@@ -55,5 +55,13 @@ namespace PresentationLogic.Windows
             }
 
         }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Login_B_Click(sender, e);
+            }
+        }
     }
 }

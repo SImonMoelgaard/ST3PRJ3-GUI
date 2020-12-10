@@ -74,7 +74,7 @@ namespace DataAccessLogic
                             measurementdata.LowSys, measurementdata.HighDia, measurementdata.LowDia,
                             measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
                             measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
-                            measurementdata.Batterystatus);
+                            measurementdata.BatteryStatus);
                         return measurements;
                     }
                     else

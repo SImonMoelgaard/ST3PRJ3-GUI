@@ -161,5 +161,20 @@ namespace PresentationLogic.Windows
             //Show Measurement Window
             measurementWindow.Show();
         }
+
+        /// <summary>
+        /// Next Button is activated when Enter is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Next_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Press Enter
+            if (e.Key == Key.Enter)
+            {
+                //Next Button is activated
+                Next_B_Click(sender, e);
+            }
+        }
     }
 }

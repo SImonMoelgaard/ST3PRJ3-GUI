@@ -121,7 +121,7 @@ namespace DataAccessLogic
 
 
             
-            return sendrpi.sendemergencydata(emergencydata.Syshigh, emergencydata.Syslow, emergencydata.Diahigh, emergencydata.Dialow, emergencydata.Lowmean, emergencydata.Highmean, emergencydata.SocSecNB, emergencydata.Calval, emergencydata.Zeroval);
+            return sendrpi.sendemergencydata(emergencydata.SysHigh, emergencydata.SysLow, emergencydata.DiaHigh, emergencydata.DiaLow, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
            
 
         }

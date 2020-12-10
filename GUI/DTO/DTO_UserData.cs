@@ -17,8 +17,5 @@ namespace DTO
             Username = username;
             Password = password;
         }
-
-
-        
     }
 }

@@ -18,40 +18,80 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class EmergencyPopUp : Window
     {
-        
-        private Controller controller;
-        private MainWindow mainwindow;
+        /// <summary>
+        /// Windows
+        /// </summary>
+        private readonly Controller controller;
+        private readonly MainWindow mw;
         private MeasurementWindow measurementWindow;
-        private DataWindow datawindow;
+        private DataWindow dataWindow;
+
+        /// <summary>
+        /// Emergency Pop Up Constructor
+        /// </summary>
+        /// <param name="mw"></param>
+        /// <param name="cr"></param>
+        /// <param name="ms"></param>
         public EmergencyPopUp(MainWindow mw, Controller cr, MeasurementWindow ms)
         {
             InitializeComponent();
+
+            //Windows
             controller = cr;
-            mainwindow = mw;
+            this.mw = mw;
             measurementWindow = ms;
         }
 
+        /// <summary>
+        /// Exit To Main Button shows Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            //Hide Emergency Pop Up Window
             this.Hide();
         }
 
+        /// <summary>
+        /// Start Button continues the blood pressure measurement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Start_B_Click(object sender, RoutedEventArgs e)
         {
+            //CPR
             string cpr = CPR_tb.Text;
 
-            measurementWindow = new MeasurementWindow(controller, mainwindow, datawindow);
+            //Measurement Window
+            measurementWindow = new MeasurementWindow(controller, mw, dataWindow);
 
+            //Send Emergency Data
             controller.sendEemergencydata(0, 0, 0, 0, 0, 0, cpr, 0, 0);
-            this.Hide();
-            mainwindow.Hide();
-            measurementWindow.ShowDialog();
-
-
             
+            //Hide Emergency Pop Up
+            this.Hide();
 
+            //Hide Main Window
+            mw.Hide();
 
+            //Shows Measurement Window
+            measurementWindow.ShowDialog();
+        }
 
+        /// <summary>
+        /// Press Enter and Start Button is activated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Start_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Press Enter
+            if (e.Key == Key.Enter)
+            {
+                //Start Button is activated
+                Start_B_Click(sender, e);
+            }
         }
     }
 }

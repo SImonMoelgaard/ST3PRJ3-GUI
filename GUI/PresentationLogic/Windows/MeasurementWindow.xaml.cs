@@ -31,53 +31,65 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class MeasurementWindow : Window, INotifyPropertyChanged
     {
-        #region Constant Changes Graph
-
-        private double _axisMax;
-        private double _axisMin;
-        public ChartValues<MeasurementModel> ChartValues { get; set; }
-        //public GearedValues<MeasurementModel> ChartValues { get; set; }
+        
+        /// <summary>
+        /// Chart Axis
+        /// </summary>
+        private double axisMax;
+        private double axisMin;
         public Func<double, string> DateTimeFormatter { get; set; }
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
+
+        /// <summary>
+        /// Chart
+        /// </summary>
+        public ChartValues<MeasurementModel> ChartValues { get; set; }
+        //public GearedValues<MeasurementModel> ChartValues { get; set; }
+
+        /// <summary>
+        /// Boolean
+        /// </summary>
         public bool IsReading { get; set; }
 
-        #endregion
-
-        //Alarm
+        /// <summary>
+        /// Boolean - Alarm on Mute Alarm Button
+        /// </summary>
         public bool MuteAlarm { get; set; }
-        private bool _blinkOnSysDia = false;
-        private bool _blinkOnMean = false;
 
-        //Attributess
-        //private LineSeries measurement;
+        /// <summary>
+        /// Boolean - Alarm on labels
+        /// </summary>
+        private bool blinkOnSysDia;
+        private bool blinkOnMean;
 
-        private MainWindow mainWindow;
-        private Controller controller;
+        /// <summary>
+        /// Windows
+        /// </summary>
+        private readonly MainWindow mainWindow;
+        private readonly Controller controller;
         private DataWindow dataWindow;
 
-        private List<DTO_Measurement> measurementData;
-
-        //private LineSeries bPressure;
-        //private ChartValues<double> chartBPressure;
-        public string[] xAxis { get; set; }
-
-        
-        public SeriesCollection Measurement { get; set; }
-
-        
+        /// <summary>
+        /// Measurement Window Constructor
+        /// Hides Mute Alarm Button
+        /// </summary>
+        /// <param name="cr"></param>
+        /// <param name="mw"></param>
+        /// <param name="dw"></param>
         public MeasurementWindow(Controller cr, MainWindow mw, DataWindow dw)
         {
-
             InitializeComponent();
+
+            //Windows
             controller = cr;
             mainWindow = mw;
             dataWindow = dw;
+
+            //Invisible Mute Alarm Button
             MuteAlarm_B.Visibility = Visibility.Hidden;
-            //Battery100_I.Visibility = Visibility.Visible;
 
-            #region Constant Changes Graph
-
+            //Constant Changes Graph
             var mapper = Mappers.Xy<MeasurementModel>()
                 .X(model => model.Time.Ticks)
                 .Y(model => model.RawData);
@@ -88,90 +100,78 @@ namespace PresentationLogic.Windows
             //ChartValues=new GearedValues<MeasurementModel>();
            // ChartValues.WithQuality(Quality.Highest);
            
-            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");//FJERN HH IGEN
+            //X axis datetime
+            DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");
 
+            //Axis Step
             AxisStep = TimeSpan.FromSeconds(1).Ticks;
 
             AxisUnit = TimeSpan.TicksPerSecond;
 
+            //X axis limits
             SetAxisLimits(DateTime.Now);
 
+            //Booleans sat to false
             IsReading = false;
             MuteAlarm = false;
 
             DataContext = this;
-            #endregion
-            
         }
 
+        /// <summary>
+        /// X Axis Maximum
+        /// </summary>
         public double AxisMax
         {
-            get { return _axisMax; }
+            get { return axisMax; }
             set
             {
-                _axisMax = value;
+                axisMax = value;
                 OnPropertyChanged("AxisMax");
             }
         }
 
+        /// <summary>
+        /// Y Axis Minimum
+        /// </summary>
         public double AxisMin
         {
-            get { return _axisMin; }
+            get { return axisMin; }
             set
             {
-                _axisMin = value;
+                axisMin = value;
                 OnPropertyChanged("AxisMin");
             }
         }
 
+        /// <summary>
+        /// Start Button begins blood pressure measurement,
+        /// sends command to RPi to start measurement
+        /// and begins task to display blood pressure chart on chart
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Start_B_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Stop Button enables
             Stop_B.IsEnabled = true;
+
+            //Start Button disables
             Start_B.IsEnabled = false;
+
+            //Boolean is sat to true
             IsReading = !IsReading;
 
+            //Send command to RPi to start measurement
             controller.Command("Startmeasurement"); 
 
-
+            //Begin displaying blood pressure chart
             if (IsReading) Task.Factory.StartNew(Read);
-
-            
-            #region This works and cannot be removed - AK
-
-            //bPressure = new LineSeries() {PointGeometry = null};
-            //chartBPressure = new ChartValues<double>();
-
-            ////Read from file
-            //measurementData = controller.ReadFromFile();
-
-            //XAxis = new string[measurementData.Count];
-
-            //for (int i = 0; i < measurementData.Count; i++)
-            //{
-            //    chartBPressure.Add(measurementData[i].mmHg);
-            //    XAxis[i] = measurementData[i].Tid.ToString("s.fff");
-            //}
-
-            //bPressure.Values = chartBPressure;
-
-            //MeasurementChart.Series = new SeriesCollection() {bPressure};
-
-
-            //DataContext = this;
-
-            #endregion
         }
 
 
         private void Read()
         {
-            #region Constant Changes Graph
-
-            
-
-
-            
             while (IsReading)
             {
 
@@ -237,7 +237,7 @@ namespace PresentationLogic.Windows
 
                                 if (data.CalculatedMean > 1)
                                 {
-                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.Batterystatus) + "%";
+                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.BatteryStatus) + "%";
                                 }
                                 
 
@@ -254,18 +254,7 @@ namespace PresentationLogic.Windows
                     {
 
                     }
-
-
-
-
-
-
-
-
-
             }
-
-            #endregion
         }
 
         private void SetAxisLimits(DateTime now)
@@ -305,6 +294,7 @@ namespace PresentationLogic.Windows
 
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            controller.Command("Stop");
             this.Close();
             IsReading = false;
             mainWindow.Show();
@@ -326,7 +316,7 @@ namespace PresentationLogic.Windows
                             MuteAlarm_B.Visibility = Visibility.Visible;
                         }
 
-                        if (_blinkOnSysDia)
+                        if (blinkOnSysDia)
                         {
                             SysDia_L.Foreground = Brushes.Black;
                             MuteAlarm_B.Background = Brushes.Gray;
@@ -337,13 +327,13 @@ namespace PresentationLogic.Windows
                             MuteAlarm_B.Background = Brushes.Red;
                         }
 
-                        _blinkOnSysDia = !_blinkOnSysDia;
+                        blinkOnSysDia = !blinkOnSysDia;
                     }
 
                     if (alarms.HighMean == true || alarms.LowMean == true)
                     {
 
-                        if (_blinkOnMean)
+                        if (blinkOnMean)
                         {
                             Mean_L.Foreground = Brushes.Black;
                             MuteAlarm_B.Background = Brushes.Gray;
@@ -356,7 +346,7 @@ namespace PresentationLogic.Windows
                             MuteAlarm_B.Background = Brushes.Red;
                         }
 
-                        _blinkOnMean = !_blinkOnMean;
+                        blinkOnMean = !blinkOnMean;
                     }
                 });
             }
@@ -378,7 +368,7 @@ namespace PresentationLogic.Windows
         //    {
         //        this.Dispatcher.Invoke(() =>
         //        {
-        //            if (battery.Batterystatus >= 75)
+        //            if (battery.BatteryStatus >= 75)
         //            {
         //                Battery100_I.Visibility = Visibility.Visible;
         //                Battery75_I.Visibility = Visibility.Hidden;
@@ -386,7 +376,7 @@ namespace PresentationLogic.Windows
         //                Battery25_I.Visibility = Visibility.Hidden;
         //            }
 
-        //            if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
+        //            if (battery.BatteryStatus <= 75 && battery.BatteryStatus > 50)
         //            {
         //                Battery75_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;
@@ -394,7 +384,7 @@ namespace PresentationLogic.Windows
         //                Battery25_I.Visibility = Visibility.Hidden;
         //            }
 
-        //            if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
+        //            if (battery.BatteryStatus <= 50 && battery.BatteryStatus > 25)
         //            {
         //                Battery50_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;
@@ -403,7 +393,7 @@ namespace PresentationLogic.Windows
 
         //            }
 
-        //            if (battery.Batterystatus<=25)
+        //            if (battery.BatteryStatus<=25)
         //            {
         //                Battery25_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;
