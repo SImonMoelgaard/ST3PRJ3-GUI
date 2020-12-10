@@ -10,8 +10,8 @@ namespace DataAccessLogic
         public List<DTO_Measurement> ReceiveMeasurment();
         public double Recievedouble();
         public void OpenRecievePorts();
-        public List<DTO_Measurement> ReceiveMeasurment2();
+       
         public List<DTO_Measurement> test();
-        public List<DTO_Measurement> test2();
+    
     }
 }

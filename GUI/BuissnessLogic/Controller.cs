@@ -12,6 +12,7 @@ namespace BuissnessLogic
     public class Controller
     {
         private List<DTO_Measurement> measurementList;
+        private List<DTO_Measurement> fiveseconddata;
         private List<DTO_Measurement> measurementdata;
         private double data;
         private List<DTO_CalVal> caldata;
@@ -57,17 +58,26 @@ namespace BuissnessLogic
             
                 measurementdata = recieveRPi.test();
                
-                //measurementdata = recieveRPi.test2();
-            
-            
+                
             //measurementdata = recieveRPi.ReceiveMeasurment();
-            //measurementdata = recieveRPi.ReceiveMeasurment2()
             
-           // measurementdata = recieveRPi.test();
-            //measurementdata = recieveRPi.test2();
+           
                 return measurementdata;
             
            
+        }
+        public List<DTO_Measurement> getmdata2()
+        {
+
+           // measurementdata = recieveRPi.test();
+
+
+            measurementdata = recieveRPi.ReceiveMeasurment();
+
+
+            return fiveseconddata;
+
+
         }
 
         public double Recievedouble()

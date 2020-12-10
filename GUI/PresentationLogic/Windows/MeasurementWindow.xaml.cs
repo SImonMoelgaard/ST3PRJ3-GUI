@@ -36,8 +36,8 @@ namespace PresentationLogic.Windows
 
         private double _axisMax;
         private double _axisMin;
-       // public ChartValues<MeasurementModel> ChartValues { get; set; }
-        public GearedValues<MeasurementModel> ChartValues { get; set; }
+        public ChartValues<MeasurementModel> ChartValues { get; set; }
+        //public GearedValues<MeasurementModel> ChartValues { get; set; }
         public Func<double, string> DateTimeFormatter { get; set; }
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
@@ -85,8 +85,8 @@ namespace PresentationLogic.Windows
 
             Charting.For<MeasurementModel>(mapper);
             
-            //ChartValues = new ChartValues<MeasurementModel>();
-            ChartValues=new GearedValues<MeasurementModel>();
+            ChartValues = new ChartValues<MeasurementModel>();
+            //ChartValues=new GearedValues<MeasurementModel>();
             ChartValues.WithQuality(Quality.Highest);
            
             DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");//FJERN HH IGEN
@@ -164,35 +164,37 @@ namespace PresentationLogic.Windows
             #endregion
         }
 
-        
+        private List<DTO_Measurement> a;//HER LAVER SIMON SHIT
+
         
         private void Read()
         {
             #region Constant Changes Graph
 
-            //controller.openrecieveports();
+            controller.openrecieveports();
 
-
+            
 
             while (IsReading)
             {
 
-                Thread.Sleep(2);
+                Thread.Sleep(1);
                     var measurements = controller.getmdata();
                     //Thread.Sleep(1);
-                    if (measurements.Contains(null))
-                    {
-                   break;
-                     }
-
-                    else
-                    {
+                   
+                a = new List<DTO_Measurement>();
+                a = controller.getmdata2();    
+                    
                     try
                     {
+                        foreach (DTO_Measurement data2 in a)
+                        {
+                            
+                        }
                         foreach (DTO_Measurement data in measurements.ToList())
                         {
                             //Thread.Sleep(20);
-
+                            
                             if (data.mmHg > 1)
                             {
                                 ChartValues.Add(new MeasurementModel
@@ -209,7 +211,7 @@ namespace PresentationLogic.Windows
                             {
                                 measurements.Clear();
                             }
-
+                            
                             SetAxisLimits(data.Tid);
 
                             if (ChartValues.Count > 1000)
@@ -248,16 +250,16 @@ namespace PresentationLogic.Windows
                                 ////Calling battery method
                                 //Battery();
                             });
+                            
                         }
                     }
                     catch (InvalidExpressionException)
                     {
 
                     }
-                }    
-                
-                
-                
+
+
+
 
 
 
