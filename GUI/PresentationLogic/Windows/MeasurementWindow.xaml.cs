@@ -237,7 +237,7 @@ namespace PresentationLogic.Windows
 
                                 if (data.CalculatedMean > 1)
                                 {
-                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.BatteryStatus) + "%";
+                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.Batterystatus) + "%";
                                 }
                                 
 
@@ -368,7 +368,7 @@ namespace PresentationLogic.Windows
         //    {
         //        this.Dispatcher.Invoke(() =>
         //        {
-        //            if (battery.BatteryStatus >= 75)
+        //            if (battery.Batterystatus >= 75)
         //            {
         //                Battery100_I.Visibility = Visibility.Visible;
         //                Battery75_I.Visibility = Visibility.Hidden;
@@ -376,7 +376,7 @@ namespace PresentationLogic.Windows
         //                Battery25_I.Visibility = Visibility.Hidden;
         //            }
 
-        //            if (battery.BatteryStatus <= 75 && battery.BatteryStatus > 50)
+        //            if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
         //            {
         //                Battery75_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;
@@ -384,7 +384,7 @@ namespace PresentationLogic.Windows
         //                Battery25_I.Visibility = Visibility.Hidden;
         //            }
 
-        //            if (battery.BatteryStatus <= 50 && battery.BatteryStatus > 25)
+        //            if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
         //            {
         //                Battery50_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;
@@ -393,7 +393,7 @@ namespace PresentationLogic.Windows
 
         //            }
 
-        //            if (battery.BatteryStatus<=25)
+        //            if (battery.Batterystatus<=25)
         //            {
         //                Battery25_I.Visibility = Visibility.Visible;
         //                Battery100_I.Visibility = Visibility.Hidden;

@@ -69,7 +69,7 @@ namespace DTO
         /// <summary>
         /// Battery status
         /// </summary>
-        public int BatteryStatus { get; set; }
+        public int Batterystatus { get; set; }
 
         /// <summary>
         /// CPR
@@ -92,8 +92,8 @@ namespace DTO
         /// <param name="dia"></param>
         /// <param name="mean"></param>
         /// <param name="pulse"></param>
-        /// <param name="batteryStatus"></param>
-        public DTO_Measurement(string socSecNb,double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batteryStatus)
+        /// <param name="batterystatus"></param>
+        public DTO_Measurement(string socSecNb,double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         { 
            SocSecNB = socSecNb;
            mmHg = mmhg;
@@ -111,7 +111,7 @@ namespace DTO
            CalculatedDia = dia;
            CalculatedMean = mean;
            CalculatedPulse = pulse;
-           BatteryStatus = batteryStatus;
+           Batterystatus = batterystatus;
         }
     }
 }
