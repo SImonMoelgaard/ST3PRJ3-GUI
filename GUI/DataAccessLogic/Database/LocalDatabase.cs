@@ -17,12 +17,44 @@ namespace DataAccessLogic
         private double A;
         private SendRPi send;
         private bool result;
+        
+        public string latestfile(string latestfile)
+        {
+            string path = @"C:\ST3PRJ3FIL\ ";
+            var files = new DirectoryInfo(path).GetFiles("*.*");
+            latestfile = "";
+
+            DateTime lastupdated = DateTime.MinValue;
+
+            foreach (FileInfo file in files)
+            {
+                if (file.LastWriteTime>lastupdated)
+                {
+                    lastupdated = file.LastWriteTime;
+                    latestfile = file.Name;
+
+                }
+
+
+            }
+
+            return latestfile;
+
+
+
+        }
+        
+        
+        
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             socSecNb = "";
             mmhg = 0;
 
-            string path = @"C:\ST3PRJ3FIL\ " + socSecNb.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
+            var filename = latestfile("");
+            string path = @"C:\ST3PRJ3FIL\"+filename;
+
+            //string path = @"C:\ST3PRJ3FIL\ " + soc.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_Measurement measurement = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
 
 
@@ -40,6 +72,7 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
             
+
             DTO_PatientData patientData = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
             string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() +" "+ DateTime.Now.ToString("dd-MM-yyyy");
 
@@ -52,7 +85,8 @@ namespace DataAccessLogic
             }
 
             return null;
-            
+
+
 
         }
 

@@ -164,33 +164,28 @@ namespace PresentationLogic.Windows
             #endregion
         }
 
-        private List<DTO_Measurement> a;//HER LAVER SIMON SHIT
 
-        
         private void Read()
         {
             #region Constant Changes Graph
 
             controller.openrecieveports();
 
-            
 
+            
             while (IsReading)
             {
 
-                Thread.Sleep(1);
+                //Thread.Sleep(1);
                     var measurements = controller.getmdata();
+
                     //Thread.Sleep(1);
                    
-                a = new List<DTO_Measurement>();
-                a = controller.getmdata2();    
-                    
+                
+                
                     try
                     {
-                        foreach (DTO_Measurement data2 in a)
-                        {
-                            
-                        }
+                        
                         foreach (DTO_Measurement data in measurements.ToList())
                         {
                             //Thread.Sleep(20);
@@ -214,7 +209,9 @@ namespace PresentationLogic.Windows
                             
                             SetAxisLimits(data.Tid);
 
-                            if (ChartValues.Count > 1000)
+                            
+
+                        if (ChartValues.Count > 500)
                             {
                                 ChartValues.RemoveAt(0);
                             }
@@ -224,6 +221,7 @@ namespace PresentationLogic.Windows
                             {
                                 if (data.CalculatedPulse > 1)
                                 {
+                                    
                                     Puls_L.Content = Convert.ToString(data.CalculatedPulse);
                                 }
 
@@ -242,7 +240,7 @@ namespace PresentationLogic.Windows
                                 {
                                     BatteryStatus_L.Content = Convert.ToString(data.Batterystatus) + "%";
                                 }
-
+                                
 
                                 //Calling alarm method
                                 //Alarm();
@@ -274,7 +272,7 @@ namespace PresentationLogic.Windows
         private void SetAxisLimits(DateTime now)
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(8).Ticks; // and 8 seconds behind
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(4).Ticks; // and 8 seconds behind
             
         }
 

@@ -56,7 +56,7 @@ namespace BuissnessLogic
         public List<DTO_Measurement> getmdata()
         {
             
-                measurementdata = recieveRPi.test();
+            measurementdata = recieveRPi.test();
                
                 
             //measurementdata = recieveRPi.ReceiveMeasurment();
@@ -66,19 +66,7 @@ namespace BuissnessLogic
             
            
         }
-        public List<DTO_Measurement> getmdata2()
-        {
-
-           // measurementdata = recieveRPi.test();
-
-
-            measurementdata = recieveRPi.ReceiveMeasurment();
-
-
-            return fiveseconddata;
-
-
-        }
+        
 
         public double RecieveDouble()
         {
