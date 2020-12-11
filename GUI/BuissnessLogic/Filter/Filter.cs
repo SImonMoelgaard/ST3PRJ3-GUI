@@ -14,7 +14,7 @@ namespace BuissnessLogic
             //Receive measurement data
             measurementData = recieveRPi.RecieveDataPoints();
 
-            int b = 1;
+            int b = 1;//
 
             //Keep every seventh measurement
             for (int i = 0; i < measurementData.Count; i++)
