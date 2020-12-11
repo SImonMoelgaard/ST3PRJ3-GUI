@@ -182,16 +182,17 @@ namespace PresentationLogic.Windows
                 //Thread.Sleep(1);
 
                 measurements = new List<DTO_Measurement>();
-
-                if (Filter_CB.IsChecked == true)
+                this.Dispatcher.Invoke(() =>
                 {
-                    measurements = filter.GetMeasurementDataFilter();
-                }
-                else
-                {
-                    measurements = controller.GetMeasurementData();
-                }
-                
+                    if (Filter_CB.IsChecked == true)
+                    {
+                        measurements = filter.GetMeasurementDataFilter();
+                    }
+                    else
+                    {
+                        measurements = controller.GetMeasurementData();
+                    }
+                });
 
                     //Thread.Sleep(1);
                    
