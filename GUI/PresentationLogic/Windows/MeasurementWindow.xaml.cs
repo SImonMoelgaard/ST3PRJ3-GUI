@@ -181,20 +181,22 @@ namespace PresentationLogic.Windows
             while (IsReading)
             {
 
-                //Thread.Sleep(1);
+                
 
-                //measurements = new List<DTO_Measurement>();
+                
                 //this.Dispatcher.Invoke(() =>
                 //{
                 //    if (Filter_CB.IsChecked == true)
                 //    {
                 //measurements = filter.GetMeasurementDataFilter();
-
+                Thread.Sleep(10);
+                measurements = controller.GetMeasurementData();
+                
                 //        
                 //    }
                 //    else
                 //    {
-                measurements = controller.GetMeasurementData();
+
                 //    }
                 //});
 
@@ -203,78 +205,81 @@ namespace PresentationLogic.Windows
 
 
                 try
+                {
+                    
+                    foreach (DTO_Measurement data in measurements)
                     {
-                        
-                        foreach (DTO_Measurement data in measurements.ToList())
+                        //Thread.Sleep(20);
+
+                        if (data.mmHg > 1)
                         {
-                            //Thread.Sleep(20);
-                            
-                            if (data.mmHg > 1)
+                            ChartValues.Add(new MeasurementModel
                             {
-                                ChartValues.Add(new MeasurementModel
-                                {
-                                    //Time = DateTime.Now,
-                                    Time = data.Tid,
+                                //Time = DateTime.Now,
+                                Time = data.Tid,
 
-                                    RawData = data.mmHg
+                                RawData = data.mmHg
 
-                                });
-                                measurements.Clear();
-                            }
-                            else
-                            {
-                                measurements.Clear();
-                            }
-                            
-                            SetAxisLimits(data.Tid);
-
-                            
-
-                        if (ChartValues.Count > 400)
-                            {
-                                ChartValues.RemoveAt(0);
-                            }
-
-                            //Update pulse, systolic, diastolic and mean
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                if (data.CalculatedPulse > 1)
-                                {
-                                    
-                                    Puls_L.Content = Convert.ToString(data.CalculatedPulse);
-                                }
-
-                                if (data.CalculatedSys > 1)
-                                {
-                                    SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
-                                }
-
-                                if (data.CalculatedMean > 1)
-                                {
-                                    Mean_L.Content = Convert.ToString(data.CalculatedMean);
-                                }
-
-                                if (data.CalculatedMean > 1)
-                                {
-                                    BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.Batterystatus) + "%";
-                                }
-
-                                
-                                
-
-                                //Calling alarm method
-                                Alarm();
-
-                                ////Calling battery method
-                                //Battery();
                             });
                             
                         }
-                    }
-                    catch (InvalidExpressionException)
-                    {
+                        else
+                        {
+                            
+                        }
+
+                        SetAxisLimits(data.Tid);
+
+
+
+                        if (ChartValues.Count > 400)
+                        {
+                            ChartValues.RemoveAt(0);
+                        }
+
+                        //Update pulse, systolic, diastolic and mean
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            if (data.CalculatedPulse > 1)
+                            {
+
+                                Puls_L.Content = Convert.ToString(data.CalculatedPulse);
+                            }
+
+                            if (data.CalculatedSys > 1)
+                            {
+                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
+                                                   Convert.ToString(data.CalculatedDia);
+                            }
+
+                            if (data.CalculatedMean > 1)
+                            {
+                                Mean_L.Content = Convert.ToString(data.CalculatedMean);
+                            }
+
+                            if (data.CalculatedMean > 1)
+                            {
+                                BatteryStatus_L.Content =
+                                    "Batteristatus: " + Convert.ToString(data.Batterystatus) + "%";
+                            }
+
+
+
+
+                            //Calling alarm method
+                            Alarm();
+
+                            ////Calling battery method
+                            //Battery();
+                        });
 
                     }
+                }
+                catch (InvalidOperationException)
+                {
+                    
+                }
+            
             }
         }
 

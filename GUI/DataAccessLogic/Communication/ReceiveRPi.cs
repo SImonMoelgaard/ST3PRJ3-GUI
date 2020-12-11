@@ -65,32 +65,29 @@ namespace DataAccessLogic
             
             while (true)
             {
-                Thread.Sleep(1);
+                
                 try
                 {
                     bytes = listener.Receive(ref groupEP);
                     data = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
 
-                    var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false, false, false, false, false, 0, 0, 0, 0, 0);
+                    //var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false, false, false, false, false, 0, 0, 0, 0, 0);
 
-                    measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
+                   // measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
+                    var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
+                    
+                    //measurements.Add(measurementdata);
 
-                    measurements.Add(measurementdata);
+                    
+                    
+                        //local.SaveMeasurement(measurementdata[0].SocSecNB, measurementdata.mmHg, measurementdata.Tid, measurementdata.HighSys,
+                        //    measurementdata.LowSys, measurementdata.HighDia, measurementdata.LowDia,
+                        //    measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
+                        //    measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
+                        //    measurementdata.Batterystatus);
+                        return measurementdata;
 
-
-                    if (measurementdata.mmHg>0 || measurementdata.CalculatedDia>0)
-                    {
-                        local.SaveMeasurement(measurementdata.SocSecNB, measurementdata.mmHg, measurementdata.Tid, measurementdata.HighSys,
-                            measurementdata.LowSys, measurementdata.HighDia, measurementdata.LowDia,
-                            measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
-                            measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
-                            measurementdata.Batterystatus);
-                        return measurements;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    
                 }
                 catch (InvalidOperationException)
                 {
