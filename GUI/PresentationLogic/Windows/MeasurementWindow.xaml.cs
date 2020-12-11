@@ -264,14 +264,14 @@ namespace PresentationLogic.Windows
                             {
                                 BatteryStatus_L.Content =
                                     "Batteristatus: " + Convert.ToString(data.Batterystatus) + "%";
-                                Alarm();
+                                
                             }
 
-
+                            Alarm();
 
 
                             //Calling alarm method
-                            
+
 
                             ////Calling battery method
                             //Battery();
