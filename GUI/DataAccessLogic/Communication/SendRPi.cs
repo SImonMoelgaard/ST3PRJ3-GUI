@@ -38,7 +38,7 @@ namespace DataAccessLogic
         /// </summary>
         public void OpenSendPorts()
         {
-        broadcast = IPAddress.Parse("172.20.10.11");//ÆNDRE IP HER
+        broadcast = IPAddress.Parse("172.20.10.5");//ÆNDRE IP HER
          //broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER
 
 
@@ -87,7 +87,7 @@ namespace DataAccessLogic
         public object sendemergencydata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient, double Calval, double Zeroval)
         {
             emergencydatasocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            epEmergencydata = new IPEndPoint(IPAddress.Parse("172.20.10.11"),  11000);
+            epEmergencydata = new IPEndPoint(IPAddress.Parse("172.20.10.5"),  11000);
 
             
                 DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);

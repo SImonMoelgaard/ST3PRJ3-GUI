@@ -172,11 +172,13 @@ namespace PresentationLogic.Windows
 
         private void Read()
         {
+            int test = 0;
             while (IsReading)
             {
 
                 //Thread.Sleep(1);
                     var measurements = controller.GetMeasurementData();
+                    
 
                     //Thread.Sleep(1);
                    
@@ -210,7 +212,7 @@ namespace PresentationLogic.Windows
 
                             
 
-                        if (ChartValues.Count > 500)
+                        if (ChartValues.Count > 400)
                             {
                                 ChartValues.RemoveAt(0);
                             }
@@ -239,10 +241,12 @@ namespace PresentationLogic.Windows
                                 {
                                     BatteryStatus_L.Content = "Batteristatus: "+Convert.ToString(data.Batterystatus) + "%";
                                 }
+
+                                
                                 
 
                                 //Calling alarm method
-                                //Alarm();
+                                Alarm();
 
                                 ////Calling battery method
                                 //Battery();
@@ -259,8 +263,8 @@ namespace PresentationLogic.Windows
 
         private void SetAxisLimits(DateTime now)
         {
-            AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks; // lets force the axis to be 1 second ahead
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(4).Ticks; // and 8 seconds behind
+            AxisMax = now.Ticks + TimeSpan.FromSeconds(0).Ticks; // lets force the axis to be 1 second ahead
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(3).Ticks; // and 8 seconds behind
             
         }
 
