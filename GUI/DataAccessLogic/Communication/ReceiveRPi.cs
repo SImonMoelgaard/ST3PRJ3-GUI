@@ -65,7 +65,7 @@ namespace DataAccessLogic
             
             while (true)
             {
-                
+                //Thread.Sleep(1);
                 try
                 {
                     bytes = listener.Receive(ref groupEP);
@@ -77,7 +77,10 @@ namespace DataAccessLogic
                     var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
                     
                     //measurements.Add(measurementdata);
-
+                    if (measurementdata[0].CalculatedDia>0)
+                    {
+                        var caldia = measurementdata[0].CalculatedDia;
+                    }
                     
                     
                         //local.SaveMeasurement(measurementdata[0].SocSecNB, measurementdata.mmHg, measurementdata.Tid, measurementdata.HighSys,
