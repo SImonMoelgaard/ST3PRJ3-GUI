@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Threading;
 using System.Threading.Tasks;
 using DataAccessLogic;
@@ -48,21 +49,31 @@ namespace BuissnessLogic
             
             measurementdata = recieveRPi.RecieveDataPoints();
 
+            int b = 1;//
+            if (measurementdata[0].mmHg>0)
+            {
+                for (int i = 1; i < measurementdata.Count; i++)
+                {
+                    if (i / 1 == b)
+                    {
+                        measurementdata.RemoveAt(i);
+                        b++;
+                    }
+                    else
+                    {
+                        b++;
+                    }
 
-            //measurementdata = recieveRPi.ReceiveMeasurment();
+                    //Keep every seventh measurement
+                }
+
+            }
+            else
+            {
+                return measurementdata;
+            }
+
             return measurementdata;
-            //for (int i = 0; i < 182; i++)
-            //{
-            //    Thread.Sleep(3);
-            //    List<DTO_Measurement> test = new List<DTO_Measurement>();
-            //    test.Add(measurementdata[i]);
-            //    return test;
-                
-            //}
-
-            //return null;
-
-
         }
         
 

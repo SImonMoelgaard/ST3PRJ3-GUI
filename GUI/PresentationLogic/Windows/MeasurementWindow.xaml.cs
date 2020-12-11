@@ -170,7 +170,6 @@ namespace PresentationLogic.Windows
             if (IsReading) Task.Factory.StartNew(Read);
         }
 
-
         private Filter filter = new Filter();
        private List<DTO_Measurement> measurements;
 
@@ -181,24 +180,23 @@ namespace PresentationLogic.Windows
 
             while (IsReading)
             {
+                measurements = new List<DTO_Measurement>();
 
-                
 
-                
+                //measurements = filter.GetMeasurementDataFilter();
                 //this.Dispatcher.Invoke(() =>
                 //{
-                //    if (Filter_CB.IsChecked == true)
-                //    {
-                //measurements = filter.GetMeasurementDataFilter();
-                measurements = new List<DTO_Measurement>();
-               measurements = controller.GetMeasurementData();
-                
-                //        
-                //    }
-                //    else
-                //    {
+                //if (Filter_CB.IsChecked == true)
+                //{
+                //    
+                //}
+                //else if (Filter_CB.IsChecked==false)
+                //{
+                measurements = controller.GetMeasurementData();
+                //}
 
-                //    }
+
+
                 //});
 
                 //Thread.Sleep(1);
