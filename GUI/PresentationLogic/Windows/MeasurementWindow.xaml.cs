@@ -170,13 +170,27 @@ namespace PresentationLogic.Windows
         }
 
 
+        private IFilter filter = new Filter();
+        private List<DTO_Measurement> measurements;
+
         private void Read()
         {
             while (IsReading)
             {
 
                 //Thread.Sleep(1);
-                    var measurements = controller.GetMeasurementData();
+
+                measurements = new List<DTO_Measurement>();
+
+                if (Filter_CB.IsChecked == true)
+                {
+                    measurements = filter.GetMeasurementDataFilter();
+                }
+                else
+                {
+                    measurements = controller.GetMeasurementData();
+                }
+                
 
                     //Thread.Sleep(1);
                    
