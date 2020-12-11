@@ -65,7 +65,7 @@ namespace DataAccessLogic
             
             while (true)
             {
-                Thread.Sleep(1);
+                
                 try
                 {
                     bytes = listener.Receive(ref groupEP);
@@ -75,10 +75,7 @@ namespace DataAccessLogic
 
                    // measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
                     var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
-                    if (measurementdata.Count == 1)
-                    {
-                        var alarm = measurementdata[0].HighDia;
-                    }
+                    
                     //measurements.Add(measurementdata);
 
                     
@@ -89,6 +86,7 @@ namespace DataAccessLogic
                         //    measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
                         //    measurementdata.Batterystatus);
                         return measurementdata;
+
                     
                 }
                 catch (InvalidOperationException)
