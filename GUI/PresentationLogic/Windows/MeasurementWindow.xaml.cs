@@ -170,35 +170,39 @@ namespace PresentationLogic.Windows
         }
 
 
-        private IFilter filter = new Filter();
+        private Filter filter = new Filter();
         private List<DTO_Measurement> measurements;
 
         private void Read()
         {
             int test = 0;
+            int b = 1;
+
             while (IsReading)
             {
 
                 //Thread.Sleep(1);
 
-                measurements = new List<DTO_Measurement>();
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (Filter_CB.IsChecked == true)
-                    {
-                        measurements = filter.GetMeasurementDataFilter();
-                    }
-                    else
-                    {
-                        measurements = controller.GetMeasurementData();
-                    }
-                });
+                //measurements = new List<DTO_Measurement>();
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    if (Filter_CB.IsChecked == true)
+                //    {
+                //measurements = filter.GetMeasurementDataFilter();
 
-                    //Thread.Sleep(1);
-                   
-                
-                
-                    try
+                //        
+                //    }
+                //    else
+                //    {
+                measurements = controller.GetMeasurementData();
+                //    }
+                //});
+
+                //Thread.Sleep(1);
+
+
+
+                try
                     {
                         
                         foreach (DTO_Measurement data in measurements.ToList())
@@ -242,8 +246,7 @@ namespace PresentationLogic.Windows
 
                                 if (data.CalculatedSys > 1)
                                 {
-                                    SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
-                                                       Convert.ToString(data.CalculatedDia);
+                                    SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
                                 }
 
                                 if (data.CalculatedMean > 1)
