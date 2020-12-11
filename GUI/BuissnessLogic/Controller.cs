@@ -47,12 +47,12 @@ namespace BuissnessLogic
         {
             
             measurementdata = recieveRPi.RecieveDataPoints();
-               
-                
+
+
             //measurementdata = recieveRPi.ReceiveMeasurment();
-            
-           
-                return measurementdata;
+
+
+            return measurementdata;
             
            
         }

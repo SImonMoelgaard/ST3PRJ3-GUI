@@ -19,7 +19,7 @@ namespace BuissnessLogic
             //Keep every fourth measurement
             for (int i = 0; i < measurementData.Count; i++)
             {
-                if (i/4==b)
+                if (i / 4 == b)
                 {
                     b++;
                 }
@@ -28,7 +28,7 @@ namespace BuissnessLogic
                     measurementData.RemoveAt(i);
                 }
             }
-            
+
             return measurementData;
         }
     }
