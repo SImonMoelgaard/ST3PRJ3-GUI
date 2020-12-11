@@ -16,10 +16,10 @@ namespace BuissnessLogic
 
             int b = 1;
 
-            //Keep every fourth measurement
+            //Keep every seventh measurement
             for (int i = 0; i < measurementData.Count; i++)
             {
-                if (i / 4 == b)
+                if (i / 7 == b)
                 {
                     b++;
                 }
