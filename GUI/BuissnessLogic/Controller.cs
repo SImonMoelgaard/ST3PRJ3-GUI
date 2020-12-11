@@ -50,11 +50,19 @@ namespace BuissnessLogic
 
 
             //measurementdata = recieveRPi.ReceiveMeasurment();
-
-
             return measurementdata;
-            
-           
+            //for (int i = 0; i < 182; i++)
+            //{
+            //    Thread.Sleep(3);
+            //    List<DTO_Measurement> test = new List<DTO_Measurement>();
+            //    test.Add(measurementdata[i]);
+            //    return test;
+                
+            //}
+
+            //return null;
+
+
         }
         
 

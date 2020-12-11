@@ -21,6 +21,7 @@ using BuissnessLogic;
 using DTO;
 using LiveCharts;
 using LiveCharts.Configurations;
+using LiveCharts.Geared;
 using LiveCharts.Wpf;
 using Colors = Windows.UI.Colors;
 
@@ -98,7 +99,7 @@ namespace PresentationLogic.Windows
             
             ChartValues = new ChartValues<MeasurementModel>();
             //ChartValues=new GearedValues<MeasurementModel>();
-           // ChartValues.WithQuality(Quality.Highest);
+            //ChartValues.WithQuality(Quality.Highest);
            
             //X axis datetime
             DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");
@@ -171,7 +172,7 @@ namespace PresentationLogic.Windows
 
 
         private Filter filter = new Filter();
-        private List<DTO_Measurement> measurements;
+       private List<DTO_Measurement> measurements;
 
         private void Read()
         {
@@ -189,8 +190,8 @@ namespace PresentationLogic.Windows
                 //    if (Filter_CB.IsChecked == true)
                 //    {
                 //measurements = filter.GetMeasurementDataFilter();
-                Thread.Sleep(10);
-                measurements = controller.GetMeasurementData();
+                measurements = new List<DTO_Measurement>();
+               measurements = controller.GetMeasurementData();
                 
                 //        
                 //    }
@@ -209,7 +210,6 @@ namespace PresentationLogic.Windows
                     
                     foreach (DTO_Measurement data in measurements)
                     {
-                        //Thread.Sleep(20);
 
                         if (data.mmHg > 1)
                         {
@@ -221,18 +221,17 @@ namespace PresentationLogic.Windows
                                 RawData = data.mmHg
 
                             });
-                            
-                        }
-                        else
-                        {
-                            
+
                         }
 
+
+
+                        //SetAxisLimits(DateTime.Now);
                         SetAxisLimits(data.Tid);
 
 
 
-                        if (ChartValues.Count > 400)
+                        if (ChartValues.Count > 800)
                         {
                             ChartValues.RemoveAt(0);
                         }
@@ -240,6 +239,10 @@ namespace PresentationLogic.Windows
                         //Update pulse, systolic, diastolic and mean
                         this.Dispatcher.Invoke(() =>
                         {
+                            
+                            
+
+                            
                             if (data.CalculatedPulse > 1)
                             {
 
@@ -261,13 +264,14 @@ namespace PresentationLogic.Windows
                             {
                                 BatteryStatus_L.Content =
                                     "Batteristatus: " + Convert.ToString(data.Batterystatus) + "%";
+                                Alarm();
                             }
 
 
 
 
                             //Calling alarm method
-                            Alarm();
+                            
 
                             ////Calling battery method
                             //Battery();
@@ -275,7 +279,7 @@ namespace PresentationLogic.Windows
 
                     }
                 }
-                catch (InvalidOperationException)
+                catch (InvalidExpressionException)
                 {
                     
                 }
@@ -286,7 +290,7 @@ namespace PresentationLogic.Windows
         private void SetAxisLimits(DateTime now)
         {
             AxisMax = now.Ticks + TimeSpan.FromSeconds(0).Ticks; // lets force the axis to be 1 second ahead
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(3).Ticks; // and 8 seconds behind
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(4).Ticks; // and 8 seconds behind
             
         }
 
@@ -328,12 +332,12 @@ namespace PresentationLogic.Windows
 
         public void Alarm()
         {
-            var alarmList = controller.GetMeasurementData();
+            //var alarmList = controller.GetMeasurementData();
 
-            foreach (var alarms in alarmList)
+            foreach (var alarms in measurements)
             {
-                this.Dispatcher.Invoke(() =>
-                {
+                //this.Dispatcher.Invoke(() =>
+                //{
                     if (alarms.HighDia == true || alarms.LowDia == true || alarms.HighSys == true ||
                         alarms.LowSys == true)
                     {
@@ -374,7 +378,7 @@ namespace PresentationLogic.Windows
 
                         blinkOnMean = !blinkOnMean;
                     }
-                });
+                //});
             }
         }
 

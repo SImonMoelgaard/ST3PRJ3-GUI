@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MeasurementWindow" Height="450" Width="800"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        
+        xmlns:geared="clr-namespace:LiveCharts.Geared;assembly=LiveCharts.Geared"
+
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
         <Grid.ColumnDefinitions>
