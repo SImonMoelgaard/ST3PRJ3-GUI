@@ -75,6 +75,10 @@ namespace DataAccessLogic
 
                    // measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
                     var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
+                    if (measurementdata.Count == 1)
+                    {
+                        var alarm = measurementdata[0].HighDia;
+                    }
                     //measurements.Add(measurementdata);
 
                     
