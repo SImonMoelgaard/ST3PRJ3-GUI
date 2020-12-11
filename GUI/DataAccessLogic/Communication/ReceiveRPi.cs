@@ -84,7 +84,7 @@ namespace DataAccessLogic
                         //    measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
                         //    measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
                         //    measurementdata.Batterystatus);
-                        return measurements;
+                        return measurementdata;
                     
                 }
                 catch (InvalidOperationException)
