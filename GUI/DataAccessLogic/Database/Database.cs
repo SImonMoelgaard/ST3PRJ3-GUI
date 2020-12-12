@@ -10,17 +10,19 @@ using DTO;
 
 namespace DataAccessLogic
 {
+    /// <summary>
+    /// This class will only work if the computer is connected to VPN AU University
+    /// </summary>
     public class Database : IDatabase
     {
         private SqlConnection connection;
-
         private SqlDataReader reader;
-
         private SqlCommand command;
+        private const string DBlogin = "F20ST2ITS2201810696";
 
-        private const String DBlogin = "F20ST2ITS2201810696";
-
-
+        /// <summary>
+        /// Connection to the database
+        /// </summary>
         public Database()
         {
             connection = new SqlConnection("Data Source=st-i4dab.uni.au.dk; Initial Catalog=" + DBlogin + "; User ID= " + DBlogin + "; " +
@@ -28,6 +30,11 @@ namespace DataAccessLogic
                                            "ApplicationIntent=ReadWrite; MultiSubnetFailover=false");
         }
 
+        /// <summary>
+        /// Get soc sec from database
+        /// </summary>
+        /// <param name="SocSecNB"></param>
+        /// <returns></returns>
         public bool getSocSecNB(string SocSecNB)
         {
             bool result = false;
@@ -53,20 +60,13 @@ namespace DataAccessLogic
             return result;
         }
 
-        public void SavePatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
-            double Calval, double Zeroval)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void SaveMeasurement(string socSecNb, double rawData, DateTime date, int sysData, int diaData, int alarmData, int pulse,
-            int powerData)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool isUserRegistered(String socSecNb, String pw)
+        /// <summary>
+        /// This method checks if the user is registered in the database
+        /// </summary>
+        /// <param name="socSecNb"></param>
+        /// <param name="pw"></param>
+        /// <returns></returns>
+        public bool isUserRegistered(string socSecNb, string pw)
         {
 
             bool result = false;
@@ -104,6 +104,11 @@ namespace DataAccessLogic
             return result;
         }
 
+        /// <summary>
+        /// This method returns a measurement, if there is one for the given patient
+        /// </summary>
+        /// <param name="socSecNb"></param>
+        /// <returns></returns>
         public List<DTO_Measurement> GetMeasurement(string socSecNb)
         {
             List<DTO_Measurement> measurementList =new List<DTO_Measurement>();
@@ -120,13 +125,5 @@ namespace DataAccessLogic
             connection.Close();
             return measurementList;
         }
-
-        public void SaveMeasurement()
-        {
-            
-            
-        }
-
-       
     }
 }

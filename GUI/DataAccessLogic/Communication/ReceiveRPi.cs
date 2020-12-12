@@ -22,15 +22,8 @@ namespace DataAccessLogic
 /// </summary>
     public class ReceiveRPi : IReceiveRPi
     {
-        public static void Main()
-        {
-
-        }
-
-
         ILocalDatabase local = new LocalDatabase();
         private List<DTO_Measurement> measurements = new List<DTO_Measurement>();
-       
         private UdpClient listener;
         private UdpClient ListenerDouble;
         private IPEndPoint groupEP;
@@ -41,8 +34,6 @@ namespace DataAccessLogic
         /// </summary>
         public void OpenRecievePorts()
         {
-            
-
             listener =new UdpClient(11001);
             groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
 
@@ -101,15 +92,12 @@ namespace DataAccessLogic
 
         }
 
-        
-
         /// <summary>
         /// Modtager data, decoder det med ASCII 
         /// </summary>
         /// <returns>
         /// Returnerer en double tilbage. Denne metode kan bruges til at returnere alle doubles.
         /// </returns>
-        
         public double RecieveCalculatedValues()
         {
             double data;
@@ -130,22 +118,5 @@ namespace DataAccessLogic
 
             }
         }
-
-
-
-        
-        
-       
-        
-        
-
-        
-        
-
-       
-
-
     }
-        
-    
 }

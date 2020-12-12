@@ -11,51 +11,61 @@ namespace BuissnessLogic
 {
     public class Calibration : ICalibration
     {
-        IReceiveRPi receive=new ReceiveRPi();
-        ISendRPi send=new SendRPi();
-        ILocalDatabase localDatabase = new LocalDatabase();
+        /// <summary>
+        /// References
+        /// </summary>
+        readonly IReceiveRPi receive=new ReceiveRPi();
+        readonly ISendRPi send=new SendRPi();
+        readonly ILocalDatabase localDatabase = new LocalDatabase();
+
+        /// <summary>
+        /// Values
+        /// </summary>
         private double rVal;
         private double _r2;
-        private List<DTO_CalVal> calValList;
-        private double calval;
         private double zeroval;
-        private double caldata;
-        //private List<DTO_CalVal> LinearRegression;
-        private List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
 
-        public List<DTO_CalVal> GetCalVal()
-        {
-            
-            calValList=new List<DTO_CalVal>();
+        /// <summary>
+        /// Lists
+        /// </summary>
+        private readonly List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
 
-            //this is a RecieveDataPoints
-            //calValList.Add(new DTO_CalVal(7,7.8,7.7,7.7,8,7,"bøf"));
-            
-            //This is the right one
-            //calVal.Add(receive.ReceiveCalibration());
-
-            return calValList;
-        }
-
-        public double getZeroval()
+        /// <summary>
+        /// This method commands the RPi to start a zero point adjustment,
+        /// and receives the zero value
+        /// </summary>
+        /// <returns></returns>
+        public double GetZeroVal()
         {
             send.Command("Startzeroing");
+
             zeroval = receive.RecieveCalculatedValues();
 
             return zeroval;
         }
 
-
-        public double getCalibration()
+        /// <summary>
+        /// This method commands the RPi to start a calibration,
+        /// and receives the calculated calibration
+        /// </summary>
+        /// <returns></returns>
+        public double GetCalibration()
         {
             send.Command("Startcalibration");
             double value = receive.RecieveCalculatedValues();
             return value;
-
         }
 
-        
-
+        /// <summary>
+        /// This method calculates the a and b in the linear equation for the calibration
+        /// </summary>
+        /// <param name="calReference"></param>
+        /// <param name="calMeasured"></param>
+        /// <param name="r2"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="zv"></param>
+        /// <returns></returns>
         public List<DTO_CalVal> CalculateAAndB(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv)
         {
             double xAvg = 0;
@@ -82,12 +92,18 @@ namespace BuissnessLogic
             a = v1 / v2;
             b = Convert.ToInt32(yAvg - a * xAvg);
 
-           // List<DTO_CalVal> LinearRegression=new List<DTO_CalVal>();
             LinearRegression.Add(new DTO_CalVal(calReference,calMeasured,_r2,a,b,zv,DateTime.Now));
 
             return LinearRegression;
         }
 
+        /// <summary>
+        /// This method calculates the R2 value
+        /// </summary>
+        /// <param name="calReference"></param>
+        /// <param name="calMeasured"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
         public double CalculateR2Val(List<int> calReference, List<double> calMeasured,double r2)
         {
             double zX = 0;
@@ -95,10 +111,6 @@ namespace BuissnessLogic
             double zXY = 0;
             double zX2 = 0;
             double zY2 = 0;
-
-            //RecieveDataPoints***************
-            //calMeasured[0] = 10;
-            //*******************
 
             for (int i = 0; i < calReference.Count; i++)
             {
@@ -127,30 +139,31 @@ namespace BuissnessLogic
             return r2;
         }
 
+        /// <summary>
+        /// This method saves the calibration in a file
+        /// </summary>
+        /// <param name="calReference"></param>
+        /// <param name="calMeasured"></param>
+        /// <param name="r2"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="zv"></param>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
         public List<DTO_CalVal> SaveCalval(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv, DateTime datetime)
         {
-            
-
-            foreach (var VARIABLE in LinearRegression)
+            foreach (var data in LinearRegression)
             {
-                calReference = VARIABLE.CalReference;
-                calMeasured = VARIABLE.CalMeasured;
+                calReference = data.CalReference;
+                calMeasured = data.CalMeasured;
                 r2 = _r2;
-                a = VARIABLE.A;
-                b = VARIABLE.B;
+                a = data.A;
+                b = data.B;
                 zv = zeroval;
-                datetime = VARIABLE.Datetime;
+                datetime = data.Datetime;
             }
-
-           
-
 
             return localDatabase.SaveCalVal(calReference, calMeasured, r2,a,b,zv,datetime);
         }
-
-        
-
-        
-
     }
 }

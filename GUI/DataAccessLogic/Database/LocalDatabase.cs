@@ -14,16 +14,13 @@ namespace DataAccessLogic
 {
     public class LocalDatabase : ILocalDatabase
     {
-        
         private bool result;
         
-
         /// <summary>
         /// Finder den seneste redigerede fil og retunerer denne i en string.
         /// </summary>
         /// <param name="latestfile"></param>
         /// <returns></returns>
-
         public string latestfile(string latestfile)
         {
             string path = @"C:\ST3PRJ3FIL\ ";
@@ -68,7 +65,6 @@ namespace DataAccessLogic
         /// <param name="pulse"></param>
         /// <param name="batterystatus"></param>
         /// <returns></returns>
-        
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
             socSecNb = "";
@@ -91,6 +87,7 @@ namespace DataAccessLogic
 
             return null;
         }
+        
         /// <summary>
         /// Gemmer alle grænseværdier, den seneste kalibrering og Zeroval i databasen.
         /// </summary>
@@ -171,7 +168,6 @@ namespace DataAccessLogic
             return sendrpi.sendemergencydata(emergencydata.HighSys, emergencydata.LowSys, emergencydata.HighDia, emergencydata.LowDia, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
 
         }
-
 
         /// <summary>
         /// Denne metode gemmer kalibrering. Her gemmer den 2 lister med målepunkter og udregnede data udfra disse målepunkter.
@@ -364,6 +360,7 @@ namespace DataAccessLogic
            
 
         }
+        
         /// <summary>
         /// Denne metode kan benyttes til at gemme nye profiler til login.
         /// </summary>
@@ -386,6 +383,5 @@ namespace DataAccessLogic
 
 
         }
-
     }
 }

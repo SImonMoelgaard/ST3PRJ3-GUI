@@ -79,7 +79,7 @@ namespace PresentationLogic.Windows
 
             InitializeComponent();
 
-            //double zv = cali.getZeroval();
+            //double zv = cali.GetZeroVal();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace PresentationLogic.Windows
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
             //Receive calibration value
-            double calibrationVal = cali.getCalibration();
+            double calibrationVal = cali.GetCalibration();
 
             //Convert reference value to integer
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);

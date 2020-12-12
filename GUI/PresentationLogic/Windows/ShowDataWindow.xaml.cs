@@ -23,26 +23,44 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class ShowDataWindow : Window
     {
-        //Windows
+        /// <summary>
+        /// Windows
+        /// </summary>
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
 
-        //Chart
+        /// <summary>
+        /// Chart
+        /// </summary>
         private LineSeries bPressure;
         private ChartValues<double> chartBPressure;
 
-        //List
+        /// <summary>
+        /// List
+        /// </summary>
         private List<DTO_Measurement> dataBPressure;
 
-        //X Axis
+        /// <summary>
+        /// X Axis
+        /// </summary>
         public string[] xAxis { get; set; }
 
-        //Social Security Number
+        /// <summary>
+        /// Social Security Number
+        /// </summary>
         private string socSecNb;
 
-        //Y Axis
+        /// <summary>
+        /// Y Axis
+        /// </summary>
         public Func<double,string> YFormatter { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="cw"></param>
+        /// <param name="mw"></param>
+        /// <param name="SocSecNb"></param>
         public ShowDataWindow(Controller cw, MainWindow mw, string SocSecNb)
         {
             InitializeComponent();
@@ -55,6 +73,11 @@ namespace PresentationLogic.Windows
             socSecNb = SocSecNb;
         }
 
+        /// <summary>
+        /// Exit To Main Window closes this window and shows Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             //Close window
@@ -64,19 +87,28 @@ namespace PresentationLogic.Windows
             mainWindow.Show();
         }
 
+        /// <summary>
+        /// Search Button searches for blood pressure measurement for the given patient
+        /// and displays the blood pressure chart
+        /// While using this window you have to be connected to VPN AU University to connect to the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Search_B_Click(object sender, RoutedEventArgs e)
         {
             //Convert cpr to string
             string cpr = socSecNb_TB.Text;
             
-            //
+            //Displays measurements in listbox
             if (controller.GetSocSecNb(cpr))
             {
                 measurementData_LB.Items.Add(cpr);
             }
 
+            //Y Axis Format
             YFormatter = value => value + "mmHg";
 
+            //Chart
             bPressure = new LineSeries();
             chartBPressure = new ChartValues<double>();
 
@@ -84,6 +116,7 @@ namespace PresentationLogic.Windows
 
             xAxis = new string[dataBPressure.Count];
 
+            //Measurement data to chart
             for (int i = 0; i < dataBPressure.Count; i++)
             {
                 chartBPressure.Add(dataBPressure[i].mmHg);
