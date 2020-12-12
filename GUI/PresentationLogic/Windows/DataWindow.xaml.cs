@@ -135,16 +135,16 @@ namespace PresentationLogic.Windows
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
             //Receive
-            //calData = controller.GetCalVal();
+            calData = controller.GetCalVal();
 
             //Calibration value
             double a = 0;
             
-            //Get calibration value
-            //foreach (var data in calData)
-            //{
-            //    a = data.A;
-            //}
+           // Get calibration value
+            foreach (var data in calData)
+            {
+                a = data.A;
+            }
 
             //Send limit values, calibration value and zero value
             controller.SendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text), Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(socSecNb_TB.Text),a,zeroVal);
