@@ -46,10 +46,9 @@ namespace PresentationLogic.Windows
         /// Chart
         /// </summary>
         public ChartValues<MeasurementModel> ChartValues { get; set; }
-        //public GearedValues<MeasurementModel> ChartValues { get; set; }
 
         /// <summary>
-        /// Boolean
+        /// Boolean - begins and stop/pause live chart
         /// </summary>
         public bool IsReading { get; set; }
 
@@ -70,6 +69,17 @@ namespace PresentationLogic.Windows
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
         private DataWindow dataWindow;
+
+        /// <summary>
+        /// Lists
+        /// </summary>
+        private List<DTO_Measurement> measurements;
+
+        /// <summary>
+        /// NotifyPropertyChanged implementation
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         /// <summary>
         /// Measurement Window Constructor
@@ -98,9 +108,7 @@ namespace PresentationLogic.Windows
             Charting.For<MeasurementModel>(mapper);
             
             ChartValues = new ChartValues<MeasurementModel>();
-            //ChartValues=new GearedValues<MeasurementModel>();
-            //ChartValues.WithQuality(Quality.Highest);
-           
+
             //X axis datetime
             DateTimeFormatter = value => new DateTime((long) value).ToString("mm:ss:ms");
 
@@ -170,45 +178,23 @@ namespace PresentationLogic.Windows
             if (IsReading) Task.Factory.StartNew(Read);
         }
 
-        private Filter filter = new Filter();
-       private List<DTO_Measurement> measurements;
 
+        /// <summary>
+        /// This method generates the chart
+        /// </summary>
         private void Read()
         {
-            int test = 0;
-            int b = 1;
-
             while (IsReading)
             {
                 measurements = new List<DTO_Measurement>();
 
-
-                //measurements = filter.GetMeasurementDataFilter();
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //if (Filter_CB.IsChecked == true)
-                //{
-                //    
-                //}
-                //else if (Filter_CB.IsChecked==false)
-                //{
+                //Receive measurement data
                 measurements = controller.GetMeasurementData();
-                //}
-
-
-
-                //});
-
-                //Thread.Sleep(1);
-
-
 
                 try
                 {
-                    
                     foreach (DTO_Measurement data in measurements)
                     {
-
                         if (data.mmHg > 1)
                         {
                             ChartValues.Add(new MeasurementModel
@@ -219,16 +205,12 @@ namespace PresentationLogic.Windows
                                 RawData = data.mmHg
 
                             });
-
                         }
-
-
 
                         //SetAxisLimits(DateTime.Now);
                         SetAxisLimits(data.Tid);
 
-
-
+                        //Only use the last 800 values
                         if (ChartValues.Count > 800)
                         {
                             ChartValues.RemoveAt(0);
@@ -237,20 +219,14 @@ namespace PresentationLogic.Windows
                         //Update pulse, systolic, diastolic and mean
                         this.Dispatcher.Invoke(() =>
                         {
-                            
-                            
-
-                            
                             if (data.CalculatedPulse > 1)
                             {
-
                                 Puls_L.Content = Convert.ToString(data.CalculatedPulse);
                             }
 
                             if (data.CalculatedSys > 1)
                             {
-                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" +
-                                                   Convert.ToString(data.CalculatedDia);
+                                SysDia_L.Content = Convert.ToString(data.CalculatedSys) + "/" + Convert.ToString(data.CalculatedDia);
                             }
 
                             if (data.CalculatedMean > 1)
@@ -260,176 +236,162 @@ namespace PresentationLogic.Windows
 
                             if (data.CalculatedMean > 1)
                             {
-                                BatteryStatus_L.Content =
-                                    "Batteristatus: " + Convert.ToString(data.Batterystatus) + "%";
-                                
+                                BatteryStatus_L.Content = "Batteristatus: " + Convert.ToString(data.Batterystatus) + "%";
                             }
-
-                            Alarm();
-
-
+                            
                             //Calling alarm method
-
-
-                            ////Calling battery method
-                            //Battery();
+                            Alarm();
                         });
-
                     }
                 }
                 catch (InvalidExpressionException)
                 {
                     
                 }
-            
             }
         }
 
+        /// <summary>
+        /// Setting the limits on the axis
+        /// </summary>
+        /// <param name="now"></param>
         private void SetAxisLimits(DateTime now)
         {
-            AxisMax = now.Ticks + TimeSpan.FromSeconds(0).Ticks; // lets force the axis to be 1 second ahead
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(4).Ticks; // and 8 seconds behind
-            
+            AxisMax = now.Ticks + TimeSpan.FromSeconds(0).Ticks; // lets force the axis to be 0 second ahead
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(4).Ticks; // and 4 seconds behind
         }
 
-        #region INotifyPropertyChanged implementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// INotifyPropertyChanged implementation
+        /// </summary>
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion
-
-
+        /// <summary>
+        /// Stop Button stops/pauses live chart, you can continue by clicking the Start Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Stop_B_Click(object sender, RoutedEventArgs e)
         {
+            //Bool sat to false, and stops generating the live chart
             IsReading = false;
+
+            //Stop Button is inactivated
             Stop_B.IsEnabled = false;
+
+            //Start Button is activated
             Start_B.IsEnabled = true;
+
+            //Command to RPi to stop sending measurement data
             controller.Command("Stop");
         }
 
+        /// <summary>
+        /// Mute Alarm Button stops the alarm and sends command to RPi to stop alarming on the hardware
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MuteAlarm_B_Click(object sender, RoutedEventArgs e)
         {
+            //Boolean sat to true
             MuteAlarm = true;
+
+            //Command to RPi to mute alarm
             controller.Command("Mutealarm");
+
+            //Mute Alarm Button is hidden
             MuteAlarm_B.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Exit To Main Window Button hides Measurement Window and shows Main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
+            //Command to RPi to stop sending measurement data
             controller.Command("Stop");
+
+            //Close window
             this.Close();
+
+            //Stops generating the live chart
             IsReading = false;
+
+            //Shows Main Window
             mainWindow.Show();
         }
 
+        /// <summary>
+        /// Method that checks if some of the alarms are activated,
+        /// if they are the alarm is started and the label begins blinking
+        /// </summary>
         public void Alarm()
         {
-            //var alarmList = controller.GetMeasurementData();
-
+            //Runs through all measurements
             foreach (var alarms in measurements)
             {
-                //this.Dispatcher.Invoke(() =>
-                //{
-                    if (alarms.HighDia == true || alarms.LowDia == true || alarms.HighSys == true ||
-                        alarms.LowSys == true)
+                //If diastolic or systolic is activated the GUI begins blinking
+                if (alarms.HighDia == true || alarms.LowDia == true || alarms.HighSys == true || alarms.LowSys == true)
+                {
+                    //If mute alarm is not clicked...
+                    if (!MuteAlarm)
                     {
-                        if (!MuteAlarm)
-                        {
-                            MuteAlarm_B.Visibility = Visibility.Visible;
-                        }
-
-                        if (blinkOnSysDia)
-                        {
-                            SysDia_L.Foreground = Brushes.Black;
-                            MuteAlarm_B.Background = Brushes.Gray;
-                        }
-                        else
-                        {
-                            SysDia_L.Foreground = Brushes.Red;
-                            MuteAlarm_B.Background = Brushes.Red;
-                        }
-
-                        blinkOnSysDia = !blinkOnSysDia;
+                        //...the button is visible
+                        MuteAlarm_B.Visibility = Visibility.Visible;
                     }
 
-                    if (alarms.HighMean == true || alarms.LowMean == true)
+                    //Blinking
+                    if (blinkOnSysDia)
                     {
-
-                        if (blinkOnMean)
-                        {
-                            Mean_L.Foreground = Brushes.Black;
-                            MuteAlarm_B.Background = Brushes.Gray;
-                        }
-                        else
-                        {
-                            var converter = new System.Windows.Media.BrushConverter();
-                            var brush = (Brush) converter.ConvertFromString("#FFFC9F0A");
-                            Mean_L.Foreground = brush;
-                            MuteAlarm_B.Background = Brushes.Red;
-                        }
-
-                        blinkOnMean = !blinkOnMean;
+                        SysDia_L.Foreground = Brushes.Black;
+                        MuteAlarm_B.Background = Brushes.Gray;
                     }
-                //});
+                    else
+                    {
+                        SysDia_L.Foreground = Brushes.Red;
+                        MuteAlarm_B.Background = Brushes.Red;
+                    }
+
+                    blinkOnSysDia = !blinkOnSysDia;
+                }
+
+                //If mean is activated the GUI begins blinking
+                if (alarms.HighMean == true || alarms.LowMean == true)
+                {
+                    //Blinking
+                    if (blinkOnMean)
+                    {
+                        Mean_L.Foreground = Brushes.Black;
+                        MuteAlarm_B.Background = Brushes.Gray;
+                    }
+                    else
+                    {
+                        var converter = new System.Windows.Media.BrushConverter();
+                        var brush = (Brush)converter.ConvertFromString("#FFFC9F0A");
+                        Mean_L.Foreground = brush;
+                        MuteAlarm_B.Background = Brushes.Red;
+                    }
+
+                    blinkOnMean = !blinkOnMean;
+                }
             }
         }
 
+        /// <summary>
+        /// Change Limit Values Button to change the patients limit values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
         {
             dataWindow = new DataWindow(mainWindow, controller, this);
             dataWindow.Show();
         }
-
-        List<DTO_Measurement> batteryList;
-
-        //public void Battery()
-        //{
-        //    var batteryList = controller.getmdata();
-
-        //    foreach (var battery in batteryList)
-        //    {
-        //        this.Dispatcher.Invoke(() =>
-        //        {
-        //            if (battery.Batterystatus >= 75)
-        //            {
-        //                Battery100_I.Visibility = Visibility.Visible;
-        //                Battery75_I.Visibility = Visibility.Hidden;
-        //                Battery50_I.Visibility = Visibility.Hidden;
-        //                Battery25_I.Visibility = Visibility.Hidden;
-        //            }
-
-        //            if (battery.Batterystatus <= 75 && battery.Batterystatus > 50)
-        //            {
-        //                Battery75_I.Visibility = Visibility.Visible;
-        //                Battery100_I.Visibility = Visibility.Hidden;
-        //                Battery50_I.Visibility = Visibility.Hidden;
-        //                Battery25_I.Visibility = Visibility.Hidden;
-        //            }
-
-        //            if (battery.Batterystatus <= 50 && battery.Batterystatus > 25)
-        //            {
-        //                Battery50_I.Visibility = Visibility.Visible;
-        //                Battery100_I.Visibility = Visibility.Hidden;
-        //                Battery75_I.Visibility = Visibility.Hidden;
-        //                Battery25_I.Visibility = Visibility.Hidden;
-
-        //            }
-
-        //            if (battery.Batterystatus<=25)
-        //            {
-        //                Battery25_I.Visibility = Visibility.Visible;
-        //                Battery100_I.Visibility = Visibility.Hidden;
-        //                Battery75_I.Visibility = Visibility.Hidden;
-        //                Battery50_I.Visibility = Visibility.Hidden;
-        //            }
-        //        });
-        //    }
-        //}
     }
 }

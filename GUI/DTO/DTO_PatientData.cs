@@ -6,92 +6,80 @@ namespace DTO
 {
     public class DTO_PatientData
     {
-        ///// <summary>
-        ///// Limit value - low systolic
-        ///// </summary>
-        //public int SysLow { get; set; }
-
-        ///// <summary>
-        ///// Limit value - high systolic
-        ///// </summary>
-        //public int SysHigh { get; set; }
-
-        ///// <summary>
-        ///// Limit value - low diastolic
-        ///// </summary>
-        //public int DiaLow { get; set; }
-
-        ///// <summary>
-        ///// Limit value - high diastolic
-        ///// </summary>
-        //public int DiaHigh { get; set; }
-
-        ///// <summary>
-        ///// Limit value - low mean
-        ///// </summary>
-        //public int LowMean { get; set; }
-
-        ///// <summary>
-        ///// Limit value - high mean
-        ///// </summary>
-        //public int HighMean { get; set; }
-
-        ///// <summary>
-        ///// CPR
-        ///// </summary>
-        //public string SocSecNB { get; set; }
-
-        ///// <summary>
-        ///// Calibration value
-        ///// </summary>
-        //public double CalVal { get; set; }
-
-        ///// <summary>
-        ///// Zero value
-        ///// </summary>
-        //public double ZeroVal { get; set; }
-
+        /// <summary>
+        /// Limit value - high systolic
+        /// </summary>
         public int HighSys
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Limit value - low systolic
+        /// </summary>
         public int LowSys
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Limit value - high diastolic
+        /// </summary>
         public int HighDia
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Limit value - low diastolic
+        /// </summary>
         public int LowDia
         {
             get;
             set;
         }
+
+        /// <summary>
+        /// Limit value - high mean
+        /// </summary>
         public int HighMean
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Limit value - low mean
+        /// </summary>
         public int LowMean
         {
             get;
             set;
         }
+
+        /// <summary>
+        /// Zero value
+        /// </summary>
         public double ZeroVal
         {
             get;
             set;
         }
+
+        /// <summary>
+        /// CPR
+        /// </summary>
         public string SocSecNB { get; set; }
+
+        /// <summary>
+        /// Calibration value
+        /// </summary>
         public double CalVal { get; set; }
+
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -115,19 +103,6 @@ namespace DTO
             ZeroVal = zeroVal;
             CalVal = calVal;
             SocSecNB = socSecNB;
-
-
-
-            //SysLow = sysLow;
-            //SysHigh = sysHigh;
-            //DiaLow = diaLow;
-            //DiaHigh = diaHigh;
-            //LowMean = lowMean;
-            //HighMean = highMean;
-            //SocSecNB = socSecNB;
-            //CalVal = calVal;
-            //ZeroVal = zeroVal;
-
         }
     }
 }

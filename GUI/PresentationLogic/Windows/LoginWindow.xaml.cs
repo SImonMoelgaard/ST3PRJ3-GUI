@@ -18,30 +18,49 @@ namespace PresentationLogic.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private MainWindow main;
-        private Controller buissnessref;
+        /// <summary>
+        /// References
+        /// </summary>
+        private readonly MainWindow main;
+        private readonly Controller controller;
         private string userName_ = "";
-        public LoginWindow(MainWindow Mw, Controller br)
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mw"></param>
+        /// <param name="br"></param>
+        public LoginWindow(MainWindow mw, Controller br)
         {
             InitializeComponent();
-            buissnessref = br;
-            main = Mw;
+            controller = br;
+            main = mw;
         }
 
+        /// <summary>
+        /// Exit Button closes the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Exit_B_Click(object sender, RoutedEventArgs e)
         {
             main.Close();
             this.Close();
-            
         }
 
+        /// <summary>
+        /// Login Button gives the health care staff access to the system.
+        /// This button can only be used if the system is connected to VPN Cisco AU University
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Login_B_Click(object sender, RoutedEventArgs e)
         {
             string userName = User_TB.Text;
-            string kode = Password_PWB.Password;
+            string password = Password_PWB.Password;
 
-
-            if (buissnessref.CheckLogin(userName, kode))
+            //Checks if the user name and password exist in the database
+            if (controller.CheckLogin(userName, password))
             {
                 userName_ = userName;
                 this.Close();
@@ -49,13 +68,18 @@ namespace PresentationLogic.Windows
             }
             else
             {
+                //Shows message box is the user name and/or password don't exist in the system
                 MessageBox.Show("CPR eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 User_TB.Clear();
                 Password_PWB.Clear();
             }
-
         }
 
+        /// <summary>
+        /// Methods that makes it possible to Login by pressing Enter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

@@ -9,6 +9,10 @@ namespace BuissnessLogic
         IReceiveRPi recieveRPi = new ReceiveRPi();
         private List<DTO_Measurement> measurementData;
 
+        /// <summary>
+        /// Thsi
+        /// </summary>
+        /// <returns></returns>
         public List<DTO_Measurement> GetMeasurementDataFilter()
         {
             //Receive measurement data

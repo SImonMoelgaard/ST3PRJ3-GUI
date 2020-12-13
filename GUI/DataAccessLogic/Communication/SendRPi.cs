@@ -17,12 +17,8 @@ using DataAccessLogic;
 
 namespace DataAccessLogic
 {
-    
-
     public class SendRPi : ISendRPi
     {
-
-
         private IPAddress broadcast;
         private Socket socket;
         private Socket datasocket;
@@ -31,8 +27,7 @@ namespace DataAccessLogic
         private IPEndPoint epPatientdata;
         private IPEndPoint epEmergencydata;
         LocalDatabase local = new LocalDatabase();
-
-
+        
         /// <summary>
         /// OpenSendPorts åbner de to mest brugte ports og sætter IP på raspberry pi. Denne opretter også de sockets, som dataen vil blive sendt over.
         /// </summary>
@@ -52,7 +47,6 @@ namespace DataAccessLogic
          epPatientdata = new IPEndPoint(broadcast, 11004);
         }
 
-
         /// <summary>
         /// Modtager en string fra buisness logic. Her bliver denne encoded med ASCII og sendt til Raspberry Pi.
         /// </summary>
@@ -70,7 +64,6 @@ namespace DataAccessLogic
             return null;
         }
 
-       
         /// <summary>
         /// Denne metode sender data fra en målingfil videre til RPi'en. Dette inkluderer grænseværdier, Calval og Zeroval. bliver filen hentet fra databasen og sendt til RPi.
         /// </summary>
@@ -106,7 +99,6 @@ namespace DataAccessLogic
 
         }
 
-       
         /// <summary>
         /// Her sendes patientdataen til Raspberry Pi'en og gemmer disse data til databasen.
         /// </summary>
@@ -120,7 +112,6 @@ namespace DataAccessLogic
         /// <param name="Calval"></param>
         /// <param name="Zeroval"></param>
         /// <returns></returns>
-
         public object sendpatientdata(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient, double Calval, double Zeroval)
         {
 
@@ -136,7 +127,6 @@ namespace DataAccessLogic
 
 
             return local.SavePatientData(SysHigh, SysLow, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient, Calval, Zeroval); 
-        } 
-        
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace PresentationLogic
         private LoginWindow loginWindow;
         private ShowDataWindow showDataWindow;
         private EmergencyPopUp emergencyWindow;
-        private ShowCalibrationWindow ShowCalWindow;
+        private ShowCalibrationWindow showCalWindow;
 
         /// <summary>
         /// Controller
@@ -205,10 +205,10 @@ namespace PresentationLogic
             this.Hide();
 
             //Show Calibration Window
-            ShowCalWindow = new ShowCalibrationWindow(controller, this);
+            showCalWindow = new ShowCalibrationWindow(controller, this);
             
             //Show Show Calibration Window
-            ShowCalWindow.Show();
+            showCalWindow.Show();
         }
     }
 }
