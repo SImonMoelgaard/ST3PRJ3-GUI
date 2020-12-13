@@ -69,7 +69,7 @@ namespace PresentationLogic.Windows
             else
             {
                 //Shows message box is the user name and/or password don't exist in the system
-                MessageBox.Show("CPR eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Brugernavn eller kode er forkert indtastet!", "Login fejlet!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 User_TB.Clear();
                 Password_PWB.Clear();
             }
