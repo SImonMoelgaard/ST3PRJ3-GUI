@@ -31,6 +31,7 @@ namespace PresentationLogic.Windows
         /// </summary>
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
+        private double calibrationVal;
 
         /// <summary>
         /// Chart
@@ -79,12 +80,13 @@ namespace PresentationLogic.Windows
             dataCalVal=new List<double>();
 
             InitializeComponent();
-
+            referenceValue_TB.IsEnabled = false;
+            InsertValue_B.IsEnabled = false;
 
             IsZeroActive = !IsZeroActive;
 
             //Running task
-            if (IsZeroActive) Task.Factory.StartNew(Startzeroing);
+            if (IsZeroActive) Task.Factory.StartNew(GetZeroValue);
 
 
         }
@@ -118,6 +120,7 @@ namespace PresentationLogic.Windows
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
             referenceValue_TB.IsEnabled = false;
+            InsertValue_B.IsEnabled = false;
             IscalibrationActive = !IscalibrationActive;
 
             //Running task
@@ -125,6 +128,8 @@ namespace PresentationLogic.Windows
 
 
             referenceValue_TB.IsEnabled = true;
+
+            
         }
 
         public void GetCalValue()
@@ -132,25 +137,37 @@ namespace PresentationLogic.Windows
            
             //Receive calibration value
             controller.Command("Startcalibration");
-            double calibrationVal = controller.RecieveDouble();
-            
-            //double calibrationVal = cali.GetCalibration();
+            calibrationVal = controller.RecieveDouble();
 
+            //double calibrationVal = cali.GetCalibration();
 
             //Convert reference value to integer
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
 
-            //Add reference to reference list
-            dataReference.Add(referenceVal);
+            if (calibrationVal>0)
+            {
+                //Add reference to reference list
+                dataReference.Add(referenceVal);
 
-            //Add received calibration value to calibration list
-            dataCalVal.Add(calibrationVal);
+                //Add received calibration value to calibration list
+                dataCalVal.Add(calibrationVal);
 
-            //Add data to list box
-            CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
+                //Add data to list box
+                CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
 
-            //Calling make graph method
-            MakeGraph();
+                //Calling make graph method
+                MakeGraph();
+                referenceValue_TB.IsEnabled = true;
+                InsertValue_B.IsEnabled = true;
+
+            }
+            else
+            {
+                
+            }
+
+            
+
         }
 
         /// <summary>
@@ -243,6 +260,19 @@ namespace PresentationLogic.Windows
 
             //Receive Zero Value
             var zeroVal = controller.RecieveDouble();
+
+            if (zeroVal>0)
+            {
+                Label_klar.Content = "Nulpunktsjustering færdig. Værdi: ";
+                referenceValue_TB.IsEnabled = true;
+                InsertValue_B.IsEnabled = true;
+            }
+            else
+            {
+                Label_klar.Content = "Nulpunkgsjustering igang";
+            }
+
+
         }
     }
 }
