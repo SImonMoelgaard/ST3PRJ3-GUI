@@ -67,18 +67,14 @@ namespace DataAccessLogic
                    // measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
                     var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
                     
-                    //measurements.Add(measurementdata);
-                    if (measurementdata[0].CalculatedDia>0)
-                    {
-                        var caldia = measurementdata[0].CalculatedDia;
-                    }
+                   
                     
                     
-                        //local.SaveMeasurement(measurementdata[0].SocSecNB, measurementdata.mmHg, measurementdata.Tid, measurementdata.HighSys,
-                        //    measurementdata.LowSys, measurementdata.HighDia, measurementdata.LowDia,
-                        //    measurementdata.HighMean, measurementdata.LowMean, measurementdata.CalculatedSys,
-                        //    measurementdata.CalculatedDia, measurementdata.CalculatedMean, measurementdata.CalculatedPulse,
-                        //    measurementdata.Batterystatus);
+                        local.SaveMeasurement(measurementdata[0].SocSecNB, measurementdata[0].mmHg, measurementdata[0].Tid, measurementdata[0].HighSys,
+                            measurementdata[0].LowSys, measurementdata[0].HighDia, measurementdata[0].LowDia,
+                            measurementdata[0].HighMean, measurementdata[0].LowMean, measurementdata[0].CalculatedSys,
+                            measurementdata[0].CalculatedDia, measurementdata[0].CalculatedMean, measurementdata[0].CalculatedPulse,
+                            measurementdata[0].Batterystatus);
                         return measurementdata;
 
                     
