@@ -159,7 +159,7 @@ namespace PresentationLogic.Windows
                 MakeGraph();
                 referenceValue_TB.IsEnabled = true;
                 InsertValue_B.IsEnabled = true;
-
+                IscalibrationActive = false;
             }
             else
             {
@@ -266,10 +266,11 @@ namespace PresentationLogic.Windows
                 Label_klar.Content = "Nulpunktsjustering færdig. Værdi: ";
                 referenceValue_TB.IsEnabled = true;
                 InsertValue_B.IsEnabled = true;
+                IsZeroActive = false;
             }
             else
             {
-                Label_klar.Content = "Nulpunkgsjustering igang";
+                Label_klar.Content = "Nulpunkgsjustering igang";    
             }
 
 

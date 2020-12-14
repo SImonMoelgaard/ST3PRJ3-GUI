@@ -26,6 +26,6 @@
         <Button x:Name="ExitToMainWindow_B" Content="Tilbage" Margin="315,0,0,394" VerticalAlignment="Bottom" Width="67" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5"/>
         <Button x:Name="Done_B" Content="Færdig" Margin="-157,389,0,0" VerticalAlignment="Top" Click="Done_B_Click"/>
         <Label x:Name="AAndB_L" Content="" HorizontalAlignment="Left" Margin="19,54,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Label_klar" Content="Kalibreringsværdier:" HorizontalAlignment="Left" Margin="-380,68,0,0" VerticalAlignment="Top" Width="142"/>
+        <Label x:Name="Label_klar" Content="Nulpunksjustering igang" HorizontalAlignment="Left" Margin="-380,68,0,0" VerticalAlignment="Top" Width="142"/>
     </Grid>
 </Window>
