@@ -229,8 +229,8 @@ namespace DataAccessLogic
 
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
 
-                    Caldata.Add(caldata);
-
+                    //Caldata.Add(caldata);
+                    
                 }
             }
             catch (Exception e)

@@ -55,6 +55,7 @@ namespace PresentationLogic.Windows
         {
             InitializeComponent();
 
+            //Next_B.IsEnabled = false;
             //Windows
             mwWindow = mw;
             controller = cr;
@@ -105,6 +106,7 @@ namespace PresentationLogic.Windows
                         sysULimit_TB.IsEnabled = true;
                         meanLLimit_TB.IsEnabled = true;
                         meanULimit_TB.IsEnabled = true;
+                        Next_B.IsEnabled = true;
 
                             //Stop receiving zero value
                         IsZeroActive = false;
