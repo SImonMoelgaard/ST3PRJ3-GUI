@@ -74,6 +74,7 @@ namespace DataAccessLogic
 
             var filename = latestfile("");
             string path = @"C:\ST3PRJ3FIL\"+filename;
+           
 
             //string path = @"C:\ST3PRJ3FIL\ " + soc.ToString() + DateTime.Now.ToString("dd-MM-yyyy");
             DTO_Measurement measurement = new DTO_Measurement(socSecNb, mmhg, tid, highSys, lowSys, highDia, lowDia, highMean, lowMean, sys, dia, mean, pulse, batterystatus);
@@ -84,9 +85,9 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, measurement);
-                
+                file.Close();
             }
-
+           
             return null;
         }
         
@@ -116,7 +117,7 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, patientData);
-                
+                file.Close();
             }
 
             return null;
@@ -157,19 +158,20 @@ namespace DataAccessLogic
                     {
                         string json = r.ReadToEnd();
                         emergencydata = JsonConvert.DeserializeObject<DTO_PatientData>(json);
-
+                        r.Close();
                     }
                 }
                 catch (Exception e)
                 {
-                    return null;
+                   
+                return null;
                 }
                 return sendrpi.sendemergencydata(emergencydata.HighSys, emergencydata.LowSys, emergencydata.HighDia, emergencydata.LowDia, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
-            
-            
+                
 
 
-            
+
+
         }
 
         /// <summary>
@@ -198,7 +200,7 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, calval);
-
+                file.Close();
             }
 
 
@@ -233,7 +235,7 @@ namespace DataAccessLogic
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
 
                     Caldata.Add(caldata);
-                    
+                    r.Close();
                 }
             }
             catch (Exception e)
@@ -267,6 +269,7 @@ namespace DataAccessLogic
                     string json = r.ReadToEnd();
                     valueData = JsonConvert.DeserializeObject<DTO_PatientData>(json);
                     valueDataList.Add(valueData);
+                    r.Close();
                 }
             }
             catch (Exception e)
@@ -305,7 +308,7 @@ namespace DataAccessLogic
                     }
 
                     pwlogin.Add(userdata);
-                   
+                   r.Close();
 
                     
 
@@ -372,12 +375,12 @@ namespace DataAccessLogic
                        {
                            result = false;
                        }
-
+                       
                     }
 
+                   r.Close();
 
 
-                   
 
 
                 }
@@ -409,7 +412,7 @@ namespace DataAccessLogic
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Formatting = Formatting.Indented;
                 serializer.Serialize(file, user);
-
+                file.Close();
             }
 
             return user;
