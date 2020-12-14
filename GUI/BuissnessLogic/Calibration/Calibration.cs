@@ -30,31 +30,7 @@ namespace BuissnessLogic
         /// </summary>
         private readonly List<DTO_CalVal> LinearRegression = new List<DTO_CalVal>();
 
-        /// <summary>
-        /// This method commands the RPi to start a zero point adjustment,
-        /// and receives the zero value
-        /// </summary>
-        /// <returns></returns>
-        public double GetZeroVal()
-        {
-            send.Command("Startzeroing");
-
-            zeroval = receive.RecieveCalculatedValues();
-
-            return zeroval;
-        }
-
-        /// <summary>
-        /// This method commands the RPi to start a calibration,
-        /// and receives the calculated calibration
-        /// </summary>
-        /// <returns></returns>
-        public double GetCalibration()
-        {
-            send.Command("Startcalibration");
-            double value = receive.RecieveCalculatedValues();
-            return value;
-        }
+        
 
         /// <summary>
         /// This method calculates the a and b in the linear equation for the calibration

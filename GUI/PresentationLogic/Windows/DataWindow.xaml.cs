@@ -90,7 +90,7 @@ namespace PresentationLogic.Windows
                     if (zeroVal < 0)
                     {
                         //...displaying zero point adjustment in progress
-                        Nulpunkt_l.Text = "a Nulpunktsjustering igang";
+                        Nulpunkt_l.Text = "Nulpunktsjustering igang";
                         
 
                     }//else zero value is received...

@@ -66,6 +66,8 @@ namespace PresentationLogic
 
             controller.openrecieveports();
 
+
+
             //Latest calibration
             TimeSince();
         }

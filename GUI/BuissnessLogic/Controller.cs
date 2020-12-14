@@ -27,6 +27,7 @@ namespace BuissnessLogic
         public void openrecieveports()
         {
             sendrpi.OpenSendPorts();
+
             recieveRPi.OpenRecievePorts();
         }
 
@@ -81,7 +82,7 @@ namespace BuissnessLogic
         /// <returns></returns>
         public bool GetSocSecNb(string SocSecNB)
         {
-            return localDatabase.getSocSecNB(SocSecNB);
+            return database.getSocSecNB(SocSecNB);
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace BuissnessLogic
         /// <returns></returns>
         public bool CheckLogin(String socSecNb, String pw)
         {
-            return localDatabase.isUserRegistered(socSecNb, pw);
+            return database.isUserRegistered(socSecNb, pw);
         }
 
         /// <summary>
