@@ -91,8 +91,8 @@ namespace PresentationLogic.Windows
                     if (zeroVal < 0)
                     {
                         //...displaying zero point adjustment in progress
-                        Nulpunkt_l.Text = "Nulpunktsjustering igang";
-                        
+                        Nulpunkt_l.Text = "Venter på nulpunksjustering";
+
 
                     }//else zero value is received...
                     else
@@ -100,12 +100,7 @@ namespace PresentationLogic.Windows
 
                         //...displaying zero value
                         Nulpunkt_l.Text = "Nulpunktsjustering fuldført. Værdi: " + zeroVal;
-                        diaLLimit_TB.IsEnabled=true;
-                        diaULimit_TB.IsEnabled = true;
-                        sysLLimit_TB.IsEnabled = true;
-                        sysULimit_TB.IsEnabled = true;
-                        meanLLimit_TB.IsEnabled = true;
-                        meanULimit_TB.IsEnabled = true;
+                        
                         Next_B.IsEnabled = true;
 
                             //Stop receiving zero value
