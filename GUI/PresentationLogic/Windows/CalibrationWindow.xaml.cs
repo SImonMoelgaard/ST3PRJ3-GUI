@@ -106,9 +106,11 @@ namespace PresentationLogic.Windows
         /// <param name="e"></param>
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            referenceValue_TB.IsEnabled = false;
             //Receive calibration value
             double calibrationVal = cali.GetCalibration();
 
+            referenceValue_TB.IsEnabled = true;
             //Convert reference value to integer
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
 
@@ -130,6 +132,7 @@ namespace PresentationLogic.Windows
         /// </summary>
         public void MakeGraph()
         {
+            
             //Chart
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
