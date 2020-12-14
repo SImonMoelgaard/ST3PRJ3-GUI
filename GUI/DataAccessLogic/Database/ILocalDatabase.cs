@@ -31,6 +31,7 @@ namespace DataAccessLogic
         public bool getSocSecNB(string SocSecNB);
 
         public object Savelogin();
+        public List<DTO_PatientData> ValuedataGet();
     }
 
 

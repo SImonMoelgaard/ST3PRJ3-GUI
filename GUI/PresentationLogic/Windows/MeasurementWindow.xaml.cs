@@ -69,6 +69,7 @@ namespace PresentationLogic.Windows
         private readonly MainWindow mainWindow;
         private readonly Controller controller;
         private DataWindow dataWindow;
+        private ChangeDataWindow changeddatawindow;
 
         /// <summary>
         /// Lists
@@ -390,8 +391,8 @@ namespace PresentationLogic.Windows
         /// <param name="e"></param>
         private void ChangeLimitValues_B_Click(object sender, RoutedEventArgs e)
         {
-            dataWindow = new DataWindow(mainWindow, controller, this);
-            dataWindow.Show();
+            changeddatawindow = new ChangeDataWindow(controller);
+            changeddatawindow.Show();
         }
     }
 }

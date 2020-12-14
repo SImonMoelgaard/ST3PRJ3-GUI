@@ -60,7 +60,7 @@ namespace PresentationLogic.Windows
             mwWindow = mw;
             controller = cr;
             measurementWindow = ms;
-
+            
             //True boolean
             IsZeroActive = !IsZeroActive;
 

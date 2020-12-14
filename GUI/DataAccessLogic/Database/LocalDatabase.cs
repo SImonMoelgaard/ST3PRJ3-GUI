@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.SqlClient;
 using System.IO;
 using System.Reflection.Metadata;
 using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Channels;
 using DTO;
@@ -140,33 +142,34 @@ namespace DataAccessLogic
             double Calval, double Zeroval)
         {
             ISendRPi sendrpi = new SendRPi();
+            
+
+            var filename = latestfile("");
+            string path = @"C:\ST3PRJ3FIL\" + filename;
 
             
-            string path = @"C:\ST3PRJ3FIL\ " + CprPatient.ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy");
+            
+                var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
 
-            List<DTO_PatientData> data = new List<DTO_PatientData>();
-            var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
-
-            try
-            {
-                using (StreamReader r = new StreamReader(path))
+                try
                 {
-                    string json = r.ReadToEnd();
+                    using (StreamReader r = new StreamReader(path))
+                    {
+                        string json = r.ReadToEnd();
+                        emergencydata = JsonConvert.DeserializeObject<DTO_PatientData>(json);
 
-
-                    emergencydata = JsonConvert.DeserializeObject<DTO_PatientData>(json);
-                   
-                   
-
-
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                return true;
-            }
-            return sendrpi.sendemergencydata(emergencydata.HighSys, emergencydata.LowSys, emergencydata.HighDia, emergencydata.LowDia, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
+                catch (Exception e)
+                {
+                    return null;
+                }
+                return sendrpi.sendemergencydata(emergencydata.HighSys, emergencydata.LowSys, emergencydata.HighDia, emergencydata.LowDia, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
+            
+            
 
+
+            
         }
 
         /// <summary>
@@ -229,7 +232,7 @@ namespace DataAccessLogic
 
                     caldata = JsonConvert.DeserializeObject<DTO_CalVal>(json);
 
-                    //Caldata.Add(caldata);
+                    Caldata.Add(caldata);
                     
                 }
             }
@@ -242,7 +245,37 @@ namespace DataAccessLogic
 
 
         }
+        /// <summary>
+        /// This method gets the patientdata from the latest file and returns them
+        /// </summary>
+        /// <returns>
+        /// The most recent patientdata
+        /// </returns>
+        public List<DTO_PatientData> ValuedataGet()
+        {
 
+            var valueData = new DTO_PatientData(0, 0, 0, 0, 0, 0, "", 0, 0);
+            List<DTO_PatientData> valueDataList = new List<DTO_PatientData>();
+            var filename = latestfile("");
+            string path = @"C:\ST3PRJ3FIL\" + filename;
+            
+
+            try
+            {
+                using (StreamReader r = new StreamReader(path))
+                {
+                    string json = r.ReadToEnd();
+                    valueData = JsonConvert.DeserializeObject<DTO_PatientData>(json);
+                    valueDataList.Add(valueData);
+                }
+            }
+            catch (Exception e)
+            {
+                
+            }
+
+            return valueDataList;
+        }
         /// <summary>
         /// Denne metode tjekker om et givent brugernavn og password matcher med databasen.
         /// </summary>
