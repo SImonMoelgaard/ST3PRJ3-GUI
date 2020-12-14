@@ -60,7 +60,8 @@ namespace PresentationLogic.Windows
         private double r2;
         private double a;
         private double b;
-        
+        public bool IsZeroActive { get; set; }
+        public bool IscalibrationActive { get; set; }
         /// <summary>
         /// Constructor Calibration Window
         /// Initiates calibration lists
@@ -79,7 +80,13 @@ namespace PresentationLogic.Windows
 
             InitializeComponent();
 
-            //double zv = cali.GetZeroVal();
+
+            IsZeroActive = !IsZeroActive;
+
+            //Running task
+            if (IsZeroActive) Task.Factory.StartNew(Startzeroing);
+
+
         }
 
         /// <summary>
@@ -94,6 +101,10 @@ namespace PresentationLogic.Windows
 
             //Show main window
             mainWindow.Show();
+
+
+
+            
         }
 
         /// <summary>
@@ -106,8 +117,25 @@ namespace PresentationLogic.Windows
         /// <param name="e"></param>
         private void InsertValue_B_Click(object sender, RoutedEventArgs e)
         {
+            referenceValue_TB.IsEnabled = false;
+            IscalibrationActive = !IscalibrationActive;
+
+            //Running task
+            if (IscalibrationActive) Task.Factory.StartNew(GetCalValue);
+
+
+            referenceValue_TB.IsEnabled = true;
+        }
+
+        public void GetCalValue()
+        {
+           
             //Receive calibration value
-            double calibrationVal = cali.GetCalibration();
+            controller.Command("Startcalibration");
+            double calibrationVal = controller.RecieveDouble();
+            
+            //double calibrationVal = cali.GetCalibration();
+
 
             //Convert reference value to integer
             int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
@@ -130,6 +158,7 @@ namespace PresentationLogic.Windows
         /// </summary>
         public void MakeGraph()
         {
+            
             //Chart
             calVal = new LineSeries();
             chartCalVal = new ChartValues<double>();
@@ -203,6 +232,17 @@ namespace PresentationLogic.Windows
                 //Saving calibration
                 cali.SaveCalval(new List<int>(2), new List<double>(2), 0, 0, 0, 0, DateTime.Now);
             }
+        }
+
+       
+
+        public void GetZeroValue()
+        {
+            //Command to RPi - Start Zeroing
+            controller.Command("Startzeroing");
+
+            //Receive Zero Value
+            var zeroVal = controller.RecieveDouble();
         }
     }
 }
