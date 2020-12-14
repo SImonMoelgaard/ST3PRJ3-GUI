@@ -261,17 +261,21 @@ namespace PresentationLogic.Windows
             //Receive Zero Value
             var zeroVal = controller.RecieveDouble();
 
-            if (zeroVal>0)
+            this.Dispatcher.Invoke(() =>
             {
-                Label_klar.Content = "Nulpunktsjustering færdig. Værdi: ";
-                referenceValue_TB.IsEnabled = true;
-                InsertValue_B.IsEnabled = true;
-                IsZeroActive = false;
-            }
-            else
-            {
-                Label_klar.Content = "Nulpunkgsjustering igang";    
-            }
+                if (zeroVal > 0)
+                {
+                    Label_klar.Content = "Nulpunktsjustering færdig. Værdi: " +zeroVal;
+                    referenceValue_TB.IsEnabled = true;
+                    InsertValue_B.IsEnabled = true;
+                    IsZeroActive = false;
+                }
+                else
+                {
+                    Label_klar.Content = "Nulpunkgsjustering igang";
+                }
+            });
+            
 
 
         }
