@@ -142,29 +142,34 @@ namespace PresentationLogic.Windows
             //double calibrationVal = cali.GetCalibration();
 
             //Convert reference value to integer
-            int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+            
 
-            if (calibrationVal>0)
+            this.Dispatcher.Invoke(() =>
             {
-                //Add reference to reference list
-                dataReference.Add(referenceVal);
+                if (calibrationVal > 0)
+                {
+                    int referenceVal = Convert.ToInt32(referenceValue_TB.Text);
+                    //Add reference to reference list
+                    dataReference.Add(referenceVal);
 
-                //Add received calibration value to calibration list
-                dataCalVal.Add(calibrationVal);
+                    //Add received calibration value to calibration list
+                    dataCalVal.Add(calibrationVal);
 
-                //Add data to list box
-                CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
+                    //Add data to list box
+                    CalibrationValues_LB.Items.Add(referenceVal + " mmHg, " + calibrationVal + " mV");
 
-                //Calling make graph method
-                MakeGraph();
-                referenceValue_TB.IsEnabled = true;
-                InsertValue_B.IsEnabled = true;
-                IscalibrationActive = false;
-            }
-            else
-            {
-                
-            }
+                    //Calling make graph method
+                    MakeGraph();
+                    referenceValue_TB.IsEnabled = true;
+                    InsertValue_B.IsEnabled = true;
+                    IscalibrationActive = false;
+                }
+                else
+                {
+
+                }
+            });
+            
 
             
 
