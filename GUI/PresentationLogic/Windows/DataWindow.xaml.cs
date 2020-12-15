@@ -55,12 +55,11 @@ namespace PresentationLogic.Windows
         {
             InitializeComponent();
 
-            //Next_B.IsEnabled = false;
             //Windows
             mwWindow = mw;
             controller = cr;
             measurementWindow = ms;
-            
+
             //True boolean
             IsZeroActive = !IsZeroActive;
 
@@ -91,8 +90,8 @@ namespace PresentationLogic.Windows
                     if (zeroVal < 0)
                     {
                         //...displaying zero point adjustment in progress
-                        Nulpunkt_l.Text = "Venter på nulpunksjustering";
-
+                        Nulpunkt_l.Text = "Nulpunktsjustering igang";
+                        
 
                     }//else zero value is received...
                     else
@@ -100,8 +99,12 @@ namespace PresentationLogic.Windows
 
                         //...displaying zero value
                         Nulpunkt_l.Text = "Nulpunktsjustering fuldført. Værdi: " + zeroVal;
-                        
-                        Next_B.IsEnabled = true;
+                        diaLLimit_TB.IsEnabled=true;
+                        diaULimit_TB.IsEnabled = true;
+                        sysLLimit_TB.IsEnabled = true;
+                        sysULimit_TB.IsEnabled = true;
+                        meanLLimit_TB.IsEnabled = true;
+                        meanULimit_TB.IsEnabled = true;
 
                             //Stop receiving zero value
                         IsZeroActive = false;
