@@ -1,0 +1,37 @@
+﻿<Window x:Class="PresentationLogic.ChangeDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLogic"
+        mc:Ignorable="d"
+        Title="ChangeDataWindow" Height="264" Width="328"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        PreviewKeyDown="Next_KeyDown">
+
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Systolisk:" HorizontalAlignment="Left" Margin="4,65,0,0" VerticalAlignment="Top" Width="67" Grid.ColumnSpan="3" Height="26"/>
+        <Label Content="Diastolisk:" HorizontalAlignment="Left" Margin="4,101,0,0" VerticalAlignment="Top" Width="67" Grid.ColumnSpan="3" Height="26"/>
+        <Label Content="Grænseværdier" HorizontalAlignment="Left" Margin="4,2,0,0" VerticalAlignment="Top" Width="148" FontSize="20" BorderBrush="#FFFFF8DD" FontWeight="Bold" Grid.ColumnSpan="3" Height="37"/>
+        <Label Content="Øvre" HorizontalAlignment="Left" Margin="78,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253" Grid.ColumnSpan="3" Height="26" Width="35"/>
+        <Label Content="Nedre" HorizontalAlignment="Left" Margin="169,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253" Grid.ColumnSpan="3" Height="26" Width="43"/>
+        <Button x:Name="Next_B" Content="Færdig" Margin="241,203,11,0" VerticalAlignment="Top"  Background="#FF5B9BD5" Grid.ColumnSpan="3" Height="20" Click="Next_B_Click"/>
+        <Label Content="Middel:" HorizontalAlignment="Left" Margin="4,137,0,0" VerticalAlignment="Top" Width="67" Grid.ColumnSpan="3" Height="26"/>
+        <TextBox x:Name="sysULimit_TB" HorizontalAlignment="Left" Margin="79,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="140" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="diaULimit_TB" HorizontalAlignment="Left" Margin="79,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="90" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="sysLLimit_TB" HorizontalAlignment="Left" Margin="170,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="100" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="diaLLimit_TB" HorizontalAlignment="Left" Margin="170,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="60" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="meanULimit_TB" HorizontalAlignment="Left" Margin="79,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="100" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="meanLLimit_TB" HorizontalAlignment="Left" Margin="170,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="90" Grid.ColumnSpan="3"/>
+        <Button x:Name="ExitToMainWindow_B" Content="Luk" Margin="241,14,11,0" VerticalAlignment="Top" Width="76" Click="ExitToMainWindow_B_Click" Background="#FF5B9BD5" Grid.ColumnSpan="3"/>
+
+    </Grid>
+</Window>

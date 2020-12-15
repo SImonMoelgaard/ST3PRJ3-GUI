@@ -20,6 +20,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementdata;
         private double data;
         private List<DTO_CalVal> caldata;
+        private List<DTO_PatientData> valueDataList;
         
         /// <summary>
         /// This method opens the receiving and sending ports
@@ -112,7 +113,7 @@ namespace BuissnessLogic
         public object SendRPiData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
-            return sendrpi.sendpatientdata(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
+            return sendrpi.sendpatientdata(SysHigh, SysLow, DiaHigh, DiaLow, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
         }
 
 
@@ -145,5 +146,19 @@ namespace BuissnessLogic
         {
             return sendrpi.Command(command);
         }
+        /// <summary>
+        /// This method gets the last saved patientdata and returns them
+        /// </summary>
+        /// <returns>
+        /// The most recent patientdata
+        /// </returns>
+        public List<DTO_PatientData> GetPatientValues()
+        {
+            valueDataList = localDatabase.ValuedataGet();
+            return valueDataList;
+        }
+
+        
+        
     }
 }
