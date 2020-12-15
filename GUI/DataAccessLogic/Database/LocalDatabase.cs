@@ -69,6 +69,9 @@ namespace DataAccessLogic
         /// <returns></returns>
         public object SaveMeasurement(string socSecNb, double mmhg, DateTime tid, bool highSys, bool lowSys, bool highDia, bool lowDia, bool highMean, bool lowMean, int sys, int dia, int mean, int pulse, int batterystatus)
         {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             socSecNb = "";
             mmhg = 0;
 
@@ -139,6 +142,7 @@ namespace DataAccessLogic
         /// <param name="Calval"></param>
         /// <param name="Zeroval"></param>
         /// <returns></returns>
+        
         public object ReadPatientData(int SysHigh, int SysLow, int DiaHigh, int DiaLow, int Meanlow, int Meanhigh, string CprPatient,
             double Calval, double Zeroval)
         {
@@ -149,8 +153,8 @@ namespace DataAccessLogic
             string path = @"C:\ST3PRJ3FIL\" + filename;
 
             
-            
-                var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
+
+            var emergencydata = new DTO_PatientData(0, 0, 0, 0, 0, 0, CprPatient, 0, 0);
 
                 try
                 {
