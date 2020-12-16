@@ -23,7 +23,7 @@
         <Label Content="Grænseværdier" HorizontalAlignment="Left" Margin="4,2,0,0" VerticalAlignment="Top" Width="148" FontSize="20" BorderBrush="#FFFFF8DD" FontWeight="Bold" Grid.ColumnSpan="3" Height="37"/>
         <Label Content="Øvre" HorizontalAlignment="Left" Margin="78,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253" Grid.ColumnSpan="3" Height="26" Width="35"/>
         <Label Content="Nedre" HorizontalAlignment="Left" Margin="169,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,1.253" Grid.ColumnSpan="3" Height="26" Width="43"/>
-        <Button x:Name="Next_B" Content="Færdig" Margin="241,203,11,0" VerticalAlignment="Top"  Background="#FF5B9BD5" Grid.ColumnSpan="3" Height="20" Click="Next_B_Click"/>
+        <Button x:Name="Next_B" Content="Færdig" Margin="257,199,0,0" VerticalAlignment="Top"  Background="#FF5B9BD5" Grid.ColumnSpan="3" Height="34" Click="Next_B_Click"/>
         <Label Content="Middel:" HorizontalAlignment="Left" Margin="4,137,0,0" VerticalAlignment="Top" Width="67" Grid.ColumnSpan="3" Height="26"/>
         <TextBox x:Name="sysULimit_TB" HorizontalAlignment="Left" Margin="79,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="140" Grid.ColumnSpan="3"/>
         <TextBox x:Name="diaULimit_TB" HorizontalAlignment="Left" Margin="79,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="29" Text="90" Grid.ColumnSpan="3"/>

@@ -28,7 +28,8 @@
             <lvc:CartesianChart.Series>
                 <lvc:LineSeries Values="{Binding ChartValues}" 
                                 PointGeometry="{x:Null}"
-                                Fill="Transparent"/>
+                                Fill="Transparent"
+                                Stroke="Red"/>
             </lvc:CartesianChart.Series>
             <lvc:CartesianChart.AxisX>
 
