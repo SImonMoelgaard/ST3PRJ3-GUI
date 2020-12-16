@@ -5,7 +5,9 @@ using System.Text;
 
 namespace DTO
 {
-    
+    /// <summary>
+    /// DTO for User Data
+    /// </summary>
     public class DTO_UserData 
     {
         /// <summary>

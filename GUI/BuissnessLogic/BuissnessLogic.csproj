@@ -4,6 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DocumentationFile>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\BuissnessLogic\BuissnessLogic.xml</DocumentationFile>
+    <OutputPath></OutputPath>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="LiveCharts.Geared" Version="1.2.9" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />

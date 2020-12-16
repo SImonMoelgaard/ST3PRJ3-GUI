@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+ /// <summary>
+ /// Data Transfer Objects
+ /// </summary>
 namespace DTO
-{
+{    /// <summary>
+    /// DTO for measurement values
+    /// </summary>
     public class DTO_Measurement
     {
         /// <summary>

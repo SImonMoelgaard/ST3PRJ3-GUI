@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>BuissnessLogic</name>
+  </assembly>
+  <members>
+    <member name="M:BuissnessLogic.Alarm.MuteAlarm">
+      <summary>
+            Command to mute alarm
+            </summary>
+    </member>
+    <member name="F:BuissnessLogic.Calibration.receive">
+      <summary>
+            References
+            </summary>
+    </member>
+    <member name="F:BuissnessLogic.Calibration.rVal">
+      <summary>
+            Values
+            </summary>
+    </member>
+    <member name="F:BuissnessLogic.Calibration.LinearRegression">
+      <summary>
+            Lists
+            </summary>
+    </member>
+    <member name="M:BuissnessLogic.Calibration.CalculateAAndB(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Double},System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            This method calculates the a and b in the linear equation for the calibration
+            </summary>
+      <param name="calReference">
+      </param>
+      <param name="calMeasured">
+      </param>
+      <param name="r2">
+      </param>
+      <param name="a">
+      </param>
+      <param name="b">
+      </param>
+      <param name="zv">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Calibration.CalculateR2Val(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Double},System.Double)">
+      <summary>
+            This method calculates the R2 value
+            </summary>
+      <param name="calReference">
+      </param>
+      <param name="calMeasured">
+      </param>
+      <param name="r2">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Calibration.SaveCalval(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Double},System.Double,System.Double,System.Double,System.Double,System.DateTime)">
+      <summary>
+            This method saves the calibration in a file
+            </summary>
+      <param name="calReference">
+      </param>
+      <param name="calMeasured">
+      </param>
+      <param name="r2">
+      </param>
+      <param name="a">
+      </param>
+      <param name="b">
+      </param>
+      <param name="zv">
+      </param>
+      <param name="datetime">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.openrecieveports">
+      <summary>
+            This method opens the receiving and sending ports
+            </summary>
+    </member>
+    <member name="M:BuissnessLogic.Controller.GetMeasurementData">
+      <summary>
+            This method gets the measurement data points
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.RecieveDouble">
+      <summary>
+            This method received either zero value og calibration value
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.GetCalVal">
+      <summary>
+            This method gets the calibration value from the local database
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.GetMeasurementLocal(System.String)">
+      <summary>
+            This method returns an earlier measurement for a given patient
+            </summary>
+      <param name="socSecNB">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.GetSocSecNb(System.String)">
+      <summary>
+            This method returns a patient number from the database
+            </summary>
+      <param name="SocSecNB">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.CheckLogin(System.String,System.String)">
+      <summary>
+            This method checks if the user name and password is correct
+            </summary>
+      <param name="socSecNb">
+      </param>
+      <param name="pw">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.SendRPiData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+      <summary>
+            This method sends the data to the RPi
+            </summary>
+      <param name="SysHigh">
+      </param>
+      <param name="SysLow">
+      </param>
+      <param name="DiaHigh">
+      </param>
+      <param name="DiaLow">
+      </param>
+      <param name="Meanlow">
+      </param>
+      <param name="Meanhigh">
+      </param>
+      <param name="CprPatient">
+      </param>
+      <param name="Calval">
+      </param>
+      <param name="Zeroval">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.SendEemergencydata(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+      <summary>
+            This method sends the emergency data to the RPi
+            </summary>
+      <param name="SysHigh">
+      </param>
+      <param name="SysLow">
+      </param>
+      <param name="DiaHigh">
+      </param>
+      <param name="DiaLow">
+      </param>
+      <param name="Meanlow">
+      </param>
+      <param name="Meanhigh">
+      </param>
+      <param name="CprPatient">
+      </param>
+      <param name="Calval">
+      </param>
+      <param name="Zeroval">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.Command(System.String)">
+      <summary>
+            This method sends a command to the RPi
+            </summary>
+      <param name="command">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:BuissnessLogic.Controller.GetPatientValues">
+      <summary>
+            This method gets the last saved patientdata and returns them
+            </summary>
+      <returns>
+            The most recent patientdata
+            </returns>
+    </member>
+    <member name="M:BuissnessLogic.Filter.GetMeasurementDataFilter">
+      <summary>
+            Thsi
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="N:BuissnessLogic">
+      <summary />
+    </member>
+    <member name="N:DataAccessLogic">
+      <summary />
+    </member>
+    <member name="N:DTO">
+      <summary />
+    </member>
+    <member name="N:PresentationLogic">
+      <summary />
+    </member>
+    <member name="N:PresentationLogic.Windows">
+      <summary />
+    </member>
+  </members>
+</doc>

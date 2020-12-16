@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataAccessLogic</name>
+    </assembly>
+    <members>
+        <member name="T:DataAccessLogic.ReceiveRPi">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="M:DataAccessLogic.ReceiveRPi.OpenRecievePorts">
+            <summary>
+            Opretter UDPclient og destination for de to mest brugte modtager metoder.
+            </summary>
+        </member>
+        <member name="M:DataAccessLogic.ReceiveRPi.RecieveDataPoints">
+            <summary>
+            Lytter 1000 gange i sekundet om der kommer data ind. Kommer der data ind, returneres en liste til præstationslaget. Her modtages i bytes, det bliver decoded med ASCII og herefter deserialiseret.
+            </summary>
+            <returns>
+            Liste bliver retuneret.
+            </returns>
+        </member>
+        <member name="M:DataAccessLogic.ReceiveRPi.RecieveCalculatedValues">
+            <summary>
+            Modtager data, decoder det med ASCII 
+            </summary>
+            <returns>
+            Returnerer en double tilbage. Denne metode kan bruges til at returnere alle doubles.
+            </returns>
+        </member>
+        <member name="M:DataAccessLogic.SendRPi.OpenSendPorts">
+            <summary>
+            OpenSendPorts åbner de to mest brugte ports og sætter IP på raspberry pi. Denne opretter også de sockets, som dataen vil blive sendt over.
+            </summary>
+        </member>
+        <member name="M:DataAccessLogic.SendRPi.Command(System.String)">
+            <summary>
+            Modtager en string fra buisness logic. Her bliver denne encoded med ASCII og sendt til Raspberry Pi.
+            </summary>
+            <param name="command">
+            String der modtages fra buissnes logic.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.SendRPi.sendemergencydata(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+            <summary>
+            Denne metode sender data fra en målingfil videre til RPi'en. Dette inkluderer grænseværdier, Calval og Zeroval. bliver filen hentet fra databasen og sendt til RPi.
+            </summary>
+            <param name="SysHigh"></param>
+            <param name="SysLow"></param>
+            <param name="DiaHigh"></param>
+            <param name="DiaLow"></param>
+            <param name="Meanlow"></param>
+            <param name="Meanhigh"></param>
+            <param name="CprPatient"></param>
+            <param name="Calval"></param>
+            <param name="Zeroval"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.SendRPi.sendpatientdata(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+            <summary>
+            Her sendes patientdataen til Raspberry Pi'en og gemmer disse data til databasen.
+            </summary>
+            <param name="SysHigh"></param>
+            <param name="SysLow"></param>
+            <param name="DiaHigh"></param>
+            <param name="DiaLow"></param>
+            <param name="Meanlow"></param>
+            <param name="Meanhigh"></param>
+            <param name="CprPatient"></param>
+            <param name="Calval"></param>
+            <param name="Zeroval"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataAccessLogic.Database">
+            <summary>
+            This class will only work if the computer is connected to VPN AU University
+            </summary>
+        </member>
+        <member name="M:DataAccessLogic.Database.#ctor">
+            <summary>
+            Connection to the database
+            </summary>
+        </member>
+        <member name="M:DataAccessLogic.Database.getSocSecNB(System.String)">
+            <summary>
+            Get soc sec from database
+            </summary>
+            <param name="SocSecNB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.Database.isUserRegistered(System.String,System.String)">
+            <summary>
+            This method checks if the user is registered in the database
+            </summary>
+            <param name="socSecNb"></param>
+            <param name="pw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.Database.GetMeasurement(System.String)">
+            <summary>
+            This method returns a measurement, if there is one for the given patient
+            </summary>
+            <param name="socSecNb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.latestfile(System.String)">
+            <summary>
+            Finder den seneste redigerede fil og retunerer denne i en string.
+            </summary>
+            <param name="latestfile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.SaveMeasurement(System.String,System.Double,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gemmer målingen undervejs. Her gemmer den for hvert nye målepunkt.
+            </summary>
+            <param name="socSecNb"></param>
+            <param name="mmhg"></param>
+            <param name="tid"></param>
+            <param name="highSys"></param>
+            <param name="lowSys"></param>
+            <param name="highDia"></param>
+            <param name="lowDia"></param>
+            <param name="highMean"></param>
+            <param name="lowMean"></param>
+            <param name="sys"></param>
+            <param name="dia"></param>
+            <param name="mean"></param>
+            <param name="pulse"></param>
+            <param name="batterystatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.SavePatientData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+            <summary>
+            Gemmer alle grænseværdier, den seneste kalibrering og Zeroval i databasen.
+            </summary>
+            <param name="SysHigh"></param>
+            <param name="SysLow"></param>
+            <param name="DiaHigh"></param>
+            <param name="DiaLow"></param>
+            <param name="Meanlow"></param>
+            <param name="Meanhigh"></param>
+            <param name="CprPatient"></param>
+            <param name="Calval"></param>
+            <param name="Zeroval"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.ReadPatientData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+            <summary>
+            Denne metode læser fra databasen og returnere disse data, så de kan sendes til Raspberry Pi'en.
+            </summary>
+            <param name="SysHigh"></param>
+            <param name="SysLow"></param>
+            <param name="DiaHigh"></param>
+            <param name="DiaLow"></param>
+            <param name="Meanlow"></param>
+            <param name="Meanhigh"></param>
+            <param name="CprPatient"></param>
+            <param name="Calval"></param>
+            <param name="Zeroval"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.SaveCalVal(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Double},System.Double,System.Double,System.Double,System.Double,System.DateTime)">
+            <summary>
+            Denne metode gemmer kalibrering. Her gemmer den 2 lister med målepunkter og udregnede data udfra disse målepunkter.
+            </summary>
+            <param name="calReference"></param>
+            <param name="calMeasured"></param>
+            <param name="r2"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="zv"></param>
+            <param name="datetime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.GetCalVal">
+            <summary>
+            Denne metode finder den seneste kalibrationsværdi og returnerer denne.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.ValuedataGet">
+            <summary>
+            This method gets the patientdata from the latest file and returns them
+            </summary>
+            <returns>
+            The most recent patientdata
+            </returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.isUserRegistered(System.String,System.String)">
+            <summary>
+            Denne metode tjekker om et givent brugernavn og password matcher med databasen.
+            </summary>
+            <param name="socSecNb"></param>
+            <param name="pw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.getSocSecNB(System.String)">
+            <summary>
+            Denne metode henter et personnummer fra databasen.
+            </summary>
+            <param name="SocSecNB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataAccessLogic.LocalDatabase.Savelogin">
+            <summary>
+            Denne metode kan benyttes til at gemme nye profiler til login.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

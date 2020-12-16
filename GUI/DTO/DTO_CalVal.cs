@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DTO
 {
+    /// <summary>
+    /// DTO for calibration values
+    /// </summary>
     public class DTO_CalVal
     {
         /// <summary>

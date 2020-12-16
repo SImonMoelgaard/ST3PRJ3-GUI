@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DTO</name>
+    </assembly>
+    <members>
+        <member name="T:DTO.DTO_CalVal">
+            <summary>
+            DTO for calibration values
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.CalReference">
+            <summary>
+            List of calibration reference values
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.CalMeasured">
+            <summary>
+            List of calibration values
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.R2">
+            <summary>
+            R2 value
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.A">
+            <summary>
+            Slope value also known as calibration value
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.B">
+            <summary>
+            Y-intercept value
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.Zv">
+            <summary>
+            Zero value
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_CalVal.Datetime">
+            <summary>
+            DateTime
+            </summary>
+        </member>
+        <member name="M:DTO.DTO_CalVal.#ctor(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Double},System.Double,System.Double,System.Double,System.Double,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="calReference"></param>
+            <param name="calMeasured"></param>
+            <param name="r2"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="zv"></param>
+            <param name="datetime"></param>
+        </member>
+        <member name="T:DTO.DTO_Measurement">
+            <summary>
+            DTO for measurement values
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.mmHg">
+            <summary>
+            mmHg
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.Tid">
+            <summary>
+            Tid
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.CalculatedSys">
+            <summary>
+            Calculated systolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.CalculatedDia">
+            <summary>
+            Calculated diastolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.CalculatedMean">
+            <summary>
+            Calculated mean
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.CalculatedPulse">
+            <summary>
+            Calculated pulse
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.HighSys">
+            <summary>
+            Limit value - high systolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.LowSys">
+            <summary>
+            Limit value - Low systolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.HighDia">
+            <summary>
+            Limit value - High Diastolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.LowDia">
+            <summary>
+            Limit value - Low diastolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.HighMean">
+            <summary>
+            Limit value - High Mean
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.LowMean">
+            <summary>
+            Limit value - Low Mean
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.Batterystatus">
+            <summary>
+            Battery status
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_Measurement.SocSecNB">
+            <summary>
+            CPR
+            </summary>
+        </member>
+        <member name="M:DTO.DTO_Measurement.#ctor(System.String,System.Double,System.DateTime,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="socSecNb"></param>
+            <param name="mmhg"></param>
+            <param name="tid"></param>
+            <param name="highSys"></param>
+            <param name="lowSys"></param>
+            <param name="highDia"></param>
+            <param name="lowDia"></param>
+            <param name="highMean"></param>
+            <param name="lowMean"></param>
+            <param name="sys"></param>
+            <param name="dia"></param>
+            <param name="mean"></param>
+            <param name="pulse"></param>
+            <param name="batterystatus"></param>
+        </member>
+        <member name="T:DTO.DTO_PatientData">
+            <summary>
+            DTO for patient information
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.HighSys">
+            <summary>
+            Limit value - high systolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.LowSys">
+            <summary>
+            Limit value - low systolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.HighDia">
+            <summary>
+            Limit value - high diastolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.LowDia">
+            <summary>
+            Limit value - low diastolic
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.HighMean">
+            <summary>
+            Limit value - high mean
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.LowMean">
+            <summary>
+            Limit value - low mean
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.ZeroVal">
+            <summary>
+            Zero value
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.SocSecNB">
+            <summary>
+            CPR
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_PatientData.CalVal">
+            <summary>
+            Calibration value
+            </summary>
+        </member>
+        <member name="M:DTO.DTO_PatientData.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Double,System.Double)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sysLow"></param>
+            <param name="sysHigh"></param>
+            <param name="diaLow"></param>
+            <param name="diaHigh"></param>
+            <param name="lowMean"></param>
+            <param name="highMean"></param>
+            <param name="socSecNB"></param>
+            <param name="calVal"></param>
+            <param name="zeroVal"></param>
+        </member>
+        <member name="T:DTO.DTO_UserData">
+            <summary>
+            DTO for User Data
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_UserData.Username">
+            <summary>
+            User name
+            </summary>
+        </member>
+        <member name="P:DTO.DTO_UserData.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="M:DTO.DTO_UserData.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+    </members>
+</doc>

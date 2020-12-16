@@ -1,0 +1,669 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PresentationLogic</name>
+    </assembly>
+    <members>
+        <member name="T:PresentationLogic.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.ChangeDataWindow">
+            <summary>
+            Interaction logic for ChangeDataWindow.xaml
+            </summary>
+            <summary>
+            ChangeDataWindow
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.ValueDataSet">
+            <summary>
+            Gets values prevously entered
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.MainWindow.dataWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.MainWindow.controller">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.MainWindow.caldata">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.#ctor">
+            <summary>
+            Constructor for Main Window and calling method for latest calibration
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.TimeSince">
+            <summary>
+            This method displays the date for the latest calibration
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.PerformMeasurement_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Perform Measurement Button shows DataWindow
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.PerformCalibration_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Perform Calibration Button shows Calibration Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.Exit_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit Button closes application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.Emergency_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Emergency Button shows Emergency window
+            If the system breaks, the health care can continue the latest blood pressure measurement
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            When the application is started the Login Window comes up and the health care staff and medico technician have to login 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.ShowMeasurement_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Show Former Measurement Button shows ShowMeasurement Window, where the health care staff and medico technician can see former measurements
+            Search after cpr and a list of measurements is displayed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.ShowCalibration_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Show Calibration Button shows Show Calibration Window with latest calibration
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.MeasurementModel">
+            <summary>
+            This class is built to handle live data easily, and it has 2 properties DateTime and RawData
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.CalibrationWindow">
+            <summary>
+            Interaction logic for CalibrationWindow.xaml
+            </summary>
+            <summary>
+            CalibrationWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.CalibrationWindow.mainWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.CalibrationWindow.calVal">
+            <summary>
+            Chart
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.CalibrationWindow.dataCalVal">
+            <summary>
+            Lists
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.CalibrationWindow.cali">
+            <summary>
+            Calibration
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.CalibrationWindow.XAxis">
+            <summary>
+            X Axis
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.CalibrationWindow.r2">
+            <summary>
+            Linear regression values
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.#ctor(PresentationLogic.MainWindow,BuissnessLogic.Controller)">
+            <summary>
+            Constructor Calibration Window
+            Initiates calibration lists
+            </summary>
+            <param name="mw"></param>
+            <param name="cr"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Window Button shows the Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.InsertValue_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Insert Value Button
+            Sends command to RPi to start calibration,
+            receives calibration value and displays reference and calibration value in a list
+            and displays the calibration chart
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.MakeGraph">
+            <summary>
+            Method that generates the calibration chart
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.Done_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Done Button saves the calibration values,
+            displays the linear equation and R2,
+            message box is shown to either accept or not accept the calibration
+            and shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.DataWindow">
+            <summary>
+            Interaction logic for DataWindow.xaml
+            </summary>
+            <summary>
+            DataWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.DataWindow.mwWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.DataWindow.calData">
+            <summary>
+            List
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.DataWindow.zeroVal">
+            <summary>
+            Zero value
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.DataWindow.IsZeroActive">
+            <summary>
+            Boolean
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.#ctor(PresentationLogic.MainWindow,BuissnessLogic.Controller,PresentationLogic.Windows.MeasurementWindow)">
+            <summary>
+            Data Window Constructor
+            </summary>
+            <param name="mw"></param>
+            <param name="cr"></param>
+            <param name="ms"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.ReceiveZeroValue">
+            <summary>
+            Method that commands RPi to start zero point adjustment,
+            receive zero value and displays zero point adjustment status on window
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Button stops receiving zero value and shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.Next_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Next Button receives calibration value,
+            sends patient data (limit values), calibration and zero value,
+            stops receiving zero value and shows Measurement Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.Next_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Next Button is activated when Enter is pressed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.DataWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.EmergencyPopUp">
+            <summary>
+            Interaction logic for EmergencyPopUp.xaml
+            </summary>
+            <summary>
+            EmergencyPopUp
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.EmergencyPopUp.controller">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.EmergencyPopUp.#ctor(PresentationLogic.MainWindow,BuissnessLogic.Controller,PresentationLogic.Windows.MeasurementWindow)">
+            <summary>
+            Emergency Pop Up Constructor
+            </summary>
+            <param name="mw"></param>
+            <param name="cr"></param>
+            <param name="ms"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.EmergencyPopUp.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Button shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.EmergencyPopUp.Start_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Start Button continues the blood pressure measurement
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.EmergencyPopUp.Start_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Press Enter and Start Button is activated
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.EmergencyPopUp.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.LoginWindow">
+            <summary>
+            Interaction logic for LoginWindow.xaml
+            </summary>
+            <summary>
+            LoginWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.LoginWindow.main">
+            <summary>
+            References
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.LoginWindow.#ctor(PresentationLogic.MainWindow,BuissnessLogic.Controller)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="mw"></param>
+            <param name="br"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.LoginWindow.Exit_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit Button closes the application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.LoginWindow.Login_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Login Button gives the health care staff access to the system.
+            This button can only be used if the system is connected to VPN Cisco AU University
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.LoginWindow.Login_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Methods that makes it possible to Login by pressing Enter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.LoginWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.MeasurementWindow">
+            <summary>
+            Interaction logic for MeasurementWindow.xaml
+            </summary>
+            <summary>
+            MeasurementWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.MeasurementWindow.axisMax">
+            <summary>
+            Chart Axis
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.MeasurementWindow.ChartValues">
+            <summary>
+            Chart
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.MeasurementWindow.IsReading">
+            <summary>
+            Boolean - begins and stop/pause live chart
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.MeasurementWindow.MuteAlarm">
+            <summary>
+            Boolean - Alarm on Mute Alarm Button
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.MeasurementWindow.blinkOnSysDia">
+            <summary>
+            Boolean - Alarm on labels
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.MeasurementWindow.mainWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.MeasurementWindow.measurements">
+            <summary>
+            Lists
+            </summary>
+        </member>
+        <member name="E:PresentationLogic.Windows.MeasurementWindow.PropertyChanged">
+            <summary>
+            NotifyPropertyChanged implementation
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.#ctor(BuissnessLogic.Controller,PresentationLogic.MainWindow,PresentationLogic.Windows.DataWindow)">
+            <summary>
+            Measurement Window Constructor
+            Hides Mute Alarm Button
+            </summary>
+            <param name="cr"></param>
+            <param name="mw"></param>
+            <param name="dw"></param>
+        </member>
+        <member name="P:PresentationLogic.Windows.MeasurementWindow.AxisMax">
+            <summary>
+            X Axis Maximum
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.MeasurementWindow.AxisMin">
+            <summary>
+            Y Axis Minimum
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.Start_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Start Button begins blood pressure measurement,
+            sends command to RPi to start measurement
+            and begins task to display blood pressure chart on chart
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.Read">
+            <summary>
+            This method generates the chart
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.SetAxisLimits(System.DateTime)">
+            <summary>
+            Setting the limits on the axis
+            </summary>
+            <param name="now"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.OnPropertyChanged(System.String)">
+            <summary>
+            INotifyPropertyChanged implementation
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.Stop_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Stop Button stops/pauses live chart, you can continue by clicking the Start Button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.MuteAlarm_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mute Alarm Button stops the alarm and sends command to RPi to stop alarming on the hardware
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Window Button hides Measurement Window and shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.Alarm">
+            <summary>
+            Method that checks if some of the alarms are activated,
+            if they are the alarm is started and the label begins blinking
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.ChangeLimitValues_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Change Limit Values Button to change the patients limit values
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.MeasurementWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.ShowCalibrationWindow">
+            <summary>
+            Interaction logic for ShowCalibrationWindow.xaml
+            </summary>
+            <summary>
+            ShowCalibrationWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.mainWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.calData">
+            <summary>
+            Lists
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.calVal">
+            <summary>
+            Chart
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.a">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.b">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.r2">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowCalibrationWindow.zv">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.ShowCalibrationWindow.XAxis">
+            <summary>
+            X Axis
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.#ctor(BuissnessLogic.Controller,PresentationLogic.MainWindow)">
+            <summary>
+            Show Calibration Window Constructor,
+            initiates lists
+            </summary>
+            <param name="cr"></param>
+            <param name="mw"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.ShowCalibration">
+            <summary>
+            Method that shows latest calibration
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.MakeGraph">
+            <summary>
+            Method that makes latest calibration chart
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.ExitToMainWindow_B_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Window Button shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.ShowCalibration_B_OnClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Show Calibration Button shows latest calibration
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowCalibrationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PresentationLogic.Windows.ShowDataWindow">
+            <summary>
+            Interaction logic for ShowDataWindow.xaml
+            </summary>
+            <summary>
+            ShowDataWindow
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowDataWindow.mainWindow">
+            <summary>
+            Windows
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowDataWindow.bPressure">
+            <summary>
+            Chart
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowDataWindow.dataBPressure">
+            <summary>
+            List
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.ShowDataWindow.xAxis">
+            <summary>
+            X Axis
+            </summary>
+        </member>
+        <member name="F:PresentationLogic.Windows.ShowDataWindow.socSecNb">
+            <summary>
+            Social Security Number
+            </summary>
+        </member>
+        <member name="P:PresentationLogic.Windows.ShowDataWindow.YFormatter">
+            <summary>
+            Y Axis
+            </summary>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowDataWindow.#ctor(BuissnessLogic.Controller,PresentationLogic.MainWindow,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cw"></param>
+            <param name="mw"></param>
+            <param name="SocSecNb"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowDataWindow.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exit To Main Window closes this window and shows Main Window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowDataWindow.Search_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Search Button searches for blood pressure measurement for the given patient
+            and displays the blood pressure chart
+            While using this window you have to be connected to VPN AU University to connect to the database
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.ShowDataWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

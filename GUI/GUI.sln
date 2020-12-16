@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLogic", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "SandCastle", "SandCastle\SandCastle.shfbproj", "{00DD4835-5791-444D-9044-6D06A313DE8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB0B6A7B-42DA-4691-A3CC-7E8193D249C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00DD4835-5791-444D-9044-6D06A313DE8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00DD4835-5791-444D-9044-6D06A313DE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00DD4835-5791-444D-9044-6D06A313DE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00DD4835-5791-444D-9044-6D06A313DE8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

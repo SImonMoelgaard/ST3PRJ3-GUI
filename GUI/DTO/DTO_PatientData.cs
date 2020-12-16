@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DTO
 {
+    /// <summary>
+    /// DTO for patient information
+    /// </summary>
     public class DTO_PatientData
     {
         /// <summary>
