@@ -33,7 +33,7 @@ namespace DataAccessLogic
         /// </summary>
         public void OpenSendPorts()
         {
-            //broadcast = IPAddress.Parse("172.20.10.7");//Marie RPi IP
+           // broadcast = IPAddress.Parse("172.20.10.7");//Marie RPi IP
             broadcast = IPAddress.Parse("172.20.10.5");//Annesofie RPi IP
 
             //broadcast = IPAddress.Parse("127.0.0.1");//ÆNDRE IP HER

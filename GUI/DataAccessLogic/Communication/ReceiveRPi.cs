@@ -35,10 +35,12 @@ namespace DataAccessLogic
         public void OpenRecievePorts()
         {
             listener =new UdpClient(11001);
-            groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11001);
+            groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.5"), 11001);
+           // groupEP = new IPEndPoint(IPAddress.Parse("127.0.0.7"), 11001);
 
-            groupEPDouble = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11004);
-            ListenerDouble = new UdpClient(11004);
+            groupEPDouble = new IPEndPoint(IPAddress.Parse("127.0.0.5"), 11004);
+            //groupEPDouble = new IPEndPoint(IPAddress.Parse("127.0.0.7"), 11004);
+            //ListenerDouble = new UdpClient(11004);
         }
 
        /// <summary>
@@ -101,10 +103,12 @@ namespace DataAccessLogic
 
             try
             {
+                ListenerDouble = new UdpClient(11004);
                 while (true)
                 {
                     bytes = ListenerDouble.Receive(ref groupEPDouble);
                     data = Convert.ToDouble(Encoding.ASCII.GetString(bytes, 0, bytes.Length));
+                    ListenerDouble.Close();
                     return data;
                 }
             }
