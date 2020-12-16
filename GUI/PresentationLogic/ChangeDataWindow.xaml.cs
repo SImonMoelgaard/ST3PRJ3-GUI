@@ -20,27 +20,43 @@ namespace PresentationLogic
     {
         private Controller controller;
         private List<DTO.DTO_PatientData> Valuedata;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="cw"></param>
         public ChangeDataWindow(Controller cw)
         {
             InitializeComponent();
             controller = cw;
-
-
-            
             ValueDataSet();
-            
-
         }
 
+        /// <summary>
+        /// Exits
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToMainWindow_B_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
+        /// <summary>
+        /// Sends new limit values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Next_B_Click(object sender, RoutedEventArgs e)
         {
             controller.SendRPiData(Convert.ToInt32(sysULimit_TB.Text), Convert.ToInt32(sysLLimit_TB.Text), Convert.ToInt32(diaULimit_TB.Text), Convert.ToInt32(diaLLimit_TB.Text), Convert.ToInt32(meanLLimit_TB.Text), Convert.ToInt32(meanULimit_TB.Text), Convert.ToString(0), 0, 0);
         }
+
+        /// <summary>
+        /// Press Enter to activate Next Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Next_KeyDown(object sender, KeyEventArgs e)
         {
             //Press Enter
@@ -50,13 +66,13 @@ namespace PresentationLogic
                 Next_B_Click(sender, e);
             }
         }
+
         /// <summary>
-        /// Gets values prevously entered
+        /// Gets values previously entered
         /// </summary>
         private void ValueDataSet()
         {
             Valuedata = controller.GetPatientValues();
-
 
             foreach (var data in Valuedata)
             {
@@ -66,14 +82,7 @@ namespace PresentationLogic
                 sysLLimit_TB.Text = data.LowSys.ToString();
                 meanLLimit_TB.Text = data.LowMean.ToString();
                 meanULimit_TB.Text = data.HighMean.ToString();
-
-
-
-
             }
-            
-
-
         }
     }
 }

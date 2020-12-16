@@ -10,7 +10,7 @@ namespace BuissnessLogic
         private List<DTO_Measurement> measurementData;
 
         /// <summary>
-        /// Thsi
+        /// Forslag til filter
         /// </summary>
         /// <returns></returns>
         public List<DTO_Measurement> GetMeasurementDataFilter()

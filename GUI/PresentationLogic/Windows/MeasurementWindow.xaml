@@ -36,18 +36,20 @@
                 <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}" 
                           MaxValue="{Binding AxisMax}" 
                           MinValue="{Binding AxisMin}"
-                          Unit="{Binding AxisUnit}">
+                          Unit="{Binding AxisUnit}"
+                          Foreground="Black"> 
                     <lvc:Axis.Separator>
-                        <lvc:Separator Step="{Binding AxisStep}" />
+                        <lvc:Separator Step="{Binding AxisStep}" Stroke="Black"/>
 
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
-            <!--<lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Dato" Labels="{Binding xAxis}" LabelsRotation="20"></lvc:Axis>
-            </lvc:CartesianChart.AxisX>-->
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis MinValue="50" MaxValue="160">
+                <lvc:Axis MinValue="50" MaxValue="200">
+                    <lvc:Axis.Separator>
+                    <lvc:Separator Stroke="Black"/>
+
+                    </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>

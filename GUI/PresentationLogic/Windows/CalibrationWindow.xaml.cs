@@ -63,6 +63,7 @@ namespace PresentationLogic.Windows
         private double b;
         public bool IsZeroActive { get; set; }
         public bool IscalibrationActive { get; set; }
+
         /// <summary>
         /// Constructor Calibration Window
         /// Initiates calibration lists
@@ -103,10 +104,6 @@ namespace PresentationLogic.Windows
 
             //Show main window
             mainWindow.Show();
-
-
-
-            
         }
 
         /// <summary>
@@ -132,6 +129,9 @@ namespace PresentationLogic.Windows
             
         }
 
+        /// <summary>
+        /// Get calibration values and adds to list
+        /// </summary>
         public void GetCalValue()
         {
            
@@ -139,10 +139,6 @@ namespace PresentationLogic.Windows
             controller.Command("Startcalibration");
             calibrationVal = controller.RecieveDouble();
 
-            //double calibrationVal = cali.GetCalibration();
-
-            //Convert reference value to integer
-            
 
             this.Dispatcher.Invoke(() =>
             {
@@ -164,15 +160,7 @@ namespace PresentationLogic.Windows
                     InsertValue_B.IsEnabled = true;
                     IscalibrationActive = false;
                 }
-                else
-                {
-
-                }
             });
-            
-
-            
-
         }
 
         /// <summary>
@@ -256,8 +244,9 @@ namespace PresentationLogic.Windows
             }
         }
 
-       
-
+        /// <summary>
+        /// Gets zero value and display on screen
+        /// </summary>
         public void GetZeroValue()
         {
             //Command to RPi - Start Zeroing

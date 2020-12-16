@@ -30,9 +30,36 @@
             ChangeDataWindow
             </summary>
         </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.#ctor(BuissnessLogic.Controller)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cw"></param>
+        </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.ExitToMainWindow_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Exits
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.Next_B_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Sends new limit values
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.ChangeDataWindow.Next_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Press Enter to activate Next Button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:PresentationLogic.ChangeDataWindow.ValueDataSet">
             <summary>
-            Gets values prevously entered
+            Gets values previously entered
             </summary>
         </member>
         <member name="M:PresentationLogic.ChangeDataWindow.InitializeComponent">
@@ -197,6 +224,11 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.GetCalValue">
+            <summary>
+            Get calibration values and adds to list
+            </summary>
+        </member>
         <member name="M:PresentationLogic.Windows.CalibrationWindow.MakeGraph">
             <summary>
             Method that generates the calibration chart
@@ -211,6 +243,11 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:PresentationLogic.Windows.CalibrationWindow.GetZeroValue">
+            <summary>
+            Gets zero value and display on screen
+            </summary>
         </member>
         <member name="M:PresentationLogic.Windows.CalibrationWindow.InitializeComponent">
             <summary>

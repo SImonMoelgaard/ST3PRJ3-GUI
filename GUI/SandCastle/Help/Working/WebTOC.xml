@@ -2,27 +2,27 @@
 <HelpTOC>
 
   <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/fde050a8-8e29-48f9-af68-415e9354fa26.htm" />
-  <HelpTOCNode Id="01a5e8c2-0b3d-440b-9a9c-09af7c9df7ad" Title="Version History" Url="html/94353823-7df8-48b7-a917-1e610d7f2788.htm">
+  <HelpTOCNode Id="ff489aca-0004-4abe-9591-45588b6c290f" Title="Version History" Url="html/94353823-7df8-48b7-a917-1e610d7f2788.htm">
     <HelpTOCNode Title="Version 1.0.0.0" Url="html/65899294-908b-4adc-a6da-90eb74b53dfb.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="f9c20492-d9a8-4f26-b4dc-39ebd70571f0" Title="BuissnessLogic" Url="html/eecaaba1-0bb0-fc95-ed84-fc9b2a8127b1.htm">
-    <HelpTOCNode Id="d666ed2d-08f6-40ea-aa38-04bdb9e937c5" Title="Alarm Class" Url="html/27b843e7-b7e2-2e63-df2c-7bd83c52ddab.htm">
+  <HelpTOCNode Id="da1b1c39-fcd3-4f67-925e-8c1807c72da7" Title="BuissnessLogic" Url="html/eecaaba1-0bb0-fc95-ed84-fc9b2a8127b1.htm">
+    <HelpTOCNode Id="aec0cb81-76eb-474b-924f-b8625934592d" Title="Alarm Class" Url="html/27b843e7-b7e2-2e63-df2c-7bd83c52ddab.htm">
       <HelpTOCNode Title="Alarm Constructor " Url="html/7b48f809-2b2e-08ec-7fea-dc3c895df3df.htm" />
-      <HelpTOCNode Id="a370399f-195a-4053-9082-86b2cf7669f5" Title="Alarm Methods" Url="html/296c41db-a798-0bb3-f8e3-0ef8cc6a4173.htm">
+      <HelpTOCNode Id="6c060fd5-ee39-4cc9-a24f-9b14b2e8c927" Title="Alarm Methods" Url="html/296c41db-a798-0bb3-f8e3-0ef8cc6a4173.htm">
         <HelpTOCNode Title="MuteAlarm Method " Url="html/0f2fe12e-ddf8-4665-f76d-e2cf3397a842.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9ff93a23-2ff7-44b8-aade-4c581a0ab781" Title="Alarm Fields" Url="html/bb9afa6b-4b7b-4713-b683-4d55c9156c2c.htm">
+      <HelpTOCNode Id="4ec4eedc-85a9-47c1-8c94-40a72e191a14" Title="Alarm Fields" Url="html/bb9afa6b-4b7b-4713-b683-4d55c9156c2c.htm">
         <HelpTOCNode Title="sendRPi Field" Url="html/dd685297-c8d2-e737-36ff-eef35c935d6c.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="54cab6da-3b6f-423c-bbb5-6323342c92de" Title="Calibration Class" Url="html/457a5863-acca-9520-e0a1-ad5641156222.htm">
+    <HelpTOCNode Id="790586dc-8146-48ae-8cdc-b1e72a4330f6" Title="Calibration Class" Url="html/457a5863-acca-9520-e0a1-ad5641156222.htm">
       <HelpTOCNode Title="Calibration Constructor " Url="html/08af666b-95f8-f49c-783c-d989a92b5aea.htm" />
-      <HelpTOCNode Id="9616c7dd-94f9-4d75-83c0-118382ab559b" Title="Calibration Methods" Url="html/b678ecce-335d-546e-6e40-66c10aecbeeb.htm">
+      <HelpTOCNode Id="23ef5024-97e4-400c-bbd5-325d9f1d8cfc" Title="Calibration Methods" Url="html/b678ecce-335d-546e-6e40-66c10aecbeeb.htm">
         <HelpTOCNode Title="CalculateR2Val Method " Url="html/3b9adf1b-7f3b-7a6d-4850-f1b31ee71a3d.htm" />
         <HelpTOCNode Title="CalculateAAndB Method " Url="html/80ab66f2-b97f-b2f6-5a17-5d627061818c.htm" />
         <HelpTOCNode Title="SaveCalval Method " Url="html/607c864f-8b58-1403-c91d-72120afdbb58.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8355a4fe-e7a6-401d-9f1b-dba2b67359d3" Title="Calibration Fields" Url="html/0c618548-f9d0-67e7-84f3-1ab93554c3e6.htm">
+      <HelpTOCNode Id="c81136fe-7a59-495e-82a9-0fcb43c342ef" Title="Calibration Fields" Url="html/0c618548-f9d0-67e7-84f3-1ab93554c3e6.htm">
         <HelpTOCNode Title="_r2 Field" Url="html/e6aad323-f9c2-1ced-ab5d-cd4701841b8d.htm" />
         <HelpTOCNode Title="LinearRegression Field" Url="html/ad135b55-44d9-15c4-9e60-533d2d918fc3.htm" />
         <HelpTOCNode Title="localDatabase Field" Url="html/11105de7-fcfa-0b6c-2bbf-2dc17682829f.htm" />
@@ -32,9 +32,9 @@
         <HelpTOCNode Title="zeroval Field" Url="html/e2f7ec39-e4b0-7e0c-70b4-e9e361775655.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e46826bf-945a-40d0-9d3c-64dbe5bee732" Title="Controller Class" Url="html/4fabdf54-31e2-2a37-a699-bb365e657a5a.htm">
+    <HelpTOCNode Id="4c60cfad-fa10-454e-85d9-605bcdc4a76b" Title="Controller Class" Url="html/4fabdf54-31e2-2a37-a699-bb365e657a5a.htm">
       <HelpTOCNode Title="Controller Constructor " Url="html/226a8ab6-1bce-d169-f7ba-52fedd2e35e4.htm" />
-      <HelpTOCNode Id="5e025fc3-4daa-4d28-9c67-0209fa8c3b35" Title="Controller Methods" Url="html/f9ee6585-d19e-efac-ce62-ed329230b70d.htm">
+      <HelpTOCNode Id="195fe5d6-69b0-4def-a8af-6fd6b53b73f4" Title="Controller Methods" Url="html/f9ee6585-d19e-efac-ce62-ed329230b70d.htm">
         <HelpTOCNode Title="CheckLogin Method " Url="html/dcd7c2d3-aecc-1b62-24fb-a034858dbccf.htm" />
         <HelpTOCNode Title="Command Method " Url="html/6af365ff-15eb-6ea7-e1fa-7813870d5f22.htm" />
         <HelpTOCNode Title="GetCalVal Method " Url="html/34defb3e-37c8-8fc3-f29a-205513c1dd93.htm" />
@@ -47,7 +47,7 @@
         <HelpTOCNode Title="SendEemergencydata Method " Url="html/ebde5b67-4ead-e6de-863a-fa9642c45817.htm" />
         <HelpTOCNode Title="SendRPiData Method " Url="html/7fe1905a-87be-d0c5-431b-8591784544c0.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0ecb723a-cec5-4ff8-ac10-ec15daad28ec" Title="Controller Fields" Url="html/37416ade-780f-ed87-12a2-478c2051f91b.htm">
+      <HelpTOCNode Id="a047c728-2193-4d34-890e-f219334a5ccf" Title="Controller Fields" Url="html/37416ade-780f-ed87-12a2-478c2051f91b.htm">
         <HelpTOCNode Title="caldata Field" Url="html/ba60be56-b1f6-86d4-b6ba-c2fb6a300524.htm" />
         <HelpTOCNode Title="data Field" Url="html/5019302e-163d-1997-ca34-30da3728735b.htm" />
         <HelpTOCNode Title="database Field" Url="html/f4dbc0cf-5d94-a503-df89-2ba0a23c5a66.htm" />
@@ -59,58 +59,58 @@
         <HelpTOCNode Title="valueDataList Field" Url="html/89b51184-5310-34d3-fa53-a047ba14a4dc.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d04201e8-5683-4341-a8c8-65413894193b" Title="Filter Class" Url="html/8dafadd6-5e0a-85d9-2fdf-453abcb14ca8.htm">
+    <HelpTOCNode Id="7220ab98-5ce3-4bdc-a725-9745e9a0c997" Title="Filter Class" Url="html/8dafadd6-5e0a-85d9-2fdf-453abcb14ca8.htm">
       <HelpTOCNode Title="Filter Constructor " Url="html/3cb99b56-677c-1ee7-386a-b351c5e2f0b0.htm" />
-      <HelpTOCNode Id="a422a4b2-7611-45f3-92a3-6cfd3357bb97" Title="Filter Methods" Url="html/21033c73-3d0e-2f0b-cc8c-bcbae926140c.htm">
+      <HelpTOCNode Id="d0f0ad33-e495-4ae7-a0a8-af6bef9b1b4e" Title="Filter Methods" Url="html/21033c73-3d0e-2f0b-cc8c-bcbae926140c.htm">
         <HelpTOCNode Title="GetMeasurementDataFilter Method " Url="html/909ff2e1-415f-64e5-a76c-63260cb9069e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="40c00974-1cd8-4f02-ac9f-2e48559b9c36" Title="Filter Fields" Url="html/f11fe70c-c06e-1d2e-9ed1-d5ee23516098.htm">
+      <HelpTOCNode Id="e1742020-e8ad-454c-92a7-c146b2802a51" Title="Filter Fields" Url="html/f11fe70c-c06e-1d2e-9ed1-d5ee23516098.htm">
         <HelpTOCNode Title="measurementData Field" Url="html/2fb19626-cc32-8f19-da6c-1e25b1b5f13f.htm" />
         <HelpTOCNode Title="recieveRPi Field" Url="html/5472efa4-4309-b8f4-2c5d-bf55a1b47b58.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="ff98f87c-4169-4577-a5b3-32d8ff28d4ba" Title="IAlarm Interface" Url="html/c6f757ec-b883-c276-90d2-9a70a7d7a3f3.htm">
-      <HelpTOCNode Id="1a57dd9e-dbd6-4dc3-8f7c-36d9d2a8a464" Title="IAlarm Methods" Url="html/ce2edb9a-9136-cac1-f1ad-6d29fcf77e85.htm">
+    <HelpTOCNode Id="1c878d47-6a7c-4368-ae40-1d50ae2e31e0" Title="IAlarm Interface" Url="html/c6f757ec-b883-c276-90d2-9a70a7d7a3f3.htm">
+      <HelpTOCNode Id="e806baef-f043-457a-98c6-4548a75a17d0" Title="IAlarm Methods" Url="html/ce2edb9a-9136-cac1-f1ad-6d29fcf77e85.htm">
         <HelpTOCNode Title="MuteAlarm Method " Url="html/43a60462-aadf-6424-0966-1898644f5314.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3131ff1c-7867-4194-9fb2-2a5440e922a3" Title="ICalibration Interface" Url="html/774dd971-d6ff-d209-ff0e-c63c5a1d2bad.htm">
-      <HelpTOCNode Id="30740b9a-8c70-4173-818f-1b5b3d4b57b4" Title="ICalibration Methods" Url="html/1d0712cc-7c41-9c6d-85c8-16b3bff39466.htm">
+    <HelpTOCNode Id="04cdf61e-33c8-4555-8975-b383fc3af1f8" Title="ICalibration Interface" Url="html/774dd971-d6ff-d209-ff0e-c63c5a1d2bad.htm">
+      <HelpTOCNode Id="56b2a42d-2acc-40df-8a0f-e401e850dcbb" Title="ICalibration Methods" Url="html/1d0712cc-7c41-9c6d-85c8-16b3bff39466.htm">
         <HelpTOCNode Title="CalculateR2Val Method " Url="html/47de9124-d74e-7f53-7569-e7ccf7cabada.htm" />
         <HelpTOCNode Title="CalculateAAndB Method " Url="html/8ac361e8-2852-f672-3f7c-1db2f766045c.htm" />
         <HelpTOCNode Title="SaveCalval Method " Url="html/d00a1f7e-4e17-a108-51ae-5fbac2e167fd.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="c2fba826-baac-45d4-b07a-fdfbc4bd5fd4" Title="IFilter Interface" Url="html/823b5be6-e48c-8701-99f4-fa310f84063b.htm">
-      <HelpTOCNode Id="c7066b9c-b7a6-433d-8d17-78d6d5fc0b84" Title="IFilter Methods" Url="html/847e8f20-ebe9-2fc0-e012-865a6d889d96.htm">
+    <HelpTOCNode Id="ff767401-ec44-4f5a-984a-d55372d3fd27" Title="IFilter Interface" Url="html/823b5be6-e48c-8701-99f4-fa310f84063b.htm">
+      <HelpTOCNode Id="4ce1ec95-2e94-45a1-9314-5edfde399464" Title="IFilter Methods" Url="html/847e8f20-ebe9-2fc0-e012-865a6d889d96.htm">
         <HelpTOCNode Title="GetMeasurementDataFilter Method " Url="html/455e0123-c3dc-2925-5854-5ee1382add68.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="ee2b807b-36dd-4b18-9866-d38aa975cb8e" Title="DataAccessLogic" Url="html/493aa48b-66db-95c9-b45f-f87ab2ea6599.htm">
-    <HelpTOCNode Id="c415c2b1-77e4-47dc-817b-9d518673d3e1" Title="Database Class" Url="html/15be7333-5255-5336-0ad1-92ecfcdf615c.htm">
+  <HelpTOCNode Id="4a621e8f-bc13-40b5-82aa-085d2be013ac" Title="DataAccessLogic" Url="html/493aa48b-66db-95c9-b45f-f87ab2ea6599.htm">
+    <HelpTOCNode Id="3cbddf78-6f81-4b6d-85bd-41451a4b700a" Title="Database Class" Url="html/15be7333-5255-5336-0ad1-92ecfcdf615c.htm">
       <HelpTOCNode Title="Database Constructor " Url="html/9296e859-dd31-a420-c4f5-4abae1f3315b.htm" />
-      <HelpTOCNode Id="2638ea2c-b49b-4b05-aafd-8f51c7aeafc9" Title="Database Methods" Url="html/0cc44859-2257-fdfd-d459-b7439c88fae0.htm">
+      <HelpTOCNode Id="c85175c7-dcca-4c7d-a8de-931c1208e251" Title="Database Methods" Url="html/0cc44859-2257-fdfd-d459-b7439c88fae0.htm">
         <HelpTOCNode Title="GetMeasurement Method " Url="html/0b213cb7-7f5b-1a8d-8612-86a31cecff84.htm" />
         <HelpTOCNode Title="getSocSecNB Method " Url="html/2a602d4a-dca8-650b-07ac-684f5ae107d1.htm" />
         <HelpTOCNode Title="isUserRegistered Method " Url="html/b8a24660-096f-eacc-b596-e36218eeed8b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7184804a-16f5-451c-a7b4-7ffdf4879cad" Title="Database Fields" Url="html/18fb737f-1707-6e75-871e-31ddd0f14ffe.htm">
+      <HelpTOCNode Id="e4483c57-c23b-4590-98b7-f09bc69a1ae3" Title="Database Fields" Url="html/18fb737f-1707-6e75-871e-31ddd0f14ffe.htm">
         <HelpTOCNode Title="command Field" Url="html/19588899-13fe-d2a4-e7c3-20b406d54a54.htm" />
         <HelpTOCNode Title="connection Field" Url="html/5a29fc72-4593-784b-b852-0e7b2d00b667.htm" />
         <HelpTOCNode Title="DBlogin Field" Url="html/e5b8acdf-97a1-d461-8096-7454fa2bc081.htm" />
         <HelpTOCNode Title="reader Field" Url="html/240e09f5-2de0-6bcc-97b1-980213dd7263.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2b550af4-e99f-48a1-a239-050dd21729a4" Title="IDatabase Interface" Url="html/98d67bde-5bfd-da35-fcaf-895a33939496.htm">
-      <HelpTOCNode Id="d8a58ae6-945a-423b-8acb-0823377d854f" Title="IDatabase Methods" Url="html/d8661d7f-3f7b-6402-c1f3-96b183cd55e3.htm">
+    <HelpTOCNode Id="d150a98c-7830-45bb-9fd1-4c44669c6276" Title="IDatabase Interface" Url="html/98d67bde-5bfd-da35-fcaf-895a33939496.htm">
+      <HelpTOCNode Id="e7fe7d5d-cf33-43b7-9d34-92a747c4c540" Title="IDatabase Methods" Url="html/d8661d7f-3f7b-6402-c1f3-96b183cd55e3.htm">
         <HelpTOCNode Title="GetMeasurement Method " Url="html/75b1a628-ace9-ff24-e8fd-c48a6531454f.htm" />
         <HelpTOCNode Title="getSocSecNB Method " Url="html/a3864bbc-307b-1a3f-398b-50ff624c8ed6.htm" />
         <HelpTOCNode Title="isUserRegistered Method " Url="html/003e45ea-9d25-81b4-3fbf-a431a5377734.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="63bcdc1b-9cf0-4a9a-8004-594f2d80727b" Title="ILocalDatabase Interface" Url="html/591cfc24-9f18-4876-02c8-1c1323069add.htm">
-      <HelpTOCNode Id="8407e6a8-9d84-4125-bbbb-9fc0d116dc2f" Title="ILocalDatabase Methods" Url="html/0ce98d4c-1fa7-f926-2edf-370a0c364de4.htm">
+    <HelpTOCNode Id="36f65643-fe9f-4202-8880-c432b3ccf2fd" Title="ILocalDatabase Interface" Url="html/591cfc24-9f18-4876-02c8-1c1323069add.htm">
+      <HelpTOCNode Id="802ebf01-5e58-4cb8-8cad-06fc18898b12" Title="ILocalDatabase Methods" Url="html/0ce98d4c-1fa7-f926-2edf-370a0c364de4.htm">
         <HelpTOCNode Title="GetCalVal Method " Url="html/c9702fe5-0126-7fff-f0ea-e3f7cb5207bf.htm" />
         <HelpTOCNode Title="getSocSecNB Method " Url="html/72226e71-d704-f98f-1377-fedd07ae3b2d.htm" />
         <HelpTOCNode Title="isUserRegistered Method " Url="html/1adf6f51-d357-3086-d5f7-6d94b7c6e06e.htm" />
@@ -122,24 +122,24 @@
         <HelpTOCNode Title="ValuedataGet Method " Url="html/1286a985-1256-fb5d-3d73-ec47e2b3c31c.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="adda2c23-b086-4bb1-8cac-193b8f9fe79e" Title="IReceiveRPi Interface" Url="html/5c1ecb08-f4ca-fb1a-5c6b-5e371e634707.htm">
-      <HelpTOCNode Id="3983e8ad-e88d-4fbd-a18b-86c5e63e1588" Title="IReceiveRPi Methods" Url="html/96095fff-8754-2d32-0db5-df25299d03dc.htm">
+    <HelpTOCNode Id="da60e051-0d50-4baf-bf82-7e3c57f44972" Title="IReceiveRPi Interface" Url="html/5c1ecb08-f4ca-fb1a-5c6b-5e371e634707.htm">
+      <HelpTOCNode Id="f6c72e8e-7b74-458f-a4ac-dd40234ae7fa" Title="IReceiveRPi Methods" Url="html/96095fff-8754-2d32-0db5-df25299d03dc.htm">
         <HelpTOCNode Title="OpenRecievePorts Method " Url="html/2de0b9b0-1a35-3f4f-bb0b-c10ef1bafd87.htm" />
         <HelpTOCNode Title="RecieveCalculatedValues Method " Url="html/6f9074d5-c301-a1be-9bcb-3407a4709f82.htm" />
         <HelpTOCNode Title="RecieveDataPoints Method " Url="html/6b1e3eb8-0b60-9360-7870-b4e33d6ac477.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="01d2f0ba-c7b4-4540-8dab-64d7ad51da3f" Title="ISendRPi Interface" Url="html/e7f791ad-7e37-0029-2117-cb72b8519bb7.htm">
-      <HelpTOCNode Id="a95af788-f692-4c63-a85e-d5f5cf4b24d6" Title="ISendRPi Methods" Url="html/1b91167d-b4ba-0faa-f667-aa839a4ba4c6.htm">
+    <HelpTOCNode Id="3714c740-3e54-4e08-8d6e-40931285f788" Title="ISendRPi Interface" Url="html/e7f791ad-7e37-0029-2117-cb72b8519bb7.htm">
+      <HelpTOCNode Id="b2c34117-4fdf-4ee4-8cc6-e5f622c8e9c0" Title="ISendRPi Methods" Url="html/1b91167d-b4ba-0faa-f667-aa839a4ba4c6.htm">
         <HelpTOCNode Title="Command Method " Url="html/2974e758-b062-d46c-f3a0-3c297b2f60a6.htm" />
         <HelpTOCNode Title="OpenSendPorts Method " Url="html/3b28957b-991d-7c2e-a559-b55333fc1c4e.htm" />
         <HelpTOCNode Title="sendemergencydata Method " Url="html/97d65785-a1c4-6b33-9c5f-0deb421d6338.htm" />
         <HelpTOCNode Title="sendpatientdata Method " Url="html/44f934c3-a99a-f82e-e041-17d3b5e6ba90.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1aa79cd0-2c14-42ed-8ac6-9ed280096713" Title="LocalDatabase Class" Url="html/97a43b3a-4fa6-68d1-de75-a5e6567eec94.htm">
+    <HelpTOCNode Id="84687411-fc61-4ad8-aa10-aa5bb8a57cde" Title="LocalDatabase Class" Url="html/97a43b3a-4fa6-68d1-de75-a5e6567eec94.htm">
       <HelpTOCNode Title="LocalDatabase Constructor " Url="html/e1260643-0f36-4770-cd1a-8acde1399651.htm" />
-      <HelpTOCNode Id="466d55dc-3bb2-4d85-9992-2b8218679bee" Title="LocalDatabase Methods" Url="html/8785c81e-a4d2-e12f-641a-c07172a82902.htm">
+      <HelpTOCNode Id="50963e4e-0cb4-44f6-b5c5-1835a0aa9e47" Title="LocalDatabase Methods" Url="html/8785c81e-a4d2-e12f-641a-c07172a82902.htm">
         <HelpTOCNode Title="GetCalVal Method " Url="html/326ca24e-ca95-6c68-2a8e-3683c14d833e.htm" />
         <HelpTOCNode Title="getSocSecNB Method " Url="html/574cfd16-fbf9-1c43-eb16-c721d941b22e.htm" />
         <HelpTOCNode Title="isUserRegistered Method " Url="html/4f7667bc-7abd-dcc2-d1da-7c2147b0e469.htm" />
@@ -151,18 +151,18 @@
         <HelpTOCNode Title="SavePatientData Method " Url="html/ca948d55-99ac-2751-372a-137d3395ec51.htm" />
         <HelpTOCNode Title="ValuedataGet Method " Url="html/0b1b705a-ed7d-cb12-5af7-d5cee19335a6.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="878da8c3-3e80-4d80-9754-c6ad5e0cf53c" Title="LocalDatabase Fields" Url="html/8af740cc-c13b-d645-24fc-3ea8aec803c1.htm">
+      <HelpTOCNode Id="81e0d2c6-4ba6-49f9-8184-a2deacd94b88" Title="LocalDatabase Fields" Url="html/8af740cc-c13b-d645-24fc-3ea8aec803c1.htm">
         <HelpTOCNode Title="result Field" Url="html/9dfb8720-e651-f35d-fdcd-e120e587f1f5.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="78846761-0f37-4322-8530-8b3018d5e1ef" Title="ReceiveRPi Class" Url="html/e1dc3df6-d4a1-9f8a-c70c-ef8b71d88557.htm">
+    <HelpTOCNode Id="77674af0-207f-41d7-88de-0b1be2283641" Title="ReceiveRPi Class" Url="html/e1dc3df6-d4a1-9f8a-c70c-ef8b71d88557.htm">
       <HelpTOCNode Title="ReceiveRPi Constructor " Url="html/126a2791-e2bd-8fd2-76d0-e2cf873cba27.htm" />
-      <HelpTOCNode Id="495bf5e8-f7c2-4b43-8203-1b8f03bda9ae" Title="ReceiveRPi Methods" Url="html/8c0e5a13-a13a-d3fd-3acc-2fd3d1abbfbc.htm">
+      <HelpTOCNode Id="24eec176-e8e5-43cf-be51-7330987daa46" Title="ReceiveRPi Methods" Url="html/8c0e5a13-a13a-d3fd-3acc-2fd3d1abbfbc.htm">
         <HelpTOCNode Title="OpenRecievePorts Method " Url="html/be9f933d-c25e-16cf-1343-48a0e49df8ad.htm" />
         <HelpTOCNode Title="RecieveCalculatedValues Method " Url="html/fd62342f-64b2-a698-e0b6-5ab184f6ce5a.htm" />
         <HelpTOCNode Title="RecieveDataPoints Method " Url="html/5498997c-a781-75ee-b819-190f45fe53aa.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b1dd8095-7445-4fb3-955f-8f36492d6952" Title="ReceiveRPi Fields" Url="html/5828c1e8-55a9-756b-169c-ff2a7f91c0aa.htm">
+      <HelpTOCNode Id="34e243c1-b80e-4a80-859a-ab0215915a7d" Title="ReceiveRPi Fields" Url="html/5828c1e8-55a9-756b-169c-ff2a7f91c0aa.htm">
         <HelpTOCNode Title="groupEP Field" Url="html/9bfaf65b-e571-ea17-d090-1200a83f85e8.htm" />
         <HelpTOCNode Title="groupEPDouble Field" Url="html/cd1b989b-3743-6842-b750-daedfd559c36.htm" />
         <HelpTOCNode Title="listener Field" Url="html/243a77fd-34a8-9f25-2211-392b95125931.htm" />
@@ -171,15 +171,15 @@
         <HelpTOCNode Title="measurements Field" Url="html/d9c99f68-6ae2-08ab-1c25-0165a7a86f60.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d9c02bbc-6d4f-499a-baff-541f935ff9d3" Title="SendRPi Class" Url="html/13f3c679-758a-7a22-3400-4990e53d25ed.htm">
+    <HelpTOCNode Id="db69d3d1-9226-462c-b224-4a9b7b17991d" Title="SendRPi Class" Url="html/13f3c679-758a-7a22-3400-4990e53d25ed.htm">
       <HelpTOCNode Title="SendRPi Constructor " Url="html/402fa852-7f4c-9fdb-6bd8-1e7b8c21c1d7.htm" />
-      <HelpTOCNode Id="7ab843e6-d8af-488a-b2c3-5e470b61bb80" Title="SendRPi Methods" Url="html/1bf3f455-4358-1905-2bf7-1ee5d7a4e921.htm">
+      <HelpTOCNode Id="b9cc4901-2710-4289-9543-41f663fc121e" Title="SendRPi Methods" Url="html/1bf3f455-4358-1905-2bf7-1ee5d7a4e921.htm">
         <HelpTOCNode Title="Command Method " Url="html/7389a751-59b0-4b8f-0c5b-1c0798ae21d9.htm" />
         <HelpTOCNode Title="OpenSendPorts Method " Url="html/aecdafde-96d3-77f7-d7cd-fee117e17cc3.htm" />
         <HelpTOCNode Title="sendemergencydata Method " Url="html/b871b1d8-e692-52bd-38eb-66e084055962.htm" />
         <HelpTOCNode Title="sendpatientdata Method " Url="html/7759fed2-8224-74f1-97f5-73317e2623ca.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="31f6eed4-30f2-4f24-bd67-25cea1b06c29" Title="SendRPi Fields" Url="html/5cf4d200-3e30-e84a-8782-a57cbf12d77e.htm">
+      <HelpTOCNode Id="64a5b6af-5d89-4f85-b9e6-db935d88f51b" Title="SendRPi Fields" Url="html/5cf4d200-3e30-e84a-8782-a57cbf12d77e.htm">
         <HelpTOCNode Title="broadcast Field" Url="html/5622f648-4765-f9e2-1f6a-f84dcae1a35f.htm" />
         <HelpTOCNode Title="datasocket Field" Url="html/54b94e18-7ae8-58a8-e72c-aec0d87d803b.htm" />
         <HelpTOCNode Title="emergencydatasocket Field" Url="html/6a1ba307-b3b6-36cd-a7b0-1c189e02f010.htm" />
@@ -191,10 +191,10 @@
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="3c454d47-35bb-4588-aac9-bd0d905cd160" Title="DTO" Url="html/ccfc7f48-cc16-456a-dd77-2f520e6a0b0d.htm">
-    <HelpTOCNode Id="3ccfa00d-6b32-4795-81db-a6df38aa78a2" Title="DTO_CalVal Class" Url="html/5e6f33e9-bc89-5699-d1a7-c926b8f1b077.htm">
+  <HelpTOCNode Id="c272f8cd-0549-47b9-b71e-c00c49174826" Title="DTO" Url="html/ccfc7f48-cc16-456a-dd77-2f520e6a0b0d.htm">
+    <HelpTOCNode Id="d1e64f72-2cde-4e49-897d-7bbafa468924" Title="DTO_CalVal Class" Url="html/5e6f33e9-bc89-5699-d1a7-c926b8f1b077.htm">
       <HelpTOCNode Title="DTO_CalVal Constructor " Url="html/86041017-bdd4-433e-37e5-469878d37239.htm" />
-      <HelpTOCNode Id="0515219d-1197-491c-b462-94b02197420d" Title="DTO_CalVal Properties" Url="html/e45b0093-58d5-cb36-2621-aae5713d039e.htm">
+      <HelpTOCNode Id="4858b1e8-5ddf-46a8-810f-571920494b52" Title="DTO_CalVal Properties" Url="html/e45b0093-58d5-cb36-2621-aae5713d039e.htm">
         <HelpTOCNode Title="A Property " Url="html/b3761656-c86c-a8e3-a724-7318f5615e83.htm" />
         <HelpTOCNode Title="B Property " Url="html/b65fffc0-bab1-513c-8bda-56829b86c39c.htm" />
         <HelpTOCNode Title="CalMeasured Property " Url="html/ad02ef94-194c-a414-09d2-c1f13dc11738.htm" />
@@ -204,9 +204,9 @@
         <HelpTOCNode Title="Zv Property " Url="html/09f713e0-d8e8-4f5f-b0c4-1bac96f46e4c.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e91d0734-b76d-44b1-9e42-98cdbcb7185b" Title="DTO_Measurement Class" Url="html/d6a92c64-e9a8-fe2c-e81b-9ca72ae9cf1a.htm">
+    <HelpTOCNode Id="fd01946e-222e-4a65-88e4-01446544ecee" Title="DTO_Measurement Class" Url="html/d6a92c64-e9a8-fe2c-e81b-9ca72ae9cf1a.htm">
       <HelpTOCNode Title="DTO_Measurement Constructor " Url="html/c0ff0d5c-f2a1-77ec-eb30-2770ff57be16.htm" />
-      <HelpTOCNode Id="8ba55dca-1a33-4b1c-b8ca-9c2f742f2c39" Title="DTO_Measurement Properties" Url="html/eaee60a6-c1ec-aa41-b1c6-edf452f0414c.htm">
+      <HelpTOCNode Id="3d97e5a2-ca7f-432e-8b9b-7df5b81adf21" Title="DTO_Measurement Properties" Url="html/eaee60a6-c1ec-aa41-b1c6-edf452f0414c.htm">
         <HelpTOCNode Title="Batterystatus Property " Url="html/13573310-a261-1efd-dac9-d8699b518f27.htm" />
         <HelpTOCNode Title="CalculatedDia Property " Url="html/9bd10ef0-ac9e-689d-b142-43f1d946469c.htm" />
         <HelpTOCNode Title="CalculatedMean Property " Url="html/951d1f2c-f106-784f-c4d0-1e1a8ca8ba54.htm" />
@@ -223,9 +223,9 @@
         <HelpTOCNode Title="Tid Property " Url="html/7c8bdac4-27d5-134e-d71f-3b272352a7c4.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e6cbcbe0-fa85-423f-8cd4-a4c7adf6f314" Title="DTO_PatientData Class" Url="html/cd59970f-ed01-cd42-6867-e9f35da37b5c.htm">
+    <HelpTOCNode Id="7af87a01-ec06-467f-8145-a9082d18d173" Title="DTO_PatientData Class" Url="html/cd59970f-ed01-cd42-6867-e9f35da37b5c.htm">
       <HelpTOCNode Title="DTO_PatientData Constructor " Url="html/d900d6be-2271-b3be-560d-b5c72608ead9.htm" />
-      <HelpTOCNode Id="35e13300-bf18-48a5-af4a-6be96287866c" Title="DTO_PatientData Properties" Url="html/80c6c16a-4ae2-6c5b-6a3f-95a3dfcc5af0.htm">
+      <HelpTOCNode Id="fb382133-b5af-4997-9d00-8fe0e94e0bdd" Title="DTO_PatientData Properties" Url="html/80c6c16a-4ae2-6c5b-6a3f-95a3dfcc5af0.htm">
         <HelpTOCNode Title="CalVal Property " Url="html/e0f1c59b-9878-66d8-9bb3-9005dfe4b411.htm" />
         <HelpTOCNode Title="HighDia Property " Url="html/8b47dca8-5d9a-2c63-df03-81b8070b9b3e.htm" />
         <HelpTOCNode Title="HighMean Property " Url="html/efbaae08-3388-e259-7c49-6f6795739965.htm" />
@@ -237,35 +237,35 @@
         <HelpTOCNode Title="ZeroVal Property " Url="html/d4aab31a-687e-ef00-5c12-12b94d49a2f7.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="f1f8f54a-7626-4a9f-b4e8-f4f4c262365b" Title="DTO_UserData Class" Url="html/273f04bc-e21f-1125-7811-caa4049353fc.htm">
+    <HelpTOCNode Id="7ffba974-d004-4067-a469-7cd8a2440045" Title="DTO_UserData Class" Url="html/273f04bc-e21f-1125-7811-caa4049353fc.htm">
       <HelpTOCNode Title="DTO_UserData Constructor " Url="html/77e06223-1c34-2591-918c-1f415cac3fd7.htm" />
-      <HelpTOCNode Id="6fb0bfa3-7eb2-437d-a3b8-df5d3789ef2d" Title="DTO_UserData Properties" Url="html/4efe5722-bc53-1dbf-8912-4ba3044f754b.htm">
+      <HelpTOCNode Id="3c1a9b12-3b7c-4613-b471-a35990c51d3c" Title="DTO_UserData Properties" Url="html/4efe5722-bc53-1dbf-8912-4ba3044f754b.htm">
         <HelpTOCNode Title="Password Property " Url="html/4c5a148a-194c-2e76-f2d8-27dffe11b41a.htm" />
         <HelpTOCNode Title="Username Property " Url="html/69127d38-3495-f6cf-a0c1-b05b91c35b60.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="fc9c3017-6c07-448a-a25e-19f76760f78e" Title="PresentationLogic" Url="html/ee3b43dc-2e15-1e09-adb7-2e8101cfb293.htm">
-    <HelpTOCNode Id="a58ab178-6d76-4672-b4df-5c0a6644ae7a" Title="App Class" Url="html/e63254d3-627a-d578-a4fb-a1073c4fceb2.htm">
+  <HelpTOCNode Id="2e6c700a-770f-4eee-82c8-ce7e29909f56" Title="PresentationLogic" Url="html/ee3b43dc-2e15-1e09-adb7-2e8101cfb293.htm">
+    <HelpTOCNode Id="31c7ddc1-04fd-42df-932d-1aeda7bb8bdc" Title="App Class" Url="html/e63254d3-627a-d578-a4fb-a1073c4fceb2.htm">
       <HelpTOCNode Title="App Constructor " Url="html/0ca3106d-efae-f22e-996f-af033af481d4.htm" />
-      <HelpTOCNode Id="8f2d7d3c-6995-4ce6-9a84-ea5064cf41a2" Title="App Methods" Url="html/8606d0fb-dd67-f474-c5a4-25c5baaebc85.htm">
+      <HelpTOCNode Id="8e836d7e-9909-45ca-8fb7-c1f02bbbb7bf" Title="App Methods" Url="html/8606d0fb-dd67-f474-c5a4-25c5baaebc85.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/8da8b177-a404-9e70-c026-588b1d35c0be.htm" />
         <HelpTOCNode Title="Main Method " Url="html/0e8d8e4e-ae45-2261-9e4b-83e8b38f8eef.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="64926443-d7d9-46c8-99b1-a90303a4f943" Title="App Fields" Url="html/e5b2f263-2464-f47c-bba6-58b99ccf51b3.htm">
+      <HelpTOCNode Id="32180342-680b-46e2-bb5e-fc3b995c1cff" Title="App Fields" Url="html/e5b2f263-2464-f47c-bba6-58b99ccf51b3.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/de1fb11c-6a9d-1487-040c-12d2bd648cf5.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="328292db-c768-41ef-b2f3-1495bb4f80aa" Title="ChangeDataWindow Class" Url="html/e3e87984-54da-e389-9180-6a36a0d8c71f.htm">
+    <HelpTOCNode Id="0cd2d8f5-edf7-4b7b-a1d6-bf65bfc34343" Title="ChangeDataWindow Class" Url="html/e3e87984-54da-e389-9180-6a36a0d8c71f.htm">
       <HelpTOCNode Title="ChangeDataWindow Constructor " Url="html/c54e7e30-fa96-e78c-2216-126123a9b899.htm" />
-      <HelpTOCNode Id="4426dd0a-229e-450a-aa0a-3df91687ff43" Title="ChangeDataWindow Methods" Url="html/831f94ca-44b9-c9cd-e4a8-e6415af95543.htm">
+      <HelpTOCNode Id="3fe2fcbe-a440-4050-aa19-18d415c7f74e" Title="ChangeDataWindow Methods" Url="html/831f94ca-44b9-c9cd-e4a8-e6415af95543.htm">
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/1fb2d4e6-42d0-1513-fcae-8b3d20499385.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/b9c7a8b8-fba3-9179-5b50-e25294630d40.htm" />
         <HelpTOCNode Title="Next_B_Click Method " Url="html/84e29990-fc84-aa77-d818-36c0eb768f68.htm" />
         <HelpTOCNode Title="Next_KeyDown Method " Url="html/33f81233-a1af-8383-ee79-7549518453cf.htm" />
         <HelpTOCNode Title="ValueDataSet Method " Url="html/569f292f-ef78-9be3-20be-59db7744876a.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0f117fff-0e11-4df0-86d7-e9a4067cb9f8" Title="ChangeDataWindow Fields" Url="html/8535b742-20e2-3083-565f-c7648c848191.htm">
+      <HelpTOCNode Id="f25562de-6bea-4324-8097-b2cdeb96e57c" Title="ChangeDataWindow Fields" Url="html/8535b742-20e2-3083-565f-c7648c848191.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/a2ebe46c-1e89-b9d3-f856-acfd0e7c9581.htm" />
         <HelpTOCNode Title="controller Field" Url="html/319d9855-c77e-1a47-f337-f69b4d0204f4.htm" />
         <HelpTOCNode Title="diaLLimit_TB Field" Url="html/f82b0a18-1cc5-b3b0-eaa0-76cc5bf5d267.htm" />
@@ -279,9 +279,9 @@
         <HelpTOCNode Title="Valuedata Field" Url="html/39c3f2f1-dd1a-768f-ee01-8fae0633e928.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8dd5003d-0aff-466e-8bcb-9bdf9a50a727" Title="MainWindow Class" Url="html/bbe95138-9075-c026-35e9-ed1b053aea3b.htm">
+    <HelpTOCNode Id="b444f866-d1bc-440e-8cc2-a76864d071f1" Title="MainWindow Class" Url="html/bbe95138-9075-c026-35e9-ed1b053aea3b.htm">
       <HelpTOCNode Title="MainWindow Constructor " Url="html/3ce0e628-4d60-c9a5-9d5b-b9a278790c55.htm" />
-      <HelpTOCNode Id="d5b75009-a5cd-41e7-b5b1-f083334d20dd" Title="MainWindow Methods" Url="html/e6d03860-32ea-81dd-57bb-f3a2b8d01191.htm">
+      <HelpTOCNode Id="f6b49612-4f12-42b0-960c-8d438124b7df" Title="MainWindow Methods" Url="html/e6d03860-32ea-81dd-57bb-f3a2b8d01191.htm">
         <HelpTOCNode Title="Emergency_Click Method " Url="html/b2cbf07c-a94d-3212-fbb0-185294d362cd.htm" />
         <HelpTOCNode Title="Exit_B_Click Method " Url="html/385c634c-0e2c-8c26-23bf-56f31020cd2a.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/a820f6dc-f17e-3178-b48e-6652d84ef3a2.htm" />
@@ -292,7 +292,7 @@
         <HelpTOCNode Title="TimeSince Method " Url="html/de98f9a6-4834-f51d-8877-634e3fd3bad0.htm" />
         <HelpTOCNode Title="Window_Loaded Method " Url="html/8224bba1-fc3b-3cec-3a65-6a38c37e53a2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7f82a0cf-6d68-4cec-81f3-b395f7fcdb04" Title="MainWindow Fields" Url="html/ff284e74-8335-921e-1d7d-539cd4497793.htm">
+      <HelpTOCNode Id="736f9a22-cb83-43d2-8b0f-6f6b78eb15b9" Title="MainWindow Fields" Url="html/ff284e74-8335-921e-1d7d-539cd4497793.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/66e7410c-03e3-b2b0-213c-622c84b4d621.htm" />
         <HelpTOCNode Title="caldata Field" Url="html/31ebfd75-a0bc-64bb-e762-24dda5f5ce96.htm" />
         <HelpTOCNode Title="calibrationWindow Field" Url="html/4d7d715d-a3ac-acc1-a50f-233141120990.htm" />
@@ -313,23 +313,23 @@
         <HelpTOCNode Title="TimeSince_L Field" Url="html/60dc022d-728e-2aee-f448-2aac6c6ac546.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4b9eac6e-7bfe-47f7-8a2c-d19da18a16ef" Title="MeasurementModel Class" Url="html/7c7b114d-65e4-ebf4-d916-a95d2e23ac13.htm">
+    <HelpTOCNode Id="80a7c2ea-a333-4240-b9df-d410e26d1a94" Title="MeasurementModel Class" Url="html/7c7b114d-65e4-ebf4-d916-a95d2e23ac13.htm">
       <HelpTOCNode Title="MeasurementModel Constructor " Url="html/1fc0bff5-e166-55d3-4fc8-d67ad07e0574.htm" />
-      <HelpTOCNode Id="bc542bbd-7167-4a46-a11d-a1cc0e5d11bb" Title="MeasurementModel Fields" Url="html/9581190f-3f9e-b965-8a18-4b1bd8fe1587.htm">
+      <HelpTOCNode Id="9fcd050e-2c70-4988-a809-840e0216f757" Title="MeasurementModel Fields" Url="html/9581190f-3f9e-b965-8a18-4b1bd8fe1587.htm">
         <HelpTOCNode Title="RawData Field" Url="html/1daf5358-49da-5508-9f67-e39a5931467f.htm" />
         <HelpTOCNode Title="Time Field" Url="html/e3c8d20f-fb77-e8b6-3abe-c4f1f142fea8.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="a1bed4b4-e665-46d4-b4a4-0d19a9427c96" Title="PresentationLogic.Windows" Url="html/1789a3d5-d4c8-5d06-d4e1-f235a1b6df7c.htm">
-    <HelpTOCNode Id="326f9bea-1bf5-461e-be34-6d4a0078a124" Title="CalibrationWindow Class" Url="html/37880c3d-e497-b2d5-73bd-7a788207b73a.htm">
+  <HelpTOCNode Id="40a7658a-02ec-45be-bb88-a9fb716e2d5f" Title="PresentationLogic.Windows" Url="html/1789a3d5-d4c8-5d06-d4e1-f235a1b6df7c.htm">
+    <HelpTOCNode Id="fb2d889b-5012-4147-814c-fd309b88361d" Title="CalibrationWindow Class" Url="html/37880c3d-e497-b2d5-73bd-7a788207b73a.htm">
       <HelpTOCNode Title="CalibrationWindow Constructor " Url="html/d47e8c9b-ec0c-3273-6f8c-29f3f1e0eed8.htm" />
-      <HelpTOCNode Id="a4230be0-81a5-4708-96dd-82d835681068" Title="CalibrationWindow Properties" Url="html/4baf2969-f8b9-29fc-d6af-7030eda41df7.htm">
+      <HelpTOCNode Id="e1a03bd3-1792-41c2-863f-32b2deafe631" Title="CalibrationWindow Properties" Url="html/4baf2969-f8b9-29fc-d6af-7030eda41df7.htm">
         <HelpTOCNode Title="IscalibrationActive Property " Url="html/62435453-9bbe-a376-ff1e-5db432a72824.htm" />
         <HelpTOCNode Title="IsZeroActive Property " Url="html/d72f20a7-8ced-8bc1-d924-2eda0e97d743.htm" />
         <HelpTOCNode Title="XAxis Property " Url="html/3a955b56-c4ad-36b8-3ec9-901988250624.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f04b9c95-8b49-47b6-a738-94f2e915c7d8" Title="CalibrationWindow Methods" Url="html/b205037f-3338-40f4-35ee-648791809d7d.htm">
+      <HelpTOCNode Id="eb72f0bb-a396-4f4b-a864-aa0bb6c1d7a5" Title="CalibrationWindow Methods" Url="html/b205037f-3338-40f4-35ee-648791809d7d.htm">
         <HelpTOCNode Title="Done_B_Click Method " Url="html/daa994bc-1635-edd5-ea37-dccbde776ab3.htm" />
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/6427a3fc-02fe-d9e4-9369-8dac99d8675d.htm" />
         <HelpTOCNode Title="GetCalValue Method " Url="html/2648fc73-637d-a868-1274-77003816adb2.htm" />
@@ -338,7 +338,7 @@
         <HelpTOCNode Title="InsertValue_B_Click Method " Url="html/9cf35926-b56c-e0d8-1e73-e93d3fb352f8.htm" />
         <HelpTOCNode Title="MakeGraph Method " Url="html/fee4871c-1ba8-68e1-f537-1dbda1256b05.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="189f1348-8530-4c06-ad47-581af0ac41d9" Title="CalibrationWindow Fields" Url="html/16938014-aea0-1417-1c64-cd0ac820809e.htm">
+      <HelpTOCNode Id="0ae4dcce-9e8d-46fc-bd0a-5473143b5738" Title="CalibrationWindow Fields" Url="html/16938014-aea0-1417-1c64-cd0ac820809e.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/8f0ed59d-0d01-6bd8-3803-80bb4a1cec98.htm" />
         <HelpTOCNode Title="a Field" Url="html/0a205161-9ecd-3e58-57f7-109fa5ec15dc.htm" />
         <HelpTOCNode Title="b Field" Url="html/ad0bac29-f45d-5d3e-a812-c023117920a1.htm" />
@@ -361,19 +361,19 @@
         <HelpTOCNode Title="AAndB_L Field" Url="html/1c742377-3aa0-674e-97f6-6ddbc4396371.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="10573ef9-ed34-49c7-92d8-13f821d15696" Title="DataWindow Class" Url="html/1b475b5e-c2a9-d022-74f9-c7445786d1e4.htm">
+    <HelpTOCNode Id="7388f5e6-43d8-4311-9689-79c54ee19d91" Title="DataWindow Class" Url="html/1b475b5e-c2a9-d022-74f9-c7445786d1e4.htm">
       <HelpTOCNode Title="DataWindow Constructor " Url="html/a5dc9e4b-fb33-8fbb-e9a6-f183fdcbaf9d.htm" />
-      <HelpTOCNode Id="48640144-c54c-4ed4-9f77-c70fd3300cf5" Title="DataWindow Properties" Url="html/29108d64-0185-a102-8899-aa7ec1c8c150.htm">
+      <HelpTOCNode Id="da4d8646-d2a5-4e90-8c33-25257e260aba" Title="DataWindow Properties" Url="html/29108d64-0185-a102-8899-aa7ec1c8c150.htm">
         <HelpTOCNode Title="IsZeroActive Property " Url="html/58432c8a-cda8-2afc-ef7e-5daf577c7279.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ba61c90e-7dc8-45de-acab-117ba2a71ef4" Title="DataWindow Methods" Url="html/4ae74c4f-0dc9-0f48-89ff-3f1b04456d6d.htm">
+      <HelpTOCNode Id="9cd07a47-cebd-4ea8-8a84-fdb012d6dd57" Title="DataWindow Methods" Url="html/4ae74c4f-0dc9-0f48-89ff-3f1b04456d6d.htm">
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/3f541884-eba9-3e52-dc16-dccfdc696c77.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/df6a1bbc-7ab7-c979-1c22-60ad88110f03.htm" />
         <HelpTOCNode Title="Next_B_Click Method " Url="html/27188285-f9dd-680f-96be-15b3ee74f052.htm" />
         <HelpTOCNode Title="Next_KeyDown Method " Url="html/2c1ef39b-b5ac-bf78-f91b-5b2ea3bf7b64.htm" />
         <HelpTOCNode Title="ReceiveZeroValue Method " Url="html/d24d94bd-3d3f-d634-0601-e7ec71596a06.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8e9c8693-0f29-49f7-a884-9f36ac0777cd" Title="DataWindow Fields" Url="html/fa7694c8-9f77-3c23-d714-442607b6a741.htm">
+      <HelpTOCNode Id="cd6888a9-df01-4fb1-9b3e-8b58751af686" Title="DataWindow Fields" Url="html/fa7694c8-9f77-3c23-d714-442607b6a741.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/88919738-5095-6f99-c33a-6a0aea9e4a6a.htm" />
         <HelpTOCNode Title="calData Field" Url="html/e3b134e1-29ef-9008-28f1-8da31a3fbad2.htm" />
         <HelpTOCNode Title="controller Field" Url="html/f21e2301-c9b7-22eb-eeec-58393eb2f445.htm" />
@@ -393,15 +393,15 @@
         <HelpTOCNode Title="zeroVal Field" Url="html/49915735-517c-3c19-84b3-38d5d19f0734.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="88a1db63-95d3-41b1-aa1a-d3b8ff09a16b" Title="EmergencyPopUp Class" Url="html/ef032f1a-3cbe-1880-adf1-abe339da48cb.htm">
+    <HelpTOCNode Id="bfbbd504-e610-48f2-892f-54974d189a1d" Title="EmergencyPopUp Class" Url="html/ef032f1a-3cbe-1880-adf1-abe339da48cb.htm">
       <HelpTOCNode Title="EmergencyPopUp Constructor " Url="html/26ad9988-b9f1-b55a-54cb-04ce45e595c6.htm" />
-      <HelpTOCNode Id="9611d467-be77-4285-b97a-89b514c1b370" Title="EmergencyPopUp Methods" Url="html/a6291ebd-bd92-a524-df56-b2d1b3151db5.htm">
+      <HelpTOCNode Id="6edf7f53-f8c3-4dab-83a6-6d6a4d247c3d" Title="EmergencyPopUp Methods" Url="html/a6291ebd-bd92-a524-df56-b2d1b3151db5.htm">
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/b3f8b0b3-485a-7933-45de-904f44f796a9.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/93c8290d-1beb-039c-36cf-d6fed133500f.htm" />
         <HelpTOCNode Title="Start_B_Click Method " Url="html/2e586561-8f63-ac07-783b-0ccd0a641448.htm" />
         <HelpTOCNode Title="Start_KeyDown Method " Url="html/9d596180-2bb3-a5ac-af34-cb7f64680360.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5b7e234c-ac76-4b6f-a35e-bc04ed06865b" Title="EmergencyPopUp Fields" Url="html/b8f127dd-266b-1966-d96d-d49e558adb83.htm">
+      <HelpTOCNode Id="cf88fbb6-8247-4f3e-9db5-0ba5f801e14c" Title="EmergencyPopUp Fields" Url="html/b8f127dd-266b-1966-d96d-d49e558adb83.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/6b76068e-cd10-afb3-9b65-6ff0ec0e1faf.htm" />
         <HelpTOCNode Title="controller Field" Url="html/a7aded49-2ae2-297d-a1c4-609d5b822e16.htm" />
         <HelpTOCNode Title="CPR_tb Field" Url="html/272f058f-edf6-c31e-4e1d-e16cf7012d4a.htm" />
@@ -412,15 +412,15 @@
         <HelpTOCNode Title="Start_B Field" Url="html/be1c2614-231c-a0a7-a1f4-9cb1a6a8e515.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="854522c9-e4ce-40fc-909a-ba416fb4e936" Title="LoginWindow Class" Url="html/48011e39-b037-effd-3796-0cd28091c5f2.htm">
+    <HelpTOCNode Id="75f32f5c-4e12-4b2f-92ea-8ef9589a4a87" Title="LoginWindow Class" Url="html/48011e39-b037-effd-3796-0cd28091c5f2.htm">
       <HelpTOCNode Title="LoginWindow Constructor " Url="html/80248924-9419-8400-e0c9-3effa8098dfd.htm" />
-      <HelpTOCNode Id="d3177d64-0704-431f-8d12-1ec7314017a1" Title="LoginWindow Methods" Url="html/87cf4812-593c-f45d-d46c-456245009601.htm">
+      <HelpTOCNode Id="d4edac56-94c8-4ef0-b191-69c64c7366d8" Title="LoginWindow Methods" Url="html/87cf4812-593c-f45d-d46c-456245009601.htm">
         <HelpTOCNode Title="Exit_B_Click Method " Url="html/2069b839-7937-9418-ae33-a5eb0dc33ee5.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/92840fe6-d1b6-e8ea-753e-6659612d6f09.htm" />
         <HelpTOCNode Title="Login_B_Click Method " Url="html/88818395-5ade-235b-eccc-f493872976b9.htm" />
         <HelpTOCNode Title="Login_KeyDown Method " Url="html/3a533e8e-3a60-bc7c-3651-df44466a5054.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="85d7185e-106c-4b47-b7e5-e35243a25473" Title="LoginWindow Fields" Url="html/e3100a99-dee0-0962-1203-647d054f82f2.htm">
+      <HelpTOCNode Id="b026eba3-d340-46d7-9f68-38170b64e3ef" Title="LoginWindow Fields" Url="html/e3100a99-dee0-0962-1203-647d054f82f2.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/38b10f91-fedc-e8d1-62bd-4b80328933fd.htm" />
         <HelpTOCNode Title="controller Field" Url="html/7d1b7a81-e663-7653-26b0-4f3f2238fe6d.htm" />
         <HelpTOCNode Title="Exit_B Field" Url="html/e53caa78-bd8c-a614-8f31-e12bdd3f59d4.htm" />
@@ -431,9 +431,9 @@
         <HelpTOCNode Title="userName_ Field" Url="html/ca1ab2bf-8e58-ce2f-eeb3-7da5843e1136.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="5893dc7c-75de-497d-94d9-2e45886139ae" Title="MeasurementWindow Class" Url="html/58cefe02-b21f-f2f1-2d3e-2068bc72df9d.htm">
+    <HelpTOCNode Id="b2e0832b-27fb-492e-a96d-53dfda951e5d" Title="MeasurementWindow Class" Url="html/58cefe02-b21f-f2f1-2d3e-2068bc72df9d.htm">
       <HelpTOCNode Title="MeasurementWindow Constructor " Url="html/63908f7e-7f2d-3bfc-a168-eec4d47a4ab9.htm" />
-      <HelpTOCNode Id="11d4e04c-ad5c-431c-9ac2-86974b64239e" Title="MeasurementWindow Properties" Url="html/bbbaaef6-1337-1db8-8ebf-a2bf6e438496.htm">
+      <HelpTOCNode Id="cbba8a37-240f-4bb5-b959-edfe8e874b52" Title="MeasurementWindow Properties" Url="html/bbbaaef6-1337-1db8-8ebf-a2bf6e438496.htm">
         <HelpTOCNode Title="AxisMax Property " Url="html/26473394-af64-b2f6-5b54-d6e5a0ae090b.htm" />
         <HelpTOCNode Title="AxisMin Property " Url="html/02ad6b96-f997-83f4-f3e1-6832d369e5d1.htm" />
         <HelpTOCNode Title="AxisStep Property " Url="html/a3cb0c54-f488-d62c-0fd9-32d22d73505f.htm" />
@@ -443,7 +443,7 @@
         <HelpTOCNode Title="IsReading Property " Url="html/f646dde1-d814-fc56-613d-4f1abe38c581.htm" />
         <HelpTOCNode Title="MuteAlarm Property " Url="html/0fca0ea9-050e-a0e9-9491-de7a54ef55bf.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3b06517b-5eef-49ca-9d7c-68e5e60f4b1b" Title="MeasurementWindow Methods" Url="html/5bdc1a1f-5854-c9ee-6d65-9f1d90801f7e.htm">
+      <HelpTOCNode Id="2d39ff38-de1a-4305-a790-c31e7896feb3" Title="MeasurementWindow Methods" Url="html/5bdc1a1f-5854-c9ee-6d65-9f1d90801f7e.htm">
         <HelpTOCNode Title="Alarm Method " Url="html/4ef51900-7339-4584-bdf5-f607413fe06c.htm" />
         <HelpTOCNode Title="ChangeLimitValues_B_Click Method " Url="html/b39cf482-1717-9a2f-b7af-dcafb6956919.htm" />
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/753cf4fb-4f43-7a8e-2f89-f0029e7588f5.htm" />
@@ -455,10 +455,10 @@
         <HelpTOCNode Title="Start_B_Click Method " Url="html/aa43645e-6360-aa48-3ef9-222c70dc1e56.htm" />
         <HelpTOCNode Title="Stop_B_Click Method " Url="html/e59f32a3-63d0-27ca-e152-b134b46df989.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6ca0b625-cb31-4bd2-a07e-e924083226c0" Title="MeasurementWindow Events" Url="html/50e955d2-e6a0-74f5-ed4c-c0550cd69eaf.htm">
+      <HelpTOCNode Id="821d91a6-859f-4900-8455-4a99f616224a" Title="MeasurementWindow Events" Url="html/50e955d2-e6a0-74f5-ed4c-c0550cd69eaf.htm">
         <HelpTOCNode Title="PropertyChanged Event" Url="html/0bfe6dc9-290d-28ee-7e8f-17bc2333d7fc.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d2b40874-5e85-464b-a67f-f735c2c1e6ce" Title="MeasurementWindow Fields" Url="html/7fdde7d7-dc95-7b0e-0325-32ebf92c2afd.htm">
+      <HelpTOCNode Id="ec0c57c0-4d7d-415e-b19b-9adbfe0de496" Title="MeasurementWindow Fields" Url="html/7fdde7d7-dc95-7b0e-0325-32ebf92c2afd.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/5be3a853-66f8-ab93-91da-17ff90f25b17.htm" />
         <HelpTOCNode Title="axisMax Field" Url="html/28870592-3392-8261-3a5a-7fce071cb05e.htm" />
         <HelpTOCNode Title="axisMin Field" Url="html/c7e2bd36-6821-787e-81ca-79c00ce77af5.htm" />
@@ -482,19 +482,19 @@
         <HelpTOCNode Title="SysDia_L Field" Url="html/a68792e8-704e-68a0-d0dc-46eeb3439a14.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="db8c4425-0629-44ad-8717-a7e9d728a215" Title="ShowCalibrationWindow Class" Url="html/775c41d0-6ec6-d476-a1f1-d692540a6007.htm">
+    <HelpTOCNode Id="3274d981-4314-4cca-8cbc-406309d30637" Title="ShowCalibrationWindow Class" Url="html/775c41d0-6ec6-d476-a1f1-d692540a6007.htm">
       <HelpTOCNode Title="ShowCalibrationWindow Constructor " Url="html/c417c8a5-b8d7-3a54-aaad-2b1adb672dcd.htm" />
-      <HelpTOCNode Id="21a23645-6802-438c-b168-86961f958e98" Title="ShowCalibrationWindow Properties" Url="html/1887e196-bb10-4752-90a6-f2bb61ceea01.htm">
+      <HelpTOCNode Id="5de0415a-c190-4b8a-aa1e-6c3f2ed2dd99" Title="ShowCalibrationWindow Properties" Url="html/1887e196-bb10-4752-90a6-f2bb61ceea01.htm">
         <HelpTOCNode Title="XAxis Property " Url="html/77be719d-0747-4518-8d17-79b08bc7c06f.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="94df2a5a-417e-419a-952e-7182d73d80f3" Title="ShowCalibrationWindow Methods" Url="html/89dc8c80-2810-45fd-c9ce-99cc69ff90b1.htm">
+      <HelpTOCNode Id="540934f5-fd1d-4a60-8c57-afa9ff304e5f" Title="ShowCalibrationWindow Methods" Url="html/89dc8c80-2810-45fd-c9ce-99cc69ff90b1.htm">
         <HelpTOCNode Title="ExitToMainWindow_B_OnClick Method " Url="html/cbfc5830-e68e-73df-0bda-32e427ae3cd4.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/c79931ef-cfce-bcf4-0697-8432cc290da0.htm" />
         <HelpTOCNode Title="MakeGraph Method " Url="html/e43ea948-fc3b-7115-0ffa-1bfac41d6c66.htm" />
         <HelpTOCNode Title="ShowCalibration Method " Url="html/ec52bd37-ced2-3fd0-af2c-24e6fb7d9be1.htm" />
         <HelpTOCNode Title="ShowCalibration_B_OnClick Method " Url="html/135fac85-e8b1-37ab-277f-1333d5fe5206.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4788f084-24e8-417c-87a4-f11677fde837" Title="ShowCalibrationWindow Fields" Url="html/24fa6a40-5285-1fdd-8d75-c8c53684f06d.htm">
+      <HelpTOCNode Id="68510120-4327-483b-8706-ff402a3b64fb" Title="ShowCalibrationWindow Fields" Url="html/24fa6a40-5285-1fdd-8d75-c8c53684f06d.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/0cfccbfd-5ef6-a60b-c44e-cc031319ebaa.htm" />
         <HelpTOCNode Title="a Field" Url="html/f3787950-0eda-0d41-1797-ecc187f45158.htm" />
         <HelpTOCNode Title="b Field" Url="html/a44a8aaa-4348-7962-bb58-ef2f86c819a0.htm" />
@@ -513,18 +513,18 @@
         <HelpTOCNode Title="zv Field" Url="html/b689e1f7-5390-1b86-02a1-9b284d1c58a3.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a07da97e-5075-4887-9645-472a074bc141" Title="ShowDataWindow Class" Url="html/4ebbddc8-080f-05c3-6041-c955aa979111.htm">
+    <HelpTOCNode Id="5404bc16-bb05-4b9b-be33-893ff5f60086" Title="ShowDataWindow Class" Url="html/4ebbddc8-080f-05c3-6041-c955aa979111.htm">
       <HelpTOCNode Title="ShowDataWindow Constructor " Url="html/20414155-fdca-8a14-ebfd-3f1b2b59e99a.htm" />
-      <HelpTOCNode Id="fa3331c3-77be-4a3e-a161-69628cab23ca" Title="ShowDataWindow Properties" Url="html/fa72f735-f53b-737d-0bf5-bd56beed7ee0.htm">
+      <HelpTOCNode Id="7eec682c-c4d0-4b6e-b080-a8dbffd25974" Title="ShowDataWindow Properties" Url="html/fa72f735-f53b-737d-0bf5-bd56beed7ee0.htm">
         <HelpTOCNode Title="xAxis Property " Url="html/d044e13c-39a7-a259-f110-58c5973f61c9.htm" />
         <HelpTOCNode Title="YFormatter Property " Url="html/01a07563-3511-66b8-fd79-e0e680cbe3bc.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b3a2c37a-c317-4e4c-b4c2-627607bb96f5" Title="ShowDataWindow Methods" Url="html/1ca07e63-a9b8-ce8f-508b-902e53e79fed.htm">
+      <HelpTOCNode Id="7b9c41a6-0ecf-4789-bc26-c48269aa7200" Title="ShowDataWindow Methods" Url="html/1ca07e63-a9b8-ce8f-508b-902e53e79fed.htm">
         <HelpTOCNode Title="ExitToMainWindow_B_Click Method " Url="html/95305fc1-17b3-add2-62c0-a2f2aa64be9c.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/428e7ae0-9c3d-edaa-6536-f7348559f71c.htm" />
         <HelpTOCNode Title="Search_B_Click Method " Url="html/7f9a360c-08f7-07ce-9bc2-961000de924f.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8b6d6b60-4275-4620-873e-faf198eceb82" Title="ShowDataWindow Fields" Url="html/7467415b-04f8-031b-9a12-0cdf958e3412.htm">
+      <HelpTOCNode Id="0c8e9f53-a4ae-4135-a6b4-8119191b3f8d" Title="ShowDataWindow Fields" Url="html/7467415b-04f8-031b-9a12-0cdf958e3412.htm">
         <HelpTOCNode Title="_contentLoaded Field" Url="html/17adcfe9-2a47-5f84-d52e-265ef5ef0a09.htm" />
         <HelpTOCNode Title="BloodPressureChart Field" Url="html/89334038-91df-3866-c8e9-69c97c7b037f.htm" />
         <HelpTOCNode Title="bPressure Field" Url="html/eeb2fe1b-bb70-55b3-fba2-8d095cb4fde3.htm" />

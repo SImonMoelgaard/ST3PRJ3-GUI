@@ -146,6 +146,7 @@ namespace BuissnessLogic
         {
             return sendrpi.Command(command);
         }
+
         /// <summary>
         /// This method gets the last saved patientdata and returns them
         /// </summary>

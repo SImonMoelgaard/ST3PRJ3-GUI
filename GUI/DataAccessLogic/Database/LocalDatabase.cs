@@ -124,9 +124,6 @@ namespace DataAccessLogic
             }
 
             return null;
-
-
-
         }
 
         /// <summary>
@@ -171,11 +168,6 @@ namespace DataAccessLogic
                 return null;
                 }
                 return sendrpi.sendemergencydata(emergencydata.HighSys, emergencydata.LowSys, emergencydata.HighDia, emergencydata.LowDia, emergencydata.LowMean, emergencydata.HighMean, emergencydata.SocSecNB, emergencydata.CalVal, emergencydata.ZeroVal);
-                
-
-
-
-
         }
 
         /// <summary>
@@ -192,10 +184,6 @@ namespace DataAccessLogic
         public List<DTO_CalVal> SaveCalVal(List<int> calReference, List<double> calMeasured, double r2, double a, double b, double zv,
             DateTime datetime)
         {
-
-
-
-
             string path = @"C:\ST3PRJ3FIL\Calibration";
             DTO_CalVal calval = new DTO_CalVal(calReference, calMeasured, r2, a, b, zv, DateAndTime.Now);
 
@@ -313,10 +301,6 @@ namespace DataAccessLogic
 
                     pwlogin.Add(userdata);
                    r.Close();
-
-                    
-
-
                 }
             }
             catch
@@ -402,7 +386,7 @@ namespace DataAccessLogic
         }
         
         /// <summary>
-        /// Denne metode kan benyttes til at gemme nye profiler til login.
+        /// Denne testmetode kan benyttes til at gemme nye profiler til login.
         /// </summary>
         /// <returns></returns>
         public object Savelogin()

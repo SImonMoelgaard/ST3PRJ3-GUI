@@ -119,7 +119,6 @@ namespace DataAccessLogic
         {
 
             DTO_PatientData data = new DTO_PatientData(SysLow, SysHigh, DiaLow, DiaHigh, Meanlow, Meanhigh, CprPatient, Calval, Zeroval);
-            Calval = 0.00048828125;
 
             var json = JsonConvert.SerializeObject(data);
             byte[] sendbuf = Encoding.ASCII.GetBytes(json);

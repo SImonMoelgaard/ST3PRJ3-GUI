@@ -58,19 +58,12 @@ namespace DataAccessLogic
             
             while (true)
             {
-                //Thread.Sleep(1);
                 try
                 {
                     bytes = listener.Receive(ref groupEP);
                     data = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
 
-                    //var measurementdata = new DTO_Measurement("", 0, new DateTime(2000, 01, 01), false, false, false, false, false, false, 0, 0, 0, 0, 0);
-
-                   // measurementdata = JsonConvert.DeserializeObject<DTO_Measurement>(data);
                     var measurementdata = JsonConvert.DeserializeObject<List<DTO_Measurement>>(data);
-                    
-                   
-                    
                     
                         local.SaveMeasurement(measurementdata[0].SocSecNB, measurementdata[0].mmHg, measurementdata[0].Tid, measurementdata[0].HighSys,
                             measurementdata[0].LowSys, measurementdata[0].HighDia, measurementdata[0].LowDia,
@@ -79,15 +72,12 @@ namespace DataAccessLogic
                             measurementdata[0].Batterystatus);
                         return measurementdata;
 
-                    
                 }
                 catch (InvalidOperationException)
                 {
                     return null;
                 }
-
             }
-
         }
 
         /// <summary>

@@ -99,14 +99,10 @@ namespace PresentationLogic.Windows
 
                         //...displaying zero value
                         Nulpunkt_l.Text = "Nulpunktsjustering fuldført. Værdi: " + zeroVal;
-                        diaLLimit_TB.IsEnabled=true;
-                        diaULimit_TB.IsEnabled = true;
-                        sysLLimit_TB.IsEnabled = true;
-                        sysULimit_TB.IsEnabled = true;
-                        meanLLimit_TB.IsEnabled = true;
-                        meanULimit_TB.IsEnabled = true;
 
-                            //Stop receiving zero value
+                        Next_B.IsEnabled = true;
+
+                        //Stop receiving zero value
                         IsZeroActive = false;
                     }
                 });

@@ -207,7 +207,7 @@
         </member>
         <member name="M:DataAccessLogic.LocalDatabase.Savelogin">
             <summary>
-            Denne metode kan benyttes til at gemme nye profiler til login.
+            Denne testmetode kan benyttes til at gemme nye profiler til login.
             </summary>
             <returns></returns>
         </member>

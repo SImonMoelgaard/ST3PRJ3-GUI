@@ -12,7 +12,7 @@
     <Grid Margin="400,0,0,0">
         <lvc:CartesianChart Name="CalibrationChart" Margin="-15,61,10,13">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="[mmHg]" Labels="{Binding xAxis}"></lvc:Axis>
+                <lvc:Axis Title="[mmHg]" Labels="{Binding XAxis}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="[mV]"></lvc:Axis>

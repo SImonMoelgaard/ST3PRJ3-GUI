@@ -169,12 +169,12 @@ namespace PresentationLogic
         {
             //Login Window
             loginWindow = new LoginWindow(this, controller);
-            
+
             //Hide Main Window
-            //this.Hide();
+            this.Hide();
 
             //Show Login Window
-            //loginWindow.ShowDialog();// Denne er udkommenteret så der kan testes på MW
+            loginWindow.ShowDialog();
 
         }
 

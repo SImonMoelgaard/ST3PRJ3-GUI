@@ -200,7 +200,6 @@ namespace PresentationLogic.Windows
                         {
                             ChartValues.Add(new MeasurementModel
                             {
-                                //Time = DateTime.Now,
                                 Time = data.Tid,
 
                                 RawData = data.mmHg
