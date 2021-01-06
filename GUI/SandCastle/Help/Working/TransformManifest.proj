@@ -9,7 +9,7 @@
 
 	<!-- Task properties -->
 	<PropertyGroup>
-		<WorkingFolder>C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\</WorkingFolder>
+		<WorkingFolder>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\</WorkingFolder>
 		<DocModelTransformation>C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl</DocModelTransformation>
 		<DocModelTransformationParameters>IncludeAllMembersTopic=false;project=</DocModelTransformationParameters>
 		<NamingMethod>Guid</NamingMethod>

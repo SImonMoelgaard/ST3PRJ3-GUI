@@ -177,6 +177,7 @@ namespace PresentationLogic.Windows
 
             //Begin displaying blood pressure chart
             if (IsReading) Task.Factory.StartNew(Read);
+            
         }
 
 

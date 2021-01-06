@@ -5,12 +5,12 @@
 
   <!-- Task properties -->
   <PropertyGroup>
-    <HelpCompilerFolder>C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\SandCastle\Help\</HelpCompilerFolder>
+    <HelpCompilerFolder>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\SandCastle\Help\</HelpCompilerFolder>
     <HelpProjectName>Help1x.hhp</HelpProjectName>
     <LocalizeApp />
     <LanguageId>1033</LanguageId>
-    <WorkingFolder>C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\Output\HtmlHelp1</WorkingFolder>
-    <OutputFolder>C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\SandCastle\Help\</OutputFolder>
+    <WorkingFolder>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\Output\HtmlHelp1</WorkingFolder>
+    <OutputFolder>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\SandCastle\Help\</OutputFolder>
     <HtmlHelpName>SandCastle1</HtmlHelpName>
   </PropertyGroup>
 

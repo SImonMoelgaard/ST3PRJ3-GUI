@@ -65,12 +65,12 @@
     <HelpKINode Title="ICalibration.CalculateR2Val Method " Url="html/47de9124-d74e-7f53-7569-e7ccf7cabada.htm" />
   </HelpKINode>
   <HelpKINode Title="caldata field">
-    <HelpKINode Title="Controller.caldata Field" Url="html/ba60be56-b1f6-86d4-b6ba-c2fb6a300524.htm" />
     <HelpKINode Title="MainWindow.caldata Field" Url="html/31ebfd75-a0bc-64bb-e762-24dda5f5ce96.htm" />
+    <HelpKINode Title="Controller.caldata Field" Url="html/ba60be56-b1f6-86d4-b6ba-c2fb6a300524.htm" />
   </HelpKINode>
   <HelpKINode Title="calData field">
-    <HelpKINode Title="ShowCalibrationWindow.calData Field" Url="html/c3f487d0-6dfd-7aa5-7f2a-4a2f43a79a9d.htm" />
     <HelpKINode Title="DataWindow.calData Field" Url="html/e3b134e1-29ef-9008-28f1-8da31a3fbad2.htm" />
+    <HelpKINode Title="ShowCalibrationWindow.calData Field" Url="html/c3f487d0-6dfd-7aa5-7f2a-4a2f43a79a9d.htm" />
   </HelpKINode>
   <HelpKINode Title="Caldata_L field" Url="html/b25b59a8-2b45-903a-fa0e-2040e2136648.htm" />
   <HelpKINode Title="cali field" Url="html/8fe2c745-4b45-0dce-7ade-cd88381f163b.htm" />
@@ -448,13 +448,13 @@
   </HelpKINode>
   <HelpKINode Title="GetMeasurementLocal method" Url="html/04d45126-e698-806e-545d-ee3c2198aff9.htm" />
   <HelpKINode Title="GetPatientValues method" Url="html/89c50ed7-6e95-a283-d080-eb7a02f72547.htm" />
-  <HelpKINode Title="GetSocSecNb method" Url="html/d146bff7-da69-1abb-84bc-4677d80453d9.htm" />
   <HelpKINode Title="getSocSecNB method">
     <HelpKINode Title="Database.getSocSecNB Method " Url="html/2a602d4a-dca8-650b-07ac-684f5ae107d1.htm" />
+    <HelpKINode Title="LocalDatabase.getSocSecNB Method " Url="html/574cfd16-fbf9-1c43-eb16-c721d941b22e.htm" />
     <HelpKINode Title="IDatabase.getSocSecNB Method " Url="html/a3864bbc-307b-1a3f-398b-50ff624c8ed6.htm" />
     <HelpKINode Title="ILocalDatabase.getSocSecNB Method " Url="html/72226e71-d704-f98f-1377-fedd07ae3b2d.htm" />
-    <HelpKINode Title="LocalDatabase.getSocSecNB Method " Url="html/574cfd16-fbf9-1c43-eb16-c721d941b22e.htm" />
   </HelpKINode>
+  <HelpKINode Title="GetSocSecNb method" Url="html/d146bff7-da69-1abb-84bc-4677d80453d9.htm" />
   <HelpKINode Title="GetZeroValue method" Url="html/58d5f991-31eb-d9c0-814a-90e33e5a073f.htm" />
   <HelpKINode Title="groupEP field" Url="html/9bfaf65b-e571-ea17-d090-1200a83f85e8.htm" />
   <HelpKINode Title="groupEPDouble field" Url="html/cd1b989b-3743-6842-b750-daedfd559c36.htm" />
@@ -670,8 +670,8 @@
   </HelpKINode>
   <HelpKINode Title="Mean_L field" Url="html/ad549531-e11d-afdc-9ca9-4d027df61c76.htm" />
   <HelpKINode Title="MeasurementChart field" Url="html/65e6b55e-a832-57a3-70d3-9dc858d225a6.htm" />
-  <HelpKINode Title="measurementdata field" Url="html/3a579b76-6d2a-7387-2131-a661abe515ca.htm" />
   <HelpKINode Title="measurementData field" Url="html/2fb19626-cc32-8f19-da6c-1e25b1b5f13f.htm" />
+  <HelpKINode Title="measurementdata field" Url="html/3a579b76-6d2a-7387-2131-a661abe515ca.htm" />
   <HelpKINode Title="measurementData_LB field" Url="html/c3d8089b-770a-c60f-cd57-9843e54ee721.htm" />
   <HelpKINode Title="measurementList field" Url="html/10d6de44-cc70-e139-a376-650fcca9e677.htm" />
   <HelpKINode Title="MeasurementModel class">
@@ -766,8 +766,8 @@
   <HelpKINode Title="Nulpunkt_l field" Url="html/5f45eaa2-02f4-a056-d3da-fe2a5e1a5fbc.htm" />
   <HelpKINode Title="OnPropertyChanged method" Url="html/1ccff7b5-e79f-3058-825d-75ee21188d9c.htm" />
   <HelpKINode Title="OpenRecievePorts method">
-    <HelpKINode Title="ReceiveRPi.OpenRecievePorts Method " Url="html/be9f933d-c25e-16cf-1343-48a0e49df8ad.htm" />
     <HelpKINode Title="IReceiveRPi.OpenRecievePorts Method " Url="html/2de0b9b0-1a35-3f4f-bb0b-c10ef1bafd87.htm" />
+    <HelpKINode Title="ReceiveRPi.OpenRecievePorts Method " Url="html/be9f933d-c25e-16cf-1343-48a0e49df8ad.htm" />
   </HelpKINode>
   <HelpKINode Title="openrecieveports method" Url="html/2690d461-7edd-8d89-ab67-cd370ae2a17a.htm" />
   <HelpKINode Title="OpenSendPorts method">
@@ -841,13 +841,13 @@
   <HelpKINode Title="referenceValue_TB field" Url="html/bae06f66-3ea2-e66e-f16b-f3ab1f7e02c3.htm" />
   <HelpKINode Title="result field" Url="html/9dfb8720-e651-f35d-fdcd-e120e587f1f5.htm" />
   <HelpKINode Title="rVal field" Url="html/312f6042-c18d-4729-1564-665dd924761b.htm" />
-  <HelpKINode Title="SaveCalval method">
-    <HelpKINode Title="ICalibration.SaveCalval Method " Url="html/d00a1f7e-4e17-a108-51ae-5fbac2e167fd.htm" />
-    <HelpKINode Title="Calibration.SaveCalval Method " Url="html/607c864f-8b58-1403-c91d-72120afdbb58.htm" />
-  </HelpKINode>
   <HelpKINode Title="SaveCalVal method">
     <HelpKINode Title="ILocalDatabase.SaveCalVal Method " Url="html/f57233c9-cdc0-b1ab-05d2-999170173b54.htm" />
     <HelpKINode Title="LocalDatabase.SaveCalVal Method " Url="html/19f0daf4-21c6-4e62-43bc-384ba7180972.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SaveCalval method">
+    <HelpKINode Title="Calibration.SaveCalval Method " Url="html/607c864f-8b58-1403-c91d-72120afdbb58.htm" />
+    <HelpKINode Title="ICalibration.SaveCalval Method " Url="html/d00a1f7e-4e17-a108-51ae-5fbac2e167fd.htm" />
   </HelpKINode>
   <HelpKINode Title="Savelogin method">
     <HelpKINode Title="ILocalDatabase.Savelogin Method " Url="html/bb95f8fb-4a8d-85aa-5f0b-7ec5bb2cdfea.htm" />
@@ -879,8 +879,8 @@
     <HelpKINode Title="fields" Url="html/5cf4d200-3e30-e84a-8782-a57cbf12d77e.htm" />
     <HelpKINode Title="methods" Url="html/1bf3f455-4358-1905-2bf7-1ee5d7a4e921.htm" />
   </HelpKINode>
-  <HelpKINode Title="sendRPi field" Url="html/dd685297-c8d2-e737-36ff-eef35c935d6c.htm" />
   <HelpKINode Title="sendrpi field" Url="html/19b02218-8565-b63b-d9e9-9a769c34198c.htm" />
+  <HelpKINode Title="sendRPi field" Url="html/dd685297-c8d2-e737-36ff-eef35c935d6c.htm" />
   <HelpKINode Title="SendRPi.broadcast field" Url="html/5622f648-4765-f9e2-1f6a-f84dcae1a35f.htm" />
   <HelpKINode Title="SendRPi.Command method" Url="html/7389a751-59b0-4b8f-0c5b-1c0798ae21d9.htm" />
   <HelpKINode Title="SendRPi.datasocket field" Url="html/54b94e18-7ae8-58a8-e72c-aec0d87d803b.htm" />
@@ -1014,14 +1014,14 @@
   </HelpKINode>
   <HelpKINode Title="Welcome" Url="html/fde050a8-8e29-48f9-af68-415e9354fa26.htm" />
   <HelpKINode Title="Window_Loaded method" Url="html/8224bba1-fc3b-3cec-3a65-6a38c37e53a2.htm" />
+  <HelpKINode Title="xAxis property" Url="html/d044e13c-39a7-a259-f110-58c5973f61c9.htm" />
   <HelpKINode Title="XAxis property">
     <HelpKINode Title="CalibrationWindow.XAxis Property " Url="html/3a955b56-c4ad-36b8-3ec9-901988250624.htm" />
     <HelpKINode Title="ShowCalibrationWindow.XAxis Property " Url="html/77be719d-0747-4518-8d17-79b08bc7c06f.htm" />
   </HelpKINode>
-  <HelpKINode Title="xAxis property" Url="html/d044e13c-39a7-a259-f110-58c5973f61c9.htm" />
   <HelpKINode Title="YFormatter property" Url="html/01a07563-3511-66b8-fd79-e0e680cbe3bc.htm" />
-  <HelpKINode Title="zeroVal field" Url="html/49915735-517c-3c19-84b3-38d5d19f0734.htm" />
   <HelpKINode Title="zeroval field" Url="html/e2f7ec39-e4b0-7e0c-70b4-e9e361775655.htm" />
+  <HelpKINode Title="zeroVal field" Url="html/49915735-517c-3c19-84b3-38d5d19f0734.htm" />
   <HelpKINode Title="ZeroVal property" Url="html/d4aab31a-687e-ef00-5c12-12b94d49a2f7.htm" />
   <HelpKINode Title="zv field" Url="html/b689e1f7-5390-1b86-02a1-9b284d1c58a3.htm" />
   <HelpKINode Title="Zv property" Url="html/09f713e0-d8e8-4f5f-b0c4-1bac96f46e4c.htm" />

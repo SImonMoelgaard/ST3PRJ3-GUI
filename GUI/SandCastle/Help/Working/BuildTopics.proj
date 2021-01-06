@@ -7,7 +7,7 @@
 	<PropertyGroup>
 		<ConfigurationFile>sandcastle.config</ConfigurationFile>
 		<ManifestFile>manifest.xml</ManifestFile>
-		<WorkingFolder>C:\Users\aneka\source\repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\</WorkingFolder>
+		<WorkingFolder>C:\Users\aneka\Source\Repos\ST3PRJ3-GUI\GUI\SandCastle\Help\Working\</WorkingFolder>
 	</PropertyGroup>
 
 	<!-- This defines the dependencies for the Build target -->
